@@ -44,6 +44,7 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/mix.lock">>,   mixlock
         create_file path <> <<"/mix.exs">>, (project basePath)
         create_file path <> <<"/lib/app.ex">>, (app basePath)
+        create_file path <> <<"/lib/route.ex">>, route
 
         create_directory path <> <<"/lib">>
         create_directory path <> <<"/lib/static">>
@@ -51,8 +52,15 @@ defmodule Mix.Tasks.Weber do
         create_directory path <> <<"/lib/models">>
         create_directory path <> <<"/lib/controllers">>
         create_directory path <> <<"/lib/helpers">>
-        create_directory path <> <<"/lib/route">>
+    
+    end
 
+    def route do
+        """
+        defmodule Route do
+            
+        end
+        """
     end
 
     def readme(basePath) do
@@ -85,8 +93,10 @@ defmodule Mix.Tasks.Weber do
     end
 
     def project(projectName) do
+        proj = String.capitalize projectName
+
         """
-        defmodule #{projectName}.Mixfile do
+        defmodule #{proj}.Mixfile do
             use Mix.Project
 
             def project do
@@ -100,14 +110,13 @@ defmodule Mix.Tasks.Weber do
             def application do
                 [
                     applications: [:cowboy],
-                    mod: {#{projectName}, []}
+                    mod: {#{proj}, []}
                 ]
             end
 
             defp deps do
                 [ 
-                    { :cowboy, github: "extend/cowboy" },
-                    { :weber, github:, "0xAX/weber" } 
+                    { :weber, github: "0xAX/weber" } 
                 ]
             end
         end
@@ -115,11 +124,11 @@ defmodule Mix.Tasks.Weber do
     end
 
     def app(projectName) do
-        proj = String.capitalize projectName
-         """
-         defmodule #{proj} do
+        proj = String.capitalize projectName        
+        """
+        defmodule #{proj} do
              
-         end
-         """
+        end
+        """
     end 
 end
