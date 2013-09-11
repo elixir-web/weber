@@ -37,12 +37,6 @@ defmodule Mix.Tasks.Weber do
         #
         path = absname directoryName
         basePath = basename directoryName
-                
-        create_file path <> <<"/README.md">>, (readme basePath)
-        create_file path <> <<"/.gitignore">>, gitignore
-        create_file path <> <<"/mix.exs">>, (project basePath)
-        create_file path <> <<"/lib/app.ex">>, (app basePath)
-        create_file path <> <<"/lib/route.ex">>, route
 
         create_directory path <> <<"/lib">>
         create_directory path <> <<"/lib/static">>
@@ -50,7 +44,13 @@ defmodule Mix.Tasks.Weber do
         create_directory path <> <<"/lib/models">>
         create_directory path <> <<"/lib/controllers">>
         create_directory path <> <<"/lib/helpers">>
-    
+
+        create_file path <> <<"/README.md">>, (readme basePath)
+        create_file path <> <<"/.gitignore">>, gitignore
+        create_file path <> <<"/mix.exs">>, (project basePath)
+        create_file path <> <<"/lib/app.ex">>, (app basePath)
+        create_file path <> <<"/lib/route.ex">>, route
+
     end
 
     def route do
