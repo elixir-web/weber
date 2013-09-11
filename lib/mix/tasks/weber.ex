@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Weber do
+
     @moduledoc """
 
        Create a new weber project template.
@@ -44,12 +45,14 @@ defmodule Mix.Tasks.Weber do
         create_directory path <> <<"/lib/models">>
         create_directory path <> <<"/lib/controllers">>
         create_directory path <> <<"/lib/helpers">>
+        create_directory path <> <<"/lib/mix">>
 
         create_file path <> <<"/README.md">>, (readme basePath)
         create_file path <> <<"/.gitignore">>, gitignore
         create_file path <> <<"/mix.exs">>, (project basePath)
         create_file path <> <<"/lib/app.ex">>, (app basePath)
         create_file path <> <<"/lib/route.ex">>, route
+        create_file path <> <<"/lib/mix/run.ex">>, mix_run
 
     end
 
@@ -116,4 +119,18 @@ defmodule Mix.Tasks.Weber do
         end
         """
     end 
+
+    def mix_run do
+        """
+        defmodule Mix.Tasks.Run do
+
+            use Mix.Task
+
+            def run(_) do
+                app = :application.get_env(:application)
+            end
+
+        end
+        """
+    end
 end
