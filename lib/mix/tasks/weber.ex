@@ -53,6 +53,7 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/lib/app.ex">>, (app basePath)
         create_file path <> <<"/lib/route.ex">>, route
         create_file path <> <<"/lib/mix/run.ex">>, mix_run
+        create_file path <> <<"/lib/config.ex">>, config
 
     end
 
@@ -126,11 +127,26 @@ defmodule Mix.Tasks.Weber do
 
             use Mix.Task
 
+            import Route
+
             def run(_) do
                 app = :application.get_env(:application)
             end
 
         end
         """
+    end
+
+    def config do
+        """
+        defmodule Config do 
+            
+            use ExConfig.Object
+
+            defproperty web_server_http_host, default: "localhost"
+            defproperty web_server_http_port, default: 8800
+        
+        end
+    """
     end
 end
