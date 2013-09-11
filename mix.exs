@@ -17,7 +17,8 @@ defmodule Weber.Mixfile do
 
   defp deps do
     [
-      {:cowboy, "0.8.6", github: "extend/cowboy"}
+      {:cowboy, "0.8.6", github: "extend/cowboy"},
+      {:exconfig, github: "yrashk/exconfig"}
     ]
   end
 end
