@@ -1,4 +1,16 @@
 defmodule Mix.Tasks.Weber do
+    @moduledoc """
+
+       Create a new weber project template.
+
+       Usage:
+
+         mix weber /home/user/myWebApp - Creates myWebApp directory with weber project skeleton.
+         mix weber --version - Prints weber version.
+    """
+
+    @shortdoc "Create a new weber project"
+
     use Mix.Task
     
     import Path
@@ -6,19 +18,7 @@ defmodule Mix.Tasks.Weber do
     import Mix.Generator
 
     @version Weber.Mixfile.project[:version]
-
-    @shortdoc "Create a new weber project"
-
-     @moduledoc """
-
-        Create a new weber project template.
-
-        Usage:
-
-          mix weber /home/user/myWebApp - Creates myWebApp directory with weber project skeleton.
-          mix weber --version - Prints weber version.
-     """
-
+  
     def run(["--version"]) do
         Mix.shell.info "Weber v#{@version}"
     end
@@ -40,8 +40,6 @@ defmodule Mix.Tasks.Weber do
                 
         create_file path <> <<"/README.md">>, (readme basePath)
         create_file path <> <<"/.gitignore">>, gitignore
-        create_file path <> <<"/weber.conf">>, config
-        create_file path <> <<"/mix.lock">>,   mixlock
         create_file path <> <<"/mix.exs">>, (project basePath)
         create_file path <> <<"/lib/app.ex">>, (app basePath)
         create_file path <> <<"/lib/route.ex">>, route
@@ -58,7 +56,7 @@ defmodule Mix.Tasks.Weber do
     def route do
         """
         defmodule Route do
-            
+            import Weber.Route
         end
         """
     end
@@ -79,19 +77,6 @@ defmodule Mix.Tasks.Weber do
         """
     end
 
-    def config do
-        """
-        [
-            {weber, [
-                ]}
-        ]
-        """
-    end
-
-    def mixlock do
-        from_file("../../../../mix.lock")    
-    end
-
     def project(projectName) do
         proj = String.capitalize projectName
 
@@ -103,20 +88,20 @@ defmodule Mix.Tasks.Weber do
                 [ 
                     app: :#{projectName},
                     version: "0.0.1",
-                    deps: deps
+                    deps: deps,
+                    compile_path: "ebin"
                 ]
             end
 
             def application do
                 [
-                    applications: [:cowboy],
-                    mod: {#{proj}, []}
+                    applications: [:weber],
                 ]
             end
 
             defp deps do
                 [ 
-                    { :weber, github: "0xAX/weber" } 
+                    { :weber, github: "0xAX/weber", compile: "mix deps.get && mix compile" } 
                 ]
             end
         end

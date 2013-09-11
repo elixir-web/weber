@@ -1,3 +1,4 @@
 ebin/Elixir.Mix.Tasks.Weber.beam	Elixir.Mix.Tasks.Weber	lib/mix/tasks/weber.ex
+ebin/Elixir.Weber.Http.Url.beam	Elixir.Weber.Http.Url	lib/weber/http/url.ex
 ebin/Elixir.Weber.Route.beam	Elixir.Weber.Route	lib/weber/route.ex
 ebin/Elixir.Weber.beam	Elixir.Weber	lib/weber.ex
