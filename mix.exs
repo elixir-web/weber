@@ -10,8 +10,9 @@ defmodule Weber.Mixfile do
 
   def application do
     [
-      applications: [:crypto, :ranch, :cowboy],
-      description: "weber - is Elixir MVC web framework."
+      description: "weber - is Elixir MVC web framework.",
+      registered: [:weber],
+      mod: { Weber, [] }
     ]
   end
 

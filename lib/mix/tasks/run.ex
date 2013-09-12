@@ -8,11 +8,15 @@ defmodule Mix.Tasks.Run do
             * mix run
     """
 
+    import :file
+
     use Mix.Task
 
+    @doc """
+        Start new weber web application
+    """
     def run(_) do
-        app = :application.get_env(:application)
-        :io.format("app ~p~n", [app])
+
     end
 
 end

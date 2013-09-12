@@ -16,10 +16,30 @@ defmodule Mix.Tasks.Weber do
     
     import Path
     import File
+    import :file
     import Mix.Generator
 
     @version Weber.Mixfile.project[:version]
-  
+    
+    def run([]) do
+        usage
+    end
+
+    def run(["--help"]) do
+        usage
+    end
+
+    def run(["--run"]) do
+        # get current application's name
+        app = Mix.project[:app]
+        Mix.Task.run "app.start"
+        # get application's root directory
+        {:ok, app_root_dir} = get_cwd()
+        IEx.start([])
+        #a = :application.start(:weber)
+        #:io.format(a)
+    end
+
     def run(["--version"]) do
         Mix.shell.info "Weber v#{@version}"
     end
@@ -130,5 +150,16 @@ defmodule Mix.Tasks.Weber do
         
         end
     """
+    end
+
+    def usage do
+        """
+        Usage:
+
+          mix weber /home/user/testWebApp -- creates new weber web application
+          mix weber --version -- shows weber version
+          mix weber --help    -- show weber help
+          mix weber --run     -- runs current weber web application
+        """
     end
 end
