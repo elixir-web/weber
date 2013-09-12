@@ -32,12 +32,8 @@ defmodule Mix.Tasks.Weber do
     def run(["--run"]) do
         # get current application's name
         app = Mix.project[:app]
-        Mix.Task.run "app.start"
         # get application's root directory
         {:ok, app_root_dir} = get_cwd()
-        IEx.start([])
-        #a = :application.start(:weber)
-        #:io.format(a)
     end
 
     def run(["--version"]) do
