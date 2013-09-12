@@ -45,7 +45,6 @@ defmodule Mix.Tasks.Weber do
         create_directory path <> <<"/lib/models">>
         create_directory path <> <<"/lib/controllers">>
         create_directory path <> <<"/lib/helpers">>
-        create_directory path <> <<"/lib/mix">>
 
         create_file path <> <<"/README.md">>, (readme basePath)
         create_file path <> <<"/.gitignore">>, gitignore
