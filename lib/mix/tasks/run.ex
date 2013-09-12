@@ -1,0 +1,19 @@
+defmodule Mix.Tasks.Run do
+
+    @moduledoc """
+        Mix task for the running weber web application.
+    
+        Usage:
+
+            * mix run
+    """
+
+    use Mix.Task
+
+    import Route
+
+    def run(_) do
+        app = :application.get_env(:application)
+    end
+
+end

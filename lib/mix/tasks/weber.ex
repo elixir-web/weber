@@ -52,7 +52,6 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/mix.exs">>, (project basePath)
         create_file path <> <<"/lib/app.ex">>, (app basePath)
         create_file path <> <<"/lib/route.ex">>, route
-        create_file path <> <<"/lib/mix/run.ex">>, mix_run
         create_file path <> <<"/lib/config.ex">>, config
 
     end
@@ -120,22 +119,6 @@ defmodule Mix.Tasks.Weber do
         end
         """
     end 
-
-    def mix_run do
-        """
-        defmodule Mix.Tasks.Run do
-
-            use Mix.Task
-
-            import Route
-
-            def run(_) do
-                app = :application.get_env(:application)
-            end
-
-        end
-        """
-    end
 
     def config do
         """
