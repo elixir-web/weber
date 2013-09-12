@@ -10,8 +10,6 @@ defmodule Mix.Tasks.Run do
 
     use Mix.Task
 
-    import Route
-
     def run(_) do
         app = :application.get_env(:application)
         :io.format("app ~p~n", [app])
