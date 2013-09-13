@@ -9,8 +9,8 @@ defmodule Weber.Supervisor do
         :supervisor.start_link({:local, __MODULE__}, __MODULE__, [])
     end
 
-    def start_app(routes, root_directory) do
-        :supervisor.start_child(__MODULE__, [routes, root_directory])
+    def start_app(routes, root_directory, config) do
+        :supervisor.start_child(__MODULE__, [routes, root_directory, config])
     end
 
     def init([]) do

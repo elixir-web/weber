@@ -29,13 +29,6 @@ defmodule Mix.Tasks.Weber do
         usage
     end
 
-    def run(["--run"]) do
-        # get current application's name
-        app = Mix.project[:app]
-        # get application's root directory
-        {:ok, app_root_dir} = get_cwd()
-    end
-
     def run(["--version"]) do
         Mix.shell.info "Weber v#{@version}"
     end
@@ -130,7 +123,19 @@ defmodule Mix.Tasks.Weber do
         proj = String.capitalize projectName        
         """
         defmodule #{proj} do
-             
+
+           import Weber
+           import Route
+           import Config
+
+           def start(_type, _args) do
+               {:ok, root} = :file_get_cwd(),
+               run_weber(route, root, Config.config)
+           end
+
+           def stop(_state) do
+               :ok
+           end
         end
         """
     end 
