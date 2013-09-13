@@ -1,0 +1,11 @@
+{application,testWebApp,
+             [{registered,[]},
+              {description,"testWebApp"},
+              {vsn,"0.0.1"},
+              {modules,['Elixir.Config','Elixir.Mix.Tasks.Weber',
+                        'Elixir.Route','Elixir.Testwebapp',
+                        'Elixir.Weber.App.WeberApp','Elixir.Weber.App',
+                        'Elixir.Weber.Http.Url','Elixir.Weber.Route',
+                        'Elixir.Weber.Supervisor','Elixir.Weber']},
+              {applications,[kernel,stdlib,elixir,weber]},
+              {mod,{'Elixir.Testwebapp',[]}}]}.

@@ -16,7 +16,6 @@ defmodule Mix.Tasks.Weber do
     
     import Path
     import File
-    import :file
     import Mix.Generator
 
     @version Weber.Mixfile.project[:version]
@@ -67,7 +66,17 @@ defmodule Mix.Tasks.Weber do
     def route do
         """
         defmodule Route do
+
             import Weber.Route
+
+            @doc routing
+            @route on('/', 'controller1', 'main_action')
+                   |> on('/user/add', 'controller1', 'action1')
+                   |> otherwise(404, 'controller2', 'notfound')
+
+            def get_route do
+                @route
+            end
         end
         """
     end
@@ -90,6 +99,7 @@ defmodule Mix.Tasks.Weber do
 
     def project(projectName) do
         proj = String.capitalize projectName
+        {:ok, dir} = :file.get_cwd()
 
         """
         defmodule #{proj}.Mixfile do
@@ -100,7 +110,7 @@ defmodule Mix.Tasks.Weber do
                     app: :#{projectName},
                     version: "0.0.1",
                     deps: deps,
-                    compile_path: "ebin"
+                    compile_path: "#{dir ++ '/ebin'}"
                 ]
             end
 
@@ -122,20 +132,18 @@ defmodule Mix.Tasks.Weber do
     def app(projectName) do
         proj = String.capitalize projectName        
         """
-        defmodule #{proj} do
+        defmodule Testwebapp do
 
-           import Weber
-           import Route
-           import Config
+            import Weber
 
-           def start(_type, _args) do
-               {:ok, root} = :file_get_cwd(),
-               run_weber(route, root, Config.config)
-           end
+            def start(_type, _args) do
+                {:ok, root} = :file.get_cwd()
+                run_weber(Route.get_route, root, Config.config)
+            end
 
-           def stop(_state) do
+            def stop(_state) do
                :ok
-           end
+            end
         end
         """
     end 
@@ -143,14 +151,15 @@ defmodule Mix.Tasks.Weber do
     def config do
         """
         defmodule Config do 
-            
-            use ExConfig.Object
+    
+            def config do
+                [webserver: 
+                    [http_port: "localhost", http_port: 8080]
+                ]
+            end
 
-            defproperty web_server_http_host, default: "localhost"
-            defproperty web_server_http_port, default: 8800
-        
         end
-    """
+        """
     end
 
     def usage do
