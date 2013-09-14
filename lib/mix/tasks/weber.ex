@@ -54,6 +54,7 @@ defmodule Mix.Tasks.Weber do
         create_directory path <> <<"/lib/controllers">>
         create_directory path <> <<"/lib/helpers">>
 
+        create_file path <> <<"/start.sh">>, (start directoryName)
         create_file path <> <<"/README.md">>, (readme basePath)
         create_file path <> <<"/.gitignore">>, gitignore
         create_file path <> <<"/mix.exs">>, (project basePath)
@@ -62,8 +63,6 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/lib/config.ex">>, config
         create_file path <> <<"/lib/controllers/main.ex">>, main_controller(basePath)
         create_file path <> <<"/lib/views/main.html">>, main_template(basePath)
-
-        create_file path <> <<"/start.sh">>, (start directoryName)
     end
 
     def route do

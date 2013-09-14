@@ -2,10 +2,12 @@
              [{registered,[]},
               {description,"testWebApp"},
               {vsn,"0.0.1"},
-              {modules,['Elixir.Config','Elixir.Mix.Tasks.Weber',
-                        'Elixir.Route','Elixir.Testwebapp',
+              {modules,['Elixir.Config','Elixir.Cowboy',
+                        'Elixir.Handler.WeberReqHandler.State',
+                        'Elixir.Handler.WeberReqHandler',
+                        'Elixir.Mix.Tasks.Weber','Elixir.Route',
+                        'Elixir.Testwebapp.Main','Elixir.Testwebapp',
                         'Elixir.Weber.App.WeberApp','Elixir.Weber.App',
                         'Elixir.Weber.Http.Url','Elixir.Weber.Route',
                         'Elixir.Weber.Supervisor','Elixir.Weber']},
-              {applications,[kernel,stdlib,elixir,weber]},
-              {mod,{'Elixir.Testwebapp',[]}}]}.
+              {applications,[kernel,stdlib,elixir,weber]}]}.
