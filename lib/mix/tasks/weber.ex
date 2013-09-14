@@ -62,6 +62,8 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/lib/config.ex">>, config
         create_file path <> <<"/lib/controllers/main.ex">>, main_controller(basePath)
         create_file path <> <<"/lib/views/main.html">>, main_template(basePath)
+
+        create_file path <> <<"/start.sh">>, (start directoryName)
     end
 
     def route do
@@ -70,7 +72,6 @@ defmodule Mix.Tasks.Weber do
 
             import Weber.Route
 
-            @doc routing
             @route on('/', 'controller1', 'main_action')
                    |> on('/user/add', 'controller1', 'action1')
                    |> otherwise(404, 'controller2', 'notfound')
@@ -110,8 +111,7 @@ defmodule Mix.Tasks.Weber do
                 [ 
                     app: :#{projectName},
                     version: "0.0.1",
-                    deps: deps,
-                    compile_path: "#{dir ++ '/ebin'}"
+                    deps: deps
                 ]
             end
 
@@ -206,6 +206,15 @@ defmodule Mix.Tasks.Weber do
                 <span>Hello, <%= project %></span> 
             </body>
         </html>
+        """
+    end
+
+    def start(directoryName) do
+        """
+        #!/usr/bin/env sh
+
+        export ERL_LIBS="$ERL_LIBS:#{directoryName}"
+        exec iex -S mix
         """
     end
 

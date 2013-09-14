@@ -22,9 +22,7 @@ defmodule Handler.WeberReqHandler do
 
         # get routes
         routes = :gen_server.call(state.app_name, :routes)
-
         :io.format("~p~n", [match_routes(path, routes)])
-
         {:ok, req4} = :cowboy_req.reply(200, [], "Hello world!", req3)
         {:ok, req4, state}
     end
