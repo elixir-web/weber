@@ -44,7 +44,7 @@ defmodule Weber.Route do
         fn(route) -> 
           [path: path, controller: controller, action: action] = route
           parsed_route_path = getBinding(path)
-          {match_routes_helper(parsed_path, parsed_route_path)
+          match_routes_helper(parsed_path, parsed_route_path)
         end)
     end
 
