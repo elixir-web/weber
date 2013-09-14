@@ -6,9 +6,11 @@ defmodule Handler.WeberReqHandler do
 
     import Weber.Route
 
-    def init(_transport, req, []) do
+    defrecord State, 
+        app_name: nil
 
-        {:ok, req, nil}
+    def init(_transport, req, name) do
+        {:ok, req, State.new app_name: name}
     end
 
     def handle(req, state) do
@@ -16,14 +18,17 @@ defmodule Handler.WeberReqHandler do
         {method, req2} = :cowboy_req.method(req)
         # get path
         {path, req3} = :cowboy_req.path(req2)
-        # get routes
-        routes = :gen_server.call(:app, :routes)
 
-        match_routes(path, routes)
+        # get routes
+        routes = :gen_server.call(state.app_name, :routes)
+
+        #match_routes(path, routes)
 
         {:ok, req4} = :cowboy_req.reply(200, [], "Hello world!", req3)
         {:ok, req4, state}
     end
+
+
 
     def terminate(_reason, _req, _state) do
         :ok
