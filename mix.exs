@@ -18,7 +18,8 @@ defmodule Weber.Mixfile do
 
   defp deps do
     [
-      {:cowboy, "0.8.6", github: "extend/cowboy"}
+      {:cowboy, "0.8.6", github: "extend/cowboy"},
+      {:ecto, github: "elixir-lang/ecto"}
     ]
   end
 end
