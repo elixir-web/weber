@@ -71,9 +71,9 @@ defmodule Mix.Tasks.Weber do
 
             import Weber.Route
 
-            @route on('/', 'controller1', 'main_action')
-                   |> on('/user/add', 'controller1', 'action1')
-                   |> otherwise(404, 'controller2', 'notfound')
+            @route on("/", App.Controller, 'action')
+                   |> on("/user/add", App.Controller, 'action')
+                   |> otherwise("404", App.Controller, 'notfound_action')
 
             def get_route do
                 @route
@@ -117,6 +117,7 @@ defmodule Mix.Tasks.Weber do
             def application do
                 [
                     applications: [:weber],
+                    mod: {#{proj}, []}
                 ]
             end
 
@@ -138,7 +139,7 @@ defmodule Mix.Tasks.Weber do
 
             def start(_type, _args) do
                 {:ok, root} = :file.get_cwd()
-                run_weber(Route.get_route, root, Config.config)
+                run_weber(:#{proj}, Route.get_route, root, Config.config)
             end
 
             def stop(_state) do
@@ -154,7 +155,7 @@ defmodule Mix.Tasks.Weber do
     
             def config do
                 [webserver: 
-                    [http_port: "localhost", 
+                    [http_host: "localhost", 
                      http_port: 8080,
                      acceptors: 100
                     ]
@@ -179,15 +180,11 @@ defmodule Mix.Tasks.Weber do
     def main_controller(app) do
     """
     defmodule Testwebapp.Main do
-    
-        def action("GET", []) do
-            {:render, []}
-        end
 
-        def not_found_action(_, []) do
-            {:redirect, "404.html"}
+        def action("GET", []) do
+            {:render, [project: #{app}]}
         end
-        
+            
     end
     """
     end

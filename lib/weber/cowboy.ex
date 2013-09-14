@@ -12,9 +12,9 @@ defmodule Cowboy do
 
         {:webserver, web_server_config} = :lists.keyfind(:webserver, 1, config)
         {_, _host} = :lists.keyfind(:http_host, 1, web_server_config)
-        {_, port} = :lists.keyfind(:http_host, 1, web_server_config)
+        {_, port} = :lists.keyfind(:http_port, 1, web_server_config)
         {_, acceptors} = :lists.keyfind(:acceptors, 1, web_server_config)
-        
+
         dispatch = :cowboy_router.compile([{:_, [{:_, Handler.WeberReqHandler, name}]}])
         {:ok, _} = :cowboy.start_http(:http, acceptors, [port: port], [env: [dispatch: dispatch]])
     end

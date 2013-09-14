@@ -39,32 +39,42 @@ defmodule Weber.Route do
     """
     def match_routes(path, routes) do
       parsed_path = getBinding(path)
-
+      
       Enum.filter(routes, 
         fn(route) -> 
-          [path: path, controller: controller, action: action] = route
-          parsed_route_path = getBinding(path)
-          match_routes_helper(parsed_path, parsed_route_path)
+          [path: p, controller: _controller, action: _action] = route
+          case p do
+            "404" ->
+                false
+            _ ->
+              parsed_route_path = getBinding(p)
+              match_routes_helper(parsed_path, parsed_route_path)
+          end
         end)
     end
 
     @doc """
+    
     """
     def match_routes_helper([], []) do
         true
     end
 
-    def match_routes_helper([{type, path} | parsed_path], []) do
+    def match_routes_helper([{_type, _path} | _parsed_path], []) do
         false
     end
 
-    def match_routes_helper([], [{route_type, route_path} | parsed_route_path]) do
+    def match_routes_helper([], [{_route_type, _route_path} | _parsed_route_path]) do
         false
     end
-
+    
     def match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
         case type == route_type do
-            true -> match_routes_helper(parsed_path, parsed_route_path)
+            true -> 
+              case path == route_path do
+                true -> match_routes_helper(parsed_path, parsed_route_path)
+                false -> false
+              end
             false -> 
               case type == :binding do
                 true -> match_routes_helper(parsed_path, parsed_route_path)

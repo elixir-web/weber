@@ -68,4 +68,13 @@ defmodule Weber.Http.Url do
                 end
         end
     end
+
+    @doc """
+        Get all url's bindings
+    """
+    def getAllBinding(url) do
+        parsed = getBinding(url)
+        Enum.filter(parsed, fn({type, _val}) -> type == :binding end)
+    end
+
 end

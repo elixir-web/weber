@@ -5,9 +5,9 @@ defmodule Weber do
         Main weber application module.
     """
 
-    def run_weber(routes, root_directory, config) do
+    def run_weber(app_name, routes, root_directory, config) do
         start([], [])
-        Weber.Supervisor.start_app(routes, root_directory, config)
+        Weber.Supervisor.start_app(app_name, routes, root_directory, config)
     end
 
     def start(_type, _args) do

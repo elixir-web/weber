@@ -43,4 +43,13 @@ defmodule Weber.App do
     def handle_call(:root, _from, state) do
       { :reply, state.root, state }
     end
+
+    def handle_call(:static, _from, state) do
+      { :reply, state.static_dir, state }
+    end
+
+    def handle_call(:views, _from, state) do
+      { :reply, state.views_dir, state }
+    end
+
 end
