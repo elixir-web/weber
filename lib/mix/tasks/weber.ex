@@ -155,7 +155,10 @@ defmodule Mix.Tasks.Weber do
     
             def config do
                 [webserver: 
-                    [http_port: "localhost", http_port: 8080]
+                    [http_port: "localhost", 
+                     http_port: 8080,
+                     acceptors: 100
+                    ]
                 ]
             end
 

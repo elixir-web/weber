@@ -4,6 +4,7 @@ defmodule Handler.WeberReqHandler do
         Weber http request cowboy handler.
     """
 
+    import EEx
     import Weber.Route
 
     defrecord State, 
@@ -22,7 +23,7 @@ defmodule Handler.WeberReqHandler do
         # get routes
         routes = :gen_server.call(state.app_name, :routes)
 
-        #match_routes(path, routes)
+        :io.format("~p~n", [match_routes(path, routes)])
 
         {:ok, req4} = :cowboy_req.reply(200, [], "Hello world!", req3)
         {:ok, req4, state}
