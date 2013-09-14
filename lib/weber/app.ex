@@ -9,7 +9,9 @@ defmodule Weber.App do
       name:   nil, 
       routes: nil,
       config: nil,
-      root:   nil
+      root:   nil,
+      static_dir: nil,
+      views_dir:  nil
     
     def start_link(app_name, routes, root_directory, config) do
         :gen_server.start_link({:local, app_name}, __MODULE__, [app_name, routes, root_directory, config], [])
@@ -17,7 +19,12 @@ defmodule Weber.App do
 
     def init([app_name, routes, root_directory, config]) do
         :gen_server.cast(:erlang.self(), :init)
-        { :ok, WeberApp.new name: app_name, routes: routes, root: root_directory, config: config }
+        { :ok, WeberApp.new name: app_name, 
+                            routes: routes, 
+                            root: root_directory, 
+                            config: config,
+                            static_dir: root_directory ++ '/lib/static/',
+                            views_dir:  root_directory ++ '/lib/views/' }
     end
 
     def handle_cast(:init, state) do

@@ -60,7 +60,8 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/lib/app.ex">>, (app basePath)
         create_file path <> <<"/lib/route.ex">>, route
         create_file path <> <<"/lib/config.ex">>, config
-
+        create_file path <> <<"/lib/controllers/main.ex">>, main_controller(basePath)
+        create_file path <> <<"/lib/views/main.html">>, main_template(basePath)
     end
 
     def route do
@@ -172,4 +173,37 @@ defmodule Mix.Tasks.Weber do
           mix weber --run     -- runs current weber web application
         """
     end
+
+    def main_controller(app) do
+    """
+    defmodule Testwebapp.Main do
+    
+        def action("GET", []) do
+            {:render, []}
+        end
+
+        def not_found_action(_, []) do
+            {:redirect, "404.html"}
+        end
+        
+    end
+    """
+    end
+
+    def main_template(app) do
+        proj = String.capitalize(app) 
+        """
+        <!DOCTYPE HTML>
+        <html>
+            <head>
+                <title>#{proj}</title>
+            </head>
+         
+            <body>
+                <span>Hello, <%= project %></span> 
+            </body>
+        </html>
+        """
+    end
+
 end
