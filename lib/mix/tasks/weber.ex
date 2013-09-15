@@ -176,7 +176,8 @@ defmodule Mix.Tasks.Weber do
     end
 
     def main_controller(app) do
-        proj = String.capitalize(app) ++ '.Main' 
+        :io.format("String.capitalize(app) ~p~n", [String.capitalize(app)])
+        proj = String.capitalize(app) <> ".Main" 
         """
         defmodule #{proj} do
 
