@@ -20,6 +20,7 @@ defmodule Weber.Mixfile do
     [
       {:cowboy, "0.8.6", github: "extend/cowboy"},
       {:ecto, github: "elixir-lang/ecto"},
+      {:pgsql, github: "ericmj/pgsql", branch: "elixir"},
       {:exjson, github: "guedes/exjson"}
     ]
   end
