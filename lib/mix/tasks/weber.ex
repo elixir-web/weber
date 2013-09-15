@@ -71,9 +71,9 @@ defmodule Mix.Tasks.Weber do
 
             import Weber.Route
 
-            @route on("/", App.Controller, 'action')
-                   |> on("/user/add", App.Controller, 'action')
-                   |> otherwise("404", App.Controller, 'notfound_action')
+            @route on("/", :App.Controller, :action)
+                   |> on("/user/add", :App.Controller, :action)
+                   |> otherwise("404", :App.Controller, :notfound_action)
 
             def get_route do
                 @route

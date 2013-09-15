@@ -2,7 +2,7 @@
              [{registered,[weber]},
               {description,"weber - is Elixir MVC web framework."},
               {vsn,"0.0.1"},
-              {modules,['Elixir.Cowboy',
+              {modules,['Elixir.Cowboy','Elixir.Handler.Weber404Handler',
                         'Elixir.Handler.WeberReqHandler.State',
                         'Elixir.Handler.WeberReqHandler',
                         'Elixir.Mix.Tasks.Weber','Elixir.Weber.App.WeberApp',

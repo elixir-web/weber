@@ -4,8 +4,10 @@ defmodule Handler.WeberReqHandler do
         Weber http request cowboy handler.
     """
 
+    import EEx
     import Weber.Route
     import Weber.Http.Url
+    import Handler.Weber404Handler
 
     defrecord State, 
         app_name: nil
@@ -24,23 +26,49 @@ defmodule Handler.WeberReqHandler do
         static = :gen_server.call(state.app_name, :static)
         views = :gen_server.call(state.app_name,  :views)
         root = :gen_server.call(state.app_name,  :root)
-
+        
         successful_route = :lists.flatten(match_routes(path, routes))
 
         case successful_route do
             [] -> 
                 res = try_to_find_static_resource(path, static, views, root)
                 case res do
-                    404 -> :ok
+                    404 ->
+                        :cowboy_req.reply(200, [], get404, req3)
                     _ ->
                         {:ok, data} = File.read(res)
-                        {:ok, _req4} = :cowboy_req.reply(200, [], data, req3)
+                        {:ok, req4} = :cowboy_req.reply(200, [], data, req3)
                 end                
-            [{:path, path},{:controller, controller}, {:action, action}] ->
+            [{:path, path}, {:controller, controller}, {:action, action}] ->
                 bindings = getAllBinding(path)
-                result = controller.action(method, bindings)
+
+                #:io.format("f ~p~n", [f])
+                #:io.format("f. ~p~n", [f.(<<"GET">>, [])])
+
+                #:io.format("controller ~p~n", [controller])
+                #:io.format("is_atom ~p~n", [is_atom(controller)])
+
+
+                #:io.format("~p~n", [])
+
+                #:io.format("is_binary ~p~n", [is_binary(controller)])
+                #:io.format("is_bitstring ~p~n", [is_bitstring(controller)])
+                #:io.format("is_list ~p~n", [is_list(controller)])
+
+                #:io.format("list_to_atom ~p~n", [:erlang.list_to_atom(controller)])
+                #:io.format("binary_to_atom ~p~n", [binary_to_atom(controller, :utf8)])
+                #:io.format("contr ~p~n", [Mix.Utils.command_to_module(controller)])
+                #:io.format("controller ~p~n", [action])
+                #:io.format("controller ~p~n", [method])
+                #:io.format("controller ~p~n", [bindings])
+                #:io.format("binary_to_ ~p~n", [:erlang.binary_to_atom(controller, :utf8)])
+
+                #result = apply(:controller, action, [method, bindings])
+                
+                f = Module.function(controller, action, 2)
+                result = f.(method, bindings)
                 res = handle_result(result, controller, views)
-                {:ok, _req4} = :cowboy_req.reply(200, [], res, req3)
+                {:ok, req4} = :cowboy_req.reply(200, [], res, req3)
         end
 
         {:ok, req, state}
@@ -64,15 +92,15 @@ defmodule Handler.WeberReqHandler do
                                           end)
                 {:ok, d} = File.read(:lists.nth(1, view_file))
                 EEx.eval_string d, data
-            {:json, _data} -> 
-                :ok
+            {:json, data} ->
+                JSON.generate(data)
         end
     end
 
     @doc """
         Try to find static resource and send response
     """
-    def try_to_find_static_resource(path, static, views, _root) do
+    def try_to_find_static_resource(path, static, views, root) do
         p = :erlang.binary_to_list(path)
         resource = List.last(:string.tokens(p, '/'))
 
