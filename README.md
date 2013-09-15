@@ -39,7 +39,49 @@ For more details see in `examples` directory.
 
 ## Routing
 
-## Controllers  
+Routing declaration is in `route.ex` files:
+
+```elixir
+    @route on("/", :Simpletodo.Main, :action)
+        |> on("/add/:note", :Simpletodo.Main, :add)
+```
+
+It is `@route` attribute which value is chain of `on` and `otherwise` functions with 3 parametes:
+
+  * Route path, can be binding (starts with ':' symbol);
+  * Module name of controller;
+  * Function name from this controller.
+
+## Controllers
+
+Every Weber's controller is just elixir module, like:
+
+```elixir
+defmodule Simpletodo.Main do
+
+    import Simplemodel
+
+    def action("GET", []) do
+        {:render, [project: "simpleTodo"]}
+    end
+
+    def add("POST", [binding: body]) do
+        new(body)
+        {:json, [response: "ok"]}
+    end
+
+end
+```
+
+Every controller's action passes 2 parametes:
+
+  * Http method
+  * List of url bindings  
+
+Controller can returns:
+
+  * `{:render, [project: "simpleTodo"]}` - Render views with the same name as controller and sends it to response.
+  * `{:json, [response: "ok"]}` - Weber convert keyword to json and sends it to response.
 
 ## Dependencies
 
