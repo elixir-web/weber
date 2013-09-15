@@ -39,7 +39,7 @@ defmodule Weber.Route do
     """
     def match_routes(path, routes) do
       parsed_path = getBinding(path)
-      
+            
       Enum.filter(routes, 
         fn(route) -> 
           [path: p, controller: _controller, action: _action] = route
@@ -76,7 +76,7 @@ defmodule Weber.Route do
                 false -> false
               end
             false -> 
-              case type == :binding do
+              case route_type == :binding do
                 true -> match_routes_helper(parsed_path, parsed_route_path)
                 false -> false
               end

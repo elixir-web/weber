@@ -59,21 +59,20 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/.gitignore">>, gitignore
         create_file path <> <<"/mix.exs">>, (project basePath)
         create_file path <> <<"/lib/app.ex">>, (app basePath)
-        create_file path <> <<"/lib/route.ex">>, route
+        create_file path <> <<"/lib/route.ex">>, (route basePath)
         create_file path <> <<"/lib/config.ex">>, config
         create_file path <> <<"/lib/controllers/main.ex">>, main_controller(basePath)
         create_file path <> <<"/lib/views/main.html">>, main_template(basePath)
     end
 
-    def route do
+    def route(app) do
+        proj = String.capitalize app
         """
         defmodule Route do
 
             import Weber.Route
 
-            @route on("/", :App.Controller, :action)
-                   |> on("/user/add", :App.Controller, :action)
-                   |> otherwise("404", :App.Controller, :notfound_action)
+            @route on("/", :#{proj}.Main, :action)
 
             def get_route do
                 @route
@@ -100,7 +99,6 @@ defmodule Mix.Tasks.Weber do
 
     def project(projectName) do
         proj = String.capitalize projectName
-        {:ok, dir} = :file.get_cwd()
 
         """
         defmodule #{proj}.Mixfile do
@@ -178,12 +176,12 @@ defmodule Mix.Tasks.Weber do
     end
 
     def main_controller(app) do
-        proj = String.capitalize(app) 
+        proj = String.capitalize(app) ++ '.Main' 
         """
         defmodule #{proj} do
 
             def action("GET", []) do
-                {:render, [project: #{app}]}
+                {:render, [project: "#{app}"]}
             end
                 
         end
