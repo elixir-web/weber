@@ -133,7 +133,7 @@ defmodule Mix.Tasks.Weber do
     def app(projectName) do
         proj = String.capitalize projectName        
         """
-        defmodule Testwebapp do
+        defmodule #{proj} do
 
             import Weber
 
@@ -178,15 +178,16 @@ defmodule Mix.Tasks.Weber do
     end
 
     def main_controller(app) do
-    """
-    defmodule Testwebapp.Main do
+        proj = String.capitalize(app) 
+        """
+        defmodule #{proj} do
 
-        def action("GET", []) do
-            {:render, [project: #{app}]}
+            def action("GET", []) do
+                {:render, [project: #{app}]}
+            end
+                
         end
-            
-    end
-    """
+        """
     end
 
     def main_template(app) do
