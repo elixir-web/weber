@@ -19,5 +19,3 @@ defmodule Weber.Supervisor do
     end
 
 end
-
-# Weber.Supervisor.start_app(:testwebapp, 1, 2, 3)
