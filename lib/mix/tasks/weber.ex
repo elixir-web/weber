@@ -53,6 +53,7 @@ defmodule Mix.Tasks.Weber do
         create_directory path <> <<"/lib/models">>
         create_directory path <> <<"/lib/controllers">>
         create_directory path <> <<"/lib/helpers">>
+        create_directory path <> <<"/test">>
 
         create_file path <> <<"/start.sh">>, (start directoryName)
         create_file path <> <<"/README.md">>, (readme basePath)
@@ -63,6 +64,9 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/lib/config.ex">>, config
         create_file path <> <<"/lib/controllers/main.ex">>, main_controller(basePath)
         create_file path <> <<"/lib/views/main.html">>, main_template(basePath)
+        create_file path <> <<"/test/test_helper.exs">>, test
+        create_file path <> <<"/test/">> <> (String.capitalize basePath) <> <<"test.exs">>, test_app(basePath)
+
     end
 
     def route(app) do
@@ -176,7 +180,6 @@ defmodule Mix.Tasks.Weber do
     end
 
     def main_controller(app) do
-        :io.format("String.capitalize(app) ~p~n", [String.capitalize(app)])
         proj = String.capitalize(app) <> ".Main" 
         """
         defmodule #{proj} do
@@ -211,6 +214,25 @@ defmodule Mix.Tasks.Weber do
 
         export ERL_LIBS="$ERL_LIBS:#{directoryName}"
         exec iex -S mix
+        """
+    end
+
+    def test() do
+        """
+        ExUnit.start
+        """
+    end
+
+    def test_app(app) do
+        path = (String.capitalize app) <> "Test"
+        """
+        defmodule #{path} do
+            use ExUnit.Case
+
+            test "the truth" do
+                assert(true)
+            end
+        end
         """
     end
 
