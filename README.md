@@ -35,7 +35,7 @@ For more details see in `examples` directory.
 |    ./lib/views        | Directory with EEx views                                  |
 |    ./lib/app.ex       | Application startup settings                              |
 |    ./lib/config.ex    | Configuration file.                                       |
-|    ./lib/route.x      | File with routes declaration                              |
+|    ./lib/route.ex     | File with routes declaration                              |
 
 ## Routing
 
