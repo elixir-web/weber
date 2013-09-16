@@ -159,7 +159,11 @@ defmodule Mix.Tasks.Weber do
                 [webserver: 
                     [http_host: "localhost", 
                      http_port: 8080,
-                     acceptors: 100
+                     acceptors: 100,
+                     ssl: false,
+                     cacertfile_path: "",
+                     certfile_path: "",
+                     keyfile_path: ""
                     ]
                 ]
             end
