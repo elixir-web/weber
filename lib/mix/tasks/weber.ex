@@ -67,7 +67,7 @@ defmodule Mix.Tasks.Weber do
         create_file path <> <<"/test/test_helper.exs">>, test
         create_file path <> <<"/test/">> <> (String.capitalize basePath) <> <<"test.exs">>, test_app(basePath)
 
-        chmod(path <> "/start.sh", "+x")
+        chmod(path <> "/start.sh", 0755)
 
     end
 
