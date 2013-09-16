@@ -13,7 +13,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * Execute `mix compile` in the weber directory.
  * Create new project with: `mix weber /home/user/testWeberApplication`
 
-Now go to the `/home/user/testWeberApplication` and execute there: `mix deps.get && mix compile`. Make `sudo chomd +x ./start.sh` and after it you can try to run your testWeberApplication with:
+Now go to the `/home/user/testWeberApplication` and execute there: `mix deps.get && mix compile`. Then you can try to run your testWeberApplication with:
 
 ```
 ./start.sh
