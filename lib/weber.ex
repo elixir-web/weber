@@ -11,6 +11,7 @@ defmodule Weber do
     end
 
     def start(_type, _args) do
+        :application.start(:mimetypes)
         Weber.Supervisor.start_link
     end
 
