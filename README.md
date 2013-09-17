@@ -87,6 +87,8 @@ Controller can returns:
 
   * [cowboy](https://github.com/extend/cowboy)
   * [ecto](https://github.com/elixir-lang/ecto)
+  * [exjson](https://github.com/guedes/exjson)
+  * [mimetypes](https://github.com/spawngrid/mimetypes)
 
 ## Contributing
 
