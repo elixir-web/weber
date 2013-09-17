@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Weber is MVC Web framefork for Elixir</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <script src="../javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="../index.html">Weber</a></h1>
+        <p class="header">MVC web framework for Elixir</p>
+
+        <ul>
+          <li><a class="buttons github" href="quickstart.html">Quick start</a></li>
+          <li><a class="buttons github" href="routes.html">Routes</a></li>
+          <li><a class="buttons github" href="webcontrollers.html">Web Controllers</a></li>
+          <li><a class="buttons github" href="views.html">Views</a></li>
+          <li><a class="buttons github" href="models.html">Models</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/0xAX">0xAX</a></p>
+
+      </header>
+
+      <section>
+        <h3>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+            <span class="octicon octicon-link"></span></a>Web controllers
+        </h3>
+
+        <p>
+          Weber associates each URL with a action of a Web controller. Where controller - is a just Elixir module, and action is function from this module.
+        </p>
+
+        <p>For example we have following routing set up:
+          <script src="https://gist.github.com/0xAX/6598164.js"></script>
+
+          If Weber got request for "/" it calls `action` function from `Simpletodo.Main` controller module. Every action passes 2 arguments:
+
+          <ul>
+            <li>Http method</li>
+            <li>Bindings list</li>
+          </ul>
+
+          And must return tupple with 2 elements:
+
+          <ul>
+            <li>`{:render, [project: "simpleTodo"]}` - Render views with the same name as controller and sends it to response.</li>
+            <li>`{:json, [response: "ok"]}` - Weber convert keyword to json and sends it to response.</li>
+          </ul>
+        </p>
+
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        
+  </body>
+</html>
