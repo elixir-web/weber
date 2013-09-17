@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Weber is MVC Web framefork for Elixir</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/pygment_trac.css">
+    <script src="../javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header"><a href="../index.html">Weber</a></h1>
+        <p class="header">MVC web framework for Elixir</p>
+
+        <ul>
+          <li><a class="buttons github" href="quickstart.html">Quick start</a></li>
+          <li><a class="buttons github" href="routes.html">Routes</a></li>
+          <li><a class="buttons github" href="webcontrollers.html">Web Controllers</a></li>
+          <li><a class="buttons github" href="views.html">Views</a></li>
+          <li><a class="buttons github" href="models.html">Models</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/0xAX">0xAX</a></p>
+
+      </header>
+
+      <section>
+        <h3>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+              <span class="octicon octicon-link"></span></a>Routes
+        </h3>
+
+
+        When you're created new Weber's web application, you will have `route.ex` file in the `/home/user/testWeberApplication/lib` directory.There is routing declaration. It can be something like this:
+
+        <script src="https://gist.github.com/0xAX/6598164.js"></script>
+
+        It is @route attribute which value is chain of on and otherwise functions with 3 parametes:
+
+        <ul>
+          <li>Route path, can be binding (starts with ':' symbol);</li>
+          <li>Module name of controller;</li>
+          <li>Function name from this controller.</li>
+        </ul>
+        
+      </section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+        
+  </body>
+</html>
