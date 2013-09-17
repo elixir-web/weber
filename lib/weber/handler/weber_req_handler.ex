@@ -40,11 +40,13 @@ defmodule Handler.WeberReqHandler do
                         {:ok, _req4} = :cowboy_req.reply(200, [{"Content-Type", mimetype}], data, req3)
                 end                
             [{:path, path}, {:controller, controller}, {:action, action}] ->
-                bindings = getAllBinding(path)
-                f = Module.function(controller, action, 2)
-                result = f.(method, bindings)
+                # get response from controller
+                result = Module.function(controller, action, 2).(method, getAllBinding(path))
+                # handle controller's response
                 res = handle_result(result, controller, views)
-                {:ok, _req4} = :cowboy_req.reply(200, [], res, req3)
+                # send response
+                mimetype = :mimetypes.filename(res)
+                {:ok, _req4} = :cowboy_req.reply(200, [{"Content-Type", mimetype}], res, req3)
         end
 
         {:ok, req, state}
