@@ -66,8 +66,14 @@ defmodule Handler.WeberReqHandler do
                 view_file = Enum.filter(views_filenames, fn(file) ->
                                               Path.basename(file) == filename
                                           end)
-                {:ok, d} = File.read(:lists.nth(1, view_file))
-                EEx.eval_string d, data
+
+                case view_file do
+                    [] ->
+                        :io.format("[Error] No view file ~n")
+                    _ ->
+                        {:ok, d} = File.read(:lists.nth(1, view_file))
+                        EEx.eval_string d, data
+                end
             {:json, data} ->
                 JSON.generate(data)
         end
