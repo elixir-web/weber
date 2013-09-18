@@ -72,9 +72,22 @@ defmodule Weber.Http.Url do
     @doc """
         Get all url's bindings
     """
-    def getAllBinding(url) do
-        parsed = getBinding(url)
-        Enum.filter(parsed, fn({type, _val}) -> type == :binding end)
+    def getAllBinding(url, matched_url) do
+        parsed_url = getBinding(url)
+        parsed_matched_url = getBinding(matched_url)
+        
+        zip = :lists.zip(parsed_url, parsed_matched_url)
+
+        filterBindings = Enum.filter(zip, fn({{_, _}, {key, _}}) -> 
+                            case key == :binding do
+                                true -> true
+                                _    -> false
+                            end
+                            end)
+
+        Enum.map(filterBindings, fn({{key1, val1}, {key2, val2}}) -> 
+                                    {val2, val1}
+                                 end)
     end
 
 end
