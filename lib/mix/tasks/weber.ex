@@ -165,7 +165,12 @@ defmodule Mix.Tasks.Weber do
                      ssl: false,
                      cacertfile_path: "",
                      certfile_path: "",
-                     keyfile_path: ""
+                     keyfile_path: "",
+
+                     #
+                     # websocket settings
+                     #
+                     ws_port: 8800
                     ]
                 ]
             end
