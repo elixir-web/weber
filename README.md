@@ -82,6 +82,7 @@ Controller can returns:
 
   * `{:render, [project: "simpleTodo"]}` - Render views with the same name as controller and sends it to response.
   * `{:json, [response: "ok"]}` - Weber convert keyword to json and sends it to response.
+  * `{:redirect, "/main"}`      - Redirect to the another resource.
 
 ## Dependencies
 

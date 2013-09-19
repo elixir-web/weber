@@ -27,27 +27,34 @@ defmodule Handler.WeberReqHandler do
         root = :gen_server.call(state.app_name,  :root)
         
         successful_route = :lists.flatten(match_routes(path, routes))
-        
+
         case successful_route do
             [] -> 
                 res = try_to_find_static_resource(path, static, views, root)
                 case res do
                     404 ->
-                        :cowboy_req.reply(200, [], get404, req3)
+                        {:ok, req4} = :cowboy_req.reply(200, [], get404, req3)
+                        {:ok, req4, state}  
                     _ ->
                         {:ok, data} = File.read(res)
-                        {:ok, _req4} = :cowboy_req.reply(200, [{"Content-Type", :mimetypes.filename(res)}], data, req3)
-                end                
+                        {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", :mimetypes.filename(res)}], data, req3)
+                        {:ok, req4, state}  
+                end              
             [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
                 # get response from controller
                 result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
                 # handle controller's response
-                res = handle_result(result, controller, views)
-                # send respnse
-                {:ok, _req4} = :cowboy_req.reply(200, [{"Content-Type", <<"text/html">>}], res, req3)
-        end
+                res = handle_result(result, controller, views, static)
 
-        {:ok, req, state}
+                case res do
+                    {:redirect, location} ->
+                        {:ok, req4} = :cowboy_req.reply(301, [{"Location", "/chat.html"}, {"Cache-Control", "no-store"}], <<"">>, req3)
+                        {:ok, req4, state}
+                    _ ->
+                        {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", <<"text/html">>}], res, req3)
+                        {:ok, req4, state}
+                end
+        end
     end
 
     def terminate(_reason, _req, _state) do
@@ -57,11 +64,17 @@ defmodule Handler.WeberReqHandler do
     @doc """
         Handle response from controller
     """
-    def handle_result(res, controller, views) do
-        c = atom_to_list(controller)
-        filename = :erlang.binary_to_list(String.downcase(:erlang.list_to_binary(List.last(:string.tokens(c, '.')) ++ ".html")))
+    def handle_result(res, controller, views, static) do
         case res do
             {:render, data} -> 
+                #
+                # TODO remake with |>
+                #
+                filename = :erlang.binary_to_list(String.downcase(:erlang.list_to_binary(List.last(:string.tokens(atom_to_list(controller), '.')) ++ ".html")))
+
+                #
+                # Try to find this view file 
+                #
                 views_filenames = get_all_files(views)
                 view_file = Enum.filter(views_filenames, fn(file) ->
                                               Path.basename(file) == filename
@@ -74,6 +87,8 @@ defmodule Handler.WeberReqHandler do
                         {:ok, d} = File.read(:lists.nth(1, view_file))
                         EEx.eval_string d, data
                 end
+            {:redirect, location} ->
+                {:redirect, location}
             {:json, data} ->
                 JSON.generate(data)
         end
