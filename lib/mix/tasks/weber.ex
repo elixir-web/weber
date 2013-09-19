@@ -171,6 +171,7 @@ defmodule Mix.Tasks.Weber do
                      # websocket settings
                      #
                      ws: true
+                     ws_mod: :Handler 
                     ]
                 ]
             end
