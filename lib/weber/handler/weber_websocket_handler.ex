@@ -1,10 +1,11 @@
 defmodule Handler.WeberWebSocketHandler do
     
-    def init(_, _req, _opts) do
+    def init(_, _req, opts) do
         {:upgrade, :protocol, :cowboy_websocket}
     end
 
-    def websocket_init(_, req, _opts) do
+    def websocket_init(_, req, {name, ws_mod}) do
+        pid = self()
         {:ok, req, []}
     end
 
@@ -13,6 +14,7 @@ defmodule Handler.WeberWebSocketHandler do
     end
 
     def websocket_terminate(reason, req, state) do
+        pid = self()
         :ok
     end
 end

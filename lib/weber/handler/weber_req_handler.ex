@@ -127,6 +127,8 @@ defmodule Handler.WeberReqHandler do
 
     @doc """
         Recursively get all files from directory.
+    
+        TODO move it to utils
     """
     def get_all_files(dir) do
         find_files = fn(f, acc) -> [f | acc] end

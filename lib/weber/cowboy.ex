@@ -18,7 +18,7 @@ defmodule Cowboy do
         {_, acceptors} = :lists.keyfind(:acceptors, 1, web_server_config)
 
         {_, ws}      = :lists.keyfind(:ws, 1, web_server_config)
-        {_, ws_mod}      = :lists.keyfind(:ws, 1, web_server_config)
+        {_, ws_mod}      = :lists.keyfind(:ws_mod, 1, web_server_config)
         {_, ws_port}      = :lists.keyfind(:ws_port, 1, web_server_config)
         {_, ssl} = :lists.keyfind(:ssl, 1, web_server_config)
         
