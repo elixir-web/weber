@@ -170,6 +170,7 @@ defmodule Mix.Tasks.Weber do
                      #
                      # websocket settings
                      #
+                     ws: true,
                      ws_port: 8800
                     ]
                 ]
