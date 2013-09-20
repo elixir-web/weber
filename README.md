@@ -72,7 +72,7 @@ defmodule Simpletodo.Main do
         {:render, [project: "simpleTodo"]}
     end
 
-    def add("POST", [binding: body]) do
+    def add("POST", [body: body]) do
         new(body)
         {:json, [response: "ok"]}
     end
