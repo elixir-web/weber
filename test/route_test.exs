@@ -18,25 +18,7 @@ defmodule WeberRouteTest do
   end
 
   test "Test for Weber.Route.match_routes_helper" do
-    test_url = getBinding("/user/0xAX/password/:password")
-    test_url2 = getBinding("/user/0xAX/password/123")
-    test = match_routes_helper(test_url, test_url2)
-    assert(test == true)
-
-    test_url = getBinding("/user/0xAX/password/:password")
-    test_url2 = getBinding("/")
-    test = match_routes_helper(test_url, test_url2)
-    assert(test == false)
-
-    test_url = getBinding("/user/:name/password/:password")
-    test_url2 = getBinding("/user/0xAX/password/123")
-    test = match_routes_helper(test_url, test_url2)
-    assert(test == true)
-
-    test_url = getBinding("/user/:name")
-    test_url2 = getBinding("/user/0xAX")
-    test = match_routes_helper(test_url, test_url2)
-    assert(test == true)
+    
   end
 
 end
