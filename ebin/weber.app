@@ -5,6 +5,8 @@
               {modules,['Elixir.Cowboy','Elixir.Handler.Weber404Handler',
                         'Elixir.Handler.WeberReqHandler.State',
                         'Elixir.Handler.WeberReqHandler',
+                        'Elixir.Handler.WeberWebSocketHandler.State',
+                        'Elixir.Handler.WeberWebSocketHandler',
                         'Elixir.Mix.Tasks.Weber','Elixir.Weber.App.WeberApp',
                         'Elixir.Weber.App','Elixir.Weber.Http.Url',
                         'Elixir.Weber.Route','Elixir.Weber.Supervisor',
