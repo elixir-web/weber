@@ -6,7 +6,7 @@
   * mimetypes added to dependecies
   * redirect support
   * websocket support
-  * binding error fixed.
+  * binding error fixed. Now every controller getting second parameter as [binding_name: binding_val]
 
 #### Weber-0.0.1 [Released]
 
