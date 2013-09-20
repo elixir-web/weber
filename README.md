@@ -95,7 +95,7 @@ Controller can returns:
 
 You can handle websocket connection and incoming/outcoming websocket message in your controllers.
 
-First of all you need to designate websocket controller in your `config.ex` file like:
+First of all you need to designate websocket controller in your `config.ex` file in `webserver:` section, like:
 
 ```elixir
 ws: true,
