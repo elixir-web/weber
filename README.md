@@ -5,6 +5,13 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
 **Attention in very early stage**
 
+## Features
+ 
+ * MVC web framework;
+ * Project generation;
+ * Json generation with exjson;
+ * Websocket support;
+
 ## Quick start
 
  * Get and install Elixir from master.
@@ -83,6 +90,44 @@ Controller can returns:
   * `{:render, [project: "simpleTodo"]}` - Render views with the same name as controller and sends it to response.
   * `{:json, [response: "ok"]}` - Weber convert keyword to json and sends it to response.
   * `{:redirect, "/main"}`      - Redirect to the another resource.
+
+## Websocket
+
+You can handle websocket connection and incoming/outcoming websocket message in your controllers.
+
+First of all you need to designate websocket controller in your `config.ex` file like:
+
+```elixir
+ws: true,
+ws_port: 8800,
+ws_mod: :Simplechat.Main.Chat 
+```
+
+After it you must implement 3 callbacks in your controller like this:
+
+```elixir
+defmodule Simplechat.Main.Chat do
+
+    def websocket_init(pid) do
+        #
+        # new websocket connection init
+        #
+    end
+
+    def websocket_message(pid, message) do
+        #
+        # handle incoming message here
+        #
+    end
+
+    def websocket_terminate(pid) do
+        #
+        # connection terminated
+        #
+    end
+
+end
+```
 
 ## Dependencies
 
