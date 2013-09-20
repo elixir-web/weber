@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>Simple chat with Weber</title>
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+    <script type="text/javascript" src="../static/js/angular.js"></script>
+    <script type="text/javascript" src="../static/js/simplechat.js"></script>
+  </head>
+  <body ng-controller="SimpleChatRootController">
+      <nav class="navbar navbar-default" role="navigation">
+        <a class="navbar-brand" href="https://github.com/0xAX/weber">Weber</a>
+        <p class="navbar-text pull-right">Signed in as  <%= username %></p>    
+      </nav>
+
+      <textarea readonly style="width: 1200px; height: 700px; resize: none;" ng-model="chat"></textarea>
+      
+      <div class="row">
+          <div class="col-lg-3" style="width: 1230px; margin-top: 10px;">
+              <div class="input-group">
+                  <input type="text" class="form-control" ng-model="message">
+                      <span class="input-group-btn">
+                          <button class="btn btn-success" ng-click="send_message(message)" type="button">Send</button>
+                      </span>
+              </div>
+          </div>
+      </div>
+
+  </body>
+</html>
