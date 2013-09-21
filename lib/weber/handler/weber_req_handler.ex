@@ -4,6 +4,7 @@ defmodule Handler.WeberReqHandler do
         Weber http request cowboy handler.
     """
 
+    import Weber.Utils
     import Weber.Route
     import Weber.Http.Url
     import Handler.Weber404Handler
@@ -77,13 +78,9 @@ defmodule Handler.WeberReqHandler do
                 #
                 filename = :erlang.binary_to_list(String.downcase(:erlang.list_to_binary(List.last(:string.tokens(atom_to_list(controller), '.')) ++ ".html")))
 
-                #
-                # Try to find this view file 
-                #
                 views_filenames = get_all_files(views)
-                view_file = Enum.filter(views_filenames, fn(file) ->
-                                              Path.basename(file) == filename
-                                          end)
+
+                view_file = find_file_path(views_filenames, filename)
 
                 case view_file do
                     [] ->
@@ -103,20 +100,11 @@ defmodule Handler.WeberReqHandler do
         Try to find static resource and send response
     """
     def try_to_find_static_resource(path, static, views, _root) do
-        p = :erlang.binary_to_list(path)
-        resource = List.last(:string.tokens(p, '/'))
-
+        resource = List.last(:string.tokens(:erlang.binary_to_list(path), '/'))
         views_filenames = get_all_files(views)
         static_filenames = get_all_files(static)
-
-        view_file = Enum.filter(views_filenames, fn(filename) ->
-                                Path.basename(filename) == resource
-                                end)
-
-        static_file = Enum.filter(static_filenames, fn(filename) ->
-                                  Path.basename(filename) == resource
-                                  end)
-           
+        view_file = find_file_path(views_filenames, resource)
+        static_file = find_file_path(static_filenames, resource)
         case view_file do
             [] ->
                 case static_file do
@@ -129,15 +117,4 @@ defmodule Handler.WeberReqHandler do
                 resource_name
         end
     end
-
-    @doc """
-        Recursively get all files from directory.
-    
-        TODO move it to utils
-    """
-    def get_all_files(dir) do
-        find_files = fn(f, acc) -> [f | acc] end
-        :filelib.fold_files(dir, ".*", true, find_files, [])
-    end
-
 end
