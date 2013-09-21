@@ -209,9 +209,10 @@ defmodule Mix.Tasks.Weber do
         def main_template(app) do
             proj = String.capitalize(app) 
             """
-            <!DOCTYPE HTML>
+            <!DOCTYPE html>
             <html>
                 <head>
+                    <meta charset="UTF-8" />
                     <title>#{proj}</title>
                 </head>
              
