@@ -50,8 +50,13 @@ defmodule Handler.WeberReqHandler do
                     {:redirect, location} ->
                         {:ok, req4} = :cowboy_req.reply(301, [{"Location", "/chat.html"}, {"Cache-Control", "no-store"}], <<"">>, req3)
                         {:ok, req4, state}
-                    _ ->
-                        {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", <<"text/html">>}], res, req3)
+                    {data, headers} ->
+                        case res do
+                            {:render, _, _} ->
+                                {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
+                            _ ->
+                                {:ok, req4} = :cowboy_req.reply(200, headers, data, req3)
+                        end
                         {:ok, req4, state}
                 end
         end
@@ -66,7 +71,7 @@ defmodule Handler.WeberReqHandler do
     """
     def handle_result(res, controller, views, static) do
         case res do
-            {:render, data} -> 
+            {:render, data, headers} -> 
                 #
                 # TODO remake with |>
                 #
@@ -85,12 +90,12 @@ defmodule Handler.WeberReqHandler do
                         :io.format("[Error] No view file ~n")
                     _ ->
                         {:ok, d} = File.read(:lists.nth(1, view_file))
-                        EEx.eval_string d, data
+                        {(EEx.eval_string d, data), headers}
                 end
             {:redirect, location} ->
                 {:redirect, location}
-            {:json, data} ->
-                JSON.generate(data)
+            {:json, data, headers} ->
+                {JSON.generate(data), headers}
         end
     end
 

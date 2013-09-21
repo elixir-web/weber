@@ -7,9 +7,9 @@
                         'Elixir.Handler.WeberReqHandler',
                         'Elixir.Handler.WeberWebSocketHandler.State',
                         'Elixir.Handler.WeberWebSocketHandler',
-                        'Elixir.Mix.Tasks.Weber','Elixir.Weber.App.WeberApp',
-                        'Elixir.Weber.App','Elixir.Weber.Http.Url',
-                        'Elixir.Weber.Route','Elixir.Weber.Supervisor',
-                        'Elixir.Weber']},
+                        'Elixir.Mix.Tasks.Weber.New','Elixir.Mix.Tasks.Weber',
+                        'Elixir.Weber.App.WeberApp','Elixir.Weber.App',
+                        'Elixir.Weber.Http.Url','Elixir.Weber.Route',
+                        'Elixir.Weber.Supervisor','Elixir.Weber']},
               {applications,[kernel,stdlib,elixir]},
               {mod,{'Elixir.Weber',[]}}]}.

@@ -1,11 +1,11 @@
 defmodule Simplechat.Main.Login do
 
     def render_login("GET", []) do
-        {:render, [project: "SimpleChat"]}
+        {:render, [project: "SimpleChat"], []}
     end
 
     def join("POST", [{"username", username}]) do
-    	{:json, [chat: username]}
+    	{:json, [chat: username], [{"Content-Type", "application/json"}]}
     end
 
 end

@@ -1,7 +1,7 @@
 defmodule Simplechat.Main.Chat do
 
     def render_chat("GET", [{<<"username">>, username}]) do
-        {:render, [username: username]}
+        {:render, [username: username], []}
     end
 
     def websocket_init(pid) do

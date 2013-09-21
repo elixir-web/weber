@@ -71,12 +71,12 @@ defmodule Simpletodo.Main do
     import Simplemodel
 
     def action("GET", []) do
-        {:render, [project: "simpleTodo"]}
+        {:render, [project: "simpleTodo"], []}
     end
 
     def add("POST", [body: body]) do
         new(body)
-        {:json, [response: "ok"]}
+        {:json, [response: "ok"], [{"Content-Type", "application/json"}]}
     end
 
 end
@@ -89,8 +89,8 @@ Every controller's action passes 2 parametes:
 
 Controller can returns:
 
-  * `{:render, [project: "simpleTodo"]}` - Render views with the same name as controller and sends it to response.
-  * `{:json, [response: "ok"]}` - Weber convert keyword to json and sends it to response.
+  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
+  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
   * `{:redirect, "/main"}`      - Redirect to the another resource.
 
 ## Websocket
