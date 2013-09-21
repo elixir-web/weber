@@ -61,6 +61,10 @@ defmodule Mix.Tasks.Weber do
 
             create_directory path <> <<"/lib">>
             create_directory path <> <<"/lib/static">>
+            create_directory path <> <<"/lib/static/img">>
+            create_directory path <> <<"/lib/static/js">>
+            create_directory path <> <<"/lib/static/css">>
+
             create_directory path <> <<"/lib/views">>
             create_directory path <> <<"/lib/models">>
             create_directory path <> <<"/lib/controllers">>
