@@ -45,11 +45,11 @@ defmodule Handler.WeberReqHandler do
                 # get response from controller
                 result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
                 # handle controller's response
-                res = handle_result(result, controller, views, static)
+                res = handle_result(result, controller, views)
 
                 case res do
                     {:redirect, location} ->
-                        {:ok, req4} = :cowboy_req.reply(301, [{"Location", "/chat.html"}, {"Cache-Control", "no-store"}], <<"">>, req3)
+                        {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
                         {:ok, req4, state}
                     {data, headers} ->
                         case res do
@@ -70,7 +70,7 @@ defmodule Handler.WeberReqHandler do
     @doc """
         Handle response from controller
     """
-    def handle_result(res, controller, views, static) do
+    def handle_result(res, controller, views) do
         case res do
             {:render, data, headers} -> 
                 #

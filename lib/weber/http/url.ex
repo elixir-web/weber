@@ -85,7 +85,7 @@ defmodule Weber.Http.Url do
                             end
                             end)
 
-        Enum.map(filterBindings, fn({{key1, val1}, {key2, val2}}) -> 
+        Enum.map(filterBindings, fn({{_key1, val1}, {_key2, val2}}) -> 
                                     {val2, val1}
                                  end)
     end
