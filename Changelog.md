@@ -11,7 +11,8 @@
   * new example - simpletodo
   * weber.new mix task instead weber
   * creation css/js/img directories in initial weber project
-  * ability to send headers in controller's response
+  * added ability to send headers in controller's response
+  * HTML helpers.
 
 #### Weber-0.0.1 [Released]
 
