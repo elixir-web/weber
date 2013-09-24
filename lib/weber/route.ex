@@ -39,7 +39,6 @@ defmodule Weber.Route do
     """
     def match_routes(path, routes) do
       parsed_path = getBinding(path)
-            
       Enum.filter(routes, 
         fn(route) -> 
           [path: p, controller: _controller, action: _action] = route
