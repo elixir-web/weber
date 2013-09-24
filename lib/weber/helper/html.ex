@@ -1,0 +1,48 @@
+defmodule Weber.Helper.Html do
+  @html5_tags [:img, :input, :br]
+
+  def tag(html_tag, clauses) when is_list(clauses) do
+    do_clause = Keyword.get(clauses, :do, "")
+    case do_clause do
+      "" -> tag(html_tag, do_clause, clauses)
+      _ -> tag(html_tag, do_clause)
+    end
+  end
+
+  def tag(html_tag, input_html, clauses // []) when is_list(input_html) do
+    do_clause = Keyword.get(clauses, :do, "")
+    tag(html_tag, do_clause, input_html)
+  end
+
+  def tag(html_tag, content, input_html) when is_binary(content) do
+     _create_complete_tag(html_tag, content, input_html)
+  end
+  
+  defp _create_complete_tag(html_tag, content, input_html) do
+    cond do
+      html_tag in @html5_tags -> _create_initial_tag(html_tag, input_html)
+      true -> _create_initial_tag(html_tag, input_html) <> content <> _create_end_tag(html_tag) 
+    end
+  end
+
+  defp _create_initial_tag(html_tag, input_html) do
+    "<#{html_tag}#{_generate_input_html(input_html)}" 
+  end
+
+  defp _generate_input_html([]) do
+    ">"
+  end
+
+  defp _generate_input_html([{attr, value}| tail]) when is_boolean(value) do
+    " #{attr}#{_generate_input_html(tail)}"
+  end
+
+  defp _generate_input_html([{attr, value}| tail]) do
+    " #{attr}=\"#{value}\"#{_generate_input_html(tail)}"
+  end
+
+  defp _create_end_tag(html_tag) do
+    "</#{html_tag}>"
+  end
+  
+end
