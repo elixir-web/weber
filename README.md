@@ -102,17 +102,17 @@ Html helpers helps to generate html templates from elixir:
 defmodule Simpletodo.Helper.MyHelper
   import Weber.Helper.Html
   
-  # Generate <p>test</p>
+  # Generates <p>test</p>
   def do_something do
     tag(:p, "test")
   end
 
-  # Generate <p class="class_test">test</p>
+  # Generates <p class="class_test">test</p>
   def do_something do
     tag(:p, "test", [class: "class_test"])
   end
 
-  # Generate <img src="path/to/file">
+  # Generates <img src="path/to/file">
   def do_something do
     tag(:img, [src: "path/to/file"])
   end
@@ -125,7 +125,7 @@ Tags with blocks
 defmodule Simpletodo.Helper.MyHelper
   import Weber.Helper.Html
   
-  # Generate <div id="test"><p>test</p></div>
+  # Generates <div id="test"><p>test</p></div>
   def do_something do
     tag(:div, [id: "test"]) do
       tag(:p, "test")
