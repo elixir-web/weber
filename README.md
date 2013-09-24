@@ -93,6 +93,55 @@ Controller can returns:
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
   * `{:redirect, "/main"}`      - Redirect to the another resource.
 
+## Helper
+
+### Html Helper
+Html helpers helps to generate html templates from elixir:
+
+```elixir
+defmodule Simpletodo.Helper.MyHelper
+  import Weber.Helper.Html
+  
+  # Generate <p>test</p>
+  def do_something do
+    tag(:p, "test")
+  end
+
+  # Generate <p class="class_test">test</p>
+  def do_something do
+    tag(:p, "test", [class: "class_test"])
+  end
+
+  # Generate <img src="path/to/file">
+  def do_something do
+    tag(:img, [src: "path/to/file"])
+  end
+end
+```
+
+Tags with blocks
+
+```elixir
+defmodule Simpletodo.Helper.MyHelper
+  import Weber.Helper.Html
+  
+  # Generate <div id="test"><p>test</p></div>
+  def do_something do
+    tag(:div, [id: "test"]) do
+      tag(:p, "test")
+    end
+  end
+end
+```
+
+### Asset Tag Helpers
+
+TODO
+
+### Form Helpers
+
+TODO
+
 ## Websocket
 
 You can handle websocket connection and incoming/outcoming websocket message in your controllers.
