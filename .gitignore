@@ -1,3 +1,4 @@
+ebin
 ebin/.compile.elixir
 ebin/.compile.lock
 .eunit
