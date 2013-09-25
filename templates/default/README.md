@@ -1,2 +1,2 @@
-#{basePath}
+#{projectName}
 =====

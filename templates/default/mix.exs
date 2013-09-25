@@ -18,7 +18,7 @@ defmodule #{proj}.Mixfile do
 
     defp deps do
         [ 
-            { :weber, github: "0xAX/weber", compile: "mix deps.get && mix compile" } 
+            { :weber, github: "0xAX/weber" } 
         ]
     end
 end
