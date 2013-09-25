@@ -13,6 +13,7 @@
   * creation css/js/img directories in initial weber project
   * added ability to send headers in controller's response
   * HTML helpers.
+  * [Weber at github pages](http://0xax.github.io/weber/index.html)
 
 #### Weber-0.0.1 [Released]
 
