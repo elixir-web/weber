@@ -15,6 +15,8 @@
   </head>
   <body>
     <div class="wrapper">
+      <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+
       <header>
         <h1 class="header"><a href="../index.html">Weber</a></h1>
         <p class="header">MVC web framework for Elixir</p>
@@ -25,11 +27,15 @@
           <li><a class="buttons github" href="webcontrollers.html">Web Controllers</a></li>
           <li><a class="buttons github" href="views.html">Views</a></li>
           <li><a class="buttons github" href="models.html">Models</a></li>
+          <li><a class="buttons github" href="helpers.html">Helpers</a></li>
+          <li><a class="buttons github" href="websocket.html">Websocket</a></li>
         </ul>
 
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/0xAX">0xAX</a></p>
 
       </header>
+
+      <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
       <section>
         <h3>
@@ -42,7 +48,7 @@
         </p>
 
         <p>For example we have following routing set up:
-          <script src="https://gist.github.com/0xAX/6598164.js"></script>
+          <script src="https://gist.github.com/0xAX/6598034.js"></script>
 
           If Weber got request for "/" it calls `action` function from `Simpletodo.Main` controller module. Every action passes 2 arguments:
 
@@ -51,11 +57,12 @@
             <li>Bindings list</li>
           </ul>
 
-          And must return tupple with 2 elements:
+          <p>And must return tupple with 2 elements:</p>
 
           <ul>
-            <li>`{:render, [project: "simpleTodo"]}` - Render views with the same name as controller and sends it to response.</li>
-            <li>`{:json, [response: "ok"]}` - Weber convert keyword to json and sends it to response.</li>
+            <li>{:render, [project: "simpleTodo"], [{"HeanderName", "HeaderVal"}]} - Render views with the same name as controller and sends it to response.</li>
+            <li>{:json, [response: "ok"], [{"HeanderName", "HeaderVal"}]} - Weber convert keyword to json and sends it to response.</li>
+            <li>{:redirect, "/new_location"} - Weber sends redirect.</li>
           </ul>
         </p>
 
