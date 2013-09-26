@@ -39,11 +39,9 @@ defmodule Mix.Tasks.Weber do
   end
 
   defmodule New do
-    def run([args]) do
-      # new project's root directory
-      directoryName = args
+    def run([directoryName]) do
       # create project directory
-      case mkdir(directoryName) do
+      case File.mkdir(directoryName) do
         :ok -> :ok
         err -> :io.format("[Weber error] Can't create project directory. Error: ~p~n", [err])
       end
@@ -51,8 +49,8 @@ defmodule Mix.Tasks.Weber do
       #
       # create project skeleton
       #
-      path = absname directoryName
-      baseName = basename directoryName
+      path = Path.absname directoryName
+      baseName = Path.basename directoryName
 
       vars = HashDict.new [
         {"path", path},
@@ -61,9 +59,9 @@ defmodule Mix.Tasks.Weber do
       ]
 
       template = "default"
-      {:ok, pwd} = cwd
+      {:ok, pwd} = File.cwd
       skelRoot = pwd <> "/templates/" <> template
-      cd skelRoot
+      File.cd skelRoot
       skelFiles = Weber.Utils.get_all_files(".")
       lc file inlist skelFiles do
         baseFile = String.slice(file, 1, 1024)
@@ -73,16 +71,16 @@ defmodule Mix.Tasks.Weber do
           [key: key] -> path <> Regex.replace(%r/\#\{.+\}/, baseFile, HashDict.get(vars, key))
         end
         dir = :filename.dirname(destination)
-        if !:filelib.is_dir(dir), do: create_directory dir
-        cp_r file, destination, fn _, _ -> true end
-        {:ok, origin} = read destination
+        if !:filelib.is_dir(dir), do: Mix.Generator.create_directory dir
+        File.cp_r file, destination, fn _, _ -> true end
+        {:ok, origin} = File.read destination
         compiled = (
           case Enum.uniq(Regex.scan(%r/\#\{([^\}]+)\}/, origin)) do
             []   -> origin
             data -> replacer(origin, vars, data)
           end
         )
-        write destination, compiled, []
+        File.write destination, compiled, []
       end
     end
 
