@@ -64,7 +64,6 @@ defmodule Mix.Tasks.Weber do
                 {"projectName", baseName}
             ]
 
-            # TODO: do we need multiple app templates?
             template = "default"
             {:ok, pwd} = cwd
             skelRoot = pwd <> "/templates/" <> template
