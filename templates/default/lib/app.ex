@@ -1,4 +1,4 @@
-defmodule #{proj}.Main do
+defmodule #{proj} do
 
   import Weber
 
