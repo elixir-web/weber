@@ -68,28 +68,25 @@ defmodule Mix.Tasks.Weber do
             {:ok, pwd} = cwd
             skelRoot = pwd <> "/templates/" <> template
             cd skelRoot
-            skelFiles = String.split(System.cmd("find -P . -mindepth 1"), "\n", [])
-            lc file inlist skelFiles, file != "" do
+            skelFiles = Weber.Utils.get_all_files(".")
+            lc file inlist skelFiles do
                 baseFile = String.slice(file, 1, 1024)
                 # TODO: fix to allow >1 variables in file name
                 destination = case Regex.captures(%r/.*\#\{(?<key>.+)\}.*/g, baseFile) do
                     nil        -> path <> baseFile
                     [key: key] -> path <> Regex.replace(%r/\#\{.+\}/, baseFile, HashDict.get(vars, key))
                 end
-                case dir?(file) do
-                    true  -> create_directory destination
-                    false -> (
-                        cp file, destination, fn _, _ -> true end
-                        {:ok, origin} = read destination
-                        compiled = (
-                            case Enum.uniq(Regex.scan(%r/\#\{([^\}]+)\}/, origin)) do
-                                []   -> origin
-                                data -> replacer(origin, vars, data)
-                            end
-                        )
-                        write destination, compiled, []
-                    )
-                end
+                dir = :filename.dirname(destination)
+                if !:filelib.is_dir(dir), do: create_directory dir
+                cp_r file, destination, fn _, _ -> true end
+                {:ok, origin} = read destination
+                compiled = (
+                    case Enum.uniq(Regex.scan(%r/\#\{([^\}]+)\}/, origin)) do
+                        []   -> origin
+                        data -> replacer(origin, vars, data)
+                    end
+                )
+                write destination, compiled, []
             end
         end
 
