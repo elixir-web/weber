@@ -87,6 +87,7 @@ defmodule Mix.Tasks.Weber do
     defp replacer(text, _vars, []) do
       text
     end
+    
     defp replacer(text, vars, [[entry, key] | tail]) do
       replacer(String.replace(text, entry, HashDict.get(vars, key), []), vars, tail)
     end

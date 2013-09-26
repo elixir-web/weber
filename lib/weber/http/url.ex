@@ -44,6 +44,7 @@ defmodule Weber.Http.Url do
       {:binding, <<>>} -> l = delete(l, {:binding, <<>>})
       _ -> :pass
     end
+
     getBinding(rest, :lists.append([l, [segment: <<>>]]))
   end
 
@@ -73,11 +74,8 @@ defmodule Weber.Http.Url do
     Get all url's bindings
   """
   def getAllBinding(url, matched_url) do
-    parsed_url = getBinding(url)
-    parsed_matched_url = getBinding(matched_url)
-        
-    zip = :lists.zip(parsed_url, parsed_matched_url)
-
+    zip = :lists.zip(getBinding(url), getBinding(matched_url))
+    
     filterBindings = Enum.filter(zip, fn({{_, _}, {key, _}}) -> 
       case key == :binding do
         true -> true
