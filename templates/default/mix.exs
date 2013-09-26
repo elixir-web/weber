@@ -1,4 +1,4 @@
-defmodule #{proj}.Mixfile do
+defmodule #{projectNamespace}.Mixfile do
   use Mix.Project
 
   def project do
@@ -12,7 +12,7 @@ defmodule #{proj}.Mixfile do
   def application do
     [
       applications: [:weber],
-      mod: {#{proj}, []}
+      mod: {#{projectNamespace}, []}
     ]
   end
 

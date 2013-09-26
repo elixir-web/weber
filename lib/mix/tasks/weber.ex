@@ -34,7 +34,7 @@ defmodule Mix.Tasks.Weber do
 
       mix weber.new /home/user/testWebApp -- creates new weber web application
       mix weber --version -- shows weber version
-      mix weber --help    -- show weber help
+      mix weber --help    -- shows weber help
     """
   end
 
@@ -54,7 +54,7 @@ defmodule Mix.Tasks.Weber do
 
       vars = HashDict.new [
         {"path", path},
-        {"proj", String.capitalize(baseName)},
+        {"projectNamespace", String.capitalize(baseName)},
         {"projectName", baseName}
       ]
 

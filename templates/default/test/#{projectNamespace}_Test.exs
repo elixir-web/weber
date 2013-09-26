@@ -1,4 +1,4 @@
-defmodule #{proj}_Test do
+defmodule #{projectNamespace}_Test do
   use ExUnit.Case
 
   test "the truth" do
