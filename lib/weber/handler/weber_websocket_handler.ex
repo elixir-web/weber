@@ -4,7 +4,7 @@ defmodule Handler.WeberWebSocketHandler do
     app_name: nil,
     ws_mod:   nil
 
-  def init(_, _req, opts) do
+  def init(_, _req, _opts) do
     {:upgrade, :protocol, :cowboy_websocket}
   end
 
@@ -22,7 +22,7 @@ defmodule Handler.WeberWebSocketHandler do
     {:reply, {:text, msg}, req, state}
   end
 
-  def websocket_terminate(reason, req, state) do
+  def websocket_terminate(_reason, _req, state) do
     Module.function(state.ws_mod, :websocket_terminate, 1).(self())
     :ok
   end

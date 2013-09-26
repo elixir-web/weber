@@ -14,10 +14,6 @@ defmodule Mix.Tasks.Weber do
 
   use Mix.Task
   
-  import Path
-  import File
-  import Mix.Generator
-
   @version Weber.Mixfile.project[:version]
   
   def run([]) do
@@ -90,7 +86,7 @@ defmodule Mix.Tasks.Weber do
       end
     end
 
-    defp replacer(text, vars, []) do
+    defp replacer(text, _vars, []) do
       text
     end
     defp replacer(text, vars, [[entry, key] | tail]) do
