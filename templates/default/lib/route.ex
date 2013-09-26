@@ -1,10 +1,10 @@
 defmodule Route do
 
-    import Weber.Route
+  import Weber.Route
 
-    @route on("/", :#{proj}.Main, :action)
+  @route on("/", :#{proj}.Main, :action)
 
-    def get_route do
-        @route
-    end
+  def get_route do
+    @route
+  end
 end

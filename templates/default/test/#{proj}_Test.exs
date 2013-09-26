@@ -1,7 +1,7 @@
 defmodule #{proj} do
-    use ExUnit.Case
+  use ExUnit.Case
 
-    test "the truth" do
-        assert(true)
-    end
+  test "the truth" do
+    assert(true)
+  end
 end
