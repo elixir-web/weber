@@ -23,7 +23,7 @@ defmodule Weber.App do
                         routes: routes, 
                         root: root_directory, 
                         config: config,
-                        static_dir: root_directory ++ '/lib/static/',
+                        static_dir: root_directory ++ '/public/',
                         views_dir:  root_directory ++ '/lib/views/' }
   end
 
