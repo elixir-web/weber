@@ -2,12 +2,12 @@ defmodule Mix.Tasks.Weber do
 
   @moduledoc """
 
-     Create a new weber project template.
+    Create a new weber project template.
 
-     Usage:
+    Usage:
 
-       mix weber.new /home/user/myWebApp - Creates myWebApp directory with weber project skeleton.
-       mix weber --version - Prints weber version.
+      mix weber.new /home/user/myWebApp - Creates myWebApp directory with weber project skeleton.
+      mix weber --version - Prints weber version.
   """
 
   @shortdoc "Create a new weber project"
