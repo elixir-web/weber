@@ -22,4 +22,12 @@ defmodule WeberHelperTest do
     html = include_view("test_bind.html", [value: "Hello"])
     assert(html =~ %r/Hello/)
   end
+
+  test "write inside view" do
+    app_name = Mix.Project.get.project[:app]
+    views_path = :gen_server.call(app_name, :views)
+    html = views_path ++ 'test_include_view.html' |> String.from_char_list! |> EEx.eval_file
+
+    assert(html =~ %r/^Hello with value/)
+  end
 end
