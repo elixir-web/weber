@@ -139,11 +139,15 @@ end
 ```
 
 ### Include view in your html
+Include view helper helps to include other views inside another.
+
+Import in your controller.
 
 ```elixir
-# Import in controller
 import Weber.Helper
 ```
+
+Your view.
 
 ```html
 <p>Test</p>
