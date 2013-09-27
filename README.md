@@ -7,7 +7,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
 ## Join the Community
 
-  `#WeberMVC` on freenode IRC
+  [`#WeberMVC` on freenode IRC](http://webchat.freenode.net/?channels=%23webermvc&uio=d4)
 
 [![Build Status](https://travis-ci.org/0xAX/weber.png)](https://travis-ci.org/0xAX/weber)
 
@@ -20,19 +20,19 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
 ## Quick start
 
- * Get and install Elixir from master.
- * Clone this repository.
- * Execute `mix deps.get` in the weber directory.
- * Execute `mix compile` in the weber directory.
- * Create new project with: `mix weber.new /home/user/testWebApp`
+ 1. Get and install Elixir from master.
+ 2. Clone this repository.
+ 3. Execute `mix deps.get` in the weber directory.
+ 4. Execute `mix compile` in the weber directory.
+ 5. Create new project with: `mix weber.new /home/user/testWebApp`
 
-Now go to the `/home/user/testWeberApplication` and execute there: `mix deps.get && mix compile`. Then you can try to run your testWeberApplication with:
+Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix compile`. Then you can try to run your testWeberApplication with:
 
 ```
 ./start.sh
 ```
 
-and go to the http://localhost:8080
+and go to the [http://localhost:8080/](http://localhost:8080/)
 
 For more details see in `examples` directory.
 
@@ -44,11 +44,11 @@ For more details see in `examples` directory.
 |    ./lib/controllers  | Directory with web controllers                            |
 |    ./lib/helpers      | Helper functions                                          |
 |    ./lib/models       | Directory for models (ecto)                               |
-|    ./lib/static       | Directory for static files (css, js ....)                 |
 |    ./lib/views        | Directory with EEx views                                  |
 |    ./lib/app.ex       | Application startup settings                              |
 |    ./lib/config.ex    | Configuration file.                                       |
 |    ./lib/route.ex     | File with routes declaration                              |
+|    ./public           | Directory for static files (css, js ....)                 |
 
 ## Routing
 
@@ -88,8 +88,8 @@ end
 
 Every controller's action passes 2 parametes:
 
-  * Http method
-  * List of url bindings  
+  * HTTP method
+  * List of URL bindings  
 
 Controller can returns:
 
@@ -153,7 +153,7 @@ You can handle websocket connection and incoming/outcoming websocket message in 
 First of all you need to designate websocket controller in your `config.ex` file in `webserver:` section, like:
 
 ```elixir
-ws: true,
+use_ws: true,
 ws_port: 8800,
 ws_mod: :Simplechat.Main.Chat 
 ```

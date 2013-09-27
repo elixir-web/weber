@@ -13,7 +13,7 @@ defmodule Config do
        #
        # websocket settings
        #
-       ws: true,
+       use_ws: true,
        ws_port: 8800,
        ws_mod: :Handler 
       ]
