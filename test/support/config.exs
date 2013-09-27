@@ -10,7 +10,7 @@ defmodule Config do
              certfile_path: "",
              keyfile_path: "",
 
-             ws: false,
+             use_ws: false,
              ws_port: 8800,
              ws_mod: :Test
             ]
