@@ -8,7 +8,8 @@ defmodule WeberHelperTest do
   setup_all do
     {:ok, root} = File.cwd
     root = root <> "/test/weber_fake"
-    Weber.run_weber(Mix.Project.get, [], :binary.bin_to_list(root), Config.config)
+    app_name = Mix.Project.get.project[:app]
+    Weber.run_weber(app_name, [], :binary.bin_to_list(root), Config.config)
     :ok
   end
 

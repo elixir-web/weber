@@ -15,7 +15,8 @@ defmodule Weber.Helper do
   If you need files outside views path, use as: include_view("/complete/path/file") 
   """
   def include_view(file, args // []) do
-    views_path = :gen_server.call(Mix.Project.get, :views)
+    app_name = Mix.Project.get.project[:app]
+    views_path = :gen_server.call(app_name, :views)
     file = file |> Path.expand(views_path)
 
     EEx.eval_file(file, args)
