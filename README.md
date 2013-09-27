@@ -138,6 +138,18 @@ defmodule Simpletodo.Helper.MyHelper
 end
 ```
 
+### Include view in your html
+
+```elixir
+# Import in controller
+import Weber.Helper
+```
+
+```html
+<p>Test</p>
+<%= include_view "test.html", [value: "value"]%> 
+```
+
 ### Asset Tag Helpers
 
 TODO
