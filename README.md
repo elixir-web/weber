@@ -122,7 +122,7 @@ defmodule Simplechat.Main.Login do
 end
 ```
 
-Full API you can find at the wiki.
+Full API you can find at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
 ## Helper
 
