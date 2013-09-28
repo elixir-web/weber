@@ -19,6 +19,7 @@ defmodule Weber.App do
 
   def init([app_name, routes, root_directory, config]) do
     :gen_server.cast(:erlang.self(), :init)
+    :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
     { :ok, WeberApp.new name: app_name, 
                         routes: routes, 
                         root: root_directory, 

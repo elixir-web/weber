@@ -97,6 +97,33 @@ Controller can returns:
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
   * `{:redirect, "/main"}`      - Redirect to the another resource.
 
+## Request params
+
+Sometimes it is necessary for the request parameters in the controller. For this point can be used `Weber.Http.Params` API:
+
+```elixir
+defmodule Simplechat.Main.Login do
+
+  import Weber.Http.Params
+
+    def render_login("GET", []) do
+      # get body request
+      body = get_body()
+      #
+      # Do something with param
+      #
+      {:render, [project: "SimpleChat"], []}
+    end
+
+    def join("POST", [{"username", username}]) do
+      {:json, [chat: username], [{"Content-Type", "application/json"}]}
+    end
+
+end
+```
+
+Full API you can find at the wiki.
+
 ## Helper
 
 ### Html Helper

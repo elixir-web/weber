@@ -13,6 +13,12 @@ defmodule Handler.WeberReqHandler do
     app_name: nil
 
   def init(_transport, req, name) do
+    case :ets.lookup(:req_storage, self) do
+      [] -> :ets.insert(:req_storage, {self, req})
+      _  -> 
+        :ets.delete(:req_storage, self)
+        :ets.insert(:req_storage, {self, req})
+      end
     {:ok, req, State.new app_name: name}
   end
 
@@ -27,9 +33,7 @@ defmodule Handler.WeberReqHandler do
     views = :gen_server.call(state.app_name,  :views)
     root = :gen_server.call(state.app_name,  :root)
     
-    successful_route = :lists.flatten(match_routes(path, routes))
-
-    case successful_route do
+    case :lists.flatten(match_routes(path, routes)) do
       [] -> 
         res = try_to_find_static_resource(path, static, views, root)
         case res do
@@ -46,7 +50,6 @@ defmodule Handler.WeberReqHandler do
         result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
         # handle controller's response
         res = handle_result(result, controller, views)
-
         case res do
           {:redirect, location} ->
             {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
@@ -64,6 +67,7 @@ defmodule Handler.WeberReqHandler do
   end
 
   def terminate(_reason, _req, _state) do
+    :ets.delete(:req_storage, self)
     :ok
   end
 
@@ -77,11 +81,8 @@ defmodule Handler.WeberReqHandler do
         # TODO remake with |>
         #
         filename = :erlang.binary_to_list(String.downcase(:erlang.list_to_binary(List.last(:string.tokens(atom_to_list(controller), '.')) ++ ".html")))
-
         views_filenames = get_all_files(views)
-
         view_file = find_file_path(views_filenames, filename)
-
         case view_file do
           [] ->
             :io.format("[Error] No view file ~n")
@@ -101,13 +102,9 @@ defmodule Handler.WeberReqHandler do
   """
   def try_to_find_static_resource(path, static, views, _root) do
     resource = List.last(:string.tokens(:erlang.binary_to_list(path), '/'))
-    views_filenames = get_all_files(views)
-    static_filenames = get_all_files(static)
-    view_file = find_file_path(views_filenames, resource)
-    static_file = find_file_path(static_filenames, resource)
-    case view_file do
+    case find_file_path(get_all_files(views), resource) do
       [] ->
-        case static_file do
+        case find_file_path(get_all_files(static), resource) do
           [] ->
             404
           [resource_name] ->
