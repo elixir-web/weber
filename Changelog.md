@@ -14,7 +14,8 @@
   * added ability to send headers in controller's response
   * HTML helpers.
   * [Weber at github pages](http://0xax.github.io/weber/index.html)
-  * New directory [structure](https://github.com/0xAX/weber/wiki/Weber-project-directory-structure)
+  * new directory [structure](https://github.com/0xAX/weber/wiki/Weber-project-directory-structure)
+  * new `include_view` helper.
 
 #### Weber-0.0.1 [Released]
 
