@@ -65,31 +65,29 @@ defmodule Mix.Tasks.Weber do
       skelFiles = Weber.Utils.get_all_files(".")
       lc file inlist skelFiles do
         baseFile = String.slice(file, 1, 1024)
-        # TODO: fix to allow >1 variables in file name
-        destination = case Regex.captures(%r/.*\#\{(?<key>.+)\}.*/g, baseFile) do
-          nil        -> path <> baseFile
-          [key: key] -> path <> Regex.replace(%r/\#\{.+\}/, baseFile, HashDict.get(vars, key))
-        end
+        destination = path <> replace(baseFile, vars)
         dir = :filename.dirname(destination)
         if !:filelib.is_dir(dir), do: Mix.Generator.create_directory dir
         File.cp_r file, destination, fn _, _ -> true end
         {:ok, origin} = File.read destination
-        compiled = (
-          case Enum.uniq(Regex.scan(%r/\#\{([^\}]+)\}/, origin)) do
-            []   -> origin
-            data -> replacer(origin, vars, data)
-          end
-        )
+        compiled = replace(origin, vars)
         File.write destination, compiled, []
       end
     end
 
-    defp replacer(text, _vars, []) do
+    defp replace(text, vars) do
+      case Enum.uniq(Regex.scan(%r/\#\{([^\}]+)\}/, text)) do
+        []   -> text
+        data -> replace_act(text, vars, data)
+      end
+    end
+
+    defp replace_act(text, _vars, []) do
       text
     end
     
-    defp replacer(text, vars, [[entry, key] | tail]) do
-      replacer(String.replace(text, entry, HashDict.get(vars, key), []), vars, tail)
+    defp replace_act(text, vars, [[entry, key] | tail]) do
+      replace_act(String.replace(text, entry, HashDict.get(vars, key), []), vars, tail)
     end
 
   end
