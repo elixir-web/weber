@@ -3,7 +3,7 @@ Code.require_file "../support/config.exs", __DIR__
 defmodule WeberHelperTest do
   use ExUnit.Case
 
-  import Weber.Helper
+  import Weber.Helper.IncludeView
 
   setup_all do
     {:ok, root} = File.cwd

@@ -1,4 +1,4 @@
-defmodule Weber.Helper do
+defmodule Weber.Helper.IncludeView do
   @moduledoc """
   This module provides helpers functions to help you in views.
   """

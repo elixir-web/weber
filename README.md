@@ -181,9 +181,22 @@ Your view.
 <%= include_view "test.html", [value: "value"]%> 
 ```
 
-### Asset Tag Helpers
+### Resource Helpers
 
-TODO
+You can include your static resources like `javascript` or `favicon` files with resource helpers:
+
+```elixir
+#
+# Generates: <script type="text/javascript" src="/static/test.js"></script>
+#
+js("/static/test.js")
+
+
+#
+# Generates: <link href="/static/test.css" rel="stylesheet" media="screen">
+#
+stylesheet("/static/test.css")
+```
 
 ### Form Helpers
 

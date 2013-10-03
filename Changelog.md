@@ -16,6 +16,7 @@
   * [Weber at github pages](http://0xax.github.io/weber/index.html)
   * new directory [structure](https://github.com/0xAX/weber/wiki/Weber-project-directory-structure)
   * new `include_view` helper.
+  * resource helpers.
 
 #### Weber-0.0.1 [Released]
 

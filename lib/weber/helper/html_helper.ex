@@ -1,5 +1,10 @@
 defmodule Weber.Helper.Html do
-  @html5_tags [:img, :input, :br]
+  
+  @moduledoc """
+  """
+
+  @html5_tags [:area, :base, :br, :col, :command, :embed, :hr, :img, :input,
+               :keygen, :link, :meta, :param, :source, :track, :wbr]
 
   def tag(html_tag, clauses) when is_list(clauses) do
     do_clause = Keyword.get(clauses, :do, "")
