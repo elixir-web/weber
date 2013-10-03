@@ -198,10 +198,6 @@ js("/static/test.js")
 stylesheet("/static/test.css")
 ```
 
-### Form Helpers
-
-TODO
-
 ## Websocket
 
 You can handle websocket connection and incoming/outcoming websocket message in your controllers.
