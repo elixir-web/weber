@@ -51,23 +51,20 @@ defmodule Weber.Route do
           end
       end)
   end
-
-  @doc """
-    
-  """
-  def match_routes_helper([], []) do
+  
+  defp match_routes_helper([], []) do
     true
   end
 
-  def match_routes_helper([{_type, _path} | _parsed_path], []) do
+  defp match_routes_helper([{_type, _path} | _parsed_path], []) do
     false
   end
 
-  def match_routes_helper([], [{_route_type, _route_path} | _parsed_route_path]) do
+  defp match_routes_helper([], [{_route_type, _route_path} | _parsed_route_path]) do
     false
   end
     
-  def match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
+  defp match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
     case type == route_type do
       true -> 
         case path == route_path do

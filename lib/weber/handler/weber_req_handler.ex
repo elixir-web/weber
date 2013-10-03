@@ -71,10 +71,10 @@ defmodule Handler.WeberReqHandler do
     :ok
   end
 
-  @doc """
-    Handle response from controller
-  """
-  def handle_result(res, controller, views) do
+  #
+  #  Handle response from controller
+  #
+  defp handle_result(res, controller, views) do
     case res do
       {:render, data, headers} -> 
         #
@@ -97,10 +97,10 @@ defmodule Handler.WeberReqHandler do
     end
   end
 
-  @doc """
-    Try to find static resource and send response
-  """
-  def try_to_find_static_resource(path, static, views, _root) do
+  #
+  #  Try to find static resource and send response
+  #
+  defp try_to_find_static_resource(path, static, views, _root) do
     resource = List.last(:string.tokens(:erlang.binary_to_list(path), '/'))
     case find_file_path(get_all_files(views), resource) do
       [] ->
@@ -114,4 +114,5 @@ defmodule Handler.WeberReqHandler do
         resource_name
     end
   end
+  
 end

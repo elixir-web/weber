@@ -24,10 +24,10 @@ defmodule Weber.Http.Url do
     getBinding(url, [])
   end
 
-  @doc """
-    match ':' in url
-  """
-  def getBinding(<<58, rest :: binary>>, l) do
+  #
+  #  match ':' in url
+  #
+  defp getBinding(<<58, rest :: binary>>, l) do
     case List.last(l) do
       {:segment, <<>>} -> l = delete(l, {:segment, <<>>})
       _ -> :pass
@@ -36,10 +36,10 @@ defmodule Weber.Http.Url do
     getBinding(rest, :lists.append([l, [binding: <<>>]]))    
   end
 
-  @doc """
-    match '/' in url
-  """
-  def getBinding(<<47, rest :: binary>>, l) do
+  #
+  #  match '/' in url
+  #
+  defp getBinding(<<47, rest :: binary>>, l) do
     case List.last(l) do
       {:binding, <<>>} -> l = delete(l, {:binding, <<>>})
       _ -> :pass
@@ -48,18 +48,18 @@ defmodule Weber.Http.Url do
     getBinding(rest, :lists.append([l, [segment: <<>>]]))
   end
 
-  @doc """
-    match [a-z A-Z 0-9] in url
-  """
-  def getBinding(<<s, rest :: binary>>, l) do
+  #
+  #  match [a-z A-Z 0-9] in url
+  # 
+  defp getBinding(<<s, rest :: binary>>, l) do
     {key, val} = List.last(l)
     getBinding(rest, :lists.reverse(keyreplace(:lists.reverse(l), key, 0, {key, val <> <<s>>})))
   end
 
-  @doc """
-    return parsed url with bindings
-  """
-  def getBinding(<<>>, l) do
+  #
+  #  return parsed url with bindings
+  #
+  defp getBinding(<<>>, l) do
     case l do
       [segment: <<>>] -> l
       _ ->
