@@ -4,12 +4,12 @@ defmodule WeberHelperResourceTest do
   import Weber.Helper.ResourceHelper
 
   test "Create script tag" do
-    script = js("/static/test.js")
+    script = script("/static/test.js")
     assert(script == "<script type=\"text/javascript\" src=\"/static/test.js\"></script>")
   end
 
   test "Create link tag" do
-    link = stylesheet("/static/test.css")
+    link = link("/static/test.css")
     assert(link == "<link href=\"/static/test.css\" rel=\"stylesheet\" media=\"screen\">")
   end
 

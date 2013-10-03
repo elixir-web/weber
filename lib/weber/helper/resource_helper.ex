@@ -14,10 +14,10 @@ defmodule Weber.Helper.ResourceHelper do
       #
       # Generates: <script type="text/javascript" src="/static/test.js"></script>
       #
-      js("/static/test.js")
+      script("/static/test.js")
           
   """
-  def js(src) do
+  def script(src) do
     tag(:script, "", [type: "text/javascript", src: src])
   end
     
@@ -29,9 +29,9 @@ defmodule Weber.Helper.ResourceHelper do
       #
       # Generates: <link href="/static/test.css" rel="stylesheet" media="screen">
       #
-      stylesheet("/static/test.css")
+      link("/static/test.css")
   """
-  def stylesheet(href, media // "screen") do
+  def link(href, media // "screen") do
     tag(:link, [href: href, rel: "stylesheet", media: media])
   end
 

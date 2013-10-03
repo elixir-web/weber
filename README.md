@@ -189,13 +189,13 @@ You can include your static resources like `javascript` or `favicon` files with 
 #
 # Generates: <script type="text/javascript" src="/static/test.js"></script>
 #
-js("/static/test.js")
+script("/static/test.js")
 
 
 #
 # Generates: <link href="/static/test.css" rel="stylesheet" media="screen">
 #
-stylesheet("/static/test.css")
+link("/static/test.css")
 ```
 
 ## Websocket

@@ -2,7 +2,6 @@ defmodule WeberRouteTest do
   use ExUnit.Case
 
   import Weber.Route
-  import Weber.Http.Url
 
   test "Test for Weber.Route.on and Weber.Route.otherwise" do
     r = on("/", :Controller1, :main_action)
