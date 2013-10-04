@@ -20,6 +20,7 @@
   * empty response with headers support.
   * plain text response support.
   * rendering inline template support added.
+  * query string parameters.
 
 #### Weber-0.0.1 [Released]
 

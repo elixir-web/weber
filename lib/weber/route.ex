@@ -63,7 +63,11 @@ defmodule Weber.Route do
   defp match_routes_helper([], [{_route_type, _route_path} | _parsed_route_path]) do
     false
   end
-    
+
+  defp match_routes_helper([{:param, _, key, val} | parsed_path], []) do
+    true
+  end
+  
   defp match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
     case type == route_type do
       true -> 
@@ -77,6 +81,10 @@ defmodule Weber.Route do
           false -> false
         end
     end
+  end
+
+  defp match_routes_helper([{:param, _, key, val} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
+    true
   end
 
 end

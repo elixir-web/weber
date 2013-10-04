@@ -116,5 +116,4 @@ defmodule Handler.WeberReqHandler do
         resource_name
     end
   end
-  
 end

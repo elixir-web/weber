@@ -8,6 +8,8 @@ defmodule Weber.Http.Url do
 
        * /user/0xAX
        * /user/0xAX/password/:password
+       * /user?name=0xAX
+       * /product?price=90&color=red
 
     Usage:
 
@@ -49,11 +51,40 @@ defmodule Weber.Http.Url do
   end
 
   #
+  # match '?' in url
+  #
+  defp getBinding(<<63, rest :: binary>>, l) do
+    getBinding(rest, :lists.append([l, [{:param, :undone, <<>>, <<>>}]]))
+  end
+
+  #
+  # match '='
+  #
+  defp getBinding(<<61, rest :: binary>>, l) do
+    {:param, :undone, k, v} = List.last(l)
+    new_routes_list = List.delete(l, List.last(l))
+    getBinding(rest, :lists.append(new_routes_list, keyreplace([List.last(l)], :undone, 1, {:param, :done, k, v})))
+  end
+
+  #
+  # match '&'
+  #
+  defp getBinding(<<38, rest :: binary>>, l) do
+    getBinding(rest, :lists.append([l, [{:param, :undone, <<>>, <<>>}]]))
+  end
+
+  #
   #  match [a-z A-Z 0-9] in url
   # 
   defp getBinding(<<s, rest :: binary>>, l) do
-    {key, val} = List.last(l)
-    getBinding(rest, :lists.reverse(keyreplace(:lists.reverse(l), key, 0, {key, val <> <<s>>})))
+    case List.last(l) do
+      {key, val} -> 
+        getBinding(rest, :lists.reverse(keyreplace(:lists.reverse(l), key, 0, {key, val <> <<s>>})))
+      {:param, :undone, key, val} ->
+        getBinding(rest, :lists.reverse(keyreplace(:lists.reverse(l), :param, 0, {:param, :undone, key <> <<s>>, val})))
+      {:param, :done, key, val} ->
+        getBinding(rest, :lists.reverse(keyreplace(:lists.reverse(l), :param, 0, {:param, :done, key, val <> <<s>>})))
+    end
   end
 
   #

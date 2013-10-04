@@ -27,6 +27,10 @@ defmodule WeberRouteTest do
     assert match_routes("/user/0xAX/add/user2", r) == []
     assert match_routes("/user/0xAX/add/", r) == [[path: "/user/0xAX/add", controller: :Controller1, action: :action2]]
 
+    assert match_routes("/user/0xAX/add?role=admin", r) == [[path: "/user/0xAX/add", controller: :Controller1, action: :action2]]
+    assert match_routes("/user/0xAX/delete?role=admin", r) == [[path: "/user/:user/delete", controller: :Controller1, action: :action2]]
+    assert match_routes("/user/0xAX/remove?role=admin", r) == []
+
   end
 
 end
