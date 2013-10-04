@@ -56,7 +56,7 @@ Routing declaration is in `route.ex` files:
 
 ```elixir
     @route on("/", :Simpletodo.Main, :action)
-        |> on("/add/:note", :Simpletodo.Main, :add)
+      |> on("/add/:note", :Simpletodo.Main, :add)
 ```
 
 It is `@route` attribute which value is chain of `on` and `otherwise` functions with 3 parametes:
@@ -72,16 +72,16 @@ Every Weber's controller is just elixir module, like:
 ```elixir
 defmodule Simpletodo.Main do
 
-    import Simplemodel
+  import Simplemodel
 
-    def action("GET", []) do
-        {:render, [project: "simpleTodo"], []}
-    end
+  def action("GET", []) do
+    {:render, [project: "simpleTodo"], []}
+  end
 
-    def add("POST", [body: body]) do
-        new(body)
-        {:json, [response: "ok"], [{"Content-Type", "application/json"}]}
-    end
+  def add("POST", [body: body]) do
+    new(body)
+    {:json, [response: "ok"], [{"Content-Type", "application/json"}]}
+  end
 
 end
 ```
@@ -129,13 +129,13 @@ defmodule Simplechat.Main.Login do
   import Weber.Http.Params
 
   def render_login("GET", []) do
-      # get body request
-      name = param(:name)
-      #
-      # Do something with param
-      #
-      {:render, [project: "SimpleChat", name: name], []}
-    end
+    # get body request
+    name = param(:name)
+    #
+    # Do something with param
+    #
+    {:render, [project: "SimpleChat", name: name], []}
+  end
 
 end
 ``` 
@@ -233,23 +233,23 @@ After it you must implement 3 callbacks in your controller like this:
 ```elixir
 defmodule Simplechat.Main.Chat do
 
-    def websocket_init(pid) do
-        #
-        # new websocket connection init
-        #
-    end
+  def websocket_init(pid) do
+    #
+    # new websocket connection init
+    #
+  end
 
-    def websocket_message(pid, message) do
-        #
-        # handle incoming message here
-        #
-    end
+  def websocket_message(pid, message) do
+    #
+    # handle incoming message here
+    #
+  end
 
-    def websocket_terminate(pid) do
-        #
-        # connection terminated
-        #
-    end
+  def websocket_terminate(pid) do
+    #
+    # connection terminated
+    #
+  end
 
 end
 ```
