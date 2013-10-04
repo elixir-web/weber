@@ -18,6 +18,7 @@
   * new `include_view` helper.
   * resource helpers.
   * empty response with headers support.
+  * plain text response support.
 
 #### Weber-0.0.1 [Released]
 

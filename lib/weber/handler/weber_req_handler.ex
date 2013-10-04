@@ -57,6 +57,9 @@ defmodule Handler.WeberReqHandler do
           {:nothing, headers} ->
             {:ok, req4} = :cowboy_req.reply(200, headers, <<"">>, req3)
             {:ok, req4, state}
+          {:text, data, headers} ->
+            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req3)
+            {:ok, req4, state}
           {data, headers} ->
             case res do
               {:render, _, _} ->
@@ -97,6 +100,8 @@ defmodule Handler.WeberReqHandler do
         {:redirect, location}
       {:nothing, headers} ->
         {:nothing, headers};
+      {:text, data, headers} ->
+        {:text, data, headers}
       {:json, data, headers} ->
         {JSON.generate(data), headers}
     end
