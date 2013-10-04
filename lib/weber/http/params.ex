@@ -125,4 +125,28 @@ defmodule Weber.Http.Params do
     end
   end
 
+  @doc """
+    Get parameter value by key from query string.
+  """
+  def param(key) do
+    case :ets.lookup(:req_storage, self) do
+      [] -> []
+      [{_, req}] ->
+        {path, _} = :cowboy_req.path(req)
+        
+        params = Enum.filter(Weber.Http.Url.getBinding(path), 
+                   fn(p) ->
+                     case p do
+                       {_, _} -> false
+                       {_, _, param_key, _} -> param_key == key
+                     end
+                   end)
+
+        case params do
+          [] -> []
+          [{_, _, _, val}] -> val
+        end
+    end
+  end
+
 end

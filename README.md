@@ -102,28 +102,43 @@ Controller can returns:
 
 ## Request params
 
-Sometimes it is necessary for the request parameters in the controller. For this point can be used `Weber.Http.Params` API:
+Sometimes it is necessary for the request parameters in the controller. For this point can be used `Weber.Http.Params` [API](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
 ```elixir
 defmodule Simplechat.Main.Login do
 
   import Weber.Http.Params
 
-    def render_login("GET", []) do
-      # get body request
-      body = get_body()
-      #
-      # Do something with param
-      #
-      {:render, [project: "SimpleChat"], []}
-    end
-
-    def join("POST", [{"username", username}]) do
-      {:json, [chat: username], [{"Content-Type", "application/json"}]}
-    end
+  def render_login("GET", []) do
+    # get body request
+    body = get_body()
+    #
+    # Do something with param
+    #
+    {:render, [project: "SimpleChat"], []}
+  end
 
 end
 ```
+
+If you need to get parameters from query string, it is easy to do with `param/1` API. For example you got request for: `/user?name=0xAX`, you can get `name` parameter's value with:
+
+```elixir
+defmodule Simplechat.Main.Login do
+
+  import Weber.Http.Params
+
+  def render_login("GET", []) do
+      # get body request
+      name = param(:name)
+      #
+      # Do something with param
+      #
+      {:render, [project: "SimpleChat", name: name], []}
+    end
+
+end
+``` 
 
 Full API you can find at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
