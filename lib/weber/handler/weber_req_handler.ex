@@ -77,12 +77,15 @@ defmodule Handler.WeberReqHandler do
   defp handle_result(res, controller, views) do
     case res do
       {:render, data, headers} -> 
-        #
-        # TODO remake with |>
-        #
-        filename = :erlang.binary_to_list(String.downcase(:erlang.list_to_binary(List.last(:string.tokens(atom_to_list(controller), '.')) ++ ".html")))
-        {:ok, d} = File.read(:lists.nth(1, find_file_path(get_all_files(views), filename)))
-        {:render, (EEx.eval_string d, data), headers}
+        filename = atom_to_list(controller) 
+                       |> :string.tokens('.') 
+                       |> List.last
+                       |> :lists.append(".html")
+                       |> :erlang.list_to_binary
+                       |> String.downcase
+                       |> :erlang.binary_to_list
+        {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(views), filename)))
+        {:render, (EEx.eval_string file_content, data), headers}
       {:render_inline, data, params, headers} ->
         {:render, (EEx.eval_string data, params), headers}
       {:redirect, location} ->

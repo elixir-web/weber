@@ -26,6 +26,7 @@ defmodule WeberRouteTest do
     assert match_routes("/", r) == [[path: "/", controller: :Controller1, action: :main_action]]
     assert match_routes("/user/0xAX/add/user2", r) == []
     assert match_routes("/user/0xAX/add/", r) == [[path: "/user/0xAX/add", controller: :Controller1, action: :action2]]
+
   end
 
 end
