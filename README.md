@@ -95,7 +95,8 @@ Controller can returns:
 
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
-  * `{:redirect, "/main"}`      - Redirect to the another resource.
+  * `{:redirect, "/main"}` - Redirect to the another resource.
+  * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers.
 
 ## Request params
 

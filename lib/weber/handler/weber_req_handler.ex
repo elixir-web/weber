@@ -54,6 +54,9 @@ defmodule Handler.WeberReqHandler do
           {:redirect, location} ->
             {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
             {:ok, req4, state}
+          {:nothing, headers} ->
+            {:ok, req4} = :cowboy_req.reply(200, headers, <<"">>, req3)
+            {:ok, req4, state}
           {data, headers} ->
             case res do
               {:render, _, _} ->
@@ -92,6 +95,8 @@ defmodule Handler.WeberReqHandler do
         end
       {:redirect, location} ->
         {:redirect, location}
+      {:nothing, headers} ->
+        {:nothing, headers};
       {:json, data, headers} ->
         {JSON.generate(data), headers}
     end

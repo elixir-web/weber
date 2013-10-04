@@ -17,6 +17,7 @@
   * new directory [structure](https://github.com/0xAX/weber/wiki/Weber-project-directory-structure)
   * new `include_view` helper.
   * resource helpers.
+  * empty response with headers support.
 
 #### Weber-0.0.1 [Released]
 
