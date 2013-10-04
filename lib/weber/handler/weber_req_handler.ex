@@ -53,22 +53,16 @@ defmodule Handler.WeberReqHandler do
         case res do
           {:redirect, location} ->
             {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
-            {:ok, req4, state}
           {:nothing, headers} ->
             {:ok, req4} = :cowboy_req.reply(200, headers, <<"">>, req3)
-            {:ok, req4, state}
           {:text, data, headers} ->
             {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req3)
-            {:ok, req4, state}
-          {data, headers} ->
-            case res do
-              {:render, _, _} ->
-                {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
-              _ ->
-                {:ok, req4} = :cowboy_req.reply(200, headers, data, req3)
-            end
-            {:ok, req4, state}
+          {:json, data, headers} ->
+            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "application/json"}], headers), data, req3)
+          {:render, data, headers} ->
+            {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
         end
+        {:ok, req4, state}
     end
   end
 
@@ -87,23 +81,18 @@ defmodule Handler.WeberReqHandler do
         # TODO remake with |>
         #
         filename = :erlang.binary_to_list(String.downcase(:erlang.list_to_binary(List.last(:string.tokens(atom_to_list(controller), '.')) ++ ".html")))
-        views_filenames = get_all_files(views)
-        view_file = find_file_path(views_filenames, filename)
-        case view_file do
-          [] ->
-            :io.format("[Error] No view file ~n")
-          _ ->
-            {:ok, d} = File.read(:lists.nth(1, view_file))
-            {(EEx.eval_string d, data), headers}
-        end
+        {:ok, d} = File.read(:lists.nth(1, find_file_path(get_all_files(views), filename)))
+        {:render, (EEx.eval_string d, data), headers}
+      {:render_inline, data, params, headers} ->
+        {:render, (EEx.eval_string data, params), headers}
       {:redirect, location} ->
         {:redirect, location}
       {:nothing, headers} ->
-        {:nothing, headers};
+        {:nothing, headers}
       {:text, data, headers} ->
         {:text, data, headers}
       {:json, data, headers} ->
-        {JSON.generate(data), headers}
+        {:json, JSON.generate(data), headers}
     end
   end
 

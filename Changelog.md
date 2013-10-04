@@ -19,6 +19,7 @@
   * resource helpers.
   * empty response with headers support.
   * plain text response support.
+  * rendering inline template support added.
 
 #### Weber-0.0.1 [Released]
 

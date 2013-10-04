@@ -94,6 +94,7 @@ Every controller's action passes 2 parametes:
 Controller can returns:
 
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
+  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []}` - Render inline template.
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
   * `{:redirect, "/main"}` - Redirect to the another resource.
   * `{:text, data, headers}` - Sends plain text.
