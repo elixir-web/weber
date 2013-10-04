@@ -5,8 +5,8 @@ defmodule Weber.Route do
     Use 'route' macros for declaring routing.
 
     @route on('/', Controller1, Action1)
-        |> on ('', Controller2, Action2)
-        |> on ('', Controller2, Action1)
+        |> on ('/user/:name', Controller2, Action2)
+        |> on ('/user/:name/delete', Controller2, Action1)
         |> otherwise (404, Controller2, ActionNotFound)
   """
 
