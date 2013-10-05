@@ -264,9 +264,7 @@ end
 
 ## Contributing
 
-  * Fork current repository
-  * Make your changes
-  * Send pull request
+See [Contributing.md](https://github.com/0xAX/weber/blob/master/Contributing.md)
 
 ## Author
 
