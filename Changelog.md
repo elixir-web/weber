@@ -21,6 +21,7 @@
   * plain text response support.
   * rendering inline template support added.
   * query string parameters.
+  * send file in response.
 
 #### Weber-0.0.1 [Released]
 

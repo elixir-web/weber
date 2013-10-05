@@ -59,6 +59,8 @@ defmodule Handler.WeberReqHandler do
             {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req3)
           {:json, data, headers} ->
             {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "application/json"}], headers), data, req3)
+          {:file, data, headers} ->
+            {:ok, req4} = :cowboy_req.reply(200, headers, data, req3)
           {:render, data, headers} ->
             {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
         end
@@ -88,6 +90,9 @@ defmodule Handler.WeberReqHandler do
         {:render, (EEx.eval_string file_content, data), headers}
       {:render_inline, data, params, headers} ->
         {:render, (EEx.eval_string data, params), headers}
+      {:file, path, headers} ->
+        {:ok, file_content} = File.read(path)
+        {:file, :mimetypes.filename(path), :lists.append([{"Content-Type", "application/json"}], headers)}
       {:redirect, location} ->
         {:redirect, location}
       {:nothing, headers} ->
