@@ -64,7 +64,7 @@ defmodule Weber.Route do
     false
   end
 
-  defp match_routes_helper([{:param, _, key, val} | parsed_path], []) do
+  defp match_routes_helper([{:param, _, _key, _val} | _parsed_path], []) do
     true
   end
   
@@ -83,7 +83,7 @@ defmodule Weber.Route do
     end
   end
 
-  defp match_routes_helper([{:param, _, key, val} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
+  defp match_routes_helper([{:param, _, _key, _val} | _parsed_path], [{_route_type, _route_path} | _parsed_route_path]) do
     true
   end
 
