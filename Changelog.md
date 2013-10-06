@@ -22,6 +22,7 @@
   * rendering inline template support added.
   * query string parameters.
   * send file in response.
+  * controller#action syntax support in router.
 
 #### Weber-0.0.1 [Released]
 

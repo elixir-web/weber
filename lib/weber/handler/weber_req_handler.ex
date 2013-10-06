@@ -92,7 +92,7 @@ defmodule Handler.WeberReqHandler do
         {:render, (EEx.eval_string data, params), headers}
       {:file, path, headers} ->
         {:ok, file_content} = File.read(path)
-        {:file, :mimetypes.filename(path), :lists.append([{"Content-Type", "application/json"}], headers)}
+        {:file, file_content, :lists.append([{"Content-Type", :mimetypes.filename(path)}], headers)}
       {:redirect, location} ->
         {:redirect, location}
       {:nothing, headers} ->
