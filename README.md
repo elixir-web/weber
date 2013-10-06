@@ -130,7 +130,6 @@ defmodule Simplechat.Main.Login do
   import Weber.Http.Params
 
   def render_login("GET", []) do
-    # get body request
     name = param(:name)
     #
     # Do something with param
