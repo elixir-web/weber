@@ -49,7 +49,7 @@ defmodule Mix.Tasks.Weber do
       #
       # create project skeleton
       #
-      path = Path.absname directoryName
+      path = Path.expand directoryName
       baseName = Path.basename directoryName
 
       vars = HashDict.new [
