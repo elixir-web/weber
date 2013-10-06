@@ -1,4 +1,6 @@
-#### Weber-0.0.2 [In development]
+### Weber-0.0.3 [In development]
+
+#### Weber-0.0.2 [Released]
 
   * HTTPS support
   * `test` directory with tests template added to weber application
