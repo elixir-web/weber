@@ -6,15 +6,27 @@ defmodule Weber.Route do
 
     @route on('/', Controller1, Action1)
         |> on ('/user/:name', Controller2, Action2)
+        |> on ("/user/add/:username", "Controller2#Action2")
         |> on ('/user/:name/delete', Controller2, Action1)
         |> otherwise (404, Controller2, ActionNotFound)
   """
 
+  import String
   import Weber.Http.Url
 
   @doc """
     Router attribute
   """
+  def on(path, controllerAndAction) when is_binary(controllerAndAction) do
+    [controller, action] = split(controllerAndAction, "#")
+    [[path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]]
+  end
+
+  def on(routesList, path, controllerAndAction) when is_binary(controllerAndAction) do
+    [controller, action] = split(controllerAndAction, "#")
+    :lists.append(routesList, [[path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]])
+  end
+
   def on(path, controller, action) do
     [[path: path, controller: controller, action: action]]
   end
@@ -26,6 +38,14 @@ defmodule Weber.Route do
   @doc """
     Router attribute
   """
+  def otherwise(path, controllerAndAction) when is_binary(controllerAndAction) do
+    on(path, controllerAndAction)
+  end
+
+  def otherwise(routesList, path, controllerAndAction) when is_binary(controllerAndAction) do
+    on(routesList, path, controllerAndAction)
+  end
+
   def otherwise(path, controller, action) do
     on(path, controller, action)
   end
