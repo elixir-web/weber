@@ -63,9 +63,30 @@
             <li>{:render, [project: "simpleTodo"], [{"HeanderName", "HeaderVal"}]} - Render views with the same name as controller and sends it to response.</li>
             <li>{:json, [response: "ok"], [{"HeanderName", "HeaderVal"}]} - Weber convert keyword to json and sends it to response.</li>
             <li>{:redirect, "/new_location"} - Weber sends redirect.</li>
+            <li>{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []} - Render inline template.</li>
+            <li>{:file, path, headers} - Send file in response.</li>
+            <li>{:text, data, headers} - Sends plain text.</li>
+            <li>{:nothing, ["Cache-Control", "no-cache"]} - Sends empty response with status 200 and headers.</li>          
           </ul>
         </p>
 
+        <h3>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+            <span class="octicon octicon-link"></span></a>Request params
+        </h3>
+
+        <p>Sometimes it is necessary for the request parameters in the controller. For this point can be used <i>Weber.Http.Params</i> 
+          <a href="https://github.com/0xAX/weber/wiki/Weber.Http.Params-API">API:</p>
+          <script src="https://gist.github.com/0xAX/6854684.js"></script>
+
+        <h3>
+            <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+            <span class="octicon octicon-link"></span></a>Query string parameters
+        </h3>
+
+        <p>If you need to get parameters from query string, it is easy to do with <i>param/1</i> API. For example you got request for: <i>/user?name=0xAX</i>, you can get name parameter's value with:</p>
+
+        <script src="https://gist.github.com/0xAX/6854701.js"></script>
       </section>
 
       <footer>
