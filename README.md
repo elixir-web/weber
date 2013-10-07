@@ -17,6 +17,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * Project generation;
  * Json generation with exjson;
  * Websocket support;
+ * HTML generators;
 
 ## Quick start
 
