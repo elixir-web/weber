@@ -1,5 +1,7 @@
 #### Weber-0.0.3 [In development]
 
+  * Ability to create new weber project with relative path
+ 
 #### Weber-0.0.2 [Released]
 
   * HTTPS support.
