@@ -6,3 +6,4 @@ deps
 *.plt
 *.swp
 erl_crash.dump
+/tmp

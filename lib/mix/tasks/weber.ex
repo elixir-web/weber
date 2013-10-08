@@ -54,7 +54,7 @@ defmodule Mix.Tasks.Weber do
 
       vars = HashDict.new [
         {"path", path},
-        {"projectNamespace", String.capitalize(baseName)},
+        {"projectNamespace", Mix.Utils.camelize(baseName)},
         {"projectName", baseName}
       ]
 
