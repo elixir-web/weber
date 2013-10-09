@@ -16,10 +16,6 @@ defmodule Cowboy do
     {_, _host}     = :lists.keyfind(:http_host, 1, web_server_config)
     {_, port}      = :lists.keyfind(:http_port, 1, web_server_config)
     {_, acceptors} = :lists.keyfind(:acceptors, 1, web_server_config)
-
-    {_, use_ws}  = :lists.keyfind(:use_ws, 1, web_server_config)
-    {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, web_server_config)
-    {_, ws_port} = :lists.keyfind(:ws_port, 1, web_server_config)
     {_, ssl}     = :lists.keyfind(:ssl, 1, web_server_config)
         
     dispatch = :cowboy_router.compile([{:_, [{:_, Handler.WeberReqHandler, name}]}])
@@ -37,8 +33,11 @@ defmodule Cowboy do
         {:ok, _} = :cowboy.start_http(:http, acceptors, [port: port], [env: [dispatch: dispatch]])
     end
 
-    case use_ws do
-      true ->
+    case :lists.keyfind(:ws, 1, config) do
+      false -> :ok
+      {:ws, ws_config} ->
+        {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
+        {_, ws_port} = :lists.keyfind(:ws_port, 1, ws_config)
         wsDispatch = :cowboy_router.compile([{:_, [{:_, Handler.WeberWebSocketHandler, {name, ws_mod}}]}])
         {:ok, _} = :cowboy.start_http(:ws, acceptors, [port: ws_port], [env: [dispatch: wsDispatch]])
       _ ->

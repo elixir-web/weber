@@ -8,15 +8,12 @@ defmodule Config do
        ssl: false,
        cacertfile_path: "",
        certfile_path: "",
-       keyfile_path: "",
-
-       #
-       # websocket settings
-       #
-       use_ws: true,
-       ws_port: 8800,
-       ws_mod: :Handler 
-      ]
+       keyfile_path: ""
+      ],
+    ws: 
+      [ws_port: 8800,
+       ws_mod: :Handler
+      ] 
     ]
   end
 
