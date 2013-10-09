@@ -231,9 +231,10 @@ You can handle websocket connection and incoming/outcoming websocket message in 
 First of all you need to designate websocket controller in your `config.ex` file in `webserver:` section, like:
 
 ```elixir
-use_ws: true,
-ws_port: 8800,
-ws_mod: :Simplechat.Main.Chat 
+ws: 
+  [ws_port: 8800,
+   ws_mod: :Handler
+  ] 
 ```
 
 After it you must implement 3 callbacks in your controller like this:
