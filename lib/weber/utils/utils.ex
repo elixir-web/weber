@@ -1,13 +1,13 @@
 defmodule Weber.Utils do
-	
-	@moduledoc """
-		Weber utils functions
-	"""
+  
+  @moduledoc """
+    Weber utils functions
+  """
 
-	import Enum
-	import Path
+  import Enum
+  import Path
 
-	@doc """
+  @doc """
     Recursively get all files from directory.
   """
   def get_all_files(dir) do
@@ -16,10 +16,10 @@ defmodule Weber.Utils do
   end
 
   @doc """
-		Find full path by file name
+    Find full path by file name
   """
   def find_file_path(abs_filenames, filename) do
-		filter(abs_filenames, fn(file) ->
+    filter(abs_filenames, fn(file) ->
       basename(file) == filename
     end)
   end
