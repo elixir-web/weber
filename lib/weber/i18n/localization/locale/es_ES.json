@@ -1,0 +1,14 @@
+{
+ "es_ES" : {
+    "datetime" :{
+        "abbr_day_names" : ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+        "abbr_month_names" : ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul",
+                              "Ago", "Sep", "Oct", "Nov", "Dic"],
+        "day_names" : ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves",
+                       "Viernes", "Sábado"],
+        "month_names" : ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre","Diciembre"],
+        "format" : "%d %B %Y"
+    }
+ }
+}
