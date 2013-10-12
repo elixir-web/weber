@@ -16,7 +16,11 @@ defmodule Config do
       ],
     localization:
       [default_locale: "en_US"
-      ] 
+      ],
+    session:
+      [session_life_time: 1440,
+       session_key: "_weber"
+      ], 
     ]
   end
 
