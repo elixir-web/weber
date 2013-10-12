@@ -38,4 +38,9 @@ defmodule WeberHelperResourceTest do
     assert(image == "<img src=\"/public/img/example.jpg\" alt=\"Image\" class=\"some-class\" height=\"100\" width=\"100\">")
   end
 
+  test "Create image tag with no html_options" do
+    image = image("/public/img/example.jpg")
+    assert(image == "<img src=\"/public/img/example.jpg\">")
+  end
+
 end
