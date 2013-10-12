@@ -19,7 +19,7 @@ defmodule Config do
       ],
     session:
       [session_life_time: 1440,
-       session_key: "_weber"
+       session_key: "weber"
       ], 
     ]
   end
