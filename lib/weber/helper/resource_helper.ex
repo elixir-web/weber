@@ -1,7 +1,7 @@
 defmodule Weber.Helper.ResourceHelper do
 
   @moduledoc """
-    Include static resrouces with Weber.Helper.ResourceHelper.
+    Include static resources with Weber.Helper.ResourceHelper.
   """
 
   import Weber.Helper.Html
@@ -10,28 +10,31 @@ defmodule Weber.Helper.ResourceHelper do
     Generates <script>...<script> resource.
 
     Example:
-            
+
       #
-      # Generates: <script type="text/javascript" src="/static/test.js"></script>
+      # Generates: <script type="text/javascript" src="/public/test.js"></script>
+      # If no value is passed for src it defaults to "/public/application.js"
       #
-      script("/static/test.js")
-          
+      script("/public/test.js")
+      script()
+
   """
-  def script(src) do
+  def script(src // "/public/application.js") do
     tag(:script, "", [type: "text/javascript", src: src])
   end
-    
+
   @doc """
-    Genrates <link ... > resource.
+    Generates <link ... > resource for style elements.
 
     Example:
 
       #
-      # Generates: <link href="/static/test.css" rel="stylesheet" media="screen">
-      #
-      link("/static/test.css")
+      # Generates: <link href="/public/test.css" rel="stylesheet" media="screen">
+      # If no value is passed for href it defaults to "/public/application.css"
+      style("/public/test.css")
+      style()
   """
-  def link(href, media // "screen") do
+  def style(href // "/public/application.css", media // "screen") do
     tag(:link, [href: href, rel: "stylesheet", media: media])
   end
 
@@ -41,12 +44,27 @@ defmodule Weber.Helper.ResourceHelper do
     Example:
 
       #
-      # Generates: <link href="/static/img/favicon.ico" rel="shortcut icon" type="image/png">
+      # Generates: <link href="/public/img/favicon.ico" rel="shortcut icon" type="image/png">
+      # If no value is passed for href it defaults to "/public/img/favicon.ico"
       #
-      favicon("/static/img/favicon.ico")
+      favicon("/public/img/favicon.ico")
+      favicon()
   """
-  def favicon(href, rel // "shortcut icon", type // "image/png") do
+  def favicon(href // "/public/img/favicon.ico", rel // "shortcut icon", type // "image/x-icon") do
     tag(:link, [href: href, rel: rel, type: type])
+  end
+
+  @doc """
+    Generates <img ... > resource.
+
+    Example:
+
+      #
+      # Generates: <img src="/public/img/example.png" alt="Example Image">
+      image("/public/example.png")
+  """
+  def image(file, alt // "") do
+    tag(:img, src: file, alt: alt)
   end
 
 end
