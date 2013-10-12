@@ -60,11 +60,14 @@ defmodule Weber.Helper.ResourceHelper do
     Example:
 
       #
-      # Generates: <img src="/public/img/example.png" alt="Example Image">
-      image("/public/example.png")
+      # Generates: <img src="/public/img/example.jpg" alt="Image" class="some-class" height="100" width="100">"
+      image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
   """
-  def image(file, alt // "") do
-    tag(:img, src: file, alt: alt)
+
+  def image(src, html_options // []) do
+    dict = html_options |> ListDict.new
+    options = ListDict.put(dict, :src, src) |> ListDict.to_list
+    tag(:img, options)
   end
 
 end

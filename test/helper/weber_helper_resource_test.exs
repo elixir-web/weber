@@ -33,13 +33,9 @@ defmodule WeberHelperResourceTest do
     assert(fav == "<link href=\"/public/img/favicon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\">")
   end
 
-  test "Create image tag with alt value" do
-    image = image("/public/img/example.jpg", "Example Image")
-    assert(image == "<img src=\"/public/img/example.jpg\" alt=\"Example Image\">")
+  test "Create image tag" do
+    image = image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
+    assert(image == "<img src=\"/public/img/example.jpg\" alt=\"Image\" class=\"some-class\" height=\"100\" width=\"100\">")
   end
 
-  test "Create image tag with no alt value" do
-    image = image("/public/img/example.jpg")
-    assert(image == "<img src=\"/public/img/example.jpg\" alt=\"\">")
-  end
 end
