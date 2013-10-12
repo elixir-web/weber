@@ -13,6 +13,9 @@ defmodule Config do
     ws: 
       [ws_port: 8800,
        ws_mod: :Handler
+      ],
+    localization:
+      [default_locale: "en_US"
       ] 
     ]
   end
