@@ -209,7 +209,7 @@ Your view.
 
 ### Resource Helpers
 
-You can include your static resources like `javascript` or `favicon` files with resource helpers:
+You can include your static resources like `javascript`, `css`, `favicon` or `image` files with resource helpers:
 
 ```elixir
 #
