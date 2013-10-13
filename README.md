@@ -1,7 +1,7 @@
 Weber
 ========
 
-Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/). 
+Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
 **Attention in very early stage**
 
@@ -12,7 +12,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 [![Build Status](https://travis-ci.org/0xAX/weber.png)](https://travis-ci.org/0xAX/weber)
 
 ## Features
- 
+
  * MVC web framework;
  * Project generation;
  * Json generation with exjson;
@@ -40,7 +40,7 @@ For more details see in `examples` directory.
 ## Directory structure
 
 | Dir/File              | Description                                               |
-| --------------------- |:---------------------------------------------------------:| 
+| --------------------- |:---------------------------------------------------------:|
 |    ./start.sh         | Startup script                                            |
 |    ./lib/controllers  | Directory with web controllers                            |
 |    ./lib/helpers      | Helper functions                                          |
@@ -97,7 +97,7 @@ end
 Every controller's action passes 2 parametes:
 
   * HTTP method
-  * List of URL bindings  
+  * List of URL bindings
 
 Controller can returns:
 
@@ -146,7 +146,7 @@ defmodule Simplechat.Main.Login do
   end
 
 end
-``` 
+```
 
 Full API you can find at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
@@ -158,7 +158,7 @@ Html helpers helps to generate html templates from elixir:
 ```elixir
 defmodule Simpletodo.Helper.MyHelper
   import Weber.Helper.Html
-  
+
   # Generates <p>test</p>
   def do_something do
     tag(:p, "test")
@@ -181,7 +181,7 @@ Tags with blocks
 ```elixir
 defmodule Simpletodo.Helper.MyHelper
   import Weber.Helper.Html
-  
+
   # Generates <div id="test"><p>test</p></div>
   def do_something do
     tag(:div, [id: "test"]) do
@@ -204,7 +204,7 @@ Your view.
 
 ```html
 <p>Test</p>
-<%= include_view "test.html", [value: "value"]%> 
+<%= include_view "test.html", [value: "value"]%>
 ```
 
 ### Resource Helpers
@@ -214,14 +214,26 @@ You can include your static resources like `javascript` or `favicon` files with 
 ```elixir
 #
 # Generates: <script type="text/javascript" src="/static/test.js"></script>
-#
 script("/static/test.js")
-
+# If no value is passed for src it defaults to "/public/application.js"
+script()
 
 #
 # Generates: <link href="/static/test.css" rel="stylesheet" media="screen">
 #
-link("/static/test.css")
+style("/static/test.css")
+# If no value is passed for href it defaults to "/public/application.css"
+style()
+
+#
+# Generates: <link href="/public/img/favicon.ico" rel="shortcut icon" type="image/png">
+favicon("/public/img/favicon.ico")
+# If no value is passed for href it defaults to "/public/img/favicon.ico"
+favicon()
+
+#
+# Generates: <img src="/public/img/example.jpg" alt="Image" class="some-class" height="100" width="100">"
+image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
 ```
 
 ## Websocket
@@ -231,10 +243,10 @@ You can handle websocket connection and incoming/outcoming websocket message in 
 First of all you need to designate websocket controller in your `config.ex` file in `webserver:` section, like:
 
 ```elixir
-ws: 
+ws:
   [ws_port: 8800,
    ws_mod: :Handler
-  ] 
+  ]
 ```
 
 After it you must implement 3 callbacks in your controller like this:
