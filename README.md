@@ -60,7 +60,7 @@ Routing declaration is in `route.ex` files:
       |> on("/add/:note", :Simpletodo.Main, :add)
 ```
 
-Also `on` support following syntax:
+Also `on` supports following syntax:
 
 ```elixir
     @route on("/", "Simpletodo.Main#action")
@@ -75,7 +75,7 @@ It is `@route` attribute which value is chain of `on` and `otherwise` functions 
 
 ## Controllers
 
-Every Weber's controller is just elixir module, like:
+Every Weber's controller is just an elixir module, like:
 
 ```elixir
 defmodule Simpletodo.Main do
@@ -94,18 +94,18 @@ defmodule Simpletodo.Main do
 end
 ```
 
-Every controller's action passes 2 parametes:
+Every controller's action passes 2 parameters:
 
   * HTTP method
   * List of URL bindings
 
-Controller can returns:
+Controller can return:
 
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
   * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []}` - Render inline template.
   * `{:file, path, headers}` - Send file in response.
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
-  * `{:redirect, "/main"}` - Redirect to the another resource.
+  * `{:redirect, "/main"}` - Redirect to other resource.
   * `{:text, data, headers}` - Sends plain text.
   * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers.
 
@@ -148,7 +148,7 @@ defmodule Simplechat.Main.Login do
 end
 ```
 
-Full API you can find at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
+You can find the full API at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
 ## Helper
 
