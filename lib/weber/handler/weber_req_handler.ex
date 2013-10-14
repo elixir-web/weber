@@ -8,6 +8,7 @@ defmodule Handler.WeberReqHandler do
   import Weber.Route
   import Weber.Http.Url
   import Handler.Weber404Handler
+  import Handler.WeberReqHandler.Result
 
   defrecord State, 
     app_name: nil
@@ -77,31 +78,8 @@ defmodule Handler.WeberReqHandler do
   #  Handle response from controller
   #
   defp handle_result(res, controller, views) do
-    case res do
-      {:render, data, headers} -> 
-        filename = atom_to_list(controller) 
-                       |> :string.tokens('.') 
-                       |> List.last
-                       |> :lists.append(".html")
-                       |> :erlang.list_to_binary
-                       |> String.downcase
-                       |> :erlang.binary_to_list
-        {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(views), filename)))
-        {:render, (EEx.eval_string file_content, data), headers}
-      {:render_inline, data, params, headers} ->
-        {:render, (EEx.eval_string data, params), headers}
-      {:file, path, headers} ->
-        {:ok, file_content} = File.read(path)
-        {:file, file_content, :lists.append([{"Content-Type", :mimetypes.filename(path)}], headers)}
-      {:redirect, location} ->
-        {:redirect, location}
-      {:nothing, headers} ->
-        {:nothing, headers}
-      {:text, data, headers} ->
-        {:text, data, headers}
-      {:json, data, headers} ->
-        {:json, JSON.generate(data), headers}
-    end
+    app = Handler.WeberReqHandler.Result.App.new controller: controller, views: views
+    request(res, app)
   end
 
   #
