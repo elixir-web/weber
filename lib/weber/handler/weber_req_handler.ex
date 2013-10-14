@@ -10,16 +10,19 @@ defmodule Handler.WeberReqHandler do
   import Handler.Weber404Handler
 
   defrecord State, 
-    app_name: nil
+    app_name: nil,
+    cookie:   nil
 
   def init(_transport, req, name) do
     case :ets.lookup(:req_storage, self) do
-      [] -> :ets.insert(:req_storage, {self, req})
+      [] -> 
+        :ets.insert(:req_storage, {self, req})
       _  -> 
         :ets.delete(:req_storage, self)
         :ets.insert(:req_storage, {self, req})
-      end
-    {:ok, req, State.new app_name: name}
+    end
+        
+    {:ok, req, State.new app_name: name }
   end
 
   def handle(req, state) do
@@ -28,43 +31,57 @@ defmodule Handler.WeberReqHandler do
     # get path
     {path, req3} = :cowboy_req.path(req2)
 
+    config = :gen_server.call(state.app_name, :config)
     routes = :gen_server.call(state.app_name, :routes)
     static = :gen_server.call(state.app_name, :static)
     views = :gen_server.call(state.app_name,  :views)
     root = :gen_server.call(state.app_name,  :root)
-    
+
     case :lists.flatten(match_routes(path, routes)) do
       [] -> 
-        res = try_to_find_static_resource(path, static, views, root)
-        case res do
+        case try_to_find_static_resource(path, static, views, root) do
           404 ->
             {:ok, req4} = :cowboy_req.reply(200, [], get404, req3)
             {:ok, req4, state}  
-          _ ->
+          res ->
             {:ok, data} = File.read(res)
             {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", :mimetypes.filename(res)}], data, req3)
             {:ok, req4, state}  
         end              
       [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
+        cookie = case Weber.Http.Params.cookies do
+          [] ->
+            :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self}) 
+              |> :erlang.binary_to_list
+              |> :lists.concat
+              |> :lists.concat
+          _cookie_already_exists ->
+            :erlang.binary_to_list(Weber.Http.Params.get_cookie("weber")) 
+        end
+
+        # set up cookie
+        {_, session}  = :lists.keyfind(:session, 1, config)
+        {_, max_age}  = :lists.keyfind(:max_age, 1, session)
+        req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
         # get response from controller
         result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
         # handle controller's response
         res = handle_result(result, controller, views)
         case res do
           {:redirect, location} ->
-            {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
+            {:ok, req5} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req4)
           {:nothing, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, headers, <<"">>, req3)
+            {:ok, req5} = :cowboy_req.reply(200, headers, <<"">>, req4)
           {:text, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req3)
+            {:ok, req5} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req4)
           {:json, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "application/json"}], headers), data, req3)
+            {:ok, req5} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "application/json"}], headers), data, req4)
           {:file, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, headers, data, req3)
+            {:ok, req5} = :cowboy_req.reply(200, headers, data, req4)
           {:render, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
+            {:ok, req5} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req4)
         end
-        {:ok, req4, state}
+        {:ok, req5, state}
     end
   end
 

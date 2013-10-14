@@ -18,9 +18,8 @@ defmodule Config do
       [default_locale: "en_US"
       ],
     session:
-      [session_life_time: 1440,
-       session_key: "weber"
-      ], 
+      [max_age: 1440
+      ]
     ]
   end
 

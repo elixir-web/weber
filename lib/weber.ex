@@ -7,6 +7,8 @@ defmodule Weber do
 
   def run_weber(app_name, routes, root_directory, config) do
     start([], [])
+    Weber.Session.SessionManager.start_link(config)
+    Weber.Localization.LocalizationManager.start_link(config)
     Weber.Supervisor.start_app(app_name, routes, root_directory, config)
   end
 
