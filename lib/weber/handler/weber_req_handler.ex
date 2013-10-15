@@ -75,14 +75,6 @@ defmodule Handler.WeberReqHandler do
   end
 
   #
-  #  Handle response from controller
-  #
-  defp handle_result(res, controller, views) do
-    app = Handler.WeberReqHandler.Result.App.new controller: controller, views: views
-    request(res, app)
-  end
-
-  #
   #  Try to find static resource and send response
   #
   defp try_to_find_static_resource(path, static, views, _root) do
