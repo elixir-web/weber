@@ -39,7 +39,7 @@ defmodule Handler.WeberReqHandler do
         res = try_to_find_static_resource(path, static, views, root)
         case res do
           404 ->
-            {:ok, req4} = :cowboy_req.reply(200, [], get404, req3)
+            {:ok, req4} = :cowboy_req.reply(404, [], get404, req3)
             {:ok, req4, state}  
           _ ->
             {:ok, data} = File.read(res)
@@ -49,7 +49,7 @@ defmodule Handler.WeberReqHandler do
       [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
         # get response from controller
         result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
-        # handle controller's response
+        # handle controller's response, see in Handler.WeberReqHandler.Result
         res = handle_result(result, controller, views)
         case res do
           {:redirect, location} ->
