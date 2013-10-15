@@ -18,7 +18,7 @@ defmodule Weber.Localization.LocalizationManager do
   def handle_cast(:load_localization_files, state) do
     case :lists.keyfind(:localization, 1, state.config) do
       false ->  
-        {:stop, :normal, :shutdown_ok, state}
+        {:stop, :normal, state}
       {:localization, localization_config} ->
         {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
         {:ok, project_path} = File.cwd()

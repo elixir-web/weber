@@ -22,7 +22,7 @@ defmodule Weber.Session do
 
   def handle_info({:time_to_die, session_id}, state) do
     :ets.delete(:cookie_storage, session_id)
-    {:stop, :normal, :shutdown_ok, state}
+    {:stop, :normal, state}
   end
 
 end
