@@ -19,6 +19,8 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * Json generation with exjson;
  * Websocket support;
  * HTML generators;
+ * i18n support;
+ * Sessions support;
 
 ## Quick start
 
@@ -275,6 +277,10 @@ defmodule Simplechat.Main.Chat do
 
 end
 ```
+
+## Session
+
+[Session API](https://github.com/0xAX/weber/wiki/Weber.Session-API)
 
 ## Dependencies
 
