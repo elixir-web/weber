@@ -34,7 +34,7 @@ defmodule Weber.Session do
     end
   end
 
-  def get_session_val(key) do
+  def get_session(key) do
     case get_session_helper() do
       [] -> []
       [{_, _, opts}] -> 
