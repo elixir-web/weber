@@ -7,8 +7,14 @@ defmodule Handler.WeberReqHandler.Result do
   defrecord App,
     controller: nil,
     views: nil
+    
+  @doc "Handle response from controller"
+  def handle_result(res, controller, views) do
+    app = App.new controller: controller, views: views
+    request(res, app)
+  end
 
-  def request({:render, data, headers}, app) do
+  defp request({:render, data, headers}, app) do
     filename = atom_to_list(app.controller)
                  |> :string.tokens('.')
                  |> List.last
@@ -20,28 +26,28 @@ defmodule Handler.WeberReqHandler.Result do
     {:render, (EEx.eval_string file_content, data), headers}
   end
 
-  def request({:render_inline, data, params, headers}, _app) do
+  defp request({:render_inline, data, params, headers}, _app) do
     {:render, (EEx.eval_string data, params), headers}
   end
 
-  def request({:file, path, headers}, _app) do
+  defp request({:file, path, headers}, _app) do
     {:ok, file_content} = File.read(path)
     {:file, file_content, :lists.append([{"Content-Type", :mimetypes.filename(path)}], headers)}
   end
 
-  def request({:redirect, location}, _app) do
+  defp request({:redirect, location}, _app) do
     {:redirect, location}
   end
 
-  def request({:nothing, headers}, _app) do
+  defp request({:nothing, headers}, _app) do
     {:nothing, headers}
   end
 
-  def request({:text, data, headers}, _app) do
+  defp request({:text, data, headers}, _app) do
     {:text, data, headers}
   end
   
-  def request({:json, data, headers}, _app) do
+  defp request({:json, data, headers}, _app) do
     {:json, JSON.generate(data), headers}
   end
 end
