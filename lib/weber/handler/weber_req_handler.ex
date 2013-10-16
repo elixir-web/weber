@@ -8,6 +8,8 @@ defmodule Handler.WeberReqHandler do
   import Weber.Route
   import Weber.Http.Url
   import Handler.Weber404Handler
+  import Handler.WeberReqHandler.Result
+  import Handler.WeberReqHandler.Response
 
   defrecord State, 
     app_name: nil
@@ -34,74 +36,29 @@ defmodule Handler.WeberReqHandler do
     root = :gen_server.call(state.app_name,  :root)
     
     case :lists.flatten(match_routes(path, routes)) do
-      [] -> 
+      [] ->
         res = try_to_find_static_resource(path, static, views, root)
         case res do
           404 ->
-            {:ok, req4} = :cowboy_req.reply(200, [], get404, req3)
-            {:ok, req4, state}  
+            {:ok, req4} = :cowboy_req.reply(404, [], get404, req3)
+            {:ok, req4, state}
           _ ->
             {:ok, data} = File.read(res)
             {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", :mimetypes.filename(res)}], data, req3)
-            {:ok, req4, state}  
-        end              
+        end
       [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
         # get response from controller
         result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
-        # handle controller's response
-        res = handle_result(result, controller, views)
-        case res do
-          {:redirect, location} ->
-            {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
-          {:nothing, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, headers, <<"">>, req3)
-          {:text, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req3)
-          {:json, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "application/json"}], headers), data, req3)
-          {:file, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, headers, data, req3)
-          {:render, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
-        end
-        {:ok, req4, state}
+        # handle controller's response, see in Handler.WeberReqHandler.Result
+        {:ok, req4} = handle_result(result, controller, views) |> handle_request(req3)
     end
+
+    {:ok, req4, state}
   end
 
   def terminate(_reason, _req, _state) do
     :ets.delete(:req_storage, self)
     :ok
-  end
-
-  #
-  #  Handle response from controller
-  #
-  defp handle_result(res, controller, views) do
-    case res do
-      {:render, data, headers} -> 
-        filename = atom_to_list(controller) 
-                       |> :string.tokens('.') 
-                       |> List.last
-                       |> :lists.append(".html")
-                       |> :erlang.list_to_binary
-                       |> String.downcase
-                       |> :erlang.binary_to_list
-        {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(views), filename)))
-        {:render, (EEx.eval_string file_content, data), headers}
-      {:render_inline, data, params, headers} ->
-        {:render, (EEx.eval_string data, params), headers}
-      {:file, path, headers} ->
-        {:ok, file_content} = File.read(path)
-        {:file, file_content, :lists.append([{"Content-Type", :mimetypes.filename(path)}], headers)}
-      {:redirect, location} ->
-        {:redirect, location}
-      {:nothing, headers} ->
-        {:nothing, headers}
-      {:text, data, headers} ->
-        {:text, data, headers}
-      {:json, data, headers} ->
-        {:json, JSON.generate(data), headers}
-    end
   end
 
   #
