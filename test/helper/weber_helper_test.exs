@@ -7,9 +7,15 @@ defmodule WeberHelperTest do
   import Weber.Helper.IncludeView
 
   setup_all do
+    Weber.stop([])
     root = __DIR__ <> "/../weber_fake"
     app_name = Mix.Project.get.project[:app]
     Weber.run_weber(app_name, Example.Route.get_route, :binary.bin_to_list(root), Config.config)
+    :ok
+  end
+
+  teardown_all do
+    Weber.stop([])
     :ok
   end
 

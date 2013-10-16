@@ -9,6 +9,7 @@ defmodule Handler.WeberReqHandler do
   import Weber.Http.Url
   import Handler.Weber404Handler
   import Handler.WeberReqHandler.Result
+  import Handler.WeberReqHandler.Response
 
   defrecord State, 
     app_name: nil
@@ -35,38 +36,24 @@ defmodule Handler.WeberReqHandler do
     root = :gen_server.call(state.app_name,  :root)
     
     case :lists.flatten(match_routes(path, routes)) do
-      [] -> 
+      [] ->
         res = try_to_find_static_resource(path, static, views, root)
         case res do
           404 ->
             {:ok, req4} = :cowboy_req.reply(404, [], get404, req3)
-            {:ok, req4, state}  
+            {:ok, req4, state}
           _ ->
             {:ok, data} = File.read(res)
             {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", :mimetypes.filename(res)}], data, req3)
-            {:ok, req4, state}  
-        end              
+        end
       [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
         # get response from controller
         result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
         # handle controller's response, see in Handler.WeberReqHandler.Result
-        res = handle_result(result, controller, views)
-        case res do
-          {:redirect, location} ->
-            {:ok, req4} = :cowboy_req.reply(301, [{"Location", location}, {"Cache-Control", "no-store"}], <<"">>, req3)
-          {:nothing, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, headers, <<"">>, req3)
-          {:text, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "plain/text"}], headers), data, req3)
-          {:json, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, :lists.append([{"Content-Type", "application/json"}], headers), data, req3)
-          {:file, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, headers, data, req3)
-          {:render, data, headers} ->
-            {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", "text/html"} | headers], data, req3)
-        end
-        {:ok, req4, state}
+        {:ok, req4} = handle_result(result, controller, views) |> handle_request(req3)
     end
+
+    {:ok, req4, state}
   end
 
   def terminate(_reason, _req, _state) do

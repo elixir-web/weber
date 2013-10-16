@@ -4,7 +4,7 @@ defmodule Weber.Mixfile do
   def project do
     [ app: :weber,
       version: "0.0.2",
-      deps: deps ]
+      deps: deps(Mix.env) ]
   end
 
   def application do
@@ -15,13 +15,21 @@ defmodule Weber.Mixfile do
     ]
   end
 
-  defp deps do
+  defp deps(:prod) do
     [
       {:cowboy, "0.8.6", github: "extend/cowboy"},
       {:ecto, github: "elixir-lang/ecto"},
       {:pgsql, github: "ericmj/pgsql", branch: "elixir"},
       {:exjson, github: "guedes/exjson"},
-      {:mimetypes, github: "spawngrid/mimetypes"}
+      {:mimetypes, github: "spawngrid/mimetypes", override: true}
     ]
+  end
+
+  defp deps(:test) do
+    deps(:prod) ++ [{ :hackney, github: "benoitc/hackney" }]
+  end
+  
+  defp deps(_) do
+    deps(:prod)
   end
 end
