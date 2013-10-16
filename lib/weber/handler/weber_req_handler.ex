@@ -37,15 +37,10 @@ defmodule Handler.WeberReqHandler do
     
     case :lists.flatten(match_routes(path, routes)) do
       [] ->
-        res = try_to_find_static_resource(path, static, views, root)
-        case res do
-          404 ->
-            {:ok, req4} = :cowboy_req.reply(404, [], get404, req3)
-            {:ok, req4, state}
-          _ ->
-            {:ok, data} = File.read(res)
-            {:ok, req4} = :cowboy_req.reply(200, [{"Content-Type", :mimetypes.filename(res)}], data, req3)
-        end
+        # Get static file or page not found
+        {:ok, req4} = try_to_find_static_resource(path, static, views, root)  |>
+                                                                handle_result |> 
+                                                                handle_request(req3)
       [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
         # get response from controller
         result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
@@ -70,12 +65,12 @@ defmodule Handler.WeberReqHandler do
       [] ->
         case find_file_path(get_all_files(static), resource) do
           [] ->
-            404
+            {:not_found, get404, []}
           [resource_name] ->
-            resource_name
+            {:file, resource_name, []}
         end
       [resource_name] ->
-        resource_name
+        {:file, resource_name, []}
     end
   end
 end
