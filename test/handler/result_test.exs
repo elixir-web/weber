@@ -45,4 +45,9 @@ defmodule HandlerWeberReqHandlerResultTest do
     request = handle_result({:json, data, []}, controller, views)
     assert request == {:json, 200, JSON.generate(data), [{"Content-Type", "application/json"}]}
   end
+
+  test "request not found" do
+    request = handle_result({:not_found, "Not Found", []})
+    assert request == {:not_found, 404, "Not Found", []}
+  end
 end

@@ -9,7 +9,7 @@ defmodule Handler.WeberReqHandler.Result do
     views: nil
     
   @doc "Handle response from controller"
-  def handle_result(res, controller, views) do
+  def handle_result(res, controller // nil, views // nil) do
     app = App.new controller: controller, views: views
     request(res, app)
   end
@@ -49,5 +49,9 @@ defmodule Handler.WeberReqHandler.Result do
   
   defp request({:json, data, headers}, _app) do
     {:json, 200, JSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+  end
+
+  defp request({:not_found, data, headers}, _app) do
+    {:not_found, 404, data, headers}
   end
 end
