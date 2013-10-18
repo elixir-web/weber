@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weber.Http.Params</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <h1>
+        Weber.Http.Params
+        
+      </h1>
+
+      
+        <div id="moduledoc" class="docstring">
+          <p>API for getting request params</p>
+
+<p>## Example</p>
+
+<p>defmodule Simplechat.Main.Login do</p>
+
+<pre><code>import Weber.Http.Params
+
+def render_login(&quot;GET&quot;, []) do
+
+  # get body request
+  body = get_body()
+
+  #
+  # Do something with param
+  #
+  {:render, [project: &quot;SimpleChat&quot;], []}
+end
+</code></pre>
+
+<p>end</p>
+
+        </div>
+      
+
+      <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L1" target="_blank" class="view_source">Source</a>
+
+      
+
+      
+        <h2 id="functions_summary">Functions summary</h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#body/0">body()</a></td>
+  
+    <td class="summary_synopsis"><p>Get body</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#cookies/0">cookies()</a></td>
+  
+    <td class="summary_synopsis"><p>Return the full list of cookie values.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_cookie/1">get_cookie(name)</a></td>
+  
+    <td class="summary_synopsis"><p>Get cookie</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_header/1">get_header(name)</a></td>
+  
+    <td class="summary_synopsis"><p>Return the header value for the given key.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_headers/0">get_headers()</a></td>
+  
+    <td class="summary_synopsis"><p>Get all headers</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_host/0">get_host()</a></td>
+  
+    <td class="summary_synopsis"><p>Return the host binary string.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_path/0">get_path()</a></td>
+  
+    <td class="summary_synopsis"><p>Return the path binary string.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_peer/0">get_peer()</a></td>
+  
+    <td class="summary_synopsis"><p>Return the peer address and port number of the remote host.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_port/0">get_port()</a></td>
+  
+    <td class="summary_synopsis"><p>Return the port.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get_version/0">get_version()</a></td>
+  
+    <td class="summary_synopsis"><p>Return HTTP version.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#param/1">param(key)</a></td>
+  
+    <td class="summary_synopsis"><p>Get parameter value by key from query string.</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+
+      
+
+      
+        <div id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <div class="detail">
+  <p class="signature" id="body/0">
+    <strong>body()</strong>
+  </p>
+  
+  <div class="docstring"><p>Get body</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L136" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="cookies/0">
+    <strong>cookies()</strong>
+  </p>
+  
+  <div class="docstring"><p>Return the full list of cookie values.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L124" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_cookie/1">
+    <strong>get_cookie(name)</strong>
+  </p>
+  
+  <div class="docstring"><p>Get cookie</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L112" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_header/1">
+    <strong>get_header(name)</strong>
+  </p>
+  
+  <div class="docstring"><p>Return the header value for the given key.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L88" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_headers/0">
+    <strong>get_headers()</strong>
+  </p>
+  
+  <div class="docstring"><p>Get all headers</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L100" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_host/0">
+    <strong>get_host()</strong>
+  </p>
+  
+  <div class="docstring"><p>Return the host binary string.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L52" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_path/0">
+    <strong>get_path()</strong>
+  </p>
+  
+  <div class="docstring"><p>Return the path binary string.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L76" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_peer/0">
+    <strong>get_peer()</strong>
+  </p>
+  
+  <div class="docstring"><p>Return the peer address and port number of the remote host.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L40" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_port/0">
+    <strong>get_port()</strong>
+  </p>
+  
+  <div class="docstring"><p>Return the port.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L64" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="get_version/0">
+    <strong>get_version()</strong>
+  </p>
+  
+  <div class="docstring"><p>Return HTTP version.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L28" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="param/1">
+    <strong>param(key)</strong>
+  </p>
+  
+  <div class="docstring"><p>Get parameter value by key from query string.</p>
+</div>
+  
+    <a href="https://github.com/0xAX/weber/blob/master/lib/weber/http/params.ex#L150" target="_blank" class="view_source">Source</a>
+  
+</div>
+
+        </div>
+      
+
+      
+
+      
+    </div>
+  </body>
+</html>
