@@ -1,7 +1,8 @@
 Mix.start
-Mix.env(:dev)
+Mix.env(:test)
 Mix.shell(Mix.Shell.Process)
 System.put_env("MIX_ENV", "dev")
+:application.start(:hackney)
 
 ExUnit.start
 
