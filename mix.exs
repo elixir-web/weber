@@ -4,6 +4,7 @@ defmodule Weber.Mixfile do
   def project do
     [ app: :weber,
       version: "0.0.2",
+      name: "Weber",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
       homepage_url: "http://0xax.github.io/weber/index.html"

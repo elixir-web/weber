@@ -1,9 +1,15 @@
 defmodule Weber.Time do
- 
+  @moduledoc """
+  Weber Time utils functions.
+  """
+
+  @doc """
+  Return tuple with current date/time
+  """
   def now do
     :calendar.now_to_datetime(:erlang.now)
   end
-
+  
   def format_time(format, locale_pid, date = _datetime // now) do
     format_time(format, locale_pid, "", date)
   end

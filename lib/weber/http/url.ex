@@ -6,22 +6,25 @@ defmodule Weber.Http.Url do
 
     Url can be:
 
-       * /user/0xAX
-       * /user/0xAX/password/:password
-       * /user?name=0xAX
-       * /product?price=90&color=red
+        * /user/0xAX
+        * /user/0xAX/password/:password
+        * /user?name=0xAX
+        * /product?price=90&color=red
 
-    Usage:
+    ## Usage:
 
-      getBinding("/user/0xAX/password/:password")
+        getBinding("/user/0xAX/password/:password")
 
     Return:
 
-      [segment: "user", segment: "0xAX", segment: "password", binding: "password"]
+        [segment: "user", segment: "0xAX", segment: "password", binding: "password"]
     """
     
   import List
 
+  @doc """
+    Parse url and returns url pathes and bindings.
+  """
   def getBinding(url) do
     getBinding(url, [])
   end
@@ -102,7 +105,7 @@ defmodule Weber.Http.Url do
   end
 
   @doc """
-    Get all url's bindings
+    Get binding's value list.
   """
   def getAllBinding(url, matched_url) do
     zip = :lists.zip(getBinding(url), getBinding(matched_url))

@@ -12,7 +12,11 @@ defmodule Weber.App do
     root:   nil,
     static_dir: nil,
     views_dir:  nil
-    
+  
+  @doc """
+  Start process which stores all project's parameters (router parameters, application name,
+  static files directory and etc...).
+  """
   def start_link(app_name, routes, root_directory, config) do
     :gen_server.start_link({:local, app_name}, __MODULE__, [app_name, routes, root_directory, config], [])
   end

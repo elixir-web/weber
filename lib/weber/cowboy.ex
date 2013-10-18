@@ -1,9 +1,13 @@
 defmodule Cowboy do
     
   @moduledoc """
-    Starts cowboy instance.
+    Weber's weber server.
   """
 
+  @doc """
+  Start new cowboy http/web socket handler with given name and config
+  from config.ex
+  """
   def start(name, config) do
     :application.start(:crypto)
     :application.start(:public_key)

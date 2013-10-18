@@ -7,9 +7,9 @@ defmodule Weber.Helper.ResourceHelper do
   import Weber.Helper.Html
 
   @doc """
-    Generates <script>...<script> resource.
+    Generates script resource.
 
-    Example:
+      ## Example:
 
       #
       # Generates: <script type="text/javascript" src="/public/test.js"></script>
@@ -26,7 +26,7 @@ defmodule Weber.Helper.ResourceHelper do
   @doc """
     Generates <link ... > resource for style elements.
 
-    Example:
+      ## Example:
 
       #
       # Generates: <link href="/public/test.css" rel="stylesheet" media="screen">
@@ -41,7 +41,7 @@ defmodule Weber.Helper.ResourceHelper do
   @doc """
     Include favicon to your html template.
 
-    Example:
+      ## Example:
 
       #
       # Generates: <link href="/public/img/favicon.ico" rel="shortcut icon" type="image/png">
@@ -57,13 +57,12 @@ defmodule Weber.Helper.ResourceHelper do
   @doc """
     Generates <img ... > resource.
 
-    Example:
+      ## Example:
 
       #
       # Generates: <img src="/public/img/example.jpg" alt="Image" class="some-class" height="100" width="100">"
       image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
   """
-
   def image(src, html_options // []) do
     dict = html_options |> ListDict.new
     options = ListDict.put(dict, :src, src) |> ListDict.to_list

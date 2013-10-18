@@ -1,7 +1,7 @@
 defmodule Weber.Utils do
   
   @moduledoc """
-    Weber utils functions
+    Weber utils functions.
   """
 
   import Enum

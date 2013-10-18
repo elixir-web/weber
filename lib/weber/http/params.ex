@@ -1,10 +1,29 @@
 defmodule Weber.Http.Params do
   @moduledoc """
   API for getting request params
+
+    ## Example
+
+    defmodule Simplechat.Main.Login do
+
+      import Weber.Http.Params
+
+      def render_login("GET", []) do
+        
+        # get body request
+        body = get_body()
+        
+        #
+        # Do something with param
+        #
+        {:render, [project: "SimpleChat"], []}
+      end
+      
+    end
   """
   
   @doc """
-    Return HTTP version
+    Return HTTP version.
   """
   def get_version do
     case :ets.lookup(:req_storage, self) do

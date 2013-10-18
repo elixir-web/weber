@@ -3,53 +3,81 @@ defmodule Weber.Route do
   @moduledoc """
     This module handles routing of weber web application.
     Use 'route' macros for declaring routing.
-
-    @route on('/', Controller1, Action1)
-        |> on ('/user/:name', Controller2, Action2)
-        |> on ("/user/add/:username", "Controller2#Action2")
-        |> on ('/user/:name/delete', Controller2, Action1)
-        |> otherwise (404, Controller2, ActionNotFound)
+    
+      ## Example
+    
+        @route on('/', Controller1, Action1)
+          |> on ('/user/:name', Controller2, Action2)
+          |> on ("/user/add/:username", "Controller2#Action2")
+          |> on ('/user/:name/delete', Controller2, Action1)
+          |> otherwise (404, Controller2, ActionNotFound)
   """
 
   import String
   import Weber.Http.Url
 
   @doc """
-    Router attribute
+    Create list with router path.
+
+    controllerAndAction - is controller and action in: :Controller#action format
   """
   def on(path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
     [[path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]]
   end
 
+  @doc """
+    Add new route path to the routes list.
+
+    controllerAndAction - is controller and action in: :Controller#action format
+  """
   def on(routesList, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
     :lists.append(routesList, [[path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]])
   end
 
+  @doc """
+    Create list with router path.
+  """
   def on(path, controller, action) do
     [[path: path, controller: controller, action: action]]
   end
 
+  @doc """
+    Add new route path to the routes list.
+  """
   def on(routesList, path, controller, action) do
     :lists.append(routesList, [[path: path, controller: controller, action: action]])
   end
 
   @doc """
-    Router attribute
+    Create list with router path.
+
+    controllerAndAction - is controller and action in: :Controller#action format
   """
   def otherwise(path, controllerAndAction) when is_binary(controllerAndAction) do
     on(path, controllerAndAction)
   end
 
+  @doc """
+    Add new route path to the routes list.
+
+    controllerAndAction - is controller and action in: :Controller#action format    
+  """
   def otherwise(routesList, path, controllerAndAction) when is_binary(controllerAndAction) do
     on(routesList, path, controllerAndAction)
   end
 
+  @doc """
+    Create list with router path.
+  """
   def otherwise(path, controller, action) do
     on(path, controller, action)
   end
 
+  @doc """
+    Add new route path to the routes list.
+  """
   def otherwise(routesList, path, controller, action) do
     on(routesList, path, controller, action)
   end
