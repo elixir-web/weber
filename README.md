@@ -5,7 +5,6 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
 ![weber-256](https://f.cloud.github.com/assets/197979/1323435/8403dbfe-347f-11e3-97b8-5f6bd1d902ca.png)
 
-
 ## Join the Community
 
   [`#WeberMVC` on freenode IRC](http://webchat.freenode.net/?channels=%23webermvc&uio=d4)
@@ -28,7 +27,8 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  2. Clone this repository.
  3. Execute `mix deps.get` in the weber directory.
  4. Execute `mix compile` in the weber directory.
- 5. Create new project with: `mix weber.new /home/user/testWebApp`
+ 5. Execute `MIX_ENV=test mix do deps.get, test`
+ 6. Create new project with: `mix weber.new /home/user/testWebApp`
 
 Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix compile`. Then you can try to run your testWeberApplication with:
 
@@ -38,7 +38,7 @@ Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix co
 
 and go to the [http://localhost:8080/](http://localhost:8080/)
 
-For more details see in `examples` directory.
+For more details see in `examples` directory and Weber's [API](http://0xax.github.io/weber/public/docs/index.html).
 
 ## Directory structure
 
