@@ -51,7 +51,15 @@ defmodule Handler.WeberReqHandler do
               |> :lists.concat
               |> :lists.concat
           _cookie_already_exists ->
-            :erlang.binary_to_list(Weber.Http.Params.get_cookie("weber")) 
+            case Weber.Http.Params.get_cookie("weber") do
+              [] ->
+                :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self}) 
+                  |> :erlang.binary_to_list
+                  |> :lists.concat
+                  |> :lists.concat
+              _ -> 
+                :erlang.binary_to_list(Weber.Http.Params.get_cookie("weber"))
+            end 
         end
         # set up cookie
         {_, session}  = :lists.keyfind(:session, 1, config)
