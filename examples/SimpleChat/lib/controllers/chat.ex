@@ -1,19 +1,24 @@
 defmodule Simplechat.Main.Chat do
 
-    def render_chat("GET", [{<<"username">>, username}]) do
-        {:render, [username: username], []}
-    end
+  import Weber.Session
 
-    def websocket_init(pid) do
-        :gen_server.cast(:room, {:new_user, pid})
+  def render_chat("GET", []) do
+    case get_session(:username) do
+      [] -> {:redirect, "/"}
+      username -> {:render, [username: username], []}
     end
+  end
+  
+  def websocket_init(pid) do
+    :gen_server.cast(:room, {:new_user, pid})
+  end
 
-    def websocket_message(pid, message) do
-        :gen_server.cast(:room, {:send, message})
-    end
+  def websocket_message(pid, message) do
+    :gen_server.cast(:room, {:send, pid, message})
+  end
 
-    def websocket_terminate(pid) do
-        :gen_server.cast(:room, {:delete_user, pid})
-    end
+  def websocket_terminate(pid) do
+    :gen_server.cast(:room, {:delete_user, pid})
+  end
 
 end

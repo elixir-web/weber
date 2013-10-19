@@ -12,7 +12,7 @@ defmodule Config do
       ],
     ws: 
       [ws_port: 8800,
-       ws_mod: :Handler
+       ws_mod: :Simplechat.Main.Chat
       ],
     localization:
       [default_locale: "en_US"

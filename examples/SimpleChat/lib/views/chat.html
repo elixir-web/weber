@@ -7,20 +7,19 @@
     <script type="text/javascript" src="../static/js/angular.js"></script>
     <script type="text/javascript" src="../static/js/simplechat.js"></script>
   </head>
-  <body ng-controller="SimpleChatRootController">
+  <body ng-controller="SimpleChatRootController" style="min-height: 100%; min-width: 100%;" ng-init="chat_init()">
       <nav class="navbar navbar-default" role="navigation">
         <a class="navbar-brand" href="https://github.com/0xAX/weber">Weber</a>
         <p class="navbar-text pull-right">Signed in as  <%= username %></p>    
       </nav>
-      <textarea readonly style="width: 1200px; height: 700px; resize: none;" ng-model="chat"></textarea>
-      <div class="row">
-          <div class="col-lg-3" style="width: 1230px; margin-top: 10px;">
-              <div class="input-group">
-                  <input type="text" class="form-control" ng-model="message">
-                      <span class="input-group-btn">
-                          <button class="btn btn-success" ng-click="send_message(message)" type="button">Send</button>
-                      </span>
-              </div>
+      <textarea readonly style="margin-left: 50px; height: 500px; width: 95%; resize: none;" 
+                         ng-model="chat"></textarea>
+      <div class="row" style="margin-left: 50px; width: 95%; margin-top: 10px;">
+          <div class="input-group">
+              <input type="text" class="form-control" ng-model="message">
+                  <span class="input-group-btn">
+                      <button class="btn btn-success" ng-click="send_message(message)" type="button">Send</button>
+                  </span>
           </div>
       </div>
   </body>
