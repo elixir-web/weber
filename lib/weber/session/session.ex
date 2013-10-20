@@ -80,8 +80,8 @@ defmodule Weber.Session do
       _ ->
         sessions_list = :ets.tab2list(:cookie_storage)
         Enum.filter(sessions_list, 
-          fn({s, _, _}) ->
-            :erlang.list_to_binary(:lists.concat(:lists.concat(:erlang.binary_to_list(s)))) == cookie
+          fn({session_id, _, _}) ->
+            session_id == cookie
           end)
     end
   end

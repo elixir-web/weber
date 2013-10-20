@@ -24,4 +24,11 @@ defmodule Weber.Utils do
     end)
   end
 
+  @doc """
+  Collect all Helpers imports.
+  """
+  def add_helpers_imports(view_content) do
+    "<% import Weber.Helper.Html %>" <> "<% import Weber.Helper.IncludeView %>"<> "<% import Weber.Helper.ResourceHelper %>" <> view_content
+  end
+
 end

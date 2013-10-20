@@ -7,6 +7,9 @@
   * Sessions support.
   * Added favicon.ico to the generated project.
   * `link` helper renamed to `style`.
+  * Add all imports to the view before rendering.
+  * `SimpleChat` updated. Made with user sessions.
+  * HTTP handler refactored.
 
 #### Weber-0.0.2 [Released]
 

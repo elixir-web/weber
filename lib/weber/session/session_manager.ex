@@ -49,4 +49,24 @@ defmodule Weber.Session.SessionManager do
     end
   end
 
+  @doc """
+  Check cookie in ets.
+  """
+  def handle_cast({:check_cookie, cookie, pid}, state) do
+    case :ets.match_object(:cookie_storage, {cookie, :_, :_}) do
+      [] ->
+        locale = case :lists.keyfind(:localization, 1, state.config) do
+          false -> 
+            []
+          {:localization, localization_config} ->
+            {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
+            default_locale
+        end
+        :ets.insert(:cookie_storage, {cookie, pid, [locale: locale]})
+      _ ->
+        :ok
+    end
+    {:noreply, state}
+  end
+
 end
