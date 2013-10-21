@@ -17,6 +17,13 @@ defmodule WeberHelperContentForTest do
     assert file_content =~ %r/Hello/
   end
 
+  test "content for layout bindings" do
+    file_content = File.read!(app_views("test_bind.html"))
+    Weber.Helper.ContentFor.content_for(:layout)
+
+    assert file_content =~ %r/<%= value %>/
+  end
+
   defp app_views(file) do
     __DIR__ <> "/../weber_fake/lib/views/" <> file
   end
