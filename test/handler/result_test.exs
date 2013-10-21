@@ -12,7 +12,7 @@ defmodule HandlerWeberReqHandlerResultTest do
 
   test "request render" do
     request = handle_result({:render, [], []}, controller, views)
-    assert request == {:render, 200, "Hello\n", [{"Content-Type", "text/html"}]}
+    assert request == {:render, 200, "<html>\n  <head>\n    <title>Test</title>\n  </head>\n  <body>\n    Hello\n\n  </body>\n</html>", [{"Content-Type", "text/html"}]}
   end
 
   test "request render inline" do
