@@ -2,7 +2,7 @@ defmodule Weber.Helper.ContentFor do
   @moduledoc """
   This module create content_for.
   Please note for your layouts just put <%= content_for_layout %>
-  """"
+  """
   defmacro content_for(:layout) do
     quote do
       views = :gen_server.call(Mix.Project.get.project[:app], :views)
