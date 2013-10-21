@@ -2,8 +2,15 @@ defmodule HandlerWeberReqHandlerResultTest do
   use ExUnit.Case
   import Handler.WeberReqHandler.Result
 
+  setup_all do
+    root = __DIR__ <> "/../weber_fake"
+    app_name = Mix.Project.get.project[:app]
+    Weber.run_weber(app_name, Example.Route.get_route, :binary.bin_to_list(root), Config.config)
+    :ok
+  end
+
   def controller do
-    :"Controller.Test"
+    :"Example.Test"
   end
 
   def views do
