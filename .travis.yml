@@ -14,4 +14,3 @@ script:
   - mix test
 env:
   - MIX_ENV=test
-  - MIX_ENV=pg
