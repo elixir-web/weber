@@ -51,7 +51,7 @@ defmodule Mix.Tasks.Weber do
       #
       path = Path.expand directoryName
       baseName = Path.basename directoryName
-
+      
       vars = HashDict.new [
         {"path", path},
         {"projectNamespace", Mix.Utils.camelize(baseName)},
