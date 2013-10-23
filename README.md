@@ -153,6 +153,16 @@ end
 
 You can find the full API at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
+## Layout
+
+Create `layouts` folder in `views/` in inside put:
+
+```HTML
+<%= content_for_layout %>
+```
+
+All views render in `content_for_layout`
+
 ## Helper
 
 ### Html Helper

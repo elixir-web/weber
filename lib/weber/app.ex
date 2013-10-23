@@ -22,19 +22,14 @@ defmodule Weber.App do
   end
 
   def init([app_name, routes, root_directory, config]) do
-    :gen_server.cast(:erlang.self(), :init)
     :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
+    Cowboy.start(app_name, config)
     { :ok, WeberApp.new name: app_name, 
                         routes: routes, 
                         root: root_directory, 
                         config: config,
                         static_dir: root_directory ++ '/public/',
                         views_dir:  root_directory ++ '/lib/views/' }
-  end
-
-  def handle_cast(:init, state) do
-    Cowboy.start(state.name, state.config)
-    {:noreply, state}
   end
 
   def handle_call(:routes, _from, state) do

@@ -4,6 +4,7 @@ defmodule Handler.WeberReqHandler.Result do
   """
 
   import Weber.Utils
+  require Weber.Helper.ContentFor
 
   defrecord App,
     controller: nil,
@@ -24,6 +25,7 @@ defmodule Handler.WeberReqHandler.Result do
                  |> String.downcase
                  |> :erlang.binary_to_list
     {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
+    Weber.Helper.ContentFor.content_for(:layout)
     {:render, 200, (EEx.eval_string add_helpers_imports(file_content), data), [{"Content-Type", "text/html"} | headers]}
   end
 
