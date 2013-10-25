@@ -60,18 +60,18 @@ For more details see in `examples` directory and Weber's [API](http://0xax.githu
 Routing declaration is in `route.ex` files:
 
 ```elixir
-    @route on("/", :Simpletodo.Main, :action)
+    route on("/", :Simpletodo.Main, :action)
       |> on("/add/:note", :Simpletodo.Main, :add)
 ```
 
 Also `on` supports following syntax:
 
 ```elixir
-    @route on("/", "Simpletodo.Main#action")
+    route on("/", "Simpletodo.Main#action")
       |> on("/add/:note", "Simpletodo.Main#add")
 ```
 
-It is `@route` attribute which value is chain of `on` and `otherwise` functions with 3 parametes:
+It is `route` macro which value is chain of `on` and `otherwise` functions with 3 parametes:
 
   * Route path, can be binding (starts with ':' symbol);
   * Module name of controller;

@@ -16,6 +16,14 @@ defmodule Weber.Route do
   import String
   import Weber.Http.Url
 
+  defmacro route(routeList) do
+    quote do
+      def unquote(:__route__)() do
+        unquote(routeList)
+      end
+    end
+  end
+
   @doc """
     Create list with router path.
 
