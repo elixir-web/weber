@@ -11,9 +11,9 @@ defmodule WeberHelperContentForTest do
   require Weber.Helper.ContentFor
 
   test "content for layout" do
-    file_content = File.read!(app_views("test.html"))
+    IO.inspect file_content = File.read!(app_views("test.html"))
     Weber.Helper.ContentFor.content_for(:layout)
-
+    IO.inspect file_content
     assert file_content =~ %r/Hello/
   end
 

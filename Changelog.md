@@ -10,6 +10,9 @@
   * Add all imports to the view before rendering.
   * `SimpleChat` updated. Made with user sessions.
   * HTTP handler refactored.
+  * `content_for_layout` helper.
+  * Controller Helpers.
+  * `layout` controller helper.
 
 #### Weber-0.0.2 [Released]
 

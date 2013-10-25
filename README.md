@@ -17,7 +17,8 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * Project generation;
  * Json generation with exjson;
  * Websocket support;
- * HTML generators;
+ * HTML helpers;
+ * Web controller Helpers.
  * i18n support;
  * Sessions support;
 
@@ -153,16 +154,6 @@ end
 
 You can find the full API at the [wiki](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
 
-## Layout
-
-Create `layouts` folder in `views/` in inside put:
-
-```HTML
-<%= content_for_layout %>
-```
-
-All views render in `content_for_layout`
-
 ## Helper
 
 ### Html Helper
@@ -248,6 +239,32 @@ favicon()
 # Generates: <img src="/public/img/example.jpg" alt="Image" class="some-class" height="100" width="100">"
 image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
 ```
+
+## Controller Helpers
+
+### `content_for_layout` and `layout`
+
+Create `layouts` folder in `views/` in inside put:
+
+```HTML
+<%= content_for_layout %>
+```
+
+Declare `layout` helper in your controller:
+
+```elixirlang
+defmodule TestController.Main do
+
+  require Weber.Controller
+
+  Weber.Controller.layout 'layout.html'
+  
+  ....        
+end
+
+```
+
+template from current view will render in `layout.html` instead `<%= content_for_layout %>`
 
 ## Websocket
 
