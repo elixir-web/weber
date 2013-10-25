@@ -242,7 +242,7 @@ image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100
 
 ## Controller Helpers
 
-### `content_for_layout` and `layout`
+#### `content_for_layout` and `layout`
 
 Create `layouts` folder in `views/` in inside put:
 
