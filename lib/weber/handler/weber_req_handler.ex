@@ -44,22 +44,14 @@ defmodule Handler.WeberReqHandler do
         # Get static file or page not found
         try_to_find_static_resource(path, static, views, root) |> handle_result |> handle_request(req3, state)
       [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
-        cookie = case Weber.Http.Params.cookies do
-          [] ->
+        cookie = case Weber.Http.Params.get_cookie("weber") do
+          :undefined ->
             :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self}) 
               |> :erlang.binary_to_list
               |> :lists.concat
               |> :lists.concat
-          _cookie_already_exists ->
-            case Weber.Http.Params.get_cookie("weber") do
-              [] ->
-                :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self}) 
-                  |> :erlang.binary_to_list
-                  |> :lists.concat
-                  |> :lists.concat
-              _ -> 
-                :erlang.binary_to_list(Weber.Http.Params.get_cookie("weber"))
-            end 
+          weber_cookie ->
+            :erlang.binary_to_list(weber_cookie)
         end
         # set up cookie
         {_, session}  = :lists.keyfind(:session, 1, config)
