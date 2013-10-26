@@ -20,15 +20,30 @@ defmodule Weber.Localization.LocalizationManager do
       false ->  
         {:stop, :normal, state}
       {:localization, localization_config} ->
-        {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
         {:ok, project_path} = File.cwd()
+        {:ok, translation_files} = File.ls(project_path <> "/lang")
         {:ok, localization_files} = File.ls(project_path <> "/deps/weber/lib/weber/i18n/localization/locale")
+        
+        {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
+        
+        # load localization files
+        #Enum.each(localization_files, 
+        #  fn (file) ->
+        #    {:ok, data} = File.read(project_path <> "/deps/weber/lib/weber/i18n/localization/locale/" <> file)
+        #    Weber.Localization.Locale.start_link(binary_to_atom(file), data)  
+        #  end)
 
-        Enum.each(localization_files, 
+        # load translation files
+        Enum.each(translation_files,
           fn (file) ->
-            {:ok, data} = File.read(project_path <> "/deps/weber/lib/weber/i18n/localization/locale/" <> file)
-            Weber.Localization.Locale.start_link(binary_to_atom(file), data)  
+            {:ok, translation_file_data} = File.read(project_path <> "/lang/" <> file)
+            case translation_file_data do
+              <<>> -> :ok
+              _ ->
+                Weber.Translation.Translate.start_link(binary_to_atom(file), translation_file_data)
+            end
           end)
+
         {:noreply, LocalizationConfig.new config: state.config, default_locale: default_locale}
     end
   end

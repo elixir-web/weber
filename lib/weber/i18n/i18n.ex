@@ -35,5 +35,17 @@ defmodule Weber.I18n do
     date_time_format = :gen_server.call(locale_process_name, :get_date_time_format)
     {date_time_format, locale_process_name}
   end
+
+  @doc """
+  Translation helper.
+  """
+  def t(key) do
+    case Weber.Session.get_session(:locale) do
+      [] -> 
+        :gen_server.call(:en_US, {:translate, key})
+      locale ->
+        :gen_server.call(locale, {:translate, key})
+    end
+  end
     
 end

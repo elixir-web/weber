@@ -266,6 +266,25 @@ end
 
 template from current view will render in `layout.html` instead `<%= content_for_layout %>`
 
+## Internationalization
+
+There is `t` helper for Weber probject internationalization. Create lang file with name like `en_US` in `lang` directory:
+
+```
+{
+  "HELLO_STR" : "Hello, It is weber framework!", 
+  "FRAMEWORK_DESCRIPTION" : "Weber - is a MVC Web framework for Elixir."
+}
+```
+
+and you can use it like:
+
+```html
+<span><%= t "HELLO_STR" %></span>
+```
+
+in your html template.
+
 ## Websocket
 
 You can handle websocket connection and incoming/outcoming websocket message in your controllers.

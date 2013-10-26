@@ -95,6 +95,7 @@ defmodule Weber.Route do
   """
   def match_routes(path, routes) do
     parsed_path = getBinding(path)
+
     Enum.filter(routes, 
       fn(route) -> 
         [path: p, controller: _controller, action: _action] = route
@@ -102,7 +103,7 @@ defmodule Weber.Route do
             "404" ->
               false
             _ ->
-              parsed_route_path = getBinding(p)
+              parsed_route_path = getBinding(p)    
               match_routes_helper(parsed_path, parsed_route_path)
           end
       end)
@@ -123,7 +124,7 @@ defmodule Weber.Route do
   defp match_routes_helper([{:param, _, _key, _val} | _parsed_path], []) do
     true
   end
-  
+    
   defp match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
     case type == route_type do
       true -> 
@@ -133,7 +134,11 @@ defmodule Weber.Route do
         end
       false -> 
         case route_type == :binding do
-          true -> match_routes_helper(parsed_path, parsed_route_path)
+          true -> 
+            case path do
+              <<>> -> false
+              _ -> match_routes_helper(parsed_path, parsed_route_path)
+            end
           false -> false
         end
     end

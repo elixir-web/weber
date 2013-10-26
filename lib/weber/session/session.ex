@@ -68,7 +68,7 @@ defmodule Weber.Session do
       [] -> []
       [{s, pid, opts}] ->
         :ets.delete(:cookie_storage, s)
-        :ets.insert(:cookie_storage, {s, pid, [{key, val} | opts]})
+        :ets.insert(:cookie_storage, {s, pid, [{key, val} | :lists.keydelete(key, 1, :lists.keydelete(key, 1, opts))]})
         :ok
     end
   end
@@ -79,9 +79,10 @@ defmodule Weber.Session do
       :undefined -> []
       _ ->
         sessions_list = :ets.tab2list(:cookie_storage)
+
         Enum.filter(sessions_list, 
           fn({session_id, _, _}) ->
-            session_id == cookie
+            :erlang.list_to_binary(:lists.concat(:lists.concat(:erlang.binary_to_list(session_id)))) == cookie
           end)
     end
   end
