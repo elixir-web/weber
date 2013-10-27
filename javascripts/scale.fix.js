@@ -18,3 +18,8 @@ fixScale = function(doc) {
 	}
 
 };
+
+go = function(location) {
+	console.log(location)
+	window.location.replace(location);
+}
