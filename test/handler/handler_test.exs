@@ -17,12 +17,12 @@ defmodule HandlerWeberReqHandlerTest do
     {status, body}
   end
 
-  #test "response body" do
-  #  {status, body} = response('http://localhost:8080')
-  #  
-  #  assert status == 200
-  #  assert body == "<html>\n  <head>\n    <title>Test</title>\n  </head>\n  <body>\n    Hello\n\n  </body>\n</html>"
-  #end
+  test "response body" do
+    {status, body} = response('http://localhost:8080')
+    
+    assert status == 200
+    assert body == "Hello\n"
+  end
 
   test "response body with static file" do
     {status, body} = response('http://localhost:8080/static.html')

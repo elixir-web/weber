@@ -16,12 +16,7 @@ defmodule HandlerWeberReqHandlerResultTest do
   def views do
     String.to_char_list!(Path.expand(__DIR__ <> "/../weber_fake/lib/views/"))
   end
-
-  #test "request render" do
-  #  request = handle_result({:render, [], []}, controller, views)
-  #  assert request == {:render, 200, "<html>\n  <head>\n    <title>Test</title>\n  </head>\n  <body>\n    Hello\n\n  </body>\n</html>", [{"Content-Type", "text/html"}]}
-  #end
-
+  
   test "request render inline" do
     request = handle_result({:render_inline, "Hello inline!", [], []}, controller, views)
     assert request == {:render, 200, "Hello inline!", []}

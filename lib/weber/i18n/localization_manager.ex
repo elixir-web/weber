@@ -21,29 +21,31 @@ defmodule Weber.Localization.LocalizationManager do
         {:stop, :normal, state}
       {:localization, localization_config} ->
         {:ok, project_path} = File.cwd()
-        {:ok, translation_files} = File.ls(project_path <> "/lang")
-        {:ok, localization_files} = File.ls(project_path <> "/deps/weber/lib/weber/i18n/localization/locale")
-        
         {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
+ 
+        case File.ls(project_path <> "/lang") do
+          {:ok, localization_files} ->
+            Enum.each(localization_files, fn (file) ->
+              case File.read(project_path <> "/deps/weber/lib/weber/i18n/localization/locale/" <> file) do
+                {:ok, data} -> Weber.Localization.Locale.start_link(binary_to_atom(file), data)  
+                _ -> :ok
+              end
+            end)
+          _ -> :ok
+        end
         
-        # load localization files
-        #Enum.each(localization_files, 
-        #  fn (file) ->
-        #    {:ok, data} = File.read(project_path <> "/deps/weber/lib/weber/i18n/localization/locale/" <> file)
-        #    Weber.Localization.Locale.start_link(binary_to_atom(file), data)  
-        #  end)
-
-        # load translation files
-        Enum.each(translation_files,
-          fn (file) ->
-            {:ok, translation_file_data} = File.read(project_path <> "/lang/" <> file)
-            case translation_file_data do
-              <<>> -> :ok
-              _ ->
-                Weber.Translation.Translate.start_link(binary_to_atom(file), translation_file_data)
-            end
-          end)
-
+        case File.ls(project_path <> "/deps/weber/lib/weber/i18n/localization/locale") do
+          {:ok, translation_files} ->
+            Enum.each(translation_files, fn (file) ->
+              {:ok, translation_file_data} = File.read(project_path <> "/lang/" <> file)
+              case translation_file_data do
+                <<>> -> :ok
+                _ -> Weber.Translation.Translate.start_link(binary_to_atom(file), translation_file_data)
+              end
+            end)
+          _ -> :ok
+        end
+                
         {:noreply, LocalizationConfig.new config: state.config, default_locale: default_locale}
     end
   end
