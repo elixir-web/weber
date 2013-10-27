@@ -27,6 +27,7 @@
           <li><a class="buttons github" href="webcontrollers.html">Web Controllers</a></li>
           <li><a class="buttons github" href="views.html">Views</a></li>
           <li><a class="buttons github" href="models.html">Models</a></li>
+          <li><a class="buttons github" href="sessions.html">Sessions</a></li>
           <li><a class="buttons github" href="helpers.html">Helpers</a></li>
           <li><a class="buttons github" href="websocket.html">Websocket</a></li>
         </ul>
@@ -42,20 +43,37 @@
         </h3>
 
 
-        When you're created new Weber's web application, you will have `route.ex` file in the `/home/user/testWeberApplication/lib` directory.There is routing declaration. It can be something like this:
+        When you're created new Weber's web application, you will have <i>route.ex</i> file in the <i>/home/user/testWeberApplication/lib</i> directory.There is routing declaration. It can be something like this:
 
         <br/><br/>
         <script src="https://gist.github.com/0xAX/6598164.js"></script>
         <br/>
         
-        It is @route attribute which value is chain of on and otherwise functions with 3 parametes:
+        It is <i>route<i> macro which value is chain of on and otherwise functions with 4 parametes:
 
         <ul>
+          <li>HTTP method</li>
           <li>Route path, can be binding (starts with ':' symbol);</li>
           <li>Module name of controller;</li>
           <li>Function name from this controller.</li>
         </ul>
-        
+
+      Also you can declare controller and action in following format:
+
+      <br/><br/>
+      <script src="https://gist.github.com/0xAX/7185295.js"></script>
+      <br/>
+
+      <p>Http method can be:</p>
+
+      <ul>
+        <li>"GET"</li>
+        <li>"POST"</li>
+        <li>"PUT"</li>
+        <li>"DELETE"</li>
+        <li>"ANY"</li>
+      </ul>
+
       </section>
 
       <footer>
