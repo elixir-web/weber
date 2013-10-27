@@ -8,3 +8,4 @@
   * [d3b00m](https://github.com/d3b00m)
   * [Caio Tarifa](https://github.com/caiotarifa)
   * [Jonathan Tron](https://github.com/JonathanTron)
+  * [amilkr](https://github.com/amilkr)
