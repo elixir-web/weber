@@ -23,7 +23,7 @@ defmodule Weber.Localization.LocalizationManager do
         {:ok, project_path} = File.cwd()
         {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
  
-        case File.ls(project_path <> "/lang") do
+        case File.ls(project_path <> "/deps/weber/lib/weber/i18n/localization/locale") do
           {:ok, localization_files} ->
             Enum.each(localization_files, fn (file) ->
               case File.read(project_path <> "/deps/weber/lib/weber/i18n/localization/locale/" <> file) do
@@ -34,7 +34,7 @@ defmodule Weber.Localization.LocalizationManager do
           _ -> :ok
         end
         
-        case File.ls(project_path <> "/deps/weber/lib/weber/i18n/localization/locale") do
+        case File.ls(project_path <> "/lang") do
           {:ok, translation_files} ->
             Enum.each(translation_files, fn (file) ->
               {:ok, translation_file_data} = File.read(project_path <> "/lang/" <> file)

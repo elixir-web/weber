@@ -7,3 +7,4 @@ deps
 *.swp
 erl_crash.dump
 /tmp
+mix.lock
