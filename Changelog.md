@@ -15,6 +15,7 @@
   * `layout` controller helper.
   * Get rid of `get_route`, route macros instead.
   * `t` helper for text translation.
+  * `Makefile` added.
 
 #### Weber-0.0.2 [Released]
 
