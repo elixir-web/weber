@@ -1,5 +1,7 @@
 defmodule Example.Test do
-  def render_site("GET", []) do
+
+  def render_site(_) do
     {:render, [], []}
   end
+  
 end

@@ -2,7 +2,7 @@ defmodule Simplechat.Main.Chat do
 
   import Weber.Session
 
-  def render_chat("GET", []) do
+  def render_chat([]) do
     case get_session(:username) do
       [] -> {:redirect, "/"}
       username -> {:render, [username: username], []}

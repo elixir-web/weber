@@ -29,33 +29,25 @@ defmodule Weber.Route do
 
     controllerAndAction - is controller and action in: :Controller#action format
   """
-  def on(path, controllerAndAction) when is_binary(controllerAndAction) do
+  def on(method, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
-    [[path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]]
+    [[method: method, path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]]
   end
 
-  @doc """
-    Add new route path to the routes list.
-
-    controllerAndAction - is controller and action in: :Controller#action format
-  """
-  def on(routesList, path, controllerAndAction) when is_binary(controllerAndAction) do
+  def on(routesList, method, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
-    :lists.append(routesList, [[path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]])
+    :lists.append(routesList, [[method: method, path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]])
   end
 
   @doc """
     Create list with router path.
   """
-  def on(path, controller, action) do
-    [[path: path, controller: controller, action: action]]
+  def on(method, path, controller, action) do
+    [[method: method, path: path, controller: controller, action: action]]
   end
 
-  @doc """
-    Add new route path to the routes list.
-  """
-  def on(routesList, path, controller, action) do
-    :lists.append(routesList, [[path: path, controller: controller, action: action]])
+  def on(routesList, method, path, controller, action) do
+    :lists.append(routesList, [[method: method, path: path, controller: controller, action: action]])
   end
 
   @doc """
@@ -63,8 +55,8 @@ defmodule Weber.Route do
 
     controllerAndAction - is controller and action in: :Controller#action format
   """
-  def otherwise(path, controllerAndAction) when is_binary(controllerAndAction) do
-    on(path, controllerAndAction)
+  def otherwise(method, path, controllerAndAction) when is_binary(controllerAndAction) do
+    on(method, path, controllerAndAction)
   end
 
   @doc """
@@ -72,39 +64,42 @@ defmodule Weber.Route do
 
     controllerAndAction - is controller and action in: :Controller#action format    
   """
-  def otherwise(routesList, path, controllerAndAction) when is_binary(controllerAndAction) do
-    on(routesList, path, controllerAndAction)
+  def otherwise(routesList, method, path, controllerAndAction) when is_binary(controllerAndAction) do
+    on(routesList, method, path, controllerAndAction)
   end
 
   @doc """
     Create list with router path.
   """
-  def otherwise(path, controller, action) do
-    on(path, controller, action)
+  def otherwise(path, method, controller, action) do
+    on(method, path, controller, action)
   end
 
   @doc """
     Add new route path to the routes list.
   """
-  def otherwise(routesList, path, controller, action) do
-    on(routesList, path, controller, action)
+  def otherwise(routesList, method, path, controller, action) do
+    on(routesList, method, path, controller, action)
   end
 
   @doc """
     Match current url path. Is it web application route or not
   """
-  def match_routes(path, routes) do
+  def match_routes(path, routes, req_method) do
     parsed_path = getBinding(path)
 
     Enum.filter(routes, 
       fn(route) -> 
-        [path: p, controller: _controller, action: _action] = route
+        [method: method, path: p, controller: _controller, action: _action] = route
           case p do
             "404" ->
               false
             _ ->
-              parsed_route_path = getBinding(p)    
-              match_routes_helper(parsed_path, parsed_route_path)
+              parsed_route_path = getBinding(p)
+              case method do
+                "ANY" -> match_routes_helper(parsed_path, parsed_route_path)
+                _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
+              end
           end
       end)
   end

@@ -60,22 +60,31 @@ For more details see in `examples` directory and Weber's [API](http://0xax.githu
 Routing declaration is in `route.ex` files:
 
 ```elixir
-    route on("/", :Simpletodo.Main, :action)
-      |> on("/add/:note", :Simpletodo.Main, :add)
+    route on("GET", "/", :Simpletodo.Main, :action)
+      |> on("POST", "/add/:note", :Simpletodo.Main, :add)
 ```
 
 Also `on` supports following syntax:
 
 ```elixir
-    route on("/", "Simpletodo.Main#action")
-      |> on("/add/:note", "Simpletodo.Main#add")
+    route on("GET", "/", "Simpletodo.Main#action")
+      |> on("POST", "/add/:note", "Simpletodo.Main#add")
 ```
 
 It is `route` macro which value is chain of `on` and `otherwise` functions with 3 parametes:
-
+  
+  * Http method
   * Route path, can be binding (starts with ':' symbol);
   * Module name of controller;
   * Function name from this controller.
+
+Http method can be:
+
+  * `"GET"`
+  * `"POST"`
+  * `"PUT"`
+  * `"DELETE"`
+  * `"ANY"`
 
 ## Controllers
 
@@ -86,11 +95,11 @@ defmodule Simpletodo.Main do
 
   import Simplemodel
 
-  def action("GET", []) do
+  def action(_) do
     {:render, [project: "simpleTodo"], []}
   end
 
-  def add("POST", [body: body]) do
+  def add([body: body]) do
     new(body)
     {:json, [response: "ok"], [{"Content-Type", "application/json"}]}
   end
@@ -122,7 +131,7 @@ defmodule Simplechat.Main.Login do
 
   import Weber.Http.Params
 
-  def render_login("GET", []) do
+  def render_login([]) do
     # get body request
     body = get_body()
     #
@@ -141,7 +150,7 @@ defmodule Simplechat.Main.Login do
 
   import Weber.Http.Params
 
-  def render_login("GET", []) do
+  def render_login([]) do
     name = param(:name)
     #
     # Do something with param

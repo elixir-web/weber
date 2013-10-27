@@ -16,6 +16,7 @@
   * Get rid of `get_route`, route macros instead.
   * `t` helper for text translation.
   * `Makefile` added.
+  * HTTP method moved to the router.
 
 #### Weber-0.0.2 [Released]
 

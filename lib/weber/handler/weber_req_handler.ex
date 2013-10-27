@@ -39,11 +39,11 @@ defmodule Handler.WeberReqHandler do
     views = :gen_server.call(state.app_name,  :views)
     root = :gen_server.call(state.app_name,   :root)
 
-    case :lists.flatten(match_routes(path, routes)) do
+    case :lists.flatten(match_routes(path, routes, method)) do
       [] ->
         # Get static file or page not found
         try_to_find_static_resource(path, static, views, root) |> handle_result |> handle_request(req3, state)
-      [{:path, matched_path}, {:controller, controller}, {:action, action}] ->
+      [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
         cookie = case Weber.Http.Params.get_cookie("weber") do
           :undefined ->
             :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self}) 
@@ -58,7 +58,7 @@ defmodule Handler.WeberReqHandler do
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
         # get response from controller
-        result = Module.function(controller, action, 2).(method, getAllBinding(path, matched_path))
+        result = Module.function(controller, action, 1).(getAllBinding(path, matched_path))
         # handle controller's response, see in Handler.WeberReqHandler.Result
         handle_result(result, controller, views) |> handle_request(req4, state)
     end
