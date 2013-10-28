@@ -61,14 +61,14 @@ Routing declaration is in `route.ex` files:
 
 ```elixir
     route on("GET", "/", :Simpletodo.Main, :action)
-      |> on("POST", "/add/:note", :Simpletodo.Main, :add)
+       |> on("POST", "/add/:note", :Simpletodo.Main, :add)
 ```
 
 Also `on` supports following syntax:
 
 ```elixir
     route on("GET", "/", "Simpletodo.Main#action")
-      |> on("POST", "/add/:note", "Simpletodo.Main#add")
+       |> on("POST", "/add/:note", "Simpletodo.Main#add")
 ```
 
 It is `route` macro which value is chain of `on` and `otherwise` functions with 3 parametes:
@@ -94,6 +94,8 @@ Every Weber's controller is just an elixir module, like:
 defmodule Simpletodo.Main do
 
   import Simplemodel
+
+  use Weber.Controller
 
   def action(_) do
     {:render, [project: "simpleTodo"], []}
@@ -131,6 +133,8 @@ defmodule Simplechat.Main.Login do
 
   import Weber.Http.Params
 
+  use Weber.Controller
+
   def render_login([]) do
     # get body request
     body = get_body()
@@ -149,6 +153,8 @@ If you need to get parameters from query string, it is easy to do with `param/1`
 defmodule Simplechat.Main.Login do
 
   import Weber.Http.Params
+
+  use Weber.Controller
 
   def render_login([]) do
     name = param(:name)
@@ -228,14 +234,14 @@ You can include your static resources like `javascript`, `css`, `favicon` or `im
 #
 # Generates: <script type="text/javascript" src="/static/test.js"></script>
 script("/static/test.js")
-# If no value is passed for src it defaults to "/public/application.js"
+# If no value is passed for src it defaults to "/public/js/application.js"
 script()
 
 #
 # Generates: <link href="/static/test.css" rel="stylesheet" media="screen">
 #
 style("/static/test.css")
-# If no value is passed for href it defaults to "/public/application.css"
+# If no value is passed for href it defaults to "/public/css/application.css"
 style()
 
 #
@@ -247,6 +253,31 @@ favicon()
 #
 # Generates: <img src="/public/img/example.jpg" alt="Image" class="some-class" height="100" width="100">"
 image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
+
+#
+# Generates: <audio src="/public/audio/sound">
+audio("/public/audio/sound")
+
+#
+# Generates: 
+#  <audio autoplay="autoplay">
+#    <souce src="/public/audio/sound1"></souce>
+#    <souce src="/public/audio/sound2"></souce>
+#  </audio>
+#
+audio(["/public/audio/sound1", "/public/audio/sound2"], [autoplay: autoplay])
+
+#
+# Generates: <video src="public/videos/trailer">
+video("public/videos/trailer")
+
+#
+# Generates:
+#  <video height="48" width="48">
+#    <souce src="/public/videos/video1"></souce>
+#    <souce src="/public/videos/video2"></souce>
+#  </video>
+video(["/public/videos/video1", "/public/videos/video2"], [height: 48, width: 48])
 ```
 
 ## Controller Helpers

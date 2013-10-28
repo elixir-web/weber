@@ -17,6 +17,8 @@
   * `t` helper for text translation.
   * `Makefile` added.
   * HTTP method moved to the router.
+  * audio html helper.
+  * video html helper.
 
 #### Weber-0.0.2 [Released]
 
