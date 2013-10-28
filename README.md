@@ -261,7 +261,7 @@ Create `layouts` folder in `views/` in inside put:
 
 Declare `layout` helper in your controller:
 
-```elixirlang
+```elixir
 defmodule TestController.Main do
 
   use Weber.Controller
