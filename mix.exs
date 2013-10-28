@@ -22,8 +22,8 @@ defmodule Weber.Mixfile do
   defp deps(:prod) do
     [
       {:cowboy, "0.8.6", github: "extend/cowboy"},
-      {:ecto, github: "elixir-lang/ecto"},
       {:postgrex, github: "ericmj/postgrex"},
+      {:ecto, github: "elixir-lang/ecto"},
       {:exjson, github: "guedes/exjson"},
       {:mimetypes, github: "spawngrid/mimetypes", override: true}
     ]
