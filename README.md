@@ -252,7 +252,7 @@ image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100
 ## Controller Helpers
 
 #### `content_for_layout` and `layout`
-
+All controllers got `main.html` by default for views, but you'd might change it.
 Create `layouts` folder in `views/` in inside put:
 
 ```HTML
@@ -264,9 +264,9 @@ Declare `layout` helper in your controller:
 ```elixirlang
 defmodule TestController.Main do
 
-  require Weber.Controller
+  use Weber.Controller
 
-  Weber.Controller.layout 'layout.html'
+  layout 'layout.html'
   
   ....        
 end
