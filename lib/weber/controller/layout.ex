@@ -4,8 +4,7 @@ defmodule Weber.Controller.Layout do
     ##Example
     layout 'test.html'
   """
-  
-  @doc "Create layout function"
+  @doc false
   defmacro layout(path) do
     quote do
       def unquote(:__layout__)() do

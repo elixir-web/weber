@@ -26,10 +26,7 @@ defmodule Handler.WeberReqHandler.Result do
                  |> :erlang.binary_to_list
     {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
 
-    case :lists.keyfind('__layout__', 1, app.controller.__info__(:functions)) do
-      false -> :ok;
-      _ -> Weber.Helper.ContentFor.content_for(:layout, file_content, app.controller.__layout__)
-    end
+    Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
 
     {:render, 200, (EEx.eval_string add_helpers_imports(file_content), data), [{"Content-Type", "text/html"} | headers]}
   end
