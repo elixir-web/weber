@@ -19,6 +19,7 @@
   * HTTP method moved to the router.
   * audio html helper.
   * video html helper.
+  * Controller can return {:render_other, "test.html", []}
 
 #### Weber-0.0.2 [Released]
 
