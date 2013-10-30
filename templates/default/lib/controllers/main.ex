@@ -1,6 +1,6 @@
 defmodule #{projectNamespace}.Main do
 
-  def action("GET", []) do
+  def action([]) do
     {:render, [project: "#{projectName}"], []}
   end
         
