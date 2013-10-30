@@ -17,7 +17,7 @@ defmodule Weber.Translation.Translate do
     {:reply, translation(key, state.t), state}
   end
 
-  def translation(key, []) do
+  def translation(_key, []) do
     []
   end
 
