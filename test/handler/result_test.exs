@@ -50,6 +50,6 @@ defmodule HandlerWeberReqHandlerResultTest do
 
   test "request not found" do
     request = handle_result({:not_found, "Not Found", []})
-    assert request == {:not_found, 404, "Not Found", []}
+    assert request == {:not_found, 404, "Not Found", [{"Content-Type", "text/html"}]}
   end
 end
