@@ -118,7 +118,7 @@ defmodule Weber.Http.Url do
     end)
 
     Enum.map(filterBindings, fn({{_key1, val1}, {_key2, val2}}) -> 
-      {val2, val1}
+      {:erlang.binary_to_atom(val2, :utf8), val1}
     end)
   end
 
