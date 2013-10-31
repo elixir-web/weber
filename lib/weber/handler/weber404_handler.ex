@@ -2,7 +2,17 @@ defmodule Handler.Weber404Handler do
     
   def get404 do
     """
-      <h1>Page not found</h1>
+      <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="UTF-8" />
+            <title>Filesadmin</title>
+          </head>
+ 
+         <body>
+           <h1>Page not found</h1>
+         </body>
+      </html>
     """
   end
 
