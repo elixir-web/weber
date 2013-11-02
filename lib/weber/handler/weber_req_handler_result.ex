@@ -26,13 +26,13 @@ defmodule Handler.WeberReqHandler.Result do
                  |> :erlang.binary_to_list
     {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), data), [{"Content-Type", "text/html"} | headers]}
+    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), data), headers}
   end
 
   defp request({:render_other, filename, headers}, app) do
     {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), []), [{"Content-Type", "text/html"} | headers]} 
+    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), []), headers} 
   end
 
   defp request({:render_inline, data, params, headers}, _app) do
