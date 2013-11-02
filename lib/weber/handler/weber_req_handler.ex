@@ -6,7 +6,9 @@ defmodule Handler.WeberReqHandler do
 
   import Weber.Utils
   import Weber.Route
+  import Weber.Session
   import Weber.Http.Url
+  
   import Handler.Weber404Handler
   import Handler.WeberReqHandler.Result
   import Handler.WeberReqHandler.Response
@@ -57,6 +59,10 @@ defmodule Handler.WeberReqHandler do
         {_, session}  = :lists.keyfind(:session, 1, config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
+        # get accept language
+        lang = get_lang(:cowboy_req.header("accept-language", req))
+        # update accept language
+        set_session_val(:locale, lang)
         # get response from controller
         result = Module.function(controller, action, 1).(getAllBinding(path, matched_path))
         # handle controller's response, see in Handler.WeberReqHandler.Result
@@ -86,4 +92,20 @@ defmodule Handler.WeberReqHandler do
         {:file, resource_name, []}
     end
   end
+
+  #
+  # Get accept language
+  #
+  def get_lang({<<c, rest :: binary>>}) do
+    get_lang(rest, c <> "")
+  end
+
+  def get_lang({<<44, _rest :: binary>>,_}, lang) do
+    lang
+  end
+
+  def get_lang({<<c, rest :: binary>>}, r) do
+    get_lang(rest, c <> r)
+  end
+
 end
