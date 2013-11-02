@@ -133,7 +133,7 @@ defmodule Weber.Http.Params do
   @doc """
     Get body
   """
-  def body do
+  def get_body do
     case :ets.lookup(:req_storage, self) do
       [] -> []
       [{_, req}] ->
