@@ -60,7 +60,10 @@ defmodule Handler.WeberReqHandler do
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
         # get accept language
-        lang = get_lang(:cowboy_req.header("accept-language", req))
+        lang = case get_lang(:cowboy_req.header("accept-language", req)) do
+                 :undefined -> "en_US"
+                 l -> l 
+               end
         # update accept language
         set_session_val(:locale, lang)
         # get response from controller
@@ -96,15 +99,19 @@ defmodule Handler.WeberReqHandler do
   #
   # Get accept language
   #
-  def get_lang({<<c, rest :: binary>>}) do
+  def get_lang({:undefined, _}) do
+    :undefined
+  end
+
+  def get_lang({<<c, rest :: binary>>, _}) do
     get_lang(rest, c <> "")
   end
 
-  def get_lang({<<44, _rest :: binary>>,_}, lang) do
+  def get_lang({<<44, _rest :: binary>>, _}, lang) do
     lang
   end
 
-  def get_lang({<<c, rest :: binary>>}, r) do
+  def get_lang({<<c, rest :: binary>>, _}, r) do
     get_lang(rest, c <> r)
   end
 
