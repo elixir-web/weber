@@ -60,7 +60,7 @@ defmodule Handler.WeberReqHandler.Result do
     {:json, 200, JSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
-  defp request({:not_found, data, headers}, _app) do
+  defp request({:not_found, data, _headers}, _app) do
     {:not_found, 404, data, [{"Content-Type", "text/html"}]}
   end
 end
