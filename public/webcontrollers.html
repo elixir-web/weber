@@ -84,10 +84,11 @@
             <li>Bindings list</li>
           </ul>
 
-          <p>And must return tupple with 2 elements:</p>
+          And must return tupple with 2 elements:
 
           <ul>
             <li>{:render, [project: "simpleTodo"], [{"HeanderName", "HeaderVal"}]} - Render views with the same name as controller and sends it to response.</li>
+            <li>{:render_other, "test.html", []} - Render another view, but don't actually execute the associated controller's action.</li>
             <li>{:json, [response: "ok"], [{"HeanderName", "HeaderVal"}]} - Weber convert keyword to json and sends it to response.</li>
             <li>{:redirect, "/new_location"} - Weber sends redirect.</li>
             <li>{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []} - Render inline template.</li>
