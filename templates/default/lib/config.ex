@@ -11,7 +11,7 @@ defmodule Config do
        keyfile_path: ""
       ],
     ws: 
-      [ws_port: 8800,
+      [ws_port: 8080,
        ws_mod: :Handler
       ],
     localization:

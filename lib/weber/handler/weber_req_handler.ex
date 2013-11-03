@@ -17,7 +17,7 @@ defmodule Handler.WeberReqHandler do
     app_name: nil,
     cookie:   nil
 
-  def init(_transport, req, name) do
+  def init({:tcp, :http}, req, name) do
     case :ets.lookup(:req_storage, self) do
       [] -> 
         :ets.insert(:req_storage, {self, req})
@@ -27,6 +27,10 @@ defmodule Handler.WeberReqHandler do
     end
         
     {:ok, req, State.new app_name: name }
+  end
+
+  def init(_, _req, _opts) do
+    {:upgrade, :protocol, :cowboy_websocket}
   end
 
   def handle(req, state) do
@@ -59,12 +63,6 @@ defmodule Handler.WeberReqHandler do
         {_, session}  = :lists.keyfind(:session, 1, config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
-
-        :io.format("GET_LANG ~n")
-        :io.format(":cowboy_req.header(accept-language, req) ~p~n", [:cowboy_req.header("accept-language", req)])
-        :io.format("((req)) ~p~n", [get_lang(:cowboy_req.header("accept-language", req))])
-        :io.format("get_lang finished ~n")
-
         # get accept language
         lang = case get_lang(:cowboy_req.header("accept-language", req)) do
                  :undefined -> "en_US"
@@ -112,6 +110,31 @@ defmodule Handler.WeberReqHandler do
   def get_lang({l, _}) do
     [lang | _] = :string.tokens(:erlang.binary_to_list(l), ',')
     :erlang.list_to_binary(lang)
+  end
+
+  def websocket_init(_, req, name) do
+    Module.function(get_ws_mod(name), :websocket_init, 1).(self())
+    {:ok, req, State.new app_name: name}
+  end
+
+  def websocket_handle({_, data}, req, state) do
+    Module.function(get_ws_mod(State.name), :websocket_message, 2).(self(), data)
+    {:ok, req, state}
+  end
+
+  def websocket_info(msg, req, state) do
+    {:reply, {:text, msg}, req, state}
+  end
+
+  def websocket_terminate(_reason, _req, state) do
+    Module.function(get_ws_mod(State.name), :websocket_terminate, 1).(self())
+    :ok
+  end
+
+  defp get_ws_mod(name) do
+    config = :gen_server.call(name, :config)
+    {:ws, ws_config} = :lists.keyfind(:ws, 1, config)
+    {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
   end
 
 end

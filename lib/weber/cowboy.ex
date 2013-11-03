@@ -29,23 +29,11 @@ defmodule Cowboy do
         {_, cacertifile} = :lists.keyfind(:cacertfile_path, 1, web_server_config)
         {_, certfile} = :lists.keyfind(:certfile_path, 1, web_server_config)
         {_, keyfile} = :lists.keyfind(:keyfile_path, 1, web_server_config)
-    
         {:ok, _} = :cowboy.start_https(:https, acceptors, [{:port, port}, {:cacertfile, cacertifile},
                                                            {:certfile,certfile}, {:keyfile, keyfile}], 
                                                            [env: [dispatch: dispatch]])
       _ -> 
         {:ok, _} = :cowboy.start_http(:http, acceptors, [port: port], [env: [dispatch: dispatch]])
-    end
-
-    case :lists.keyfind(:ws, 1, config) do
-      false -> :ok
-      {:ws, ws_config} ->
-        {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
-        {_, ws_port} = :lists.keyfind(:ws_port, 1, ws_config)
-        wsDispatch = :cowboy_router.compile([{:_, [{:_, Handler.WeberWebSocketHandler, {name, ws_mod}}]}])
-        {:ok, _} = :cowboy.start_http(:ws, acceptors, [port: ws_port], [env: [dispatch: wsDispatch]])
-      _ ->
-        :ok
     end
   end
 end
