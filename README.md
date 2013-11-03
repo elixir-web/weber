@@ -338,7 +338,7 @@ First of all you need to designate websocket controller in your `config.ex` file
 
 ```elixir
 ws:
-  [ws_port: 8800,
+  [
    ws_mod: :Handler
   ]
 ```
@@ -369,6 +369,8 @@ defmodule Simplechat.Main.Chat do
 end
 ```
 
+All websocket connections are must start with prefix `/_ws/`.
+
 ## Session
 
 [Session API](https://github.com/0xAX/weber/wiki/Weber.Session-API)
@@ -383,6 +385,10 @@ end
 ## Contributing
 
 See [Contributing.md](https://github.com/0xAX/weber/blob/master/Contributing.md)
+
+## Additional info
+
+  * Weber example for Heroku - [heroku_weber_example](https://github.com/tsloughter/heroku_weber_example)
 
 ## Author
 
