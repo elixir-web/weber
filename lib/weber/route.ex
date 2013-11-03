@@ -31,12 +31,12 @@ defmodule Weber.Route do
   """
   def on(method, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
-    [[method: method, path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]]
+    [[method: method, path: path, controller: binary_to_atom(controller), action: binary_to_atom(action)]]
   end
 
   def on(routesList, method, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
-    :lists.append(routesList, [[method: method, path: path, controller: binary_to_atom(controller, :utf8), action: binary_to_atom(action, :utf8)]])
+    :lists.append(routesList, [[method: method, path: path, controller: binary_to_atom(controller), action: binary_to_atom(action)]])
   end
 
   @doc """
