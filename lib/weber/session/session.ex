@@ -75,16 +75,14 @@ defmodule Weber.Session do
 
   defp get_session_helper do
     cookie = get_cookie("weber")
+    
     case cookie do
       :undefined -> []
       _ ->
-        sessions_list = :ets.tab2list(:cookie_storage)
-
-        Enum.filter(sessions_list, 
+        Enum.filter(:ets.tab2list(:cookie_storage), 
           fn({session_id, _, _}) ->
-            :erlang.list_to_binary(:lists.concat(:lists.concat(:erlang.binary_to_list(session_id)))) == cookie
-          end)
+            session_id == cookie
+        end)
     end
   end
-
 end

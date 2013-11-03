@@ -29,10 +29,6 @@ defmodule Handler.WeberReqHandler do
     {:ok, req, State.new app_name: name }
   end
 
-  def init(_, _req, _opts) do
-    {:upgrade, :protocol, :cowboy_websocket}
-  end
-
   def handle(req, state) do
     # get method
     {method, req2} = :cowboy_req.method(req)
@@ -52,13 +48,12 @@ defmodule Handler.WeberReqHandler do
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
         cookie = case Weber.Http.Params.get_cookie("weber") do
           :undefined ->
-            :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self}) 
-              |> :erlang.binary_to_list
-              |> :lists.concat
-              |> :lists.concat
+            :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self})
           weber_cookie ->
-            :erlang.binary_to_list(weber_cookie)
+            :gen_server.cast(:session_manager, {:check_cookie, weber_cookie, self})
+            weber_cookie
         end
+
         # set up cookie
         {_, session}  = :lists.keyfind(:session, 1, config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
@@ -110,31 +105,6 @@ defmodule Handler.WeberReqHandler do
   def get_lang({l, _}) do
     [lang | _] = :string.tokens(:erlang.binary_to_list(l), ',')
     :erlang.list_to_binary(lang)
-  end
-
-  def websocket_init(_, req, name) do
-    Module.function(get_ws_mod(name), :websocket_init, 1).(self())
-    {:ok, req, State.new app_name: name}
-  end
-
-  def websocket_handle({_, data}, req, state) do
-    Module.function(get_ws_mod(State.name), :websocket_message, 2).(self(), data)
-    {:ok, req, state}
-  end
-
-  def websocket_info(msg, req, state) do
-    {:reply, {:text, msg}, req, state}
-  end
-
-  def websocket_terminate(_reason, _req, state) do
-    Module.function(get_ws_mod(State.name), :websocket_terminate, 1).(self())
-    :ok
-  end
-
-  defp get_ws_mod(name) do
-    config = :gen_server.call(name, :config)
-    {:ws, ws_config} = :lists.keyfind(:ws, 1, config)
-    {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
   end
 
 end

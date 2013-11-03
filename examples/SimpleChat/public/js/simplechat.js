@@ -1,19 +1,20 @@
 function SimpleChatLoginController ($scope, $http, $location, $window) {
-	//
+    //
     // Send http request to the /join/username
     //
     $scope.join = function(login) {
         $http.post('/join/' + login, []).success(function(data, status, headers, config) {
+            console.log(data)
             if (data.result == "ok"){
               sessionStorage.setItem('username', data.username)
               $window.location.replace("/chat");
-        	}
+            }
         })
     }
 }
 
 function SimpleChatRootController ($scope) {
-	var webSocket = new WebSocket('ws://localhost:8800');
+    var webSocket = new WebSocket('ws://localhost:8080/_ws');
 
     $scope.safeApply = function(fn) {
       var phase = this.$root.$$phase;
@@ -26,7 +27,7 @@ function SimpleChatRootController ($scope) {
       }
     };
 
-	webSocket.onopen = function(event) {
+    webSocket.onopen = function(event) {
     
     };
  
@@ -38,7 +39,7 @@ function SimpleChatRootController ($scope) {
     };
  
     webSocket.onclose = function(event) {
-    	window.location.replace("/");
+        window.location.replace("/");
     };
 
     $scope.send_message = function(message) {
