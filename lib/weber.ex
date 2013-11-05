@@ -22,7 +22,6 @@ defmodule Weber do
     :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
     Weber.Session.SessionManager.start_link(Config.config)
     Weber.Localization.LocalizationManager.start_link(Config.config)
-    Weber.Supervisor.start_link
   end
 
   @doc """
