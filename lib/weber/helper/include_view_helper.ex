@@ -21,10 +21,9 @@ defmodule Weber.Helper.IncludeView do
       include_view("/complete/path/file") 
   """
   def include_view(file, args // []) do
-    app_name = Mix.Project.get.project[:app]
-    views_path = :gen_server.call(app_name, :views)
+    {:ok, root} = :file.get_cwd()
+    views_path = root ++ '/lib/views/'
     file = file |> Path.expand(views_path)
-
     EEx.eval_file(file, args)
   end
 end

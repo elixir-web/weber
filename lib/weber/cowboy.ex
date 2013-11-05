@@ -8,14 +8,17 @@ defmodule Cowboy do
   Start new cowboy http/web socket handler with given name and config
   from config.ex
   """
-  def start(name, config) do
+  def start do
+    config = Config.config
+
     :application.start(:crypto)
     :application.start(:public_key)
     :application.start(:ssl)
+    :application.start(:mimetypes)
     :application.start(:ranch)
     :application.start(:cowlib)
     :application.start(:cowboy)
-
+        
     {:webserver, web_server_config} = :lists.keyfind(:webserver, 1, config)
     {_, _host}     = :lists.keyfind(:http_host, 1, web_server_config)
     {_, port}      = :lists.keyfind(:http_port, 1, web_server_config)
@@ -25,8 +28,8 @@ defmodule Cowboy do
     {:ws, ws_config} = :lists.keyfind(:ws, 1, config)
     {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
           
-    dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, {name, ws_mod}}, 
-                                             {'/[...]', Handler.WeberReqHandler, name}]}])
+    dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod}, 
+                                             {'/[...]', Handler.WeberReqHandler, []}]}])
 
     case ssl do
       true -> 

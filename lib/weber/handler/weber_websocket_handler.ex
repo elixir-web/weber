@@ -1,16 +1,15 @@
 defmodule Handler.WeberWebSocketHandler do
     
   defrecord State, 
-    app_name: nil,
     ws_mod:   nil
 
   def init(_, _req, _opts) do
     {:upgrade, :protocol, :cowboy_websocket}
   end
 
-  def websocket_init(_, req, {name, ws_mod}) do
+  def websocket_init(_, req, ws_mod) do
     Module.function(ws_mod, :websocket_init, 1).(self())
-    {:ok, req, State.new app_name: name, ws_mod: ws_mod}
+    {:ok, req, State.new ws_mod: ws_mod}
   end
 
   def websocket_handle({_, data}, req, state) do

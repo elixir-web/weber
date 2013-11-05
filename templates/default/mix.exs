@@ -11,7 +11,7 @@ defmodule #{projectNamespace}.Mixfile do
 
   def application do
     [
-      applications: [:weber],
+      applications: [],
       mod: {#{projectNamespace}, []}
     ]
   end

@@ -7,21 +7,21 @@ defmodule Weber do
 
   @doc """
   Start new Weber application instance with given
-  application name, route list, web application's root
+  application name, web application's root
   directory and config from config.ex.
   """
-  def run_weber(app_name, routes, root_directory, config) do
+  def run_weber do
     start([], [])
-    Weber.Session.SessionManager.start_link(config)
-    Weber.Localization.LocalizationManager.start_link(config)
-    Weber.Supervisor.start_app(app_name, routes, root_directory, config)
   end
 
   @doc """
   Start weber application
   """
   def start(_type, _args) do
-    :application.start(:mimetypes)
+    Cowboy.start
+    :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
+    Weber.Session.SessionManager.start_link(Config.config)
+    Weber.Localization.LocalizationManager.start_link(Config.config)
     Weber.Supervisor.start_link
   end
 

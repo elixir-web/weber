@@ -14,10 +14,9 @@ defmodule Handler.WeberReqHandler do
   import Handler.WeberReqHandler.Response
 
   defrecord State, 
-    app_name: nil,
     cookie:   nil
 
-  def init({:tcp, :http}, req, name) do
+  def init({:tcp, :http}, req, _opts) do
     case :ets.lookup(:req_storage, self) do
       [] -> 
         :ets.insert(:req_storage, {self, req})
@@ -25,27 +24,27 @@ defmodule Handler.WeberReqHandler do
         :ets.delete(:req_storage, self)
         :ets.insert(:req_storage, {self, req})
     end
-        
-    {:ok, req, State.new app_name: name }
+    {:ok, req, {} }
   end
 
   def handle(req, state) do
+    # get project root
+    {:ok, root} = :file.get_cwd()
+    # views directory
+    views = root ++ '/lib/views/'
+    # static directory
+    static = root ++ '/public/'
     # get method
     {method, req2} = :cowboy_req.method(req)
     # get path
     {path, req3} = :cowboy_req.path(req2)
-
-    config = :gen_server.call(state.app_name, :config)
-    routes = :gen_server.call(state.app_name, :routes)
-    static = :gen_server.call(state.app_name, :static)
-    views = :gen_server.call(state.app_name,  :views)
-    root = :gen_server.call(state.app_name,   :root)
-
-    case :lists.flatten(match_routes(path, routes, method)) do
+    # match routes
+    case :lists.flatten(match_routes(path, Route.__route__, method)) do
       [] ->
         # Get static file or page not found
         try_to_find_static_resource(path, static, views, root) |> handle_result |> handle_request(req3, state)
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
+        # Check cookie
         cookie = case Weber.Http.Params.get_cookie("weber") do
           :undefined ->
             :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self})
@@ -53,9 +52,8 @@ defmodule Handler.WeberReqHandler do
             :gen_server.cast(:session_manager, {:check_cookie, weber_cookie, self})
             weber_cookie
         end
-
         # set up cookie
-        {_, session}  = :lists.keyfind(:session, 1, config)
+        {_, session}  = :lists.keyfind(:session, 1, Config.config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
         # get accept language

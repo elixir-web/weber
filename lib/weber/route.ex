@@ -6,11 +6,11 @@ defmodule Weber.Route do
     
       ## Example
     
-        @route on('/', Controller1, Action1)
-          |> on ('/user/:name', Controller2, Action2)
-          |> on ("/user/add/:username", "Controller2#Action2")
-          |> on ('/user/:name/delete', Controller2, Action1)
-          |> otherwise (404, Controller2, ActionNotFound)
+        route on('/', Controller1, Action1)
+           |> on ('/user/:name', Controller2, Action2)
+           |> on ("/user/add/:username", "Controller2#Action2")
+           |> on ('/user/:name/delete', Controller2, Action1)
+           |> otherwise (404, Controller2, ActionNotFound)
   """
 
   import String
