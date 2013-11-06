@@ -20,7 +20,8 @@
   * audio html helper.
   * video html helper.
   * Controller can return {:render_other, "test.html", []}
-  * HTTP and WebSocket handler at the same port. 
+  * HTTP and WebSocket handler at the same port.
+  * `index.html` in new weber project.
 
 #### Weber-0.0.2 [Released]
 
