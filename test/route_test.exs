@@ -22,6 +22,7 @@ defmodule WeberRouteTest do
       |> on("POST", "/user/:user/delete", :Controller1, :action2)
       |> otherwise("ANY", "404", :Controller1, :notfound)
     
+    assert match_routes("/main.html", r, "GET") == []
     assert match_routes("/user/0xAX", r, "POST") == []
     assert match_routes("/", r, "ANY") == [[method: "ANY", path: "/", controller: :Controller1, action: :main_action]]
     assert match_routes("/user/0xAX/add/user2", r, "GET") == []

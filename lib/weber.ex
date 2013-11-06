@@ -18,10 +18,15 @@ defmodule Weber do
   Start weber application
   """
   def start(_type, _args) do
-    Cowboy.start
+    config = case Code.ensure_loaded?(Config) do
+      true -> Config.config
+      false -> Weber.Config.config
+    end
+
+    Cowboy.start(config)
     :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
-    Weber.Session.SessionManager.start_link(Config.config)
-    Weber.Localization.LocalizationManager.start_link(Config.config)
+    Weber.Session.SessionManager.start_link(config)
+    Weber.Localization.LocalizationManager.start_link(config)
   end
 
   @doc """

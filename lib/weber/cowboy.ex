@@ -8,8 +8,13 @@ defmodule Cowboy do
   Start new cowboy http/web socket handler with given name and config
   from config.ex
   """
-  def start do
-    config = Config.config
+  def start(config) do
+
+    #config = try do
+    #      Config.config
+    #  after
+    #      Weber.Config.config
+    #end
 
     :application.start(:crypto)
     :application.start(:public_key)
