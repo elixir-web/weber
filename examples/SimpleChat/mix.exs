@@ -11,7 +11,7 @@ defmodule Simplechat.Mixfile do
 
   def application do
     [
-      applications: [:weber],
+      applications: [],
       mod: {Simplechat, []}
     ]
   end
