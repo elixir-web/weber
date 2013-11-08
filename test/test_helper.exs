@@ -2,10 +2,8 @@ Mix.start
 Mix.env(:test)
 Mix.shell(Mix.Shell.Process)
 System.put_env("MIX_ENV", "test")
+Weber.start(:test, [])
 :application.start(:hackney)
-
-#Code.require_file "support/config.exs", __DIR__
-#Code.require_file "weber_fake/route.exs", __DIR__
 
 ExUnit.start
 

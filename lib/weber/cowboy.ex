@@ -9,13 +9,6 @@ defmodule Cowboy do
   from config.ex
   """
   def start(config) do
-
-    #config = try do
-    #      Config.config
-    #  after
-    #      Weber.Config.config
-    #end
-
     :application.start(:crypto)
     :application.start(:public_key)
     :application.start(:ssl)

@@ -38,8 +38,19 @@ defmodule Handler.WeberReqHandler do
     {method, req2} = :cowboy_req.method(req)
     # get path
     {path, req3} = :cowboy_req.path(req2)
+    
+    route = case Code.ensure_loaded?(Route) do
+      true -> Route.__route__
+      false -> Weber.DefaultRoute.__route__
+    end
+
+    config = case Code.ensure_loaded?(Config) do
+      true -> Config.config
+      false -> Weber.DefaultConfig.config
+    end 
+
     # match routes
-    case :lists.flatten(match_routes(path, Route.__route__, method)) do
+    case :lists.flatten(match_routes(path, route, method)) do
       [] ->
         # Get static file or page not found
         try_to_find_static_resource(path, static, views, root) |> handle_result |> handle_request(req3, state)
@@ -53,7 +64,7 @@ defmodule Handler.WeberReqHandler do
             weber_cookie
         end
         # set up cookie
-        {_, session}  = :lists.keyfind(:session, 1, Config.config)
+        {_, session}  = :lists.keyfind(:session, 1, config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
         # get accept language
