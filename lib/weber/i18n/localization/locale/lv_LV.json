@@ -1,0 +1,53 @@
+{
+    "lv_LV": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sv",
+                "Pr",
+                "Ot",
+                "Tr",
+                "Ce",
+                "Pk",
+                "Se"
+            ],
+            "abbr_month_names": [
+                "janv.",
+                "febr.",
+                "marts",
+                "apr.",
+                "maijs",
+                "jūn.",
+                "jūl.",
+                "aug.",
+                "sept.",
+                "okt.",
+                "nov.",
+                "dec."
+            ],
+            "day_names": [
+                "svētdiena",
+                "pirmdiena",
+                "otrdiena",
+                "trešdiena",
+                "ceturtdiena",
+                "piektdiena",
+                "sestdiena"
+            ],
+            "format": "%Y. 'ga%da' %d. %B",
+            "month_names": [
+                "janvāris",
+                "februāris",
+                "marts",
+                "aprīlis",
+                "maijs",
+                "jūnijs",
+                "jūlijs",
+                "augusts",
+                "septembris",
+                "oktobris",
+                "novembris",
+                "decembris"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "naq_NA": {
+        "datetime": {
+            "abbr_day_names": [
+                "Son",
+                "Ma",
+                "De",
+                "Wu",
+                "Do",
+                "Fr",
+                "Sat"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec"
+            ],
+            "day_names": [
+                "Sontaxtsees",
+                "Mantaxtsees",
+                "Denstaxtsees",
+                "Wunstaxtsees",
+                "Dondertaxtsees",
+                "Fraitaxtsees",
+                "Satertaxtsees"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "ǃKhanni",
+                "ǃKhanǀgôab",
+                "ǀKhuuǁkhâb",
+                "ǃHôaǂkhaib",
+                "ǃKhaitsâb",
+                "Gamaǀaeb",
+                "ǂKhoesaob",
+                "Aoǁkhuumûǁkhâb",
+                "Taraǀkhuumûǁkhâb",
+                "ǂNûǁnâiseb",
+                "ǀHooǂgaeb",
+                "Hôasoreǁkhâb"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "rn_BI": {
+        "datetime": {
+            "abbr_day_names": [
+                "cu.",
+                "mbe.",
+                "kab.",
+                "gtu.",
+                "kan.",
+                "gnu.",
+                "gnd."
+            ],
+            "abbr_month_names": [
+                "Mut.",
+                "Gas.",
+                "Wer.",
+                "Mat.",
+                "Gic.",
+                "Kam.",
+                "Nya.",
+                "Kan.",
+                "Nze.",
+                "Ukw.",
+                "Ugu.",
+                "Uku."
+            ],
+            "day_names": [
+                "Ku w'indwi",
+                "Ku wa mbere",
+                "Ku wa kabiri",
+                "Ku wa gatatu",
+                "Ku wa kane",
+                "Ku wa gatanu",
+                "Ku wa gatandatu"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Nzero",
+                "Ruhuhuma",
+                "Ntwarante",
+                "Ndamukiza",
+                "Rusama",
+                "Ruheshi",
+                "Mukakaro",
+                "Nyandagaro",
+                "Nyakanga",
+                "Gitugutu",
+                "Munyonyo",
+                "Kigarama"
+            ]
+        }
+    }
+}

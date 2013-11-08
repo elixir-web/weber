@@ -1,0 +1,53 @@
+{
+    "gl_ES": {
+        "datetime": {
+            "abbr_day_names": [
+                "dom",
+                "lun",
+                "mar",
+                "mér",
+                "xov",
+                "ven",
+                "sáb"
+            ],
+            "abbr_month_names": [
+                "xan",
+                "feb",
+                "mar",
+                "abr",
+                "mai",
+                "xuñ",
+                "xul",
+                "ago",
+                "set",
+                "out",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "domingo",
+                "luns",
+                "martes",
+                "mércores",
+                "xoves",
+                "venres",
+                "sábado"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "xaneiro",
+                "febreiro",
+                "marzo",
+                "abril",
+                "maio",
+                "xuño",
+                "xullo",
+                "agosto",
+                "setembro",
+                "outubro",
+                "novembro",
+                "decembro"
+            ]
+        }
+    }
+}

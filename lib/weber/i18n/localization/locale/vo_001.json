@@ -1,0 +1,53 @@
+{
+    "vo_001": {
+        "datetime": {
+            "abbr_day_names": [
+                "su.",
+                "mu.",
+                "tu.",
+                "ve.",
+                "dö.",
+                "fr.",
+                "zä."
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mäz",
+                "prl",
+                "may",
+                "yun",
+                "yul",
+                "gst",
+                "set",
+                "ton",
+                "nov",
+                "dek"
+            ],
+            "day_names": [
+                "sudel",
+                "mudel",
+                "tudel",
+                "vedel",
+                "dödel",
+                "fridel",
+                "zädel"
+            ],
+            "format": "%Y %B %d",
+            "month_names": [
+                "janul",
+                "febul",
+                "mäzil",
+                "prilul",
+                "mayul",
+                "yunul",
+                "yulul",
+                "gustul",
+                "setul",
+                "tobul",
+                "novul",
+                "dekul"
+            ]
+        }
+    }
+}

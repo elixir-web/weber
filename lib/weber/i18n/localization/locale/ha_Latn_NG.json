@@ -1,0 +1,53 @@
+{
+    "ha_Latn_NG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Lh",
+                "Li",
+                "Ta",
+                "Lr",
+                "Al",
+                "Ju",
+                "As"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Fab",
+                "Mar",
+                "Afi",
+                "May",
+                "Yun",
+                "Yul",
+                "Agu",
+                "Sat",
+                "Okt",
+                "Nuw",
+                "Dis"
+            ],
+            "day_names": [
+                "Lahadi",
+                "Litinin",
+                "Talata",
+                "Laraba",
+                "Alhamis",
+                "Jumma'a",
+                "Asabar"
+            ],
+            "format": "%d %B, %Y",
+            "month_names": [
+                "Janairu",
+                "Faburairu",
+                "Maris",
+                "Afirilu",
+                "Mayu",
+                "Yuni",
+                "Yuli",
+                "Agusta",
+                "Satumba",
+                "Oktoba",
+                "Nuwamba",
+                "Disamba"
+            ]
+        }
+    }
+}

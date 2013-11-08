@@ -1,0 +1,53 @@
+{
+    "af_NA": {
+        "datetime": {
+            "abbr_day_names": [
+                "So",
+                "Ma",
+                "Di",
+                "Wo",
+                "Do",
+                "Vr",
+                "Sa"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Sondag",
+                "Maandag",
+                "Dinsdag",
+                "Woensdag",
+                "Donderdag",
+                "Vrydag",
+                "Saterdag"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Januarie",
+                "Februarie",
+                "Maart",
+                "April",
+                "Mei",
+                "Junie",
+                "Julie",
+                "Augustus",
+                "September",
+                "Oktober",
+                "November",
+                "Desember"
+            ]
+        }
+    }
+}

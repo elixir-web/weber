@@ -1,0 +1,53 @@
+{
+    "mas_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Jpi",
+                "Jtt",
+                "Jnn",
+                "Jtn",
+                "Alh",
+                "Iju",
+                "Jmo"
+            ],
+            "abbr_month_names": [
+                "Dal",
+                "Ará",
+                "Ɔɛn",
+                "Doy",
+                "Lép",
+                "Rok",
+                "Sás",
+                "Bɔ́r",
+                "Kús",
+                "Gís",
+                "Shʉ́",
+                "Ntʉ́"
+            ],
+            "day_names": [
+                "Jumapílí",
+                "Jumatátu",
+                "Jumane",
+                "Jumatánɔ",
+                "Alaámisi",
+                "Jumáa",
+                "Jumamósi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Oladalʉ́",
+                "Arát",
+                "Ɔɛnɨ́ɔɨŋɔk",
+                "Olodoyíóríê inkókúâ",
+                "Oloilépūnyīē inkókúâ",
+                "Kújúɔrɔk",
+                "Mórusásin",
+                "Ɔlɔ́ɨ́bɔ́rárɛ",
+                "Kúshîn",
+                "Olgísan",
+                "Pʉshʉ́ka",
+                "Ntʉ́ŋʉ́s"
+            ]
+        }
+    }
+}

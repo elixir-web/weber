@@ -1,0 +1,53 @@
+{
+    "ca_FR": {
+        "datetime": {
+            "abbr_day_names": [
+                "dg.",
+                "dl.",
+                "dt.",
+                "dc.",
+                "dj.",
+                "dv.",
+                "ds."
+            ],
+            "abbr_month_names": [
+                "gen.",
+                "feb.",
+                "març",
+                "abr.",
+                "maig",
+                "juny",
+                "jul.",
+                "ag.",
+                "set.",
+                "oct.",
+                "nov.",
+                "des."
+            ],
+            "day_names": [
+                "diumenge",
+                "dilluns",
+                "dimarts",
+                "dimecres",
+                "dijous",
+                "divendres",
+                "dissabte"
+            ],
+            "format": "%d %B '%de' %Y",
+            "month_names": [
+                "gener",
+                "febrer",
+                "març",
+                "abril",
+                "maig",
+                "juny",
+                "juliol",
+                "agost",
+                "setembre",
+                "octubre",
+                "novembre",
+                "desembre"
+            ]
+        }
+    }
+}

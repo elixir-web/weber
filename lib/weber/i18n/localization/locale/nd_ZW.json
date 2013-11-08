@@ -1,0 +1,53 @@
+{
+    "nd_ZW": {
+        "datetime": {
+            "abbr_day_names": [
+                "Son",
+                "Mvu",
+                "Sib",
+                "Sit",
+                "Sin",
+                "Sih",
+                "Mgq"
+            ],
+            "abbr_month_names": [
+                "Zib",
+                "Nhlo",
+                "Mbi",
+                "Mab",
+                "Nkw",
+                "Nhla",
+                "Ntu",
+                "Ncw",
+                "Mpan",
+                "Mfu",
+                "Lwe",
+                "Mpal"
+            ],
+            "day_names": [
+                "Sonto",
+                "Mvulo",
+                "Sibili",
+                "Sithathu",
+                "Sine",
+                "Sihlanu",
+                "Mgqibelo"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Zibandlela",
+                "Nhlolanja",
+                "Mbimbitho",
+                "Mabasa",
+                "Nkwenkwezi",
+                "Nhlangula",
+                "Ntulikazi",
+                "Ncwabakazi",
+                "Mpandula",
+                "Mfumfu",
+                "Lwezi",
+                "Mpalakazi"
+            ]
+        }
+    }
+}

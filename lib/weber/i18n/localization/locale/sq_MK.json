@@ -1,0 +1,53 @@
+{
+    "sq_MK": {
+        "datetime": {
+            "abbr_day_names": [
+                "Die",
+                "Hën",
+                "Mar",
+                "Mër",
+                "Enj",
+                "Pre",
+                "Sht"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Shk",
+                "Mar",
+                "Pri",
+                "Maj",
+                "Qer",
+                "Kor",
+                "Gsh",
+                "Sht",
+                "Tet",
+                "Nën",
+                "Dhj"
+            ],
+            "day_names": [
+                "e diel",
+                "e hënë",
+                "e martë",
+                "e mërkurë",
+                "e enjte",
+                "e premte",
+                "e shtunë"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "janar",
+                "shkurt",
+                "mars",
+                "prill",
+                "maj",
+                "qershor",
+                "korrik",
+                "gusht",
+                "shtator",
+                "tetor",
+                "nëntor",
+                "dhjetor"
+            ]
+        }
+    }
+}

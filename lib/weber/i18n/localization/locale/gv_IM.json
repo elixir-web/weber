@@ -1,0 +1,53 @@
+{
+    "gv_IM": {
+        "datetime": {
+            "abbr_day_names": [
+                "Jed",
+                "Jel",
+                "Jem",
+                "Jerc",
+                "Jerd",
+                "Jeh",
+                "Jes"
+            ],
+            "abbr_month_names": [
+                "J-guer",
+                "T-arree",
+                "Mayrnt",
+                "Avrril",
+                "Boaldyn",
+                "M-souree",
+                "J-souree",
+                "Luanistyn",
+                "M-fouyir",
+                "J-fouyir",
+                "M.Houney",
+                "M.Nollick"
+            ],
+            "day_names": [
+                "Jedoonee",
+                "Jelhein",
+                "Jemayrt",
+                "Jercean",
+                "Jerdein",
+                "Jeheiney",
+                "Jesarn"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "Jerrey-geuree",
+                "Toshiaght-arree",
+                "Mayrnt",
+                "Averil",
+                "Boaldyn",
+                "Mean-souree",
+                "Jerrey-souree",
+                "Luanistyn",
+                "Mean-fouyir",
+                "Jerrey-fouyir",
+                "Mee Houney",
+                "Mee ny Nollick"
+            ]
+        }
+    }
+}

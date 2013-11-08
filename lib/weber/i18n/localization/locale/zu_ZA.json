@@ -1,0 +1,53 @@
+{
+    "zu_ZA": {
+        "datetime": {
+            "abbr_day_names": [
+                "Son",
+                "Mso",
+                "Bil",
+                "Tha",
+                "Sin",
+                "Hla",
+                "Mgq"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mas",
+                "Apr",
+                "Mey",
+                "Jun",
+                "Jul",
+                "Aga",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Dis"
+            ],
+            "day_names": [
+                "Sonto",
+                "Msombuluko",
+                "Lwesibili",
+                "Lwesithathu",
+                "Lwesine",
+                "Lwesihlanu",
+                "Mgqibelo"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Januwari",
+                "Februwari",
+                "Mashi",
+                "Apreli",
+                "Meyi",
+                "Juni",
+                "Julayi",
+                "Agasti",
+                "Septhemba",
+                "Okthoba",
+                "Novemba",
+                "Disemba"
+            ]
+        }
+    }
+}

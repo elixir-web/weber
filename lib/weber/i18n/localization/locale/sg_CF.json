@@ -1,0 +1,53 @@
+{
+    "sg_CF": {
+        "datetime": {
+            "abbr_day_names": [
+                "Bk1",
+                "Bk2",
+                "Bk3",
+                "Bk4",
+                "Bk5",
+                "Lâp",
+                "Lây"
+            ],
+            "abbr_month_names": [
+                "Nye",
+                "Ful",
+                "Mbä",
+                "Ngu",
+                "Bêl",
+                "Fön",
+                "Len",
+                "Kük",
+                "Mvu",
+                "Ngb",
+                "Nab",
+                "Kak"
+            ],
+            "day_names": [
+                "Bikua-ôko",
+                "Bïkua-ûse",
+                "Bïkua-ptâ",
+                "Bïkua-usïö",
+                "Bïkua-okü",
+                "Lâpôsö",
+                "Lâyenga"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Nyenye",
+                "Fulundïgi",
+                "Mbängü",
+                "Ngubùe",
+                "Bêläwü",
+                "Föndo",
+                "Lengua",
+                "Kükürü",
+                "Mvuka",
+                "Ngberere",
+                "Nabändüru",
+                "Kakauka"
+            ]
+        }
+    }
+}

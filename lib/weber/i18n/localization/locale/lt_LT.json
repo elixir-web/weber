@@ -1,0 +1,53 @@
+{
+    "lt_LT": {
+        "datetime": {
+            "abbr_day_names": [
+                "sk",
+                "pr",
+                "an",
+                "tr",
+                "kt",
+                "pn",
+                "št"
+            ],
+            "abbr_month_names": [
+                "saus.",
+                "vas.",
+                "kov.",
+                "bal.",
+                "geg.",
+                "birž.",
+                "liep.",
+                "rugp.",
+                "rugs.",
+                "spal.",
+                "lapkr.",
+                "gruod."
+            ],
+            "day_names": [
+                "sekmadienis",
+                "pirmadienis",
+                "antradienis",
+                "trečiadienis",
+                "ketvirtadienis",
+                "penktadienis",
+                "šeštadienis"
+            ],
+            "format": "%Y %B %d",
+            "month_names": [
+                "sausis",
+                "vasaris",
+                "kovas",
+                "balandis",
+                "gegužė",
+                "birželis",
+                "liepa",
+                "rugpjūtis",
+                "rugsėjis",
+                "spalis",
+                "lapkritis",
+                "gruodis"
+            ]
+        }
+    }
+}

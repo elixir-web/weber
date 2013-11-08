@@ -1,0 +1,53 @@
+{
+    "ln_AO": {
+        "datetime": {
+            "abbr_day_names": [
+                "eye",
+                "ybo",
+                "mbl",
+                "mst",
+                "min",
+                "mtn",
+                "mps"
+            ],
+            "abbr_month_names": [
+                "yan",
+                "fbl",
+                "msi",
+                "apl",
+                "mai",
+                "yun",
+                "yul",
+                "agt",
+                "stb",
+                "ɔtb",
+                "nvb",
+                "dsb"
+            ],
+            "day_names": [
+                "eyenga",
+                "mokɔlɔ mwa yambo",
+                "mokɔlɔ mwa míbalé",
+                "mokɔlɔ mwa mísáto",
+                "mokɔlɔ ya mínéi",
+                "mokɔlɔ ya mítáno",
+                "mpɔ́sɔ"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "sánzá ya yambo",
+                "sánzá ya míbalé",
+                "sánzá ya mísáto",
+                "sánzá ya mínei",
+                "sánzá ya mítáno",
+                "sánzá ya motóbá",
+                "sánzá ya nsambo",
+                "sánzá ya mwambe",
+                "sánzá ya libwa",
+                "sánzá ya zómi",
+                "sánzá ya zómi na mɔ̌kɔ́",
+                "sánzá ya zómi na míbalé"
+            ]
+        }
+    }
+}

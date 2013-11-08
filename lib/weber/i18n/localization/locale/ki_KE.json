@@ -1,0 +1,53 @@
+{
+    "ki_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "KMA",
+                "NTT",
+                "NMN",
+                "NMT",
+                "ART",
+                "NMA",
+                "NMM"
+            ],
+            "abbr_month_names": [
+                "JEN",
+                "WKR",
+                "WGT",
+                "WKN",
+                "WTN",
+                "WTD",
+                "WMJ",
+                "WNN",
+                "WKD",
+                "WIK",
+                "WMW",
+                "DIT"
+            ],
+            "day_names": [
+                "Kiumia",
+                "Njumatatũ",
+                "Njumaine",
+                "Njumatana",
+                "Aramithi",
+                "Njumaa",
+                "Njumamothi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Njenuarĩ",
+                "Mwere wa kerĩ",
+                "Mwere wa gatatũ",
+                "Mwere wa kana",
+                "Mwere wa gatano",
+                "Mwere wa gatandatũ",
+                "Mwere wa mũgwanja",
+                "Mwere wa kanana",
+                "Mwere wa kenda",
+                "Mwere wa ikũmi",
+                "Mwere wa ikũmi na ũmwe",
+                "Ndithemba"
+            ]
+        }
+    }
+}

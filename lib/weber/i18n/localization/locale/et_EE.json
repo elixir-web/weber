@@ -1,0 +1,53 @@
+{
+    "et_EE": {
+        "datetime": {
+            "abbr_day_names": [
+                "P",
+                "E",
+                "T",
+                "K",
+                "N",
+                "R",
+                "L"
+            ],
+            "abbr_month_names": [
+                "jaan",
+                "veebr",
+                "märts",
+                "apr",
+                "mai",
+                "juuni",
+                "juuli",
+                "aug",
+                "sept",
+                "okt",
+                "nov",
+                "dets"
+            ],
+            "day_names": [
+                "pühapäev",
+                "esmaspäev",
+                "teisipäev",
+                "kolmapäev",
+                "neljapäev",
+                "reede",
+                "laupäev"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "jaanuar",
+                "veebruar",
+                "märts",
+                "aprill",
+                "mai",
+                "juuni",
+                "juuli",
+                "august",
+                "september",
+                "oktoober",
+                "november",
+                "detsember"
+            ]
+        }
+    }
+}

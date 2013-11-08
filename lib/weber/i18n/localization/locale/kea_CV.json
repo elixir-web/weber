@@ -1,0 +1,53 @@
+{
+    "kea_CV": {
+        "datetime": {
+            "abbr_day_names": [
+                "dum",
+                "sig",
+                "ter",
+                "kua",
+                "kin",
+                "ses",
+                "sab"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Otu",
+                "Nuv",
+                "Diz"
+            ],
+            "day_names": [
+                "dumingu",
+                "sigunda-fera",
+                "tersa-fera",
+                "kuarta-fera",
+                "kinta-fera",
+                "sesta-fera",
+                "sabadu"
+            ],
+            "format": "%d '%di' %B '%di' %Y",
+            "month_names": [
+                "Janeru",
+                "Fevereru",
+                "Marsu",
+                "Abril",
+                "Maiu",
+                "Junhu",
+                "Julhu",
+                "Agostu",
+                "Setenbru",
+                "Otubru",
+                "Nuvenbru",
+                "Dizenbru"
+            ]
+        }
+    }
+}

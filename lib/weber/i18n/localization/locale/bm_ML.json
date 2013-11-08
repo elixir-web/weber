@@ -1,0 +1,53 @@
+{
+    "bm_ML": {
+        "datetime": {
+            "abbr_day_names": [
+                "kar",
+                "ntɛ",
+                "tar",
+                "ara",
+                "ala",
+                "jum",
+                "sib"
+            ],
+            "abbr_month_names": [
+                "zan",
+                "feb",
+                "mar",
+                "awi",
+                "mɛ",
+                "zuw",
+                "zul",
+                "uti",
+                "sɛt",
+                "ɔku",
+                "now",
+                "des"
+            ],
+            "day_names": [
+                "kari",
+                "ntɛnɛ",
+                "tarata",
+                "araba",
+                "alamisa",
+                "juma",
+                "sibiri"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "zanwuye",
+                "feburuye",
+                "marisi",
+                "awirili",
+                "mɛ",
+                "zuwɛn",
+                "zuluye",
+                "uti",
+                "sɛtanburu",
+                "ɔkutɔburu",
+                "nowanburu",
+                "desanburu"
+            ]
+        }
+    }
+}

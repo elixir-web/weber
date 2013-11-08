@@ -1,0 +1,53 @@
+{
+    "tzm_Latn_MA": {
+        "datetime": {
+            "abbr_day_names": [
+                "Asa",
+                "Ayn",
+                "Asn",
+                "Akr",
+                "Akw",
+                "Asm",
+                "Asḍ"
+            ],
+            "abbr_month_names": [
+                "Yen",
+                "Yeb",
+                "Mar",
+                "Ibr",
+                "May",
+                "Yun",
+                "Yul",
+                "Ɣuc",
+                "Cut",
+                "Kṭu",
+                "Nwa",
+                "Duj"
+            ],
+            "day_names": [
+                "Asamas",
+                "Aynas",
+                "Asinas",
+                "Akras",
+                "Akwas",
+                "Asimwas",
+                "Asiḍyas"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Yennayer",
+                "Yebrayer",
+                "Mars",
+                "Ibrir",
+                "Mayyu",
+                "Yunyu",
+                "Yulyuz",
+                "Ɣuct",
+                "Cutanbir",
+                "Kṭuber",
+                "Nwanbir",
+                "Dujanbir"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "seh_MZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "Dim",
+                "Pos",
+                "Pir",
+                "Tat",
+                "Nai",
+                "Sha",
+                "Sab"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Set",
+                "Otu",
+                "Nov",
+                "Dec"
+            ],
+            "day_names": [
+                "Dimingu",
+                "Chiposi",
+                "Chipiri",
+                "Chitatu",
+                "Chinai",
+                "Chishanu",
+                "Sabudu"
+            ],
+            "format": "%d '%de' %B '%de' %Y",
+            "month_names": [
+                "Janeiro",
+                "Fevreiro",
+                "Marco",
+                "Abril",
+                "Maio",
+                "Junho",
+                "Julho",
+                "Augusto",
+                "Setembro",
+                "Otubro",
+                "Novembro",
+                "Decembro"
+            ]
+        }
+    }
+}

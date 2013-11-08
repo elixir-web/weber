@@ -1,0 +1,53 @@
+{
+    "dua_CM": {
+        "datetime": {
+            "abbr_day_names": [
+                "ét",
+                "mɔ́s",
+                "kwa",
+                "muk",
+                "ŋgi",
+                "ɗón",
+                "esa"
+            ],
+            "abbr_month_names": [
+                "di",
+                "ŋgɔn",
+                "sɔŋ",
+                "diɓ",
+                "emi",
+                "esɔ",
+                "mad",
+                "diŋ",
+                "nyɛt",
+                "may",
+                "tin",
+                "elá"
+            ],
+            "day_names": [
+                "éti",
+                "mɔ́sú",
+                "kwasú",
+                "mukɔ́sú",
+                "ŋgisú",
+                "ɗónɛsú",
+                "esaɓasú"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "dimɔ́di",
+                "ŋgɔndɛ",
+                "sɔŋɛ",
+                "diɓáɓá",
+                "emiasele",
+                "esɔpɛsɔpɛ",
+                "madiɓɛ́díɓɛ́",
+                "diŋgindi",
+                "nyɛtɛki",
+                "mayésɛ́",
+                "tiníní",
+                "eláŋgɛ́"
+            ]
+        }
+    }
+}

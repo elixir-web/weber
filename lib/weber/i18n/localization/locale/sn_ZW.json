@@ -1,0 +1,53 @@
+{
+    "sn_ZW": {
+        "datetime": {
+            "abbr_day_names": [
+                "Svo",
+                "Muv",
+                "Chip",
+                "Chit",
+                "Chin",
+                "Chis",
+                "Mug"
+            ],
+            "abbr_month_names": [
+                "Ndi",
+                "Kuk",
+                "Kur",
+                "Kub",
+                "Chv",
+                "Chk",
+                "Chg",
+                "Nya",
+                "Gun",
+                "Gum",
+                "Mb",
+                "Zvi"
+            ],
+            "day_names": [
+                "Svondo",
+                "Muvhuro",
+                "Chipiri",
+                "Chitatu",
+                "China",
+                "Chishanu",
+                "Mugovera"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Ndira",
+                "Kukadzi",
+                "Kurume",
+                "Kubvumbi",
+                "Chivabvu",
+                "Chikumi",
+                "Chikunguru",
+                "Nyamavhuvhu",
+                "Gunyana",
+                "Gumiguru",
+                "Mbudzi",
+                "Zvita"
+            ]
+        }
+    }
+}

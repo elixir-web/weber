@@ -1,0 +1,53 @@
+{
+    "cy_GB": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sul",
+                "Llun",
+                "Maw",
+                "Mer",
+                "Iau",
+                "Gwen",
+                "Sad"
+            ],
+            "abbr_month_names": [
+                "Ion",
+                "Chwef",
+                "Mawrth",
+                "Ebrill",
+                "Mai",
+                "Meh",
+                "Gorff",
+                "Awst",
+                "Medi",
+                "Hyd",
+                "Tach",
+                "Rhag"
+            ],
+            "day_names": [
+                "Dydd Sul",
+                "Dydd Llun",
+                "Dydd Mawrth",
+                "Dydd Mercher",
+                "Dydd Iau",
+                "Dydd Gwener",
+                "Dydd Sadwrn"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Ionawr",
+                "Chwefror",
+                "Mawrth",
+                "Ebrill",
+                "Mai",
+                "Mehefin",
+                "Gorffennaf",
+                "Awst",
+                "Medi",
+                "Hydref",
+                "Tachwedd",
+                "Rhagfyr"
+            ]
+        }
+    }
+}

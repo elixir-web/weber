@@ -1,0 +1,53 @@
+{
+    "kln_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Tis",
+                "Tai",
+                "Aen",
+                "Som",
+                "Ang",
+                "Mut",
+                "Loh"
+            ],
+            "abbr_month_names": [
+                "Mul",
+                "Nga",
+                "Kip",
+                "Iwa",
+                "Nge",
+                "Wak",
+                "Rop",
+                "Kog",
+                "Bur",
+                "Epe",
+                "Tai",
+                "Aen"
+            ],
+            "day_names": [
+                "Betutab tisap",
+                "Betut netai",
+                "Betutab aeng'",
+                "Betutab somok",
+                "Betutab ang'wan",
+                "Betutab mut",
+                "Betutab lo"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Mulgul",
+                "Ng'atyato",
+                "Kiptamo",
+                "Iwat kut",
+                "Ng'eiyet",
+                "Waki",
+                "Roptui",
+                "Kipkogaga",
+                "Buret",
+                "Epeso",
+                "Kipsunde netai",
+                "Kipsunde nebo aeng"
+            ]
+        }
+    }
+}

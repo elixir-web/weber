@@ -1,0 +1,53 @@
+{
+    "cgg_UG": {
+        "datetime": {
+            "abbr_day_names": [
+                "SAN",
+                "ORK",
+                "OKB",
+                "OKS",
+                "OKN",
+                "OKT",
+                "OMK"
+            ],
+            "abbr_month_names": [
+                "KBZ",
+                "KBR",
+                "KST",
+                "KKN",
+                "KTN",
+                "KMK",
+                "KMS",
+                "KMN",
+                "KMW",
+                "KKM",
+                "KNK",
+                "KNB"
+            ],
+            "day_names": [
+                "Sande",
+                "Orwokubanza",
+                "Orwakabiri",
+                "Orwakashatu",
+                "Orwakana",
+                "Orwakataano",
+                "Orwamukaaga"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Okwokubanza",
+                "Okwakabiri",
+                "Okwakashatu",
+                "Okwakana",
+                "Okwakataana",
+                "Okwamukaaga",
+                "Okwamushanju",
+                "Okwamunaana",
+                "Okwamwenda",
+                "Okwaikumi",
+                "Okwaikumi na kumwe",
+                "Okwaikumi na ibiri"
+            ]
+        }
+    }
+}

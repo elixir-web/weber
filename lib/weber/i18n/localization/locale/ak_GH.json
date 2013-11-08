@@ -1,0 +1,53 @@
+{
+    "ak_GH": {
+        "datetime": {
+            "abbr_day_names": [
+                "Kwe",
+                "Dwo",
+                "Ben",
+                "Wuk",
+                "Yaw",
+                "Fia",
+                "Mem"
+            ],
+            "abbr_month_names": [
+                "S-Ɔ",
+                "K-Ɔ",
+                "E-Ɔ",
+                "E-O",
+                "E-K",
+                "O-A",
+                "A-K",
+                "D-Ɔ",
+                "F-Ɛ",
+                "Ɔ-A",
+                "Ɔ-O",
+                "M-Ɔ"
+            ],
+            "day_names": [
+                "Kwesida",
+                "Dwowda",
+                "Benada",
+                "Wukuda",
+                "Yawda",
+                "Fida",
+                "Memeneda"
+            ],
+            "format": "%Y %B %d",
+            "month_names": [
+                "Sanda-Ɔpɛpɔn",
+                "Kwakwar-Ɔgyefuo",
+                "Ebɔw-Ɔbenem",
+                "Ebɔbira-Oforisuo",
+                "Esusow Aketseaba-Kɔtɔnimba",
+                "Obirade-Ayɛwohomumu",
+                "Ayɛwoho-Kitawonsa",
+                "Difuu-Ɔsandaa",
+                "Fankwa-Ɛbɔ",
+                "Ɔbɛsɛ-Ahinime",
+                "Ɔberɛfɛw-Obubuo",
+                "Mumu-Ɔpɛnimba"
+            ]
+        }
+    }
+}

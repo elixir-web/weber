@@ -1,0 +1,53 @@
+{
+    "gd_GB": {
+        "datetime": {
+            "abbr_day_names": [
+                "DiD",
+                "DiL",
+                "DiM",
+                "DiC",
+                "Dia",
+                "Dih",
+                "DiS"
+            ],
+            "abbr_month_names": [
+                "Faoi",
+                "Gearr",
+                "Màrt",
+                "Gibl",
+                "Cèit",
+                "Ògmh",
+                "Iuch",
+                "Lùna",
+                "Sult",
+                "Dàmh",
+                "Samh",
+                "Dùbh"
+            ],
+            "day_names": [
+                "DiDòmhnaich",
+                "DiLuain",
+                "DiMàirt",
+                "DiCiadain",
+                "Diardaoin",
+                "DihAoine",
+                "DiSathairne"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Am Faoilleach",
+                "An Gearran",
+                "Am Màrt",
+                "An Giblean",
+                "An Cèitean",
+                "An t-Ògmhios",
+                "An t-Iuchar",
+                "An Lùnastal",
+                "An t-Sultain",
+                "An Dàmhair",
+                "An t-Samhain",
+                "An Dùbhlachd"
+            ]
+        }
+    }
+}

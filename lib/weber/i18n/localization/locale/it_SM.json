@@ -1,0 +1,53 @@
+{
+    "it_SM": {
+        "datetime": {
+            "abbr_day_names": [
+                "dom",
+                "lun",
+                "mar",
+                "mer",
+                "gio",
+                "ven",
+                "sab"
+            ],
+            "abbr_month_names": [
+                "gen",
+                "feb",
+                "mar",
+                "apr",
+                "mag",
+                "giu",
+                "lug",
+                "ago",
+                "set",
+                "ott",
+                "nov",
+                "dic"
+            ],
+            "day_names": [
+                "domenica",
+                "lunedì",
+                "martedì",
+                "mercoledì",
+                "giovedì",
+                "venerdì",
+                "sabato"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "gennaio",
+                "febbraio",
+                "marzo",
+                "aprile",
+                "maggio",
+                "giugno",
+                "luglio",
+                "agosto",
+                "settembre",
+                "ottobre",
+                "novembre",
+                "dicembre"
+            ]
+        }
+    }
+}
