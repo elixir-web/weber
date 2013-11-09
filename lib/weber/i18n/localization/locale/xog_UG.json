@@ -1,0 +1,53 @@
+{
+    "xog_UG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sabi",
+                "Bala",
+                "Kubi",
+                "Kusa",
+                "Kuna",
+                "Kuta",
+                "Muka"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apu",
+                "Maa",
+                "Juu",
+                "Jul",
+                "Agu",
+                "Seb",
+                "Oki",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Sabiiti",
+                "Balaza",
+                "Owokubili",
+                "Owokusatu",
+                "Olokuna",
+                "Olokutaanu",
+                "Olomukaaga"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Janwaliyo",
+                "Febwaliyo",
+                "Marisi",
+                "Apuli",
+                "Maayi",
+                "Juuni",
+                "Julaayi",
+                "Agusito",
+                "Sebuttemba",
+                "Okitobba",
+                "Novemba",
+                "Desemba"
+            ]
+        }
+    }
+}

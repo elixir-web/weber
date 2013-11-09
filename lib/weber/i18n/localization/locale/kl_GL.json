@@ -1,0 +1,53 @@
+{
+    "kl_GL": {
+        "datetime": {
+            "abbr_day_names": [
+                "sab",
+                "ata",
+                "mar",
+                "pin",
+                "sis",
+                "tal",
+                "arf"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "maj",
+                "jun",
+                "jul",
+                "aug",
+                "sep",
+                "okt",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "sabaat",
+                "ataasinngorneq",
+                "marlunngorneq",
+                "pingasunngorneq",
+                "sisamanngorneq",
+                "tallimanngorneq",
+                "arfininngorneq"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "januari",
+                "februari",
+                "martsi",
+                "aprili",
+                "maji",
+                "juni",
+                "juli",
+                "augustusi",
+                "septemberi",
+                "oktoberi",
+                "novemberi",
+                "decemberi"
+            ]
+        }
+    }
+}

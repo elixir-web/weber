@@ -1,0 +1,53 @@
+{
+    "az_Latn_AZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "B.",
+                "B.E.",
+                "Ç.A.",
+                "Ç.",
+                "C.A.",
+                "C",
+                "Ş."
+            ],
+            "abbr_month_names": [
+                "yan",
+                "fev",
+                "mar",
+                "apr",
+                "may",
+                "iyn",
+                "iyl",
+                "avq",
+                "sen",
+                "okt",
+                "noy",
+                "dek"
+            ],
+            "day_names": [
+                "bazar",
+                "bazar ertəsi",
+                "çərşənbə axşamı",
+                "çərşənbə",
+                "cümə axşamı",
+                "cümə",
+                "şənbə"
+            ],
+            "format": "%d %B, %Y",
+            "month_names": [
+                "yanvar",
+                "fevral",
+                "mart",
+                "aprel",
+                "may",
+                "iyun",
+                "iyul",
+                "avqust",
+                "sentyabr",
+                "oktyabr",
+                "noyabr",
+                "dekabr"
+            ]
+        }
+    }
+}

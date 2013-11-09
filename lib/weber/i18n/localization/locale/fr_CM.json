@@ -1,0 +1,53 @@
+{
+    "fr_CM": {
+        "datetime": {
+            "abbr_day_names": [
+                "dim.",
+                "lun.",
+                "mar.",
+                "mer.",
+                "jeu.",
+                "ven.",
+                "sam."
+            ],
+            "abbr_month_names": [
+                "janv.",
+                "févr.",
+                "mars",
+                "avr.",
+                "mai",
+                "juin",
+                "juil.",
+                "août",
+                "sept.",
+                "oct.",
+                "nov.",
+                "déc."
+            ],
+            "day_names": [
+                "dimanche",
+                "lundi",
+                "mardi",
+                "mercredi",
+                "jeudi",
+                "vendredi",
+                "samedi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "janvier",
+                "février",
+                "mars",
+                "avril",
+                "mai",
+                "juin",
+                "juillet",
+                "août",
+                "septembre",
+                "octobre",
+                "novembre",
+                "décembre"
+            ]
+        }
+    }
+}

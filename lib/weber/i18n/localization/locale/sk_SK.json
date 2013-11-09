@@ -1,0 +1,53 @@
+{
+    "sk_SK": {
+        "datetime": {
+            "abbr_day_names": [
+                "ne",
+                "po",
+                "ut",
+                "st",
+                "št",
+                "pi",
+                "so"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "máj",
+                "jún",
+                "júl",
+                "aug",
+                "sep",
+                "okt",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "nedeľa",
+                "pondelok",
+                "utorok",
+                "streda",
+                "štvrtok",
+                "piatok",
+                "sobota"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "januára",
+                "februára",
+                "marca",
+                "apríla",
+                "mája",
+                "júna",
+                "júla",
+                "augusta",
+                "septembra",
+                "októbra",
+                "novembra",
+                "decembra"
+            ]
+        }
+    }
+}

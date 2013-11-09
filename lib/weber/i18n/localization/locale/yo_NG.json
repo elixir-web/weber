@@ -1,0 +1,53 @@
+{
+    "yo_NG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Àìkú",
+                "Ajé",
+                "Ìsẹ́gun",
+                "Ọjọ́rú",
+                "Ọjọ́bọ",
+                "Ẹtì",
+                "Àbámẹ́ta"
+            ],
+            "abbr_month_names": [
+                "Ṣẹ́rẹ́",
+                "Èrèlè",
+                "Ẹrẹ̀nà",
+                "Ìgbé",
+                "Ẹ̀bibi",
+                "Òkúdu",
+                "Agẹmọ",
+                "Ògún",
+                "Owewe",
+                "Ọ̀wàrà",
+                "Bélú",
+                "Ọ̀pẹ̀"
+            ],
+            "day_names": [
+                "Ọjọ́ Àìkú",
+                "Ọjọ́ Ajé",
+                "Ọjọ́ Ìsẹ́gun",
+                "Ọjọ́rú",
+                "Ọjọ́bọ",
+                "Ọjọ́ Ẹtì",
+                "Ọjọ́ Àbámẹ́ta"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Oṣù Ṣẹ́rẹ́",
+                "Oṣù Èrèlè",
+                "Oṣù Ẹrẹ̀nà",
+                "Oṣù Ìgbé",
+                "Oṣù Ẹ̀bibi",
+                "Oṣù Òkúdu",
+                "Oṣù Agẹmọ",
+                "Oṣù Ògún",
+                "Oṣù Owewe",
+                "Oṣù Ọ̀wàrà",
+                "Oṣù Bélú",
+                "Oṣù Ọ̀pẹ̀"
+            ]
+        }
+    }
+}

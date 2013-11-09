@@ -1,0 +1,53 @@
+{
+    "uz_Latn_UZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "Yaksh",
+                "Dush",
+                "Sesh",
+                "Chor",
+                "Pay",
+                "Jum",
+                "Shan"
+            ],
+            "abbr_month_names": [
+                "Yanv",
+                "Fev",
+                "Mar",
+                "Apr",
+                "May",
+                "Iyun",
+                "Iyul",
+                "Avg",
+                "Sen",
+                "Okt",
+                "Noya",
+                "Dek"
+            ],
+            "day_names": [
+                "yakshanba",
+                "dushanba",
+                "seshanba",
+                "chorshanba",
+                "payshanba",
+                "juma",
+                "shanba"
+            ],
+            "format": "%Y %B %d",
+            "month_names": [
+                "Yanvar",
+                "Fevral",
+                "Mart",
+                "Aprel",
+                "May",
+                "Iyun",
+                "Iyul",
+                "Avgust",
+                "Sentyabr",
+                "Oktyabr",
+                "Noyabr",
+                "Dekabr"
+            ]
+        }
+    }
+}

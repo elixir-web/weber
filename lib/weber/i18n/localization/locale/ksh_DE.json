@@ -1,0 +1,53 @@
+{
+    "ksh_DE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Su.",
+                "Mo.",
+                "Di.",
+                "Me.",
+                "Du.",
+                "Fr.",
+                "Sa."
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Fäb",
+                "Mäz",
+                "Apr",
+                "Mäi",
+                "Jun",
+                "Jul",
+                "Ouj",
+                "Säp",
+                "Okt",
+                "Nov",
+                "Dez"
+            ],
+            "day_names": [
+                "Sunndaach",
+                "Moondaach",
+                "Dinnsdaach",
+                "Metwoch",
+                "Dunnersdaach",
+                "Friidaach",
+                "Samsdaach"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "Jannewa",
+                "Fäbrowa",
+                "Määz",
+                "Aprell",
+                "Mäi",
+                "Juuni",
+                "Juuli",
+                "Oujoß",
+                "Septämber",
+                "Oktoober",
+                "Novämber",
+                "Dezämber"
+            ]
+        }
+    }
+}

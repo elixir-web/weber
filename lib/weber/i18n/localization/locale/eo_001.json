@@ -1,0 +1,53 @@
+{
+    "eo_001": {
+        "datetime": {
+            "abbr_day_names": [
+                "di",
+                "lu",
+                "ma",
+                "me",
+                "ĵa",
+                "ve",
+                "sa"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "maj",
+                "jun",
+                "jul",
+                "aŭg",
+                "sep",
+                "okt",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "dimanĉo",
+                "lundo",
+                "mardo",
+                "merkredo",
+                "ĵaŭdo",
+                "vendredo",
+                "sabato"
+            ],
+            "format": "%Y-%B-%d%d",
+            "month_names": [
+                "januaro",
+                "februaro",
+                "marto",
+                "aprilo",
+                "majo",
+                "junio",
+                "julio",
+                "aŭgusto",
+                "septembro",
+                "oktobro",
+                "novembro",
+                "decembro"
+            ]
+        }
+    }
+}

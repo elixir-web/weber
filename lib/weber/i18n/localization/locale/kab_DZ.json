@@ -1,0 +1,53 @@
+{
+    "kab_DZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "Yan",
+                "San",
+                "Kraḍ",
+                "Kuẓ",
+                "Sam",
+                "Sḍis",
+                "Say"
+            ],
+            "abbr_month_names": [
+                "Yen",
+                "Fur",
+                "Meɣ",
+                "Yeb",
+                "May",
+                "Yun",
+                "Yul",
+                "Ɣuc",
+                "Cte",
+                "Tub",
+                "Nun",
+                "Duǧ"
+            ],
+            "day_names": [
+                "Yanass",
+                "Sanass",
+                "Kraḍass",
+                "Kuẓass",
+                "Samass",
+                "Sḍisass",
+                "Sayass"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Yennayer",
+                "Fuṛar",
+                "Meɣres",
+                "Yebrir",
+                "Mayyu",
+                "Yunyu",
+                "Yulyu",
+                "Ɣuct",
+                "Ctembeṛ",
+                "Tubeṛ",
+                "Nunembeṛ",
+                "Duǧembeṛ"
+            ]
+        }
+    }
+}

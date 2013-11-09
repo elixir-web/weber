@@ -1,0 +1,53 @@
+{
+    "hr_BA": {
+        "datetime": {
+            "abbr_day_names": [
+                "ned",
+                "pon",
+                "uto",
+                "sri",
+                "čet",
+                "pet",
+                "sub"
+            ],
+            "abbr_month_names": [
+                "sij",
+                "velj",
+                "ožu",
+                "tra",
+                "svi",
+                "lip",
+                "srp",
+                "kol",
+                "ruj",
+                "lis",
+                "stu",
+                "pro"
+            ],
+            "day_names": [
+                "nedjelja",
+                "ponedjeljak",
+                "utorak",
+                "srijeda",
+                "četvrtak",
+                "petak",
+                "subota"
+            ],
+            "format": "%d. %B %Y.",
+            "month_names": [
+                "siječnja",
+                "veljače",
+                "ožujka",
+                "travnja",
+                "svibnja",
+                "lipnja",
+                "srpnja",
+                "kolovoza",
+                "rujna",
+                "listopada",
+                "studenoga",
+                "prosinca"
+            ]
+        }
+    }
+}

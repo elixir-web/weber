@@ -1,0 +1,53 @@
+{
+    "is_IS": {
+        "datetime": {
+            "abbr_day_names": [
+                "sun.",
+                "mán.",
+                "þri.",
+                "mið.",
+                "fim.",
+                "fös.",
+                "lau."
+            ],
+            "abbr_month_names": [
+                "jan.",
+                "feb.",
+                "mar.",
+                "apr.",
+                "maí",
+                "jún.",
+                "júl.",
+                "ágú.",
+                "sep.",
+                "okt.",
+                "nóv.",
+                "des."
+            ],
+            "day_names": [
+                "sunnudagur",
+                "mánudagur",
+                "þriðjudagur",
+                "miðvikudagur",
+                "fimmtudagur",
+                "föstudagur",
+                "laugardagur"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "janúar",
+                "febrúar",
+                "mars",
+                "apríl",
+                "maí",
+                "júní",
+                "júlí",
+                "ágúst",
+                "september",
+                "október",
+                "nóvember",
+                "desember"
+            ]
+        }
+    }
+}

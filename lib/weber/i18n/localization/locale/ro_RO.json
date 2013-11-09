@@ -1,0 +1,53 @@
+{
+    "ro_RO": {
+        "datetime": {
+            "abbr_day_names": [
+                "Dum",
+                "Lun",
+                "Mar",
+                "Mie",
+                "Joi",
+                "Vin",
+                "Sâm"
+            ],
+            "abbr_month_names": [
+                "ian.",
+                "feb.",
+                "mar.",
+                "apr.",
+                "mai",
+                "iun.",
+                "iul.",
+                "aug.",
+                "sept.",
+                "oct.",
+                "nov.",
+                "dec."
+            ],
+            "day_names": [
+                "duminică",
+                "luni",
+                "marți",
+                "miercuri",
+                "joi",
+                "vineri",
+                "sâmbătă"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "ianuarie",
+                "februarie",
+                "martie",
+                "aprilie",
+                "mai",
+                "iunie",
+                "iulie",
+                "august",
+                "septembrie",
+                "octombrie",
+                "noiembrie",
+                "decembrie"
+            ]
+        }
+    }
+}

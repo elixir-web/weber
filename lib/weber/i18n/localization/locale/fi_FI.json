@@ -1,0 +1,53 @@
+{
+    "fi_FI": {
+        "datetime": {
+            "abbr_day_names": [
+                "su",
+                "ma",
+                "ti",
+                "ke",
+                "to",
+                "pe",
+                "la"
+            ],
+            "abbr_month_names": [
+                "tammikuuta",
+                "helmikuuta",
+                "maaliskuuta",
+                "huhtikuuta",
+                "toukokuuta",
+                "kesäkuuta",
+                "heinäkuuta",
+                "elokuuta",
+                "syyskuuta",
+                "lokakuuta",
+                "marraskuuta",
+                "joulukuuta"
+            ],
+            "day_names": [
+                "sunnuntaina",
+                "maanantaina",
+                "tiistaina",
+                "keskiviikkona",
+                "torstaina",
+                "perjantaina",
+                "lauantaina"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "tammikuuta",
+                "helmikuuta",
+                "maaliskuuta",
+                "huhtikuuta",
+                "toukokuuta",
+                "kesäkuuta",
+                "heinäkuuta",
+                "elokuuta",
+                "syyskuuta",
+                "lokakuuta",
+                "marraskuuta",
+                "joulukuuta"
+            ]
+        }
+    }
+}

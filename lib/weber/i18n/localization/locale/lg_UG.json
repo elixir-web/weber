@@ -1,0 +1,53 @@
+{
+    "lg_UG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sab",
+                "Bal",
+                "Lw2",
+                "Lw3",
+                "Lw4",
+                "Lw5",
+                "Lw6"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apu",
+                "Maa",
+                "Juu",
+                "Jul",
+                "Agu",
+                "Seb",
+                "Oki",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Sabbiiti",
+                "Balaza",
+                "Lwakubiri",
+                "Lwakusatu",
+                "Lwakuna",
+                "Lwakutaano",
+                "Lwamukaaga"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Janwaliyo",
+                "Febwaliyo",
+                "Marisi",
+                "Apuli",
+                "Maayi",
+                "Juuni",
+                "Julaayi",
+                "Agusito",
+                "Sebuttemba",
+                "Okitobba",
+                "Novemba",
+                "Desemba"
+            ]
+        }
+    }
+}

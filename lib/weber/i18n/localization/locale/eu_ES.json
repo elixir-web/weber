@@ -1,0 +1,53 @@
+{
+    "eu_ES": {
+        "datetime": {
+            "abbr_day_names": [
+                "ig.",
+                "al.",
+                "ar.",
+                "az.",
+                "og.",
+                "or.",
+                "lr."
+            ],
+            "abbr_month_names": [
+                "urt.",
+                "ots.",
+                "mar.",
+                "api.",
+                "mai.",
+                "eka.",
+                "uzt.",
+                "abu.",
+                "ira.",
+                "urr.",
+                "aza.",
+                "abe."
+            ],
+            "day_names": [
+                "igandea",
+                "astelehena",
+                "asteartea",
+                "asteazkena",
+                "osteguna",
+                "ostirala",
+                "larunbata"
+            ],
+            "format": ". 'aroko' %Y. 'urteko' %B %d",
+            "month_names": [
+                "urtarrilak",
+                "otsailak",
+                "martxoak",
+                "apirilak",
+                "maiatzak",
+                "ekainak",
+                "uztailak",
+                "abuztuak",
+                "irailak",
+                "urriak",
+                "azaroak",
+                "abenduak"
+            ]
+        }
+    }
+}

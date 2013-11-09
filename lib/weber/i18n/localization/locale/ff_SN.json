@@ -1,0 +1,53 @@
+{
+    "ff_SN": {
+        "datetime": {
+            "abbr_day_names": [
+                "dew",
+                "aaɓ",
+                "maw",
+                "nje",
+                "naa",
+                "mwd",
+                "hbi"
+            ],
+            "abbr_month_names": [
+                "sii",
+                "col",
+                "mbo",
+                "see",
+                "duu",
+                "kor",
+                "mor",
+                "juk",
+                "slt",
+                "yar",
+                "jol",
+                "bow"
+            ],
+            "day_names": [
+                "dewo",
+                "aaɓnde",
+                "mawbaare",
+                "njeslaare",
+                "naasaande",
+                "mawnde",
+                "hoore-biir"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "siilo",
+                "colte",
+                "mbooy",
+                "seeɗto",
+                "duujal",
+                "korse",
+                "morso",
+                "juko",
+                "siilto",
+                "yarkomaa",
+                "jolal",
+                "bowte"
+            ]
+        }
+    }
+}

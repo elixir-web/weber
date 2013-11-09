@@ -1,0 +1,53 @@
+{
+    "pt_AO": {
+        "datetime": {
+            "abbr_day_names": [
+                "dom",
+                "seg",
+                "ter",
+                "qua",
+                "qui",
+                "sex",
+                "sáb"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "fev",
+                "mar",
+                "abr",
+                "mai",
+                "jun",
+                "jul",
+                "ago",
+                "set",
+                "out",
+                "nov",
+                "dez"
+            ],
+            "day_names": [
+                "domingo",
+                "segunda-feira",
+                "terça-feira",
+                "quarta-feira",
+                "quinta-feira",
+                "sexta-feira",
+                "sábado"
+            ],
+            "format": "%d '%de' %B '%de' %Y",
+            "month_names": [
+                "janeiro",
+                "fevereiro",
+                "março",
+                "abril",
+                "maio",
+                "junho",
+                "julho",
+                "agosto",
+                "setembro",
+                "outubro",
+                "novembro",
+                "dezembro"
+            ]
+        }
+    }
+}

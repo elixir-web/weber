@@ -1,0 +1,53 @@
+{
+    "om_ET": {
+        "datetime": {
+            "abbr_day_names": [
+                "Dil",
+                "Wix",
+                "Qib",
+                "Rob",
+                "Kam",
+                "Jim",
+                "San"
+            ],
+            "abbr_month_names": [
+                "Ama",
+                "Gur",
+                "Bit",
+                "Elb",
+                "Cam",
+                "Wax",
+                "Ado",
+                "Hag",
+                "Ful",
+                "Onk",
+                "Sad",
+                "Mud"
+            ],
+            "day_names": [
+                "Dilbata",
+                "Wiixata",
+                "Qibxata",
+                "Roobii",
+                "Kamiisa",
+                "Jimaata",
+                "Sanbata"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "Amajjii",
+                "Guraandhala",
+                "Bitooteessa",
+                "Elba",
+                "Caamsa",
+                "Waxabajjii",
+                "Adooleessa",
+                "Hagayya",
+                "Fuulbana",
+                "Onkololeessa",
+                "Sadaasa",
+                "Muddee"
+            ]
+        }
+    }
+}

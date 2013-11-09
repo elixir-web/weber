@@ -1,0 +1,53 @@
+{
+    "sw_UG": {
+        "datetime": {
+            "abbr_day_names": [
+                "J2",
+                "J3",
+                "J4",
+                "J5",
+                "Alh",
+                "Ij",
+                "J1"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mac",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Jumapili",
+                "Jumatatu",
+                "Jumanne",
+                "Jumatano",
+                "Alhamisi",
+                "Ijumaa",
+                "Jumamosi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Januari",
+                "Februari",
+                "Machi",
+                "Aprili",
+                "Mei",
+                "Juni",
+                "Julai",
+                "Agosti",
+                "Septemba",
+                "Oktoba",
+                "Novemba",
+                "Desemba"
+            ]
+        }
+    }
+}

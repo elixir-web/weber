@@ -1,0 +1,53 @@
+{
+    "mg_MG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Alah",
+                "Alats",
+                "Tal",
+                "Alar",
+                "Alak",
+                "Zom",
+                "Asab"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "Mey",
+                "Jon",
+                "Jol",
+                "Aog",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Alahady",
+                "Alatsinainy",
+                "Talata",
+                "Alarobia",
+                "Alakamisy",
+                "Zoma",
+                "Asabotsy"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Janoary",
+                "Febroary",
+                "Martsa",
+                "Aprily",
+                "Mey",
+                "Jona",
+                "Jolay",
+                "Aogositra",
+                "Septambra",
+                "Oktobra",
+                "Novambra",
+                "Desambra"
+            ]
+        }
+    }
+}

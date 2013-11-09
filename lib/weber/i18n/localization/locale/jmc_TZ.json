@@ -1,0 +1,53 @@
+{
+    "jmc_TZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "Jpi",
+                "Jtt",
+                "Jnn",
+                "Jtn",
+                "Alh",
+                "Iju",
+                "Jmo"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mac",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Jumapilyi",
+                "Jumatatuu",
+                "Jumanne",
+                "Jumatanu",
+                "Alhamisi",
+                "Ijumaa",
+                "Jumamosi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Januari",
+                "Februari",
+                "Machi",
+                "Aprilyi",
+                "Mei",
+                "Junyi",
+                "Julyai",
+                "Agusti",
+                "Septemba",
+                "Oktoba",
+                "Novemba",
+                "Desemba"
+            ]
+        }
+    }
+}

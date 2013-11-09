@@ -1,0 +1,53 @@
+{
+    "sbp_TZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "Mul",
+                "Jtt",
+                "Jnn",
+                "Jtn",
+                "Alh",
+                "Iju",
+                "Jmo"
+            ],
+            "abbr_month_names": [
+                "Mup",
+                "Mwi",
+                "Msh",
+                "Mun",
+                "Mag",
+                "Muj",
+                "Msp",
+                "Mpg",
+                "Mye",
+                "Mok",
+                "Mus",
+                "Muh"
+            ],
+            "day_names": [
+                "Mulungu",
+                "Jumatatu",
+                "Jumanne",
+                "Jumatano",
+                "Alahamisi",
+                "Ijumaa",
+                "Jumamosi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Mupalangulwa",
+                "Mwitope",
+                "Mushende",
+                "Munyi",
+                "Mushende Magali",
+                "Mujimbi",
+                "Mushipepo",
+                "Mupuguto",
+                "Munyense",
+                "Mokhu",
+                "Musongandembwe",
+                "Muhaano"
+            ]
+        }
+    }
+}

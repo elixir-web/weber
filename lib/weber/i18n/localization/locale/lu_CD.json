@@ -1,0 +1,53 @@
+{
+    "lu_CD": {
+        "datetime": {
+            "abbr_day_names": [
+                "Lum",
+                "Nko",
+                "Ndy",
+                "Ndg",
+                "Njw",
+                "Ngv",
+                "Lub"
+            ],
+            "abbr_month_names": [
+                "Cio",
+                "Lui",
+                "Lus",
+                "Muu",
+                "Lum",
+                "Luf",
+                "Kab",
+                "Lush",
+                "Lut",
+                "Lun",
+                "Kas",
+                "Cis"
+            ],
+            "day_names": [
+                "Lumingu",
+                "Nkodya",
+                "Ndàayà",
+                "Ndangù",
+                "Njòwa",
+                "Ngòvya",
+                "Lubingu"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Ciongo",
+                "Lùishi",
+                "Lusòlo",
+                "Mùuyà",
+                "Lumùngùlù",
+                "Lufuimi",
+                "Kabàlàshìpù",
+                "Lùshìkà",
+                "Lutongolo",
+                "Lungùdi",
+                "Kaswèkèsè",
+                "Ciswà"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "mt_MT": {
+        "datetime": {
+            "abbr_day_names": [
+                "Ħad",
+                "Tne",
+                "Tli",
+                "Erb",
+                "Ħam",
+                "Ġim",
+                "Sib"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Fra",
+                "Mar",
+                "Apr",
+                "Mej",
+                "Ġun",
+                "Lul",
+                "Aww",
+                "Set",
+                "Ott",
+                "Nov",
+                "Diċ"
+            ],
+            "day_names": [
+                "Il-Ħadd",
+                "It-Tnejn",
+                "It-Tlieta",
+                "L-Erbgħa",
+                "Il-Ħamis",
+                "Il-Ġimgħa",
+                "Is-Sibt"
+            ],
+            "format": "%d 'ta'’ %B %Y",
+            "month_names": [
+                "Jannar",
+                "Frar",
+                "Marzu",
+                "April",
+                "Mejju",
+                "Ġunju",
+                "Lulju",
+                "Awwissu",
+                "Settembru",
+                "Ottubru",
+                "Novembru",
+                "Diċembru"
+            ]
+        }
+    }
+}

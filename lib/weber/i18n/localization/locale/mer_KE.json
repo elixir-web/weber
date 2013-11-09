@@ -1,0 +1,53 @@
+{
+    "mer_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "KIU",
+                "MRA",
+                "WAI",
+                "WET",
+                "WEN",
+                "WTN",
+                "JUM"
+            ],
+            "abbr_month_names": [
+                "JAN",
+                "FEB",
+                "MAC",
+                "ĨPU",
+                "MĨĨ",
+                "NJU",
+                "NJR",
+                "AGA",
+                "SPT",
+                "OKT",
+                "NOV",
+                "DEC"
+            ],
+            "day_names": [
+                "Kiumia",
+                "Muramuko",
+                "Wairi",
+                "Wethatu",
+                "Wena",
+                "Wetano",
+                "Jumamosi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Januarĩ",
+                "Feburuarĩ",
+                "Machi",
+                "Ĩpurũ",
+                "Mĩĩ",
+                "Njuni",
+                "Njuraĩ",
+                "Agasti",
+                "Septemba",
+                "Oktũba",
+                "Novemba",
+                "Dicemba"
+            ]
+        }
+    }
+}

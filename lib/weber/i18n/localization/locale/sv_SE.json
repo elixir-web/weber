@@ -1,0 +1,53 @@
+{
+    "sv_SE": {
+        "datetime": {
+            "abbr_day_names": [
+                "sön",
+                "mån",
+                "tis",
+                "ons",
+                "tors",
+                "fre",
+                "lör"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "maj",
+                "jun",
+                "jul",
+                "aug",
+                "sep",
+                "okt",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "söndag",
+                "måndag",
+                "tisdag",
+                "onsdag",
+                "torsdag",
+                "fredag",
+                "lördag"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "januari",
+                "februari",
+                "mars",
+                "april",
+                "maj",
+                "juni",
+                "juli",
+                "augusti",
+                "september",
+                "oktober",
+                "november",
+                "december"
+            ]
+        }
+    }
+}

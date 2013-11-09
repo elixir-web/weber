@@ -1,0 +1,53 @@
+{
+    "bas_CM": {
+        "datetime": {
+            "abbr_day_names": [
+                "nɔy",
+                "nja",
+                "uum",
+                "ŋge",
+                "mbɔ",
+                "kɔɔ",
+                "jon"
+            ],
+            "abbr_month_names": [
+                "kɔn",
+                "mac",
+                "mat",
+                "mto",
+                "mpu",
+                "hil",
+                "nje",
+                "hik",
+                "dip",
+                "bio",
+                "may",
+                "liɓ"
+            ],
+            "day_names": [
+                "ŋgwà nɔ̂y",
+                "ŋgwà njaŋgumba",
+                "ŋgwà ûm",
+                "ŋgwà ŋgê",
+                "ŋgwà mbɔk",
+                "ŋgwà kɔɔ",
+                "ŋgwà jôn"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Kɔndɔŋ",
+                "Màcɛ̂l",
+                "Màtùmb",
+                "Màtop",
+                "M̀puyɛ",
+                "Hìlòndɛ̀",
+                "Njèbà",
+                "Hìkaŋ",
+                "Dìpɔ̀s",
+                "Bìòôm",
+                "Màyɛsèp",
+                "Lìbuy li ńyèe"
+            ]
+        }
+    }
+}

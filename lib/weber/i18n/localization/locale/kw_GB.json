@@ -1,0 +1,53 @@
+{
+    "kw_GB": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sul",
+                "Lun",
+                "Mth",
+                "Mhr",
+                "Yow",
+                "Gwe",
+                "Sad"
+            ],
+            "abbr_month_names": [
+                "Gen",
+                "Whe",
+                "Mer",
+                "Ebr",
+                "Me",
+                "Efn",
+                "Gor",
+                "Est",
+                "Gwn",
+                "Hed",
+                "Du",
+                "Kev"
+            ],
+            "day_names": [
+                "De Sul",
+                "De Lun",
+                "De Merth",
+                "De Merher",
+                "De Yow",
+                "De Gwener",
+                "De Sadorn"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Mys Genver",
+                "Mys Whevrel",
+                "Mys Merth",
+                "Mys Ebrel",
+                "Mys Me",
+                "Mys Efan",
+                "Mys Gortheren",
+                "Mye Est",
+                "Mys Gwyngala",
+                "Mys Hedra",
+                "Mys Du",
+                "Mys Kevardhu"
+            ]
+        }
+    }
+}

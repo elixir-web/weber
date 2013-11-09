@@ -1,0 +1,53 @@
+{
+    "ga_IE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Domh",
+                "Luan",
+                "Máirt",
+                "Céad",
+                "Déar",
+                "Aoine",
+                "Sath"
+            ],
+            "abbr_month_names": [
+                "Ean",
+                "Feabh",
+                "Márta",
+                "Aib",
+                "Beal",
+                "Meith",
+                "Iúil",
+                "Lún",
+                "MFómh",
+                "DFómh",
+                "Samh",
+                "Noll"
+            ],
+            "day_names": [
+                "Dé Domhnaigh",
+                "Dé Luain",
+                "Dé Máirt",
+                "Dé Céadaoin",
+                "Déardaoin",
+                "Dé hAoine",
+                "Dé Sathairn"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Eanáir",
+                "Feabhra",
+                "Márta",
+                "Aibreán",
+                "Bealtaine",
+                "Meitheamh",
+                "Iúil",
+                "Lúnasa",
+                "Meán Fómhair",
+                "Deireadh Fómhair",
+                "Samhain",
+                "Nollaig"
+            ]
+        }
+    }
+}

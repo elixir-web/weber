@@ -1,0 +1,53 @@
+{
+    "fur_IT": {
+        "datetime": {
+            "abbr_day_names": [
+                "dom",
+                "lun",
+                "mar",
+                "mie",
+                "joi",
+                "vin",
+                "sab"
+            ],
+            "abbr_month_names": [
+                "Zen",
+                "Fev",
+                "Mar",
+                "Avr",
+                "Mai",
+                "Jug",
+                "Lui",
+                "Avo",
+                "Set",
+                "Otu",
+                "Nov",
+                "Dic"
+            ],
+            "day_names": [
+                "domenie",
+                "lunis",
+                "martars",
+                "miercus",
+                "joibe",
+                "vinars",
+                "sabide"
+            ],
+            "format": "%d '%di' %B '%dal' %Y",
+            "month_names": [
+                "Zenâr",
+                "Fevrâr",
+                "Març",
+                "Avrîl",
+                "Mai",
+                "Jugn",
+                "Lui",
+                "Avost",
+                "Setembar",
+                "Otubar",
+                "Novembar",
+                "Dicembar"
+            ]
+        }
+    }
+}

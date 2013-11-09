@@ -1,0 +1,53 @@
+{
+    "dav_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Jum",
+                "Jim",
+                "Kaw",
+                "Kad",
+                "Kan",
+                "Kas",
+                "Ngu"
+            ],
+            "abbr_month_names": [
+                "Imb",
+                "Kaw",
+                "Kad",
+                "Kan",
+                "Kas",
+                "Kar",
+                "Mfu",
+                "Wun",
+                "Ike",
+                "Iku",
+                "Imw",
+                "Iwi"
+            ],
+            "day_names": [
+                "Ituku ja jumwa",
+                "Kuramuka jimweri",
+                "Kuramuka kawi",
+                "Kuramuka kadadu",
+                "Kuramuka kana",
+                "Kuramuka kasanu",
+                "Kifula nguwo"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Mori ghwa imbiri",
+                "Mori ghwa kawi",
+                "Mori ghwa kadadu",
+                "Mori ghwa kana",
+                "Mori ghwa kasanu",
+                "Mori ghwa karandadu",
+                "Mori ghwa mfungade",
+                "Mori ghwa wunyanya",
+                "Mori ghwa ikenda",
+                "Mori ghwa ikumi",
+                "Mori ghwa ikumi na imweri",
+                "Mori ghwa ikumi na iwi"
+            ]
+        }
+    }
+}

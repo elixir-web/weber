@@ -1,0 +1,53 @@
+{
+    "ee_GH": {
+        "datetime": {
+            "abbr_day_names": [
+                "kɔs",
+                "dzo",
+                "bla",
+                "kuɖ",
+                "yaw",
+                "fiɖ",
+                "mem"
+            ],
+            "abbr_month_names": [
+                "dzv",
+                "dzd",
+                "ted",
+                "afɔ",
+                "dam",
+                "mas",
+                "sia",
+                "dea",
+                "any",
+                "kel",
+                "ade",
+                "dzm"
+            ],
+            "day_names": [
+                "kɔsiɖa",
+                "dzoɖa",
+                "blaɖa",
+                "kuɖa",
+                "yawoɖa",
+                "fiɖa",
+                "memleɖa"
+            ],
+            "format": "%B %d 'lia' %Y",
+            "month_names": [
+                "dzove",
+                "dzodze",
+                "tedoxe",
+                "afɔfĩe",
+                "dama",
+                "masa",
+                "siamlɔm",
+                "deasiamime",
+                "anyɔnyɔ",
+                "kele",
+                "adeɛmekpɔxe",
+                "dzome"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "swc_CD": {
+        "datetime": {
+            "abbr_day_names": [
+                "yen",
+                "kwa",
+                "pil",
+                "tat",
+                "ine",
+                "tan",
+                "sit"
+            ],
+            "abbr_month_names": [
+                "mkw",
+                "mpi",
+                "mtu",
+                "min",
+                "mtn",
+                "mst",
+                "msb",
+                "mun",
+                "mts",
+                "mku",
+                "mkm",
+                "mkb"
+            ],
+            "day_names": [
+                "siku ya yenga",
+                "siku ya kwanza",
+                "siku ya pili",
+                "siku ya tatu",
+                "siku ya ine",
+                "siku ya tanu",
+                "siku ya sita"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "mwezi ya kwanja",
+                "mwezi ya pili",
+                "mwezi ya tatu",
+                "mwezi ya ine",
+                "mwezi ya tanu",
+                "mwezi ya sita",
+                "mwezi ya saba",
+                "mwezi ya munane",
+                "mwezi ya tisa",
+                "mwezi ya kumi",
+                "mwezi ya kumi na moya",
+                "mwezi ya kumi ya mbili"
+            ]
+        }
+    }
+}

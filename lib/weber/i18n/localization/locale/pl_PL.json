@@ -1,0 +1,53 @@
+{
+    "pl_PL": {
+        "datetime": {
+            "abbr_day_names": [
+                "niedz.",
+                "pon.",
+                "wt.",
+                "śr.",
+                "czw.",
+                "pt.",
+                "sob."
+            ],
+            "abbr_month_names": [
+                "sty",
+                "lut",
+                "mar",
+                "kwi",
+                "maj",
+                "cze",
+                "lip",
+                "sie",
+                "wrz",
+                "paź",
+                "lis",
+                "gru"
+            ],
+            "day_names": [
+                "niedziela",
+                "poniedziałek",
+                "wtorek",
+                "środa",
+                "czwartek",
+                "piątek",
+                "sobota"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "stycznia",
+                "lutego",
+                "marca",
+                "kwietnia",
+                "maja",
+                "czerwca",
+                "lipca",
+                "sierpnia",
+                "września",
+                "października",
+                "listopada",
+                "grudnia"
+            ]
+        }
+    }
+}

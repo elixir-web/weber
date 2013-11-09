@@ -1,0 +1,53 @@
+{
+    "ast_ES": {
+        "datetime": {
+            "abbr_day_names": [
+                "dom",
+                "llu",
+                "mar",
+                "mie",
+                "xue",
+                "vie",
+                "sab"
+            ],
+            "abbr_month_names": [
+                "xin",
+                "feb",
+                "mar",
+                "abr",
+                "may",
+                "xun",
+                "xnt",
+                "ago",
+                "set",
+                "och",
+                "pay",
+                "avi"
+            ],
+            "day_names": [
+                "domingu",
+                "llunes",
+                "martes",
+                "miércoles",
+                "xueves",
+                "vienres",
+                "sábadu"
+            ],
+            "format": "%d %B '%de' %Y",
+            "month_names": [
+                "de xineru",
+                "de febreru",
+                "de marzu",
+                "d'abril",
+                "de mayu",
+                "de xunu",
+                "de xunetu",
+                "d'agostu",
+                "de setiembre",
+                "d'ochobre",
+                "de payares",
+                "d'avientu"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "wae_CH": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sun",
+                "Män",
+                "Ziš",
+                "Mit",
+                "Fró",
+                "Fri",
+                "Sam"
+            ],
+            "abbr_month_names": [
+                "Jen",
+                "Hor",
+                "Mär",
+                "Abr",
+                "Mei",
+                "Brá",
+                "Hei",
+                "Öig",
+                "Her",
+                "Wím",
+                "Win",
+                "Chr"
+            ],
+            "day_names": [
+                "Sunntag",
+                "Mäntag",
+                "Zištag",
+                "Mittwuč",
+                "Fróntag",
+                "Fritag",
+                "Samštag"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "Jenner",
+                "Hornig",
+                "Märze",
+                "Abrille",
+                "Meije",
+                "Bráčet",
+                "Heiwet",
+                "Öigšte",
+                "Herbštmánet",
+                "Wímánet",
+                "Wintermánet",
+                "Chrištmánet"
+            ]
+        }
+    }
+}

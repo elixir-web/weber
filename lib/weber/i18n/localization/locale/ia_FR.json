@@ -1,0 +1,53 @@
+{
+    "ia_FR": {
+        "datetime": {
+            "abbr_day_names": [
+                "dom",
+                "lun",
+                "mar",
+                "mer",
+                "jov",
+                "ven",
+                "sab"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "mai",
+                "jun",
+                "jul",
+                "aug",
+                "sep",
+                "oct",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "dominica",
+                "lunedi",
+                "martedi",
+                "mercuridi",
+                "jovedi",
+                "venerdi",
+                "sabbato"
+            ],
+            "format": "%Y %B %d",
+            "month_names": [
+                "januario",
+                "februario",
+                "martio",
+                "april",
+                "maio",
+                "junio",
+                "julio",
+                "augusto",
+                "septembre",
+                "octobre",
+                "novembre",
+                "decembre"
+            ]
+        }
+    }
+}

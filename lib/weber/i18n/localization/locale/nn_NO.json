@@ -1,0 +1,53 @@
+{
+    "nn_NO": {
+        "datetime": {
+            "abbr_day_names": [
+                "sø.",
+                "må.",
+                "ty.",
+                "on.",
+                "to.",
+                "fr.",
+                "la."
+            ],
+            "abbr_month_names": [
+                "jan.",
+                "feb.",
+                "mars",
+                "apr.",
+                "mai",
+                "juni",
+                "juli",
+                "aug.",
+                "sep.",
+                "okt.",
+                "nov.",
+                "des."
+            ],
+            "day_names": [
+                "søndag",
+                "måndag",
+                "tysdag",
+                "onsdag",
+                "torsdag",
+                "fredag",
+                "laurdag"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "januar",
+                "februar",
+                "mars",
+                "april",
+                "mai",
+                "juni",
+                "juli",
+                "august",
+                "september",
+                "oktober",
+                "november",
+                "desember"
+            ]
+        }
+    }
+}

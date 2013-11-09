@@ -1,0 +1,53 @@
+{
+    "so_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Axd",
+                "Isn",
+                "Tal",
+                "Arb",
+                "Kha",
+                "Jim",
+                "Sab"
+            ],
+            "abbr_month_names": [
+                "Kob",
+                "Lab",
+                "Sad",
+                "Afr",
+                "Sha",
+                "Lix",
+                "Tod",
+                "Sid",
+                "Sag",
+                "Tob",
+                "KIT",
+                "LIT"
+            ],
+            "day_names": [
+                "Axad",
+                "Isniin",
+                "Talaado",
+                "Arbaco",
+                "Khamiis",
+                "Jimco",
+                "Sabti"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "Bisha Koobaad",
+                "Bisha Labaad",
+                "Bisha Saddexaad",
+                "Bisha Afraad",
+                "Bisha Shanaad",
+                "Bisha Lixaad",
+                "Bisha Todobaad",
+                "Bisha Sideedaad",
+                "Bisha Sagaalaad",
+                "Bisha Tobnaad",
+                "Bisha Kow iyo Tobnaad",
+                "Bisha Laba iyo Tobnaad"
+            ]
+        }
+    }
+}

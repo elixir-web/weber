@@ -1,0 +1,53 @@
+{
+    "ig_NG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Ụka",
+                "Mọn",
+                "Tiu",
+                "Wen",
+                "Tọọ",
+                "Fraị",
+                "Sat"
+            ],
+            "abbr_month_names": [
+                "Jen",
+                "Feb",
+                "Maa",
+                "Epr",
+                "Mee",
+                "Juu",
+                "Jul",
+                "Ọgọ",
+                "Sep",
+                "Ọkt",
+                "Nov",
+                "Dis"
+            ],
+            "day_names": [
+                "Mbọsị Ụka",
+                "Mọnde",
+                "Tiuzdee",
+                "Wenezdee",
+                "Tọọzdee",
+                "Fraịdee",
+                "Satọdee"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Jenụwarị",
+                "Febrụwarị",
+                "Maachị",
+                "Eprel",
+                "Mee",
+                "Juun",
+                "Julaị",
+                "Ọgọọst",
+                "Septemba",
+                "Ọktoba",
+                "Novemba",
+                "Disemba"
+            ]
+        }
+    }
+}

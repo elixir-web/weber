@@ -1,0 +1,53 @@
+{
+    "rm_CH": {
+        "datetime": {
+            "abbr_day_names": [
+                "du",
+                "gli",
+                "ma",
+                "me",
+                "gie",
+                "ve",
+                "so"
+            ],
+            "abbr_month_names": [
+                "schan.",
+                "favr.",
+                "mars",
+                "avr.",
+                "matg",
+                "zercl.",
+                "fan.",
+                "avust",
+                "sett.",
+                "oct.",
+                "nov.",
+                "dec."
+            ],
+            "day_names": [
+                "dumengia",
+                "glindesdi",
+                "mardi",
+                "mesemna",
+                "gievgia",
+                "venderdi",
+                "sonda"
+            ],
+            "format": "%d '%da' %B %Y",
+            "month_names": [
+                "schaner",
+                "favrer",
+                "mars",
+                "avrigl",
+                "matg",
+                "zercladur",
+                "fanadur",
+                "avust",
+                "settember",
+                "october",
+                "november",
+                "december"
+            ]
+        }
+    }
+}

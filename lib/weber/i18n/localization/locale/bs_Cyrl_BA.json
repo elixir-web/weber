@@ -1,0 +1,53 @@
+{
+    "bs_Cyrl_BA": {
+        "datetime": {
+            "abbr_day_names": [
+                "ned",
+                "pon",
+                "uto",
+                "sri",
+                "čet",
+                "pet",
+                "sub"
+            ],
+            "abbr_month_names": [
+                "jan",
+                "feb",
+                "mar",
+                "apr",
+                "maj",
+                "jun",
+                "jul",
+                "avg",
+                "sep",
+                "okt",
+                "nov",
+                "dec"
+            ],
+            "day_names": [
+                "nedjelja",
+                "ponedjeljak",
+                "utorak",
+                "srijeda",
+                "četvrtak",
+                "petak",
+                "subota"
+            ],
+            "format": "%d%d. %B %Y.",
+            "month_names": [
+                "januar",
+                "februar",
+                "mart",
+                "april",
+                "maj",
+                "juni",
+                "juli",
+                "avgust",
+                "septembar",
+                "oktobar",
+                "novembar",
+                "decembar"
+            ]
+        }
+    }
+}

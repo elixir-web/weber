@@ -1,0 +1,53 @@
+{
+    "mua_CM": {
+        "datetime": {
+            "abbr_day_names": [
+                "Cya",
+                "Cla",
+                "Czi",
+                "Cko",
+                "Cka",
+                "Cga",
+                "Cze"
+            ],
+            "abbr_month_names": [
+                "FLO",
+                "CLA",
+                "CKI",
+                "FMF",
+                "MAD",
+                "MBI",
+                "MLI",
+                "MAM",
+                "FDE",
+                "FMU",
+                "FGW",
+                "FYU"
+            ],
+            "day_names": [
+                "Com'yakke",
+                "Comlaaɗii",
+                "Comzyiiɗii",
+                "Comkolle",
+                "Comkaldǝɓlii",
+                "Comgaisuu",
+                "Comzyeɓsuu"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Fĩi Loo",
+                "Cokcwaklaŋne",
+                "Cokcwaklii",
+                "Fĩi Marfoo",
+                "Madǝǝuutǝbijaŋ",
+                "Mamǝŋgwãafahbii",
+                "Mamǝŋgwãalii",
+                "Madǝmbii",
+                "Fĩi Dǝɓlii",
+                "Fĩi Mundaŋ",
+                "Fĩi Gwahlle",
+                "Fĩi Yuru"
+            ]
+        }
+    }
+}

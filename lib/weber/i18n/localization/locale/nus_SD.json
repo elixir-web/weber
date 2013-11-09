@@ -1,0 +1,53 @@
+{
+    "nus_SD": {
+        "datetime": {
+            "abbr_day_names": [
+                "Cäŋ",
+                "Jiec",
+                "Rɛw",
+                "Diɔ̱k",
+                "Ŋuaan",
+                "Dhieec",
+                "Bäkɛl"
+            ],
+            "abbr_month_names": [
+                "Tiop",
+                "Pɛt",
+                "Duɔ̱ɔ̱",
+                "Guak",
+                "Duä",
+                "Kor",
+                "Pay",
+                "Thoo",
+                "Tɛɛ",
+                "Laa",
+                "Kur",
+                "Tid"
+            ],
+            "day_names": [
+                "Cäŋ kuɔth",
+                "Jiec la̱t",
+                "Rɛw lätni",
+                "Diɔ̱k lätni",
+                "Ŋuaan lätni",
+                "Dhieec lätni",
+                "Bäkɛl lätni"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Tiop thar pɛt",
+                "Pɛt",
+                "Duɔ̱ɔ̱ŋ",
+                "Guak",
+                "Duät",
+                "Kornyoot",
+                "Pay yie̱tni",
+                "Tho̱o̱r",
+                "Tɛɛr",
+                "Laath",
+                "Kur",
+                "Tio̱p in di̱i̱t"
+            ]
+        }
+    }
+}

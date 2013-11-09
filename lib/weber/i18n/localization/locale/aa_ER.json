@@ -1,0 +1,53 @@
+{
+    "aa_ER": {
+        "datetime": {
+            "abbr_day_names": [
+                "Aca",
+                "Etl",
+                "Tal",
+                "Arb",
+                "Kam",
+                "Gum",
+                "Sab"
+            ],
+            "abbr_month_names": [
+                "Qun",
+                "Nah",
+                "Cig",
+                "Agd",
+                "Cax",
+                "Qas",
+                "Qad",
+                "Leq",
+                "Way",
+                "Dit",
+                "Xim",
+                "Kax"
+            ],
+            "day_names": [
+                "Acaada",
+                "Etleeni",
+                "Talaata",
+                "Arbaqa",
+                "Kamiisi",
+                "Gumqata",
+                "Sabti"
+            ],
+            "format": "%d%d %B %Y",
+            "month_names": [
+                "Qunxa Garablu",
+                "Kudo",
+                "Ciggilta Kudo",
+                "Agda Baxis",
+                "Caxah Alsa",
+                "Qasa Dirri",
+                "Qado Dirri",
+                "Liiqen",
+                "Waysu",
+                "Diteli",
+                "Ximoli",
+                "Kaxxa Garablu"
+            ]
+        }
+    }
+}

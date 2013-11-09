@@ -1,0 +1,53 @@
+{
+    "guz_KE": {
+        "datetime": {
+            "abbr_day_names": [
+                "Cpr",
+                "Ctt",
+                "Cmn",
+                "Cmt",
+                "Ars",
+                "Icm",
+                "Est"
+            ],
+            "abbr_month_names": [
+                "Can",
+                "Feb",
+                "Mac",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Cul",
+                "Agt",
+                "Sep",
+                "Okt",
+                "Nob",
+                "Dis"
+            ],
+            "day_names": [
+                "Chumapiri",
+                "Chumatato",
+                "Chumaine",
+                "Chumatano",
+                "Aramisi",
+                "Ichuma",
+                "Esabato"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Chanuari",
+                "Feburari",
+                "Machi",
+                "Apiriri",
+                "Mei",
+                "Juni",
+                "Chulai",
+                "Agosti",
+                "Septemba",
+                "Okitoba",
+                "Nobemba",
+                "Disemba"
+            ]
+        }
+    }
+}

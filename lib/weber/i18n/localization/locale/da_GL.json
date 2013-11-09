@@ -1,0 +1,53 @@
+{
+    "da_GL": {
+        "datetime": {
+            "abbr_day_names": [
+                "søn.",
+                "man.",
+                "tir.",
+                "ons.",
+                "tor.",
+                "fre.",
+                "lør."
+            ],
+            "abbr_month_names": [
+                "jan.",
+                "feb.",
+                "mar.",
+                "apr.",
+                "maj",
+                "jun.",
+                "jul.",
+                "aug.",
+                "sep.",
+                "okt.",
+                "nov.",
+                "dec."
+            ],
+            "day_names": [
+                "søndag",
+                "mandag",
+                "tirsdag",
+                "onsdag",
+                "torsdag",
+                "fredag",
+                "lørdag"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "januar",
+                "februar",
+                "marts",
+                "april",
+                "maj",
+                "juni",
+                "juli",
+                "august",
+                "september",
+                "oktober",
+                "november",
+                "december"
+            ]
+        }
+    }
+}

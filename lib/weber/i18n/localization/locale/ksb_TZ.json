@@ -1,0 +1,53 @@
+{
+    "ksb_TZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "Jpi",
+                "Jtt",
+                "Jmn",
+                "Jtn",
+                "Alh",
+                "Iju",
+                "Jmo"
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mac",
+                "Apr",
+                "Mei",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Des"
+            ],
+            "day_names": [
+                "Jumaapii",
+                "Jumaatatu",
+                "Jumaane",
+                "Jumaatano",
+                "Alhamisi",
+                "Ijumaa",
+                "Jumaamosi"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Januali",
+                "Febluali",
+                "Machi",
+                "Aplili",
+                "Mei",
+                "Juni",
+                "Julai",
+                "Agosti",
+                "Septemba",
+                "Oktoba",
+                "Novemba",
+                "Desemba"
+            ]
+        }
+    }
+}

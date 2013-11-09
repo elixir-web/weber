@@ -1,0 +1,53 @@
+{
+    "gsw_CH": {
+        "datetime": {
+            "abbr_day_names": [
+                "Su.",
+                "Mä.",
+                "Zi.",
+                "Mi.",
+                "Du.",
+                "Fr.",
+                "Sa."
+            ],
+            "abbr_month_names": [
+                "Jan",
+                "Feb",
+                "Mär",
+                "Apr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Okt",
+                "Nov",
+                "Dez"
+            ],
+            "day_names": [
+                "Sunntig",
+                "Määntig",
+                "Ziischtig",
+                "Mittwuch",
+                "Dunschtig",
+                "Friitig",
+                "Samschtig"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "Januar",
+                "Februar",
+                "März",
+                "April",
+                "Mai",
+                "Juni",
+                "Juli",
+                "Auguscht",
+                "Septämber",
+                "Oktoober",
+                "Novämber",
+                "Dezämber"
+            ]
+        }
+    }
+}

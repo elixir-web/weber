@@ -1,0 +1,53 @@
+{
+    "fil_PH": {
+        "datetime": {
+            "abbr_day_names": [
+                "Lin",
+                "Lun",
+                "Mar",
+                "Miy",
+                "Huw",
+                "Biy",
+                "Sab"
+            ],
+            "abbr_month_names": [
+                "Ene",
+                "Peb",
+                "Mar",
+                "Abr",
+                "May",
+                "Hun",
+                "Hul",
+                "Ago",
+                "Set",
+                "Okt",
+                "Nob",
+                "Dis"
+            ],
+            "day_names": [
+                "Linggo",
+                "Lunes",
+                "Martes",
+                "Miyerkules",
+                "Huwebes",
+                "Biyernes",
+                "Sabado"
+            ],
+            "format": "%B %d, %Y",
+            "month_names": [
+                "Enero",
+                "Pebrero",
+                "Marso",
+                "Abril",
+                "Mayo",
+                "Hunyo",
+                "Hulyo",
+                "Agosto",
+                "Setyembre",
+                "Oktubre",
+                "Nobyembre",
+                "Disyembre"
+            ]
+        }
+    }
+}

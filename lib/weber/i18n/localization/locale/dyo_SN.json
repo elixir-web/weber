@@ -1,0 +1,53 @@
+{
+    "dyo_SN": {
+        "datetime": {
+            "abbr_day_names": [
+                "Dim",
+                "Ten",
+                "Tal",
+                "Ala",
+                "Ara",
+                "Arj",
+                "Sib"
+            ],
+            "abbr_month_names": [
+                "Sa",
+                "Fe",
+                "Ma",
+                "Ab",
+                "Me",
+                "Su",
+                "Sú",
+                "Ut",
+                "Se",
+                "Ok",
+                "No",
+                "De"
+            ],
+            "day_names": [
+                "Dimas",
+                "Teneŋ",
+                "Talata",
+                "Alarbay",
+                "Aramisay",
+                "Arjuma",
+                "Sibiti"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Sanvie",
+                "Fébirie",
+                "Mars",
+                "Aburil",
+                "Mee",
+                "Sueŋ",
+                "Súuyee",
+                "Ut",
+                "Settembar",
+                "Oktobar",
+                "Novembar",
+                "Disambar"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "cs_CZ": {
+        "datetime": {
+            "abbr_day_names": [
+                "ne",
+                "po",
+                "út",
+                "st",
+                "čt",
+                "pá",
+                "so"
+            ],
+            "abbr_month_names": [
+                "led",
+                "úno",
+                "bře",
+                "dub",
+                "kvě",
+                "čvn",
+                "čvc",
+                "srp",
+                "zář",
+                "říj",
+                "lis",
+                "pro"
+            ],
+            "day_names": [
+                "neděle",
+                "pondělí",
+                "úterý",
+                "středa",
+                "čtvrtek",
+                "pátek",
+                "sobota"
+            ],
+            "format": "%d. %B %Y",
+            "month_names": [
+                "ledna",
+                "února",
+                "března",
+                "dubna",
+                "května",
+                "června",
+                "července",
+                "srpna",
+                "září",
+                "října",
+                "listopadu",
+                "prosince"
+            ]
+        }
+    }
+}

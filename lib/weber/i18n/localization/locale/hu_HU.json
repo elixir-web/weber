@@ -1,0 +1,53 @@
+{
+    "hu_HU": {
+        "datetime": {
+            "abbr_day_names": [
+                "V",
+                "H",
+                "K",
+                "Sze",
+                "Cs",
+                "P",
+                "Szo"
+            ],
+            "abbr_month_names": [
+                "jan.",
+                "febr.",
+                "márc.",
+                "ápr.",
+                "máj.",
+                "jún.",
+                "júl.",
+                "aug.",
+                "szept.",
+                "okt.",
+                "nov.",
+                "dec."
+            ],
+            "day_names": [
+                "vasárnap",
+                "hétfő",
+                "kedd",
+                "szerda",
+                "csütörtök",
+                "péntek",
+                "szombat"
+            ],
+            "format": "%Y. %B %d.",
+            "month_names": [
+                "január",
+                "február",
+                "március",
+                "április",
+                "május",
+                "június",
+                "július",
+                "augusztus",
+                "szeptember",
+                "október",
+                "november",
+                "december"
+            ]
+        }
+    }
+}

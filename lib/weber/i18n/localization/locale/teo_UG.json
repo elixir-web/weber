@@ -1,0 +1,53 @@
+{
+    "teo_UG": {
+        "datetime": {
+            "abbr_day_names": [
+                "Jum",
+                "Bar",
+                "Aar",
+                "Uni",
+                "Ung",
+                "Kan",
+                "Sab"
+            ],
+            "abbr_month_names": [
+                "Rar",
+                "Muk",
+                "Kwa",
+                "Dun",
+                "Mar",
+                "Mod",
+                "Jol",
+                "Ped",
+                "Sok",
+                "Tib",
+                "Lab",
+                "Poo"
+            ],
+            "day_names": [
+                "Nakaejuma",
+                "Nakaebarasa",
+                "Nakaare",
+                "Nakauni",
+                "Nakaung'on",
+                "Nakakany",
+                "Nakasabiti"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Orara",
+                "Omuk",
+                "Okwamg'",
+                "Odung'el",
+                "Omaruk",
+                "Omodok'king'ol",
+                "Ojola",
+                "Opedel",
+                "Osokosokoma",
+                "Otibar",
+                "Olabor",
+                "Opoo"
+            ]
+        }
+    }
+}

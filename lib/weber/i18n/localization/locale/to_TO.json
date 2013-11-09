@@ -1,0 +1,53 @@
+{
+    "to_TO": {
+        "datetime": {
+            "abbr_day_names": [
+                "Sāp",
+                "Mōn",
+                "Tūs",
+                "Pul",
+                "Tuʻa",
+                "Fal",
+                "Tok"
+            ],
+            "abbr_month_names": [
+                "Sān",
+                "Fēp",
+                "Maʻa",
+                "ʻEpe",
+                "Mē",
+                "Sun",
+                "Siu",
+                "ʻAok",
+                "Sep",
+                "ʻOka",
+                "Nōv",
+                "Tīs"
+            ],
+            "day_names": [
+                "Sāpate",
+                "Mōnite",
+                "Tūsite",
+                "Pulelulu",
+                "Tuʻapulelulu",
+                "Falaite",
+                "Tokonaki"
+            ],
+            "format": "%d %B %Y",
+            "month_names": [
+                "Sānuali",
+                "Fēpueli",
+                "Maʻasi",
+                "ʻEpeleli",
+                "Mē",
+                "Sune",
+                "Siulai",
+                "ʻAokosi",
+                "Sepitema",
+                "ʻOkatopa",
+                "Nōvema",
+                "Tīsema"
+            ]
+        }
+    }
+}
