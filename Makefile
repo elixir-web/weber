@@ -7,7 +7,7 @@ build:
 	$(MIX) compile
 
 test:
-	@MIX_ENV=test $(MIX) do deps.get, test
+	@MIX_ENV=test $(MIX) do deps.get, test --no-start
 
 clean:
 	rm -rf ebin

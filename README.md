@@ -26,9 +26,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
  1. Get and install Elixir from master.
  2. Clone this repository.
- 3. Execute `mix deps.get` in the weber directory.
- 4. Execute `mix compile` in the weber directory.
- 5. Execute `MIX_ENV=test mix do deps.get, test --no-start`
+ 3. Execute `make && make test` in the weber directory.
  6. Create new project with: `mix weber.new /home/user/testWebApp`
 
 Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix compile`. Then you can try to run your testWeberApplication with:
