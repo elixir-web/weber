@@ -11,6 +11,6 @@ before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
   - MIX_ENV=test mix do deps.get, compile
 script:
-  - mix test
+  - mix test --no-start
 env:
   - MIX_ENV=test
