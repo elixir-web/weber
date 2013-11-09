@@ -1,4 +1,4 @@
-defmodule Weber.DefaultConfig do 
+defmodule Config do 
 
   def config do
     [webserver: 
@@ -11,11 +11,12 @@ defmodule Weber.DefaultConfig do
        keyfile_path: ""
       ],
     ws: 
-      [ws_port: 8800,
+      [ws_port: 8080,
        ws_mod: :Handler
       ],
     localization:
-      [default_locale: :en_US
+      [default_locale: :en_US,
+       use_locales: [:en_US]
       ],
     session:
       [max_age: 1440

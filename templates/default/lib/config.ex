@@ -15,7 +15,8 @@ defmodule Config do
        ws_mod: :Handler
       ],
     localization:
-      [default_locale: :en_US
+      [default_locale: :en_US,
+       use_locales: [:en_US]
       ],
     session:
       [max_age: 1440
