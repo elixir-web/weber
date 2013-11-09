@@ -79,8 +79,10 @@ defmodule Handler.WeberReqHandler do
         locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
         case locale_process do
           nil -> 
-            {:ok, locale_data} = File.read(:erlang.list_to_binary(root) <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json")
-            Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
+            case File.read(:erlang.list_to_binary(root) <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
+              {:ok, locale_data} -> Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
+              _ -> :ok
+            end
           _ -> :ok
         end
 
