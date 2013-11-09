@@ -377,6 +377,7 @@ All websocket connections are must start with prefix `/_ws/`.
 
   * [cowboy](https://github.com/extend/cowboy)
   * [ecto](https://github.com/elixir-lang/ecto)
+  * [postgrex](https://github.com/ericmj/postgrex)
   * [exjson](https://github.com/guedes/exjson)
   * [mimetypes](https://github.com/spawngrid/mimetypes)
 
