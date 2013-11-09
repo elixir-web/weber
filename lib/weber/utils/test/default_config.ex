@@ -1,4 +1,4 @@
-defmodule Config do 
+defmodule Weber.DefaultConfig do 
 
   def config do
     [webserver: 
