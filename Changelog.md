@@ -22,6 +22,7 @@
   * Controller can return {:render_other, "test.html", []}
   * HTTP and WebSocket handler at the same port.
   * `index.html` in new weber project.
+  * generated locales from `CLDR` added
 
 #### Weber-0.0.2 [Released]
 
