@@ -1,4 +1,4 @@
-defmodule Weber.DefaultConfig do 
+defmodule Config do 
 
   def config do
     [webserver: 
@@ -12,7 +12,7 @@ defmodule Weber.DefaultConfig do
       ],
     ws: 
       [ws_port: 8080,
-       ws_mod: :Handler
+       ws_mod: :Simplechat.Main.Chat
       ],
     localization:
       [default_locale: :en_US,
