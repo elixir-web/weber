@@ -9,7 +9,7 @@ defmodule Weber.Localization.Locale do
   end
 
   def init([locale]) do
-    { :ok, Locale.new locale: JSON.parse(locale)}
+    { :ok, Locale.new locale: JSON.parse locale}
   end
 
   def handle_call(:get_abbr_day_names, _from, state) do
@@ -32,9 +32,8 @@ defmodule Weber.Localization.Locale do
     {:reply, get_current_date_time_param("format", state.locale), state}  
   end
 
-  def get_current_date_time_param(param_name, locale) do
-    {_, locale_metrics} = :lists.keyfind("en_US", 1, locale)
-    {_, datetime} = :lists.keyfind("datetime", 1, locale_metrics)
+  def get_current_date_time_param(param_name, [{_lang, locale}]) do
+    {_, datetime} = :lists.keyfind("datetime", 1, locale)
     {_, param} = :lists.keyfind(param_name, 1, datetime)
     param
   end

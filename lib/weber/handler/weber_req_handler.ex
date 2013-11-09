@@ -63,15 +63,27 @@ defmodule Handler.WeberReqHandler do
             :gen_server.cast(:session_manager, {:check_cookie, weber_cookie, self})
             weber_cookie
         end
+        
         # set up cookie
         {_, session}  = :lists.keyfind(:session, 1, config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
+        
         # get accept language
         lang = case get_lang(:cowboy_req.header("accept-language", req)) do
                  :undefined -> "en_US"
-                 l -> l 
+                 l -> String.replace(l, "-", "_") 
                end
+
+        # check 'lang' process
+        locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
+        case locale_process do
+          nil -> 
+            {:ok, locale_data} = File.read(:erlang.list_to_binary(root) <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json")
+            Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
+          _ -> :ok
+        end
+
         # update accept language
         set_session_val(:locale, lang)
         # get response from controller

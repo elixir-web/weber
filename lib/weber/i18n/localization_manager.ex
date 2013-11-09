@@ -24,7 +24,6 @@ defmodule Weber.Localization.LocalizationManager do
         {:ok, project_path} = File.cwd()
         {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
         {_, use_locales}  = :lists.keyfind(:use_locales, 1, localization_config)
-
         use_locales = Enum.map(use_locales, fn(l) -> atom_to_binary(l) <> ".json" end)
 
         case File.ls(project_path <> "/deps/weber/lib/weber/i18n/localization/locale") do
@@ -33,7 +32,8 @@ defmodule Weber.Localization.LocalizationManager do
               case :lists.member(file, use_locales) do
                 true ->
                   case File.read(project_path <> "/deps/weber/lib/weber/i18n/localization/locale/" <> file) do
-                    {:ok, data} -> Weber.Localization.Locale.start_link(binary_to_atom(file), data)  
+                    {:ok, data} -> 
+                      Weber.Localization.Locale.start_link(binary_to_atom(file), data)  
                     _ -> :ok
                   end
                 false ->

@@ -1,4 +1,4 @@
-defmodule Config do 
+defmodule Weber.DefaultConfig do 
 
   def config do
     [webserver: 
@@ -11,11 +11,12 @@ defmodule Config do
        keyfile_path: ""
       ],
     ws: 
-      [ws_port: 8800,
-       ws_mod: :Simplechat.Main.Chat
+      [ws_port: 8080,
+       ws_mod: :Handler
       ],
     localization:
-      [default_locale: "en_US"
+      [default_locale: :en_US,
+       use_locales: [:en_US]
       ],
     session:
       [max_age: 1440

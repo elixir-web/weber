@@ -17,8 +17,13 @@ defmodule Weber.I18n do
   end
 
   defp localize_time_helper do
-    date_time_format = :gen_server.call(binary_to_atom(get_session(:locale) <> ".json"), :get_date_time_format)
-    {date_time_format, binary_to_atom(get_session(:locale) <> ".json")}
+    pid = case get_session(:locale) do
+      [] -> "en_US.json"
+      l -> l <> ".json"
+    end
+
+    date_time_format = :gen_server.call(binary_to_atom(pid), :get_date_time_format)
+    {date_time_format, binary_to_atom(pid)}
   end
 
   @doc """

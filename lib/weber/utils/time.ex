@@ -48,7 +48,7 @@ defmodule Weber.Time do
     format_time(rest, locale_pid, result <> integer_to_binary(year), datetime)
   end
 
-    # y
+  # y
   def format_time(<<121, rest :: binary>>, locale_pid, result, datetime = {{year, _, _}, _}) do
     format_time(rest, locale_pid, result <> integer_to_binary(year - 2000), datetime)
   end
@@ -113,6 +113,16 @@ defmodule Weber.Time do
   # S
   def format_time(<<83, rest :: binary>>, locale_pid, result, datetime = {_, {_, second, _}}) do
     format_time(rest, locale_pid, result <> integer_to_binary(second), datetime)
+  end
+
+  # '
+  def format_time(<<39, rest :: binary>>, locale_pid, result, datetime) do
+    format_time(rest, locale_pid, result, datetime)
+  end
+
+  def format_time(<<c, rest :: binary>>, locale_pid, result, datetime) do
+    {:ok, s} = String.from_char_list([c])
+    format_time(rest, locale_pid, result <> s, datetime)
   end
 
 end

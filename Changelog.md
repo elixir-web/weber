@@ -23,6 +23,7 @@
   * HTTP and WebSocket handler at the same port.
   * `index.html` in new weber project.
   * generated locales from `CLDR` added
+  * Initial internationalization support.
 
 #### Weber-0.0.2 [Released]
 

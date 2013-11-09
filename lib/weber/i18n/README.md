@@ -40,7 +40,7 @@ Date/Time formats:
   * `%M` -     minute
   * `%S` -     second
 
-### Usage
+### Date/Time localization
 
 ```elixir
 defmodule MainController do
@@ -48,16 +48,32 @@ defmodule MainController do
   import Weber.I18n
 
   def action("GET", []) do
-    set_current_locale("de_DE")
-    "de_DE" = get_current_locale
     {:render, [time: localize_time_now_utc], []}
   end
 
 end
 ```
 
-### Contribute to Weber i18n
-  
-  * Clone `Weber` to your workstation;
-  * Add `json` file with your localization to `weber/lib/i18n/localization/locale`
-  * Send pull request.
+There are API for time localization in `Weber.I18n`:
+
+  * localize_time_now_utc/0
+  * localize_time_now/1
+
+### Application internationalization
+
+There is `t` helper for Weber probject internationalization. Create lang file with name like `en_US` in `lang` directory:
+
+```
+{
+  "HELLO_STR" : "Hello, It is weber framework!", 
+  "FRAMEWORK_DESCRIPTION" : "Weber - is a MVC Web framework for Elixir."
+}
+```
+
+and you can use it like:
+
+```html
+<span><%= t "HELLO_STR" %></span>
+```
+
+in your html template.
