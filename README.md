@@ -313,7 +313,7 @@ template from current view will render in `layout.html` instead `<%= content_for
 
 ## Internationalization
 
-There is `t` helper for Weber probject internationalization. Create lang file with name like `en_US` in `lang` directory:
+See - [Weber Internationalization](https://github.com/0xAX/weber/tree/master/lib/weber/i18n#weber-i18n)
 
 ```
 {
