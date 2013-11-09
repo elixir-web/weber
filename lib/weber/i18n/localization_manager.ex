@@ -59,12 +59,4 @@ defmodule Weber.Localization.LocalizationManager do
     end
   end
 
-  def handle_cast({:set_current_locale, locale}, state) do
-    {:noreply, LocalizationConfig.new config: state.config, default_locale: locale <> ".json"}
-  end
-
-  def handle_call(:get_current_locale, _from, state) do
-    {:reply, :lists.nth(1, String.split(state.default_locale, ".")), state}
-  end
-
 end

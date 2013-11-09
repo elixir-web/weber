@@ -1,20 +1,7 @@
 defmodule Weber.I18n do
 
   import Weber.Time
-
-  @doc """
-  Set current locale
-  """
-  def set_current_locale(locale) do
-    :gen_server.cast(:localization_manager, {:set_current_locale, locale})
-  end
-
-  @doc """
-  Get current locale
-  """
-  def get_current_locale do
-    :gen_server.call(:localization_manager, :get_current_locale)
-  end
+  import Weber.Session
 
   @doc """
   Localize UTC time now
@@ -30,10 +17,8 @@ defmodule Weber.I18n do
   end
 
   defp localize_time_helper do
-    current_locale = :gen_server.call(:localization_manager, :get_current_locale)
-    locale_process_name = binary_to_atom(current_locale <> ".json")
-    date_time_format = :gen_server.call(locale_process_name, :get_date_time_format)
-    {date_time_format, locale_process_name}
+    date_time_format = :gen_server.call(binary_to_atom(get_session(:locale) <> ".json"), :get_date_time_format)
+    {date_time_format, binary_to_atom(get_session(:locale) <> ".json")}
   end
 
   @doc """
