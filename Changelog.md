@@ -1,4 +1,6 @@
-#### Weber-0.0.3 [In development]
+#### Weber-0.0.4 [In development]
+
+#### Weber-0.0.3 [Released]
 
   * Ability to create new weber project with relative path;
   * Removed `use_ws` option from config.
