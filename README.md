@@ -7,7 +7,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
 ## Join the Community
 
-  [`#WeberMVC` on freenode IRC](http://webchat.freenode.net/?channels=%23webermvc&uio=d4)
+[`#WeberMVC` on freenode IRC](http://webchat.freenode.net/?channels=%23webermvc&uio=d4)
 
 [![Build Status](https://travis-ci.org/0xAX/weber.png)](https://travis-ci.org/0xAX/weber)
 
