@@ -388,6 +388,7 @@ See [Contributing.md](https://github.com/0xAX/weber/blob/master/Contributing.md)
 ## Additional info
 
   * Weber example for Heroku - [heroku_weber_example](https://github.com/tsloughter/heroku_weber_example)
+  * A template for using Vagrant for developing Elixir applications with Weber - [vagrant-weber](https://github.com/slogsdon/vagrant-weber)
 
 ## Author
 
