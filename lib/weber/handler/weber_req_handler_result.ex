@@ -17,13 +17,7 @@ defmodule Handler.WeberReqHandler.Result do
   end
 
   defp request({:render, data, headers}, app) do
-    filename = atom_to_list(app.controller)
-                 |> :string.tokens('.')
-                 |> List.last
-                 |> :lists.append(".html")
-                 |> :erlang.list_to_binary
-                 |> String.downcase
-                 |> :erlang.binary_to_list
+    filename = String.downcase List.last(Module.split app.controller) <> ".html"            
     {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
     {:render, 200, (EEx.eval_string add_helpers_imports(file_content), data), headers}
