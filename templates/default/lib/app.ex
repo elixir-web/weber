@@ -1,8 +1,10 @@
 defmodule #{projectNamespace} do
   
   def start(_type, _args) do
+  	# get project root
+    {_, root} = :file.get_cwd
   	# compile all views
-    Weber.Templates.ViewsLoader.compile_views
+    Weber.Templates.ViewsLoader.compile_views(root)
     # start weber application
     Weber.run_weber
   end
