@@ -17,17 +17,17 @@ defmodule Handler.WeberReqHandler.Result do
   end
 
   defp request({:render, data, headers}, app) do
-    filename = String.downcase List.last(Module.split app.controller) <> ".html"
-
-  
+    filename = String.downcase List.last(Module.split app.controller) <> ".html" 
+    
+    :io.format("filename ~p~n", [filename]) 
     :io.format("build_module_name(:lists.nth(1, find_file_path(get_all_files(app.views), filename))) ~p~n", [build_module_name(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))])
-
+    
     file_content = build_module_name(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
-
     :io.format("file_content ~p~n", [file_content])
 
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-    {:render, 200, EEx.eval_string(file_content, data), headers}
+
+    {:render, 200, EEx.eval_string(file_content.__view__(), data), headers}
   end
 
   defp request({:render_other, filename, headers}, app) do

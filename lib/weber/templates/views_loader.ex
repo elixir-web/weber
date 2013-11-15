@@ -8,7 +8,7 @@ defmodule Weber.Templates.ViewsLoader do
     lc view inlist views do
       quote do
         defmodule unquote(Weber.Utils.build_module_name(view)) do
-          def __view__, do: unquote(add_helpers_imports(File.read!(view))) 
+          def __view__, do: unquote(File.read!(view)) 
         end
       end
     end

@@ -20,9 +20,6 @@ defmodule Weber.Utils do
   """
   def find_file_path(abs_filenames, filename) do
     filter(abs_filenames, fn(file) ->
-      :io.format("basename(file) ~p~n", [basename(file)])
-      :io.format("filename ~p~n", [filename])
-      :io.format("== ~p~n", [basename(file) == filename])
       (:erlang.list_to_binary(basename(file)) == filename)
     end)
   end
