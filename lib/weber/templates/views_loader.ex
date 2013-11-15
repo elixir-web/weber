@@ -3,7 +3,6 @@ defmodule Weber.Templates.ViewsLoader do
   import Weber.Utils
 
   defmacro compile_views(root) do
-    quote do
     :io.format("root ~p~n", [root])
     :io.format("get_all_files(root ++ '/lib/views/') ~p~n", [get_all_files(root ++ '/lib/views/')])
 
@@ -18,7 +17,6 @@ defmodule Weber.Templates.ViewsLoader do
           def __view__, do: unquote(File.read!(view)) 
         end
       end
-    end
   end
   end
 
