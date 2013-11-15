@@ -4,6 +4,10 @@ defmodule Weber.Templates.ViewsLoader do
 
   defmacro compile_views do
     {_, root} = unquote :file.get_cwd
+
+    :io.format("root ~p~n", [root])
+    :io.format("get_all_files(root ++ '/lib/views/') ~p~n", [get_all_files(root ++ '/lib/views/')])
+
     views = Enum.filter(get_all_files(root ++ '/lib/views/'), fn(f) -> :filename.extension(f) == '.html' end)
 
     :io.format("views from compile_views log ~p~n", [views])
