@@ -23,7 +23,7 @@ defmodule Weber.Utils do
       :io.format("basename(file) ~p~n", [basename(file)])
       :io.format("filename ~p~n", [filename])
       :io.format("== ~p~n", [basename(file) == filename])
-      (basename(file) == filename)
+      (:erlang.list_to_binary(basename(file)) == filename)
     end)
   end
 
