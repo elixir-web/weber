@@ -18,10 +18,6 @@ defmodule Handler.WeberReqHandler.Result do
 
   defp request({:render, data, headers}, app) do
     filename = String.downcase List.last(Module.split app.controller) <> ".html" 
-    
-    :io.format("filename ~p~n", [filename]) 
-    :io.format("build_module_name(:lists.nth(1, find_file_path(get_all_files(app.views), filename))) ~p~n", [build_module_name(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))])
-    
     file_content = build_module_name(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
     :io.format("file_content ~p~n", [file_content])
 
