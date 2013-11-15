@@ -32,4 +32,16 @@ defmodule Weber.Utils do
     "<% import Weber.Helper.ResourceHelper %>" <> "<% import Weber.I18n %>" <> view_content
   end
 
+  @doc """
+  Build module name from view path.
+
+  Path: /home/user/testProj/lib/views/main.html
+  Module: Elixir.Views.Main
+  """
+  def build_module_name(path) do
+     spliten_path = String.split(:erlang.list_to_binary(path), "/")
+     drop_path = :lists.dropwhile(fn(segment) -> segment !== <<"views">> end, spliten_path)
+     Enum.map(drop_path, fn(p) -> String.capitalize(:filename.basename(p, '.html')) end) |> Module.concat
+  end
+
 end
