@@ -3,7 +3,7 @@ defmodule Weber.Mixfile do
 
   def project do
     [ app: :weber,
-      version: "0.0.2",
+      version: "0.0.3",
       name: "Weber",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
@@ -13,7 +13,7 @@ defmodule Weber.Mixfile do
 
   def application do
     [
-      description: "weber - is Elixir MVC web framework.",
+      description: 'weber - is Elixir MVC web framework.',
       registered: [:weber],
       mod: { Weber, [] }
     ]
