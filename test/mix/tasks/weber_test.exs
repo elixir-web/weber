@@ -28,7 +28,7 @@ defmodule Mix.Tasks.WeberTest do
       assert_file "lib/app.ex"
       assert_file "lib/config.ex"
       assert_file "lib/route.ex"
-      assert_file "lib/views/main.html"
+      assert_file "lib/views/Main.html"
       assert_file "lib/controllers/main.ex"
       assert_directory "logs"
       assert_directory "public/css"
