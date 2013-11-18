@@ -1,4 +1,6 @@
 defmodule #{projectNamespace} do
+
+  require Weber.Templates.ViewsLoader
   
   def start(_type, _args) do
     # Set resources
