@@ -21,6 +21,29 @@ defmodule Weber.Http.Params do
       
     end
   """
+
+  use GenServer.Behaviour
+
+  def start_link do
+    :gen_server.start_link(__MODULE__, [], [])
+  end
+
+  def init([]) do
+    # create 'request info' storage
+    :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
+    { :ok, {} }
+  end
+
+  def handle_cast({:update_connection, pid, req}, state) do
+    case :ets.lookup(:req_storage, pid) do
+      [] -> 
+        :ets.insert(:req_storage, {pid, req})
+      _  -> 
+        :ets.delete(:req_storage, pid)
+        :ets.insert(:req_storage, {pid, req})
+    end
+    {:noreply, state}
+  end
   
   @doc """
     Return HTTP version.

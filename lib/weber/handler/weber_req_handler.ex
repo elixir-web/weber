@@ -14,47 +14,32 @@ defmodule Handler.WeberReqHandler do
   import Handler.WeberReqHandler.Response
 
   defrecord State, 
-    cookie:   nil
+    config: nil
 
-  def init({:tcp, :http}, req, _opts) do
-    case :ets.lookup(:req_storage, self) do
-      [] -> 
-        :ets.insert(:req_storage, {self, req})
-      _  -> 
-        :ets.delete(:req_storage, self)
-        :ets.insert(:req_storage, {self, req})
-    end
-    {:ok, req, {} }
+  def init({:tcp, :http}, req, config) do
+    {:ok, req, State.new config: config }
   end
 
   def handle(req, state) do
-    # get project root
-    {:ok, root} = :file.get_cwd()
-    # views directory
-    views = root ++ '/lib/views/'
-    # static directory
-    static = root ++ '/public/'
+    :gen_server.cast(:Elixir.Weber.Http.Params, {:update_connection, self, req})
+    
+    root = Weber.Path.__root__
+    views = Weber.Path.__views__
+    static = Weber.Path.__static__
+
     # get method
     {method, req2} = :cowboy_req.method(req)
     # get path
     {path, req3} = :cowboy_req.path(req2)
     
-    route = case Code.ensure_loaded?(Route) do
-      true -> Route.__route__
-      false -> Weber.DefaultRoute.__route__
-    end
-
-    config = case Code.ensure_loaded?(Config) do
-      true -> Config.config
-      false -> Weber.DefaultConfig.config
-    end 
-
     # match routes
-    case :lists.flatten(match_routes(path, route, method)) do
+    case :lists.flatten(match_routes(path, Route.__route__, method)) do
       [] ->
         # Get static file or page not found
         try_to_find_static_resource(path, static, views, root) |> handle_result |> handle_request(req3, state)
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
+    
+   
         # Check cookie
         cookie = case Weber.Http.Params.get_cookie("weber") do
           :undefined ->
@@ -65,7 +50,7 @@ defmodule Handler.WeberReqHandler do
         end
         
         # set up cookie
-        {_, session}  = :lists.keyfind(:session, 1, config)
+        {_, session}  = :lists.keyfind(:session, 1, state.config)
         {_, max_age}  = :lists.keyfind(:max_age, 1, session)
         req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
         
@@ -79,7 +64,7 @@ defmodule Handler.WeberReqHandler do
         locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
         case locale_process do
           nil -> 
-            case File.read(:erlang.list_to_binary(root) <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
+            case File.read(root <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
               {:ok, locale_data} -> Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
               _ -> :ok
             end

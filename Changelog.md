@@ -1,5 +1,10 @@
 #### Weber-0.0.4 [In development]
 
+  * [Optimization works]
+    * `get_all_files`, `get_root`, `get_views`, `get_static` moved to the macros.
+    * compile all views to the modules at the compile time
+  * All views files must start with capital letter.
+
 #### Weber-0.0.3 [Released]
 
   * Ability to create new weber project with relative path;

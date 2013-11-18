@@ -29,8 +29,8 @@ defmodule Weber do
     
     # start cowboy
     Cowboy.start(config)
-    # create 'request info' storage
-    :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
+    # start requests storage
+    Weber.Http.Params.start_link
     # start session manager
     Weber.Session.SessionManager.start_link(config)
     # start localization manager
