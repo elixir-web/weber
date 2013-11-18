@@ -1,5 +1,8 @@
 defmodule Weber do
+
   use Application.Behaviour
+
+  require Weber.Templates.ViewsLoader
 
   @moduledoc """
   Main Weber module. Starts Weber application.
@@ -18,13 +21,19 @@ defmodule Weber do
   Start weber application
   """
   def start(_type, _args) do
+    # get config
     config = case Code.ensure_loaded?(Config) do
       true -> Config.config
       false -> Weber.DefaultConfig.config
     end
+    
+    # start cowboy
     Cowboy.start(config)
-    :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
+    # start requests storage
+    Weber.Http.Params.start_link
+    # start session manager
     Weber.Session.SessionManager.start_link(config)
+    # start localization manager
     Weber.Localization.LocalizationManager.start_link(config)
   end
 

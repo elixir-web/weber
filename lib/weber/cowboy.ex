@@ -27,7 +27,7 @@ defmodule Cowboy do
     {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
           
     dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod}, 
-                                             {'/[...]', Handler.WeberReqHandler, []}]}])
+                                             {'/[...]', Handler.WeberReqHandler, config}]}])
 
     case ssl do
       true -> 

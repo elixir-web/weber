@@ -6,29 +6,24 @@ defmodule Handler.WeberReqHandler.Result do
   import Weber.Utils
   require Weber.Helper.ContentFor
 
+  #import ExProf.Macro
+
   defrecord App,
     controller: nil,
     views: nil
-    
+  
   @doc "Handle response from controller"
   def handle_result(res, controller // nil, views // nil) do
-    app = App.new controller: controller, views: views
-    request(res, app)
+    request(res, App.new controller: controller, views: views)
   end
 
   defp request({:render, data, headers}, app) do
-    filename = String.downcase List.last(Module.split app.controller) <> ".html"            
-    {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
+    filename = List.last(Module.split app.controller) <> ".html"            
+    file_content = build_module_name(find_file_path(Weber.Path.__views__, filename))    
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), data), headers}
+    {:render, 200, file_content.render_template(data), headers}
   end
-
-  defp request({:render_other, filename, headers}, app) do
-    {:ok, file_content} = File.read(:lists.nth(1, find_file_path(get_all_files(app.views), filename)))
-    Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), []), headers} 
-  end
-
+  
   defp request({:render_inline, data, params, headers}, _app) do
     {:render, 200, (EEx.eval_string data, params), headers}
   end

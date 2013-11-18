@@ -117,7 +117,6 @@ Every controller's action passes 2 parameters:
 Controller can return:
 
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
-  * `{:render_other, "test.html", []}` - Render another view, but don't actually execute the associated controller's action.
   * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []}` - Render inline template.
   * `{:file, path, headers}` - Send file in response.
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.

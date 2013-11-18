@@ -70,12 +70,12 @@ defmodule Weber.Session do
         :ets.delete(:cookie_storage, s)
         :ets.insert(:cookie_storage, {s, pid, [{key, val} | :lists.keydelete(key, 1, :lists.keydelete(key, 1, opts))]})
         :ok
+      _ -> []
     end
   end
 
   defp get_session_helper do
     cookie = get_cookie("weber")
-    
     case cookie do
       :undefined -> []
       _ ->
