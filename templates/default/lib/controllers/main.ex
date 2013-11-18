@@ -4,7 +4,7 @@ defmodule #{projectNamespace}.Main do
 
   layout false
   def action([]) do
-    {:redirect, "/index.html"}
+    {:render, [project: #{projectNamespace}], []}
   end
         
 end
