@@ -25,6 +25,7 @@ defmodule Weber.Mixfile do
       {:postgrex, github: "ericmj/postgrex"},
       {:ecto, github: "elixir-lang/ecto"},
       {:exjson, github: "guedes/exjson"},
+      {:plug, github: "elixir-lang/plug"},
       {:mimetypes, github: "spawngrid/mimetypes", override: true}
     ]
   end
