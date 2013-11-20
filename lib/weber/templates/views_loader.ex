@@ -1,14 +1,21 @@
 defmodule Weber.Templates.ViewsLoader do
-   
+  
+  import Path
   import Weber.Utils
 
   defmacro set_up_resources(path) do
     path = Code.eval_quoted(path, [], file: __ENV__.file, line: __ENV__.line) |> elem(0)
+    
     views_list_tmp = Enum.filter(get_all_files(:erlang.binary_to_list(path) ++ '/lib/views/'), 
       fn(f) -> :filename.extension(f) == '.html' 
     end)
-    views_list = Enum.map(views_list_tmp, fn(view) -> {Weber.Utils.build_module_name(view), view} end)
+    
+    views_list = Enum.map(views_list_tmp, fn(view) -> 
+      Macro.escape({:erlang.list_to_binary(basename(view)), Weber.Utils.build_module_name(view), view}) 
+    end)
+    
     static_list = get_all_files(:erlang.binary_to_list(path) ++ '/public/')
+
     quote do
       defmodule unquote(Weber.Path) do
         def __root__, do: unquote(path)

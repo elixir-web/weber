@@ -6,22 +6,22 @@ defmodule Simplechat.Main.Chat do
 
   layout false
 
-  def render_chat([]) do
-    case get_session(:username) do
+  def render_chat([], conn) do
+    case get_session(conn, :username) do
       [] -> {:redirect, "/"}
       username -> {:render, [username: username], []}
     end
   end
   
-  def websocket_init(pid) do
+  def websocket_init(pid, conn) do
     :gen_server.cast(:room, {:new_user, pid})
   end
 
-  def websocket_message(pid, message) do
-    :gen_server.cast(:room, {:send, pid, message})
+  def websocket_message(pid, message, conn) do
+    :gen_server.cast(:room, {:send, pid, message, conn})
   end
 
-  def websocket_terminate(pid) do
+  def websocket_terminate(pid, conn) do
     :gen_server.cast(:room, {:delete_user, pid})
   end
 
