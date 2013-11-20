@@ -5,23 +5,22 @@ defmodule Handler.WeberReqHandler.Result do
 
   import Weber.Utils
   require Weber.Helper.ContentFor
-
-  #import ExProf.Macro
-
+  
   defrecord App,
     controller: nil,
-    views: nil
+    views: nil,
+    conn:  nil
   
   @doc "Handle response from controller"
-  def handle_result(res, controller // nil, views // nil) do
-    request(res, App.new controller: controller, views: views)
+  def handle_result(res, conn // nil, controller // nil, views // nil) do
+    request(res, App.new conn: conn, controller: controller, views: views)
   end
 
   defp request({:render, data, headers}, app) do
-    filename = List.last(Module.split app.controller) <> ".html"            
-    file_content = build_module_name(find_file_path(Weber.Path.__views__, filename))    
+    filename = List.last(Module.split app.controller) <> ".html"
+    file_content = find_file_path(Weber.Path.__views__, filename) |> elem(0)
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-    {:render, 200, file_content.render_template(data), headers}
+    {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
   end
   
   defp request({:render_inline, data, params, headers}, _app) do

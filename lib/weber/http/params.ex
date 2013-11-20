@@ -8,10 +8,10 @@ defmodule Weber.Http.Params do
 
       import Weber.Http.Params
 
-      def render_login("GET", []) do
+      def render_login("GET", conn) do
         
         # get body request
-        body = get_body()
+        body = get_body(conn)
         
         #
         # Do something with param
@@ -21,174 +21,79 @@ defmodule Weber.Http.Params do
       
     end
   """
-
-  use GenServer.Behaviour
-
-  def start_link do
-    :gen_server.start_link(__MODULE__, [], [])
-  end
-
-  def init([]) do
-    # create 'request info' storage
-    :ets.new(:req_storage, [:named_table, :public, :set, {:keypos, 1}])
-    { :ok, {} }
-  end
-
-  def handle_cast({:update_connection, pid, req}, state) do
-    case :ets.lookup(:req_storage, pid) do
-      [] -> 
-        :ets.insert(:req_storage, {pid, req})
-      _  -> 
-        :ets.delete(:req_storage, pid)
-        :ets.insert(:req_storage, {pid, req})
-    end
-    {:noreply, state}
-  end
   
-  @doc """
-    Return HTTP version.
-  """
-  def get_version do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {v, _} = :cowboy_req.version(req)
-        v
-    end
-  end
-
-  @doc """
-    Return the peer address and port number of the remote host.
-  """
-  def get_peer do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {{address, port}, _} = :cowboy_req.peer(req)
-        {address, port}
-    end
-  end
+  import Plug.Connection.Query
 
   @doc """
     Return the host binary string.
   """
-  def get_host do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {host, _} = :cowboy_req.host(req)
-        host
-    end
+  def get_host(conn) do
+    conn.host
   end
 
   @doc """
-    Return the port.
+    Return HTTP method
   """
-  def get_port do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {port, _} = :cowboy_req.port(req)
-        port
-    end
-  end
+  def get_method(conn) do
+    conn.method
+  end 
 
   @doc """
     Return the path binary string.
   """
-  def get_path do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {path, _} = :cowboy_req.path(req)
-        path
-    end
+  def get_path(conn) do
+    conn.path_info
   end
 
   @doc """
     Return the header value for the given key.
   """
-  def get_header(name) do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {header, _} = :cowboy_req.header(name, req)
-        header
-    end
+  def get_header(name, conn) do
+    headers = conn.req_headers
+    Keyword.get(name, headers)
   end
 
   @doc """
     Get all headers
   """
-  def get_headers do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {headers, _} = :cowboy_req.headers(req)
-        headers
-    end
+  def get_headers(conn) do
+    conn.req_headers
   end
 
   @doc """
     Get cookie
   """
-  def get_cookie(name) do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {cookie, _} = :cowboy_req.cookie(name, req)
-        cookie
-    end
+  def get_cookie(name, conn) do
+    :cowboy_req.cookie(name, Keyword.get(conn.assigns, :req)) |> elem(0)
+  end
+
+  def get_cookie_p(name, req) do
+    :cowboy_req.cookie(name, req) |> elem(0)  
   end
 
   @doc """
     Return the full list of cookie values.
   """
-  def cookies do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {cookie, _} = :cowboy_req.cookies(req)
-        cookie
-    end
+  def cookies(conn) do
+    :cowboy_req.cookies(Keyword.get(conn.assigns, :req)) |> elem(0)
   end
 
   @doc """
     Get body
   """
-  def get_body do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        case :cowboy_req.body(req) do
-            {:ok, body, _} -> body
-            {:error, error} -> error
-        end
+  def get_body(conn) do
+    req = Keyword.get(conn.assigns, :req)
+    case :cowboy_req.has_body(req) do
+      false -> []
+      true -> :cowboy_req.body(req) |> elem(1)
     end
   end
 
   @doc """
     Get parameter value by key from query string.
   """
-  def param(key) do
-    case :ets.lookup(:req_storage, self) do
-      [] -> []
-      [{_, req}] ->
-        {path, _} = :cowboy_req.path(req)
-        
-        params = Enum.filter(Weber.Http.Url.getBinding(path), 
-                   fn(p) ->
-                     case p do
-                       {_, _} -> false
-                       {_, _, param_key, _} -> param_key == key
-                     end
-                   end)
-
-        case params do
-          [] -> []
-          [{_, _, _, val}] -> val
-        end
-    end
+  def param(key, conn) do
+    decode(conn.query_string)[key]
   end
 
 end

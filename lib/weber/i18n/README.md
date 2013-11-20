@@ -47,8 +47,8 @@ defmodule MainController do
 
   import Weber.I18n
 
-  def action("GET", []) do
-    {:render, [time: localize_time_now_utc], []}
+  def action("GET", conn) do
+    {:render, [time: localize_time_now_utc(conn)], []}
   end
 
 end
@@ -56,8 +56,8 @@ end
 
 There are API for time localization in `Weber.I18n`:
 
-  * localize_time_now_utc/0
-  * localize_time_now/1
+  * localize_time_now_utc/1
+  * localize_time_now/2
 
 ### Application internationalization
 
@@ -73,7 +73,7 @@ There is `t` helper for Weber probject internationalization. Create lang file wi
 and you can use it like:
 
 ```html
-<span><%= t "HELLO_STR" %></span>
+<span><%= t(@conn, "HELLO_STR") %></span>
 ```
 
 in your html template.

@@ -19,7 +19,7 @@ defmodule Weber.Utils do
     Find full path by file name
   """
   def find_file_path(abs_filenames, filename) do
-    filter(abs_filenames, fn(file) ->
+    filter(abs_filenames, fn({mod, file}) ->
       :erlang.list_to_binary(basename(file)) == filename
     end) |> head
   end

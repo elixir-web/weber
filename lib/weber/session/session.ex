@@ -35,11 +35,28 @@ defmodule Weber.Session do
     {:stop, :normal, state}
   end
 
+  def handle_info({:create_new_session, session_id, pid, session_config, max_age, config}, state) do
+    case :ets.match_object(:cookie_storage, {:_, pid, :_}) do
+      [] ->
+        locale = case :lists.keyfind(:localization, 1, config) do
+          false -> []
+          {:localization, localization_config} ->
+            {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
+            default_locale
+        end
+        id = session_id |> :erlang.binary_to_list |> :lists.concat |> :lists.concat |> :erlang.list_to_binary
+        :ets.insert(:cookie_storage, {id, pid, [locale: locale]})
+      _ ->
+        :ok    
+    end
+    {:noreply, state}
+  end
+
   @doc """
   Get current session parameters.
   """
-  def get_session do
-    case get_session_helper() do
+  def get_session(conn) do
+    case get_session_helper(conn) do
       [] -> []
       [{_, _, opts}] -> opts
     end
@@ -48,8 +65,8 @@ defmodule Weber.Session do
   @doc """
   Get session parameter value by key.
   """
-  def get_session(key) do
-    case get_session_helper() do
+  def get_session(conn, key) do
+    case get_session_helper(conn) do
       [] -> []
       [{_, _, opts}] -> 
         val = :lists.keyfind(key, 1, opts)
@@ -63,8 +80,8 @@ defmodule Weber.Session do
   @doc """
   Set session parameter.
   """
-  def set_session_val(key, val) do
-    case get_session_helper() do
+  def set_session_val(conn, key, val) do
+    case get_session_helper(conn) do
       [] -> []
       [{s, pid, opts}] ->
         :ets.delete(:cookie_storage, s)
@@ -74,8 +91,8 @@ defmodule Weber.Session do
     end
   end
 
-  defp get_session_helper do
-    cookie = get_cookie("weber")
+  defp get_session_helper(conn) do
+    cookie = get_cookie("weber", conn)
     case cookie do
       :undefined -> []
       _ ->

@@ -28,28 +28,12 @@ defmodule Weber.Session.SessionManager do
   @doc """
   Create new session.
   """
-  def handle_call({:create_new_session, session_id, pid}, _from, state) do
+  def handle_cast({:create_new_session, session_id, pid}, state) do
     {_, session_config} = :lists.keyfind(:session, 1, state.config)
     {_, max_age} = :lists.keyfind(:max_age, 1, session_config)
-
-    Weber.Session.start_link(max_age, session_id)
-
-    case :ets.match_object(:cookie_storage, {:_, pid, :_}) do
-      [] ->
-        locale = case :lists.keyfind(:localization, 1, state.config) do
-          false -> 
-            []
-          {:localization, localization_config} ->
-            {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
-            default_locale
-        end
-        id = session_id |> :erlang.binary_to_list |> :lists.concat |> :lists.concat |> :erlang.list_to_binary
-        :ets.insert(:cookie_storage, {id, pid, [locale: locale]})
-        {:reply, id, state}
-      [{old_session_id, _pid, _opts}] -> 
-        {:reply, old_session_id, state}
-    end
-
+    {:ok, pid} = Weber.Session.start_link(max_age, session_id)
+    pid <- {:create_new_session, session_id, pid, session_config, max_age, state.config}
+    {:noreply, state}
   end
 
   @doc """

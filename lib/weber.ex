@@ -29,8 +29,6 @@ defmodule Weber do
     
     # start cowboy
     Cowboy.start(config)
-    # start requests storage
-    Weber.Http.Params.start_link
     # start session manager
     Weber.Session.SessionManager.start_link(config)
     # start localization manager
