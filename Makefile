@@ -12,3 +12,4 @@ test:
 clean:
 	rm -rf ebin
 	rm -rf deps
+	rm -rf _build
