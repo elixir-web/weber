@@ -97,11 +97,11 @@ defmodule Simpletodo.Main do
 
   layout false
 
-  def action(_) do
+  def action(_, conn) do
     {:render, [project: "simpleTodo"], []}
   end
 
-  def add([body: body]) do
+  def add([body: body], conn) do
     new(body)
     {:json, [response: "ok"], [{"Content-Type", "application/json"}]}
   end
@@ -137,7 +137,7 @@ defmodule Simplechat.Main.Login do
 
   layout false
 
-  def render_login([]) do
+  def render_login([], conn) do
     # get body request
     body = get_body()
     #
@@ -158,8 +158,8 @@ defmodule Simplechat.Main.Login do
 
   use Weber.Controller
 
-  def render_login([]) do
-    name = param(:name)
+  def render_login([], conn) do
+    name = param(:name, conn)
     #
     # Do something with param
     #
@@ -378,6 +378,7 @@ All websocket connections are must start with prefix `/_ws/`.
   * [ecto](https://github.com/elixir-lang/ecto)
   * [postgrex](https://github.com/ericmj/postgrex)
   * [exjson](https://github.com/guedes/exjson)
+  * [plug](https://github.com/elixir-lang/plug)
   * [mimetypes](https://github.com/spawngrid/mimetypes)
 
 ## Contributing

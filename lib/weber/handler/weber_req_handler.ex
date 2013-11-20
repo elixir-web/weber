@@ -8,10 +8,14 @@ defmodule Handler.WeberReqHandler do
   import Weber.Route
   import Weber.Session
   import Weber.Http.Url
+
+  import Plug.Connection
   
   import Handler.Weber404Handler
   import Handler.WeberReqHandler.Result
   import Handler.WeberReqHandler.Response
+
+  @connection Plug.Adapters.Cowboy.Connection
 
   defrecord State, 
     config: nil
@@ -21,8 +25,9 @@ defmodule Handler.WeberReqHandler do
   end
 
   def handle(req, state) do
-    :gen_server.cast(:Elixir.Weber.Http.Params, {:update_connection, self, req})
-    
+    conn = @connection.conn(req, :tcp)
+    conn = assign(conn, :req, req)
+
     root = Weber.Path.__root__
     views = Weber.Path.__views__
     static = Weber.Path.__static__
@@ -38,50 +43,60 @@ defmodule Handler.WeberReqHandler do
         # Get static file or page not found
         try_to_find_static_resource(path, static, views, root) |> handle_result |> handle_request(req3, state)
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
-    
-   
-        # Check cookie
-        cookie = case Weber.Http.Params.get_cookie("weber") do
-          :undefined ->
-            :gen_server.call(:session_manager, {:create_new_session, Weber.Http.Cookie.generate_session_id, self})
-          weber_cookie ->
-            :gen_server.cast(:session_manager, {:check_cookie, weber_cookie, self})
-            weber_cookie
-        end
         
-        # set up cookie
-        {_, session}  = :lists.keyfind(:session, 1, state.config)
-        {_, max_age}  = :lists.keyfind(:max_age, 1, session)
-        req4 = :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
+        req4 = case Keyword.get(state.config, :use_sessions) do
+          true ->
+            # Check cookie
+            cookie = case Weber.Http.Params.get_cookie_p("weber", req3) do
+              :undefined ->
+                session_id = Weber.Http.Cookie.generate_session_id
+                :gen_server.cast(:session_manager, {:create_new_session, session_id, self})
+                session_id |> :erlang.binary_to_list |> :lists.concat |> :lists.concat |> :erlang.list_to_binary
+              weber_cookie ->
+                :gen_server.cast(:session_manager, {:check_cookie, weber_cookie, self})
+                weber_cookie
+            end
         
-        # get accept language
-        lang = case get_lang(:cowboy_req.header("accept-language", req)) do
-                 :undefined -> "en_US"
-                 l -> String.replace(l, "-", "_") 
-               end
+            # set up cookie
+            {_, session}  = :lists.keyfind(:session, 1, state.config)
+            {_, max_age}  = :lists.keyfind(:max_age, 1, session)
+            :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
 
-        # check 'lang' process
-        locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
-        case locale_process do
-          nil -> 
-            case File.read(root <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
-              {:ok, locale_data} -> Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
+          _ ->
+            req3
+        end
+
+        case Keyword.get(state.config, :use_internationalization) do
+          true ->
+            # get accept language
+            lang = case get_lang(:cowboy_req.header("accept-language", req)) do
+                     :undefined -> "en_US"
+                     l -> String.replace(l, "-", "_") 
+                   end
+            # check 'lang' process
+            locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
+            case locale_process do
+              nil -> 
+                case File.read(root <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
+                  {:ok, locale_data} -> Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
+                  _ -> :ok
+                end
               _ -> :ok
             end
-          _ -> :ok
+            # update accept language
+            set_session_val(conn, :locale, lang)
+          _ -> 
+            :ok
         end
-
-        # update accept language
-        set_session_val(:locale, lang)
+        
         # get response from controller
-        result = Module.function(controller, action, 1).(getAllBinding(path, matched_path))
+        result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
         # handle controller's response, see in Handler.WeberReqHandler.Result
-        handle_result(result, controller, views) |> handle_request(req4, state)
+        handle_result(result, conn, controller, views) |> handle_request(req4, state)
     end
   end
 
   def terminate(_reason, _req, _state) do
-    :ets.delete(:req_storage, self)
     :ok
   end
 

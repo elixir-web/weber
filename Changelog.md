@@ -2,8 +2,12 @@
 
   * [Optimization works]
     * `get_all_files`, `get_root`, `get_views`, `get_static` moved to the macros.
-    * compile all views to the modules at the compile time
+    * compile all views to the modules at the compile time.
+    * build views module names in compile time.
   * All views files must start with capital letter.
+  * `Plug` added to the dependecies.
+  * `use_internationalization` new config option.
+  * `use_sessions` new config option.
 
 #### Weber-0.0.3 [Released]
 
