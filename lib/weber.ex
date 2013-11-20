@@ -26,7 +26,6 @@ defmodule Weber do
       true -> Config.config
       false -> Weber.DefaultConfig.config
     end
-    
     # start cowboy
     Cowboy.start(config)
     # start session manager
