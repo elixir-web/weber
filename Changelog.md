@@ -6,6 +6,8 @@
     * build views module names in compile time.
   * All views files must start with capital letter.
   * `Plug` added to the dependecies.
+  * `use_internationalization` new config option.
+  * `use_sessions` new config option.
 
 #### Weber-0.0.3 [Released]
 
