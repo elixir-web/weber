@@ -18,7 +18,8 @@ defmodule Handler.WeberReqHandler.Result do
 
   defp request({:render, data, headers}, app) do
     filename = List.last(Module.split app.controller) <> ".html"
-    file_content = find_file_path(Weber.Path.__views__, filename) |> elem(0)
+    file_content = find_file_path(Weber.Path.__views__, filename) |> elem(1)
+
     Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
     {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
   end

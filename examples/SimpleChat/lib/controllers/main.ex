@@ -6,12 +6,12 @@ defmodule Simplechat.Main.Login do
 
   layout false
 
-  def render_login([]) do
+  def render_login([], _conn) do
     {:render, [], []}
   end
 
-  def join([username: username]) do
-    set_session_val(:username, username)
+  def join([username: username], conn) do
+    set_session_val(conn, :username, username)
     {:json, [result: :ok, username: username], []}
   end
 
