@@ -31,8 +31,8 @@ defmodule Weber.Session.SessionManager do
   def handle_cast({:create_new_session, session_id, pid}, state) do
     {_, session_config} = :lists.keyfind(:session, 1, state.config)
     {_, max_age} = :lists.keyfind(:max_age, 1, session_config)
-    {:ok, pid} = Weber.Session.start_link(max_age, session_id)
-    pid <- {:create_new_session, session_id, pid, session_config, max_age, state.config}
+    {:ok, session_pid} = Weber.Session.start_link(max_age, session_id)
+    session_pid <- {:create_new_session, session_id, pid, session_config, max_age, state.config}
     {:noreply, state}
   end
 

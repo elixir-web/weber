@@ -26,7 +26,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
  1. Get and install Elixir from master.
  2. Clone this repository.
- 3. Execute `make && make test` in the weber directory.
+ 3. Execute `make && make test --no-start` in the weber directory.
  6. Create new project with: `mix weber.new /home/user/testWebApp`
 
 Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix compile`. Then you can try to run your testWeberApplication with:
@@ -111,8 +111,8 @@ end
 
 Every controller's action passes 2 parameters:
 
-  * HTTP method
   * List of URL bindings
+  * [Plug.Conn](https://github.com/elixir-lang/plug) record
 
 Controller can return:
 
@@ -139,7 +139,7 @@ defmodule Simplechat.Main.Login do
 
   def render_login([], conn) do
     # get body request
-    body = get_body()
+    body = get_body(conn)
     #
     # Do something with param
     #
@@ -299,14 +299,28 @@ defmodule TestController.Main do
 
   use Weber.Controller
 
-  layout 'layout.html'
+  layout 'Layout.html'
   
   ....        
 end
 
 ```
 
-template from current view will render in `layout.html` instead `<%= content_for_layout %>`
+or
+
+```elixir
+defmodule TestController.Main do
+
+  use Weber.Controller
+
+  layout false
+  
+  ....        
+end
+
+```
+
+template from current view will render in `Layout.html` instead `<%= content_for_layout %>`
 
 ## Internationalization
 
@@ -322,7 +336,7 @@ See - [Weber Internationalization](https://github.com/0xAX/weber/tree/master/lib
 and you can use it like:
 
 ```html
-<span><%= t "HELLO_STR" %></span>
+<span><%= t(@conn, "HELLO_STR") %></span>
 ```
 
 in your html template.
@@ -345,19 +359,19 @@ After it you must implement 3 callbacks in your controller like this:
 ```elixir
 defmodule Simplechat.Main.Chat do
 
-  def websocket_init(pid) do
+  def websocket_init(pid, conn) do
     #
     # new websocket connection init
     #
   end
 
-  def websocket_message(pid, message) do
+  def websocket_message(pid, message, conn) do
     #
     # handle incoming message here
     #
   end
 
-  def websocket_terminate(pid) do
+  def websocket_terminate(pid, conn) do
     #
     # connection terminated
     #

@@ -10,7 +10,7 @@
   <body ng-controller="SimpleChatRootController" style="min-height: 100%; min-width: 100%;" ng-init="chat_init()">
       <nav class="navbar navbar-default" role="navigation">
         <a class="navbar-brand" href="https://github.com/0xAX/weber">Weber</a>
-        <p class="navbar-text pull-right">Signed in as  <%= username %></p>    
+        <p class="navbar-text pull-right">Signed in as  <%= @username %></p>    
       </nav>
       <textarea readonly style="margin-left: 50px; height: 500px; width: 95%; resize: none;" 
                          ng-model="chat"></textarea>

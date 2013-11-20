@@ -5,7 +5,6 @@ defmodule Weber.Utils do
   """
 
   import Enum
-  import Path
 
   @doc """
     Recursively get all files from directory.
@@ -19,9 +18,15 @@ defmodule Weber.Utils do
     Find full path by file name
   """
   def find_file_path(abs_filenames, filename) do
-    filter(abs_filenames, fn({mod, file}) ->
-      :erlang.list_to_binary(basename(file)) == filename
+    filter(abs_filenames, fn({bname, _mod, _file}) ->
+      bname == filename
     end) |> head
+  end
+
+  def find_static_file_path(abs_filenames, filename) do
+    filter(abs_filenames, fn(file) ->
+      Path.basename(file) == filename
+    end)
   end
 
   @doc """

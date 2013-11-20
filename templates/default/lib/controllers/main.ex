@@ -4,7 +4,7 @@ defmodule #{projectNamespace}.Main do
 
   layout false
   def action([]) do
-    {:render, [project: #{projectNamespace}], []}
+    {:render, [], []}
   end
         
 end
