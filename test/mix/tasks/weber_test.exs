@@ -13,7 +13,9 @@ defmodule Mix.Tasks.WeberTest do
     app_module = Mix.Utils.camelize(app_name)
     app_path = tmp_path app_name
     File.rm_rf! app_path
-  
+    
+    Mix.Generator.create_directory tmp_path
+
     Mix.Tasks.Weber.New.run [app_path]
     assert_directory app_path
 
