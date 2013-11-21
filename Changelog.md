@@ -12,6 +12,7 @@
   * `SimpleChat` adapted to the last `Weber`.
   * `favicon.ico` added to the `SimpleChat`.
   * `mimetypes` dependecie removed.
+  * #104 fixed.
 
 #### Weber-0.0.3 [Released]
 
