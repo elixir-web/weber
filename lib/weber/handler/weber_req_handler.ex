@@ -28,21 +28,19 @@ defmodule Handler.WeberReqHandler do
     conn = @connection.conn(req, :tcp)
     conn = assign(conn, :req, req)
         
-    # get method
-    {method, req2} = :cowboy_req.method(req)
     # get path
-    {path, req3} = :cowboy_req.path(req2)
-    
+    {path, req2} = :cowboy_req.path(req)
+        
     # match routes
-    case :lists.flatten(match_routes(path, Route.__route__, method)) do
+    case :lists.flatten(match_routes(path, Weber.Path.__route__, conn.method)) do
       [] ->
         # Get static file or page not found
-        try_to_find_static_resource(path) |> handle_result |> handle_request(req3, state)
+        try_to_find_static_resource(path) |> handle_result |> handle_request(req2, state)
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
-        req4 = case Keyword.get(state.config, :use_sessions) do
+        req3 = case Keyword.get(state.config, :use_sessions) do
           true ->
             # Check cookie
-            cookie = case Weber.Http.Params.get_cookie_p("weber", req3) do
+            cookie = case Weber.Http.Params.get_cookie_p("weber", req2) do
               :undefined ->
                 session_id = Weber.Http.Cookie.generate_session_id
                 :gen_server.cast(:session_manager, {:create_new_session, session_id, self})
@@ -55,9 +53,9 @@ defmodule Handler.WeberReqHandler do
             # set up cookie
             {_, session}  = :lists.keyfind(:session, 1, state.config)
             {_, max_age}  = :lists.keyfind(:max_age, 1, session)
-            :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req3)
+            :cowboy_req.set_resp_cookie("weber", cookie, [{:max_age, max_age}], req2)
           _ ->
-            req3
+            req2
         end
 
         case Keyword.get(state.config, :use_internationalization) do
@@ -86,7 +84,7 @@ defmodule Handler.WeberReqHandler do
         # get response from controller
         result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
         # handle controller's response, see in Handler.WeberReqHandler.Result
-        handle_result(result, conn, controller) |> handle_request(req4, state)
+        handle_result(result, conn, controller) |> handle_request(req3, state)
     end
   end
 
