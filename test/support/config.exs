@@ -11,12 +11,15 @@ defmodule Config do
        keyfile_path: ""
       ],
     ws: 
-      [ws_port: 8800,
+      [ws_port: 8080,
        ws_mod: :Handler
       ],
+    use_internationalization: false,
     localization:
-      [default_locale: :en_US
+      [default_locale: :en_US,
+       use_locales: [:en_US]
       ],
+    use_sessions: false,
     session:
       [max_age: 1440
       ]

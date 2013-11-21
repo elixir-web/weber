@@ -30,7 +30,7 @@ defmodule Handler.WeberReqHandler.Result do
 
   defp request({:file, path, headers}, _app) do
     {:ok, file_content} = File.read(path)
-    {:file, 200, file_content, :lists.append([{"Content-Type", :mimetypes.filename(path)}], headers)}
+    {:file, 200, file_content, headers)}
   end
 
   defp request({:redirect, location}, _app) do
