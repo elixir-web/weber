@@ -4,7 +4,7 @@ defmodule WeberTest.Main do
 
   layout false
 
-  def redirect_action(_) do
+  def redirect_action(_, conn) do
     {:redirect, "/index.html"}
   end
 

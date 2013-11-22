@@ -16,17 +16,12 @@ defmodule Weber.Templates.ViewsLoader do
     
     static_list = get_all_files(:erlang.binary_to_list(path) ++ '/public/')
     
-    route = case Code.ensure_loaded?(Route) do
-      true -> Route.__route__
-      false -> Weber.DefaultRoute.__route__
-    end
-
     quote do
       defmodule unquote(Weber.Path) do
         def __root__, do: unquote(path)
         def __views__, do: unquote(views_list)
         def __static__, do: unquote(static_list)
-        def __route__, do: unquote(route)
+        def __route__, do: unquote(Route.__route__)
       end
     end
   end
