@@ -73,9 +73,9 @@
         </p>
 
         <ul>
-          <li>get_session() -> [] | [{atom, binary()}]</li>
-          <li>get_session(key :: atom()) -> [] | binary()</li>
-          <li>set_session_val(key :: atom(), val :: binary()) -> :ok.</li>
+          <li>get_session(conn) -> [] | [{atom, binary()}]</li>
+          <li>get_session(conn, key :: atom()) -> [] | binary()</li>
+          <li>set_session_val(conn, key :: atom(), val :: binary()) -> :ok.</li>
         </ul>
 
       </section>
