@@ -267,7 +267,7 @@ audio("/public/audio/sound")
 #    <souce src="/public/audio/sound2"></souce>
 #  </audio>
 #
-audio(["/public/audio/sound1", "/public/audio/sound2"], [autoplay: autoplay])
+audio(["/public/audio/sound1", "/public/audio/sound2"], [autoplay: true])
 
 #
 # Generates: <video src="public/videos/trailer">

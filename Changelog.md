@@ -14,6 +14,7 @@
   * `mimetypes` dependecie removed.
   * #104 fixed.
   * #81 fixed.
+  * #102 closed. Convinience way to test weber.
 
 #### Weber-0.0.3 [Released]
 
