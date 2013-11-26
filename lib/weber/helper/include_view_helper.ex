@@ -21,6 +21,6 @@ defmodule Weber.Helper.IncludeView do
       include_view("/complete/path/file") 
   """
   def include_view(file, args // []) do
-    file |> Path.expand(Weber.Path.__root__ <> "/lib/views/") |> EEx.eval_file(args)
+     Path.expand(file, Weber.Path.__root__ <> "/lib/views/") |> EEx.eval_file(args)
   end
 end
