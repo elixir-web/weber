@@ -4,6 +4,6 @@ defmodule Route do
   require Weber.Route
   
   route on("GET", "/weber", :TestTestTest.Main, :action)
-     |> on("GET", "/include", :TestTestTest.IncludeTest, :include_action)
+     |> on("GET", "/include", :TestTestTest.Include, :include_action)
 
 end

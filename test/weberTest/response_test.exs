@@ -8,4 +8,11 @@ defmodule WeberHttpResponseTest do
     assert(status == 200)
   end
 
+  test "SimpleResponse Include test" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/include', [], <<>>, [])
+    {:ok, body, _} = :hackney.body(client)
+    assert(body == "Main\n")
+    assert(status == 200)
+  end
+
 end
