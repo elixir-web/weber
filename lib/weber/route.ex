@@ -6,11 +6,10 @@ defmodule Weber.Route do
     
       ## Example
     
-        route on('/', Controller1, Action1)
-           |> on ('/user/:name', Controller2, Action2)
-           |> on ("/user/add/:username", "Controller2#Action2")
-           |> on ('/user/:name/delete', Controller2, Action1)
-           |> otherwise (404, Controller2, ActionNotFound)
+        route on("ANY", '/', Controller1, Action1)
+           |> on ("GET", '/user/:name', Controller2, Action2)
+           |> on ("POST", "/user/add/:username", "Controller2#Action2")
+           |> on ("GET", '/user/:name/delete', Controller2, Action1)
   """
 
   import String
@@ -49,39 +48,7 @@ defmodule Weber.Route do
   def on(routesList, method, path, controller, action) do
     :lists.append(routesList, [[method: method, path: path, controller: controller, action: action]])
   end
-
-  @doc """
-    Create list with router path.
-
-    controllerAndAction - is controller and action in: :Controller#action format
-  """
-  def otherwise(method, path, controllerAndAction) when is_binary(controllerAndAction) do
-    on(method, path, controllerAndAction)
-  end
-
-  @doc """
-    Add new route path to the routes list.
-
-    controllerAndAction - is controller and action in: :Controller#action format    
-  """
-  def otherwise(routesList, method, path, controllerAndAction) when is_binary(controllerAndAction) do
-    on(routesList, method, path, controllerAndAction)
-  end
-
-  @doc """
-    Create list with router path.
-  """
-  def otherwise(path, method, controller, action) do
-    on(method, path, controller, action)
-  end
-
-  @doc """
-    Add new route path to the routes list.
-  """
-  def otherwise(routesList, method, path, controller, action) do
-    on(routesList, method, path, controller, action)
-  end
-
+  
   @doc """
     Match current url path. Is it web application route or not
   """

@@ -15,6 +15,7 @@
   * #104 fixed.
   * #81 fixed.
   * #102 closed. Convinience way to test weber.
+  * `otherwise` clause removed from routing.
 
 #### Weber-0.0.3 [Released]
 

@@ -69,7 +69,7 @@ Also `on` supports following syntax:
        |> on("POST", "/add/:note", "Simpletodo.Main#add")
 ```
 
-It is `route` macro which value is chain of `on` and `otherwise` functions with 3 parametes:
+It is `route` macro which value is chain of `on` functions with 3 parametes:
   
   * Http method
   * Route path, can be binding (starts with ':' symbol);
