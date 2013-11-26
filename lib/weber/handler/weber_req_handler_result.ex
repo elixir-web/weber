@@ -19,9 +19,9 @@ defmodule Handler.WeberReqHandler.Result do
   defp request({:render, data, headers}, app) do
     filename = List.last(Module.split app.controller) <> ".html"
     file_content = find_file_path(Weber.Path.__views__, filename) |> elem(1)
-    case Module.defines? app.controller, { :__layout__, 0 }, :def do
-      true -> Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
-      false -> :ok
+    case :lists.keyfind('__layout__', 1, app.controller.__info__(:functions)) do
+      false -> :ok;
+      _ -> Weber.Helper.ContentFor.content_for(:layout, file_content, app.controller.__layout__)
     end
     {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
   end
@@ -32,19 +32,19 @@ defmodule Handler.WeberReqHandler.Result do
 
   defp request({:file, path, headers}, _app) do
     {:ok, file_content} = File.read(path)
-    {:file, 200, file_content, headers}
+    {:file, 200, file_content, :lists.append([{"content-type", "application/octet-stream"}], headers)}
   end
 
   defp request({:redirect, location}, _app) do
-    {:redirect, 301, [{"Location", location}, {"Cache-Control", "no-store"}]}
+    {:redirect, 302, "", [{"Location", location}]}
   end
 
   defp request({:nothing, headers}, _app) do
-    {:nothing, 200, headers}
+    {:nothing, 200, "", headers}
   end
 
   defp request({:text, data, headers}, _app) do
-    {:text, 200, data, :lists.append([{"Content-Type", "plain/text"}], headers)}
+    {:text, 200, data, headers}
   end
   
   defp request({:json, data, headers}, _app) do
