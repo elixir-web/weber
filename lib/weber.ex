@@ -21,17 +21,12 @@ defmodule Weber do
   Start weber application
   """
   def start(_type, _args) do
-    # get config
-    config = case Code.ensure_loaded?(Config) do
-      true -> Config.config
-      false -> Weber.DefaultConfig.config
-    end
     # start cowboy
-    Cowboy.start(config)
+    Cowboy.start(Config.config)
     # start session manager
-    Weber.Session.SessionManager.start_link(config)
+    Weber.Session.SessionManager.start_link(Config.config)
     # start localization manager
-    Weber.Localization.LocalizationManager.start_link(config)
+    Weber.Localization.LocalizationManager.start_link(Config.config)
   end
 
   @doc """

@@ -1,5 +1,6 @@
 ExUnit.start
 
+Code.require_file(File.cwd! <> "/test/support/config.exs")
 Code.require_file(File.cwd! <> "/test/route.ex")
 Code.require_file(File.cwd! <> "/test/controllers.ex")
 
