@@ -1,6 +1,6 @@
-#### Weber-0.0.5
+#### Weber-0.0.5 [In progress]
 
-#### Weber-0.0.4 [In development]
+#### Weber-0.0.4 [Released]
 
   * [Optimization works]
     * `get_all_files`, `get_root`, `get_views`, `get_static` moved to the macros.
