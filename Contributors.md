@@ -9,3 +9,4 @@
   * [Caio Tarifa](https://github.com/caiotarifa)
   * [Jonathan Tron](https://github.com/JonathanTron)
   * [amilkr](https://github.com/amilkr)
+  * [Michael Simpson](https://github.com/mjs2600)
