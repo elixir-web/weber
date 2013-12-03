@@ -4,7 +4,7 @@ MIX=`which mix`
 
 build:
 	$(MIX) deps.get
-	$(MIX) compile
+	$(MIX) compile --all --force
 
 test:
 	@MIX_ENV=test $(MIX) do deps.get, test --no-start

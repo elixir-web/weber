@@ -1,5 +1,7 @@
 #### Weber-0.0.5 [In progress]
 
+  * #112 fix. Compile now with `mix compile --all --force`
+
 #### Weber-0.0.4 [Released]
 
   * [Optimization works]
