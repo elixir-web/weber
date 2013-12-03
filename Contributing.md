@@ -40,8 +40,8 @@ git remote add upstream https://github.com/0xAX/weber.git
 ```
 
 Before starting working on the code, you MUST update to `upstream`.
-You should make sure that you start making changes to the current v
-ersion of the Weber.
+You should make sure that you start making changes to the current version
+of the Weber.
 
 For updating the current branch to `upstream`:
 
