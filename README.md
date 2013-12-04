@@ -118,7 +118,7 @@ Controller can return:
 
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
   * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []}` - Render inline template.
-  * `{:render_other, Elixir.Views.Index, [foo: "foo", []]}`
+  * `{:render_other, Elixir.Views.Index, [foo: "foo"], []}`
   * `{:file, path, headers}` - Send file in response.
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
   * `{:redirect, "/main"}` - Redirect to other resource.
