@@ -34,7 +34,7 @@ defmodule Weber.Templates.ViewsLoader do
       quote do
         defmodule unquote(Weber.Utils.build_module_name(view)) do
           require EEx
- 
+          
           EEx.function_from_string(:def, :render_template, unquote(content), [:assigns])
           
           def __view__, do: unquote(content)

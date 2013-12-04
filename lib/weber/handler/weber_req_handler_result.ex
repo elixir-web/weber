@@ -26,6 +26,10 @@ defmodule Handler.WeberReqHandler.Result do
     {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
   end
   
+  defp request({:render_other, module, data, headers}, app) do
+    {:render, 200, module.render_template(:lists.append(data, [conn: app.conn])), headers}
+  end
+  
   defp request({:render_inline, data, params, headers}, _app) do
     {:render, 200, (EEx.eval_string data, params), headers}
   end
