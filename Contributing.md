@@ -64,3 +64,26 @@ git push origin feature-1
 ```
 
 Go to the Github and send Pull Request.
+
+Testing
+==============================
+
+If  you made new non-trivial feature or bug fix, please write nit test for it. 
+
+There are 2 types of tests in Weber:
+
+  1. You can test usual function as we doing it in [route_test.ex](https://github.com/0xAX/weber/blob/master/test/route_test.exs)
+  
+  2. If you need to test Weber in working mode (you need to test request/response and etc...) we use hackney web client and exunit too. See [response_test](https://github.com/0xAX/weber/blob/master/test/weberTest/response_test.exs)
+
+Running tests with:
+
+```
+mix test --no-start
+```
+
+or
+
+```
+make test
+```
