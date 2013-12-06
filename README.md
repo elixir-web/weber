@@ -35,6 +35,12 @@ Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix co
 ./start.sh
 ```
 
+or run it in daemon mode:
+
+```
+./start.sh --no-shell
+```
+
 and go to the [http://localhost:8080/](http://localhost:8080/)
 
 For more details see in `examples` directory and Weber's [API](http://0xax.github.io/weber/public/docs/index.html).
@@ -116,13 +122,13 @@ Every controller's action passes 2 parameters:
 
 Controller can return:
 
-  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response.
-  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}, []}` - Render inline template.
-  * `{:render_other, Elixir.Views.Index, [foo: "foo"], []}`
-  * `{:file, path, headers}` - Send file in response.
-  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response.
+  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response. Or without headers. `{:render, [project: "simpleTodo"]}`
+  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Render inline template.
+  * `{:render_other, Elixir.Views.Index, [foo: "foo"], []}` - Render any view in controller. Or without headers.
+  * `{:file, path, headers}` - Send file in response. Or without headers `{:file, path}`
+  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response. Or without headers: `{:json, [response: "ok"]}`
   * `{:redirect, "/main"}` - Redirect to other resource.
-  * `{:text, data, headers}` - Sends plain text.
+  * `{:text, data, headers}` - Sends plain text. Or without headers: `{:text, data}`
   * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers.
 
 ## Request params
