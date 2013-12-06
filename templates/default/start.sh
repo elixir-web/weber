@@ -4,4 +4,13 @@ if [ ! -f deps ]; then
   mix deps.get && mix compile
 fi
 
-exec iex -S mix
+case $1 in
+	"--no-shell")
+		exec elixir --detached -S mix run --no-halt
+		;;
+	"*")
+		exec iex -S mix
+		;;
+esac
+
+
