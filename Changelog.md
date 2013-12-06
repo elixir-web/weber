@@ -2,6 +2,7 @@
 
   * #112 fix. Compile now with `mix compile --all --force`
   * `render_other` in response added.
+  * Added ability to test Weber based web applications
 
 #### Weber-0.0.4 [Released]
 
