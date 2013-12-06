@@ -150,7 +150,7 @@ defmodule Simplechat.Main.Login do
     #
     # Do something with param
     #
-    {:render, [project: "SimpleChat"], []}
+    {:render, [project: "SimpleChat"]}
   end
 
 end
@@ -170,7 +170,7 @@ defmodule Simplechat.Main.Login do
     #
     # Do something with param
     #
-    {:render, [project: "SimpleChat", name: name], []}
+    {:render, [project: "SimpleChat", name: name]}
   end
 
 end
