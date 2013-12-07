@@ -21,13 +21,14 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * Web controller Helpers.
  * i18n support;
  * Sessions support;
+ * Grunt integration;
 
 ## Quick start
 
  1. Get and install Elixir from master.
  2. Clone this repository.
  3. Execute `make && make test` in the weber directory.
- 6. Create new project with: `mix weber.new /home/user/testWebApp`
+ 6. Create new project with: `mix weber.new /home/user/testWebApp` or `mix weber.new /home/user/testWebApp --grunt` for Grunt integration.
 
 Now go to the `/home/user/testWebApp` and execute there: `mix deps.get && mix compile --all --force`. Then you can try to run your testWeberApplication with:
 

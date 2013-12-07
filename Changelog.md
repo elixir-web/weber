@@ -5,6 +5,7 @@
   * Added ability to test Weber based web applications
   * Running Weber in daemon mode.
   * `headers` not required field in response.
+  * Initial `Grunt` integration.
 
 #### Weber-0.0.4 [Released]
 

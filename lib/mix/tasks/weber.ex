@@ -95,14 +95,15 @@ defmodule Mix.Tasks.Weber do
 
     defp add_grunt(directoryName) do
       path = Path.absname directoryName
-      Mix.Generator.create_file path <> <<"/package.json">>, (package_json File.basename(directoryName))
+      basename = Path.basename(directoryName)
+      Mix.Generator.create_file path <> <<"/package.json">>, (package_json basename)
       Mix.Generator.create_file path <> <<"/Gruntfile.js">>, (gruntfile)
     end
 
-    defp package_json(directoryName) do
+    defp package_json(basename) do
       """
       {
-        "name": #{directoryName},
+        "name": "#{basename}",
         "version": "0.0.1",
         "devDependencies": {
           "grunt": "~0.4.2"
