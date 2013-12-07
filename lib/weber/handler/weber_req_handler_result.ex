@@ -30,7 +30,7 @@ defmodule Handler.WeberReqHandler.Result do
     {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
   end
   
-  defp request({render_other, module, data}, app) do
+  defp request({:render_other, module, data}, app) do
     request({:render_other, module, data, []}, app)
   end
 
