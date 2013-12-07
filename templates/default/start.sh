@@ -5,12 +5,10 @@ if [ ! -f deps ]; then
 fi
 
 case $1 in
-	"--no-shell")
-		exec elixir --detached -S mix run --no-halt
-		;;
-	"*")
-		exec iex -S mix
-		;;
+    "--no-shell")
+        exec elixir --detached -S mix run --no-halt
+        ;;
+    *)
+        exec iex -S mix
+        ;;
 esac
-
-
