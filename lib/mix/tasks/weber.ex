@@ -39,6 +39,10 @@ defmodule Mix.Tasks.Weber do
   end
 
   defmodule New do
+
+    @doc """
+    Create default weber based project.
+    """
     def run([directoryName]) do
       # create project directory
       case File.mkdir(directoryName) do
@@ -73,6 +77,48 @@ defmodule Mix.Tasks.Weber do
         compiled = replace(origin, vars)
         File.write destination, compiled, []
       end
+    end
+
+    @doc """
+    Create weber based project with utils
+    """
+    def run([directoryName | rest]) do
+      run([directoryName])
+      Enum.each(rest, 
+        fn(addition) -> 
+          case addition do
+            "--grunt" -> add_grunt(directoryName)
+            _ -> :wrong
+          end
+        end)
+    end
+
+    defp add_grunt(directoryName) do
+      path = Path.absname directoryName
+      Mix.Generator.create_file path <> <<"/package.json">>, (package_json File.basename(directoryName))
+      Mix.Generator.create_file path <> <<"/Gruntfile.js">>, (gruntfile)
+    end
+
+    defp package_json(directoryName) do
+      """
+      {
+        "name": #{directoryName},
+        "version": "0.0.1",
+        "devDependencies": {
+          "grunt": "~0.4.2"
+        }
+      }
+      """
+    end
+
+    defp gruntfile do
+      """
+      module.exports = function(grunt) {
+        grunt.initConfig({
+          pkg: grunt.file.readJSON('package.json')
+        });
+      };
+      """
     end
 
     defp replace(text, vars) do
