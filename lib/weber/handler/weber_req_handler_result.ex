@@ -44,7 +44,11 @@ defmodule Handler.WeberReqHandler.Result do
 
   defp request({:file, path, headers}, _app) do
     {:ok, file_content} = File.read(path)
-    {:file, 200, file_content, :lists.append([{"content-type", "application/octet-stream"}], headers)}
+    case :lists.keyfind("content-type", 1, headers) do
+      false -> {:file, 200, file_content, :lists.append([{"content-type", "application/octet-stream"}], headers)}
+      _ -> 
+        {:file, 200, file_content, headers}
+    end
   end
 
   defp request({:redirect, location}, _app) do

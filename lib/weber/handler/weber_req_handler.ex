@@ -101,10 +101,27 @@ defmodule Handler.WeberReqHandler do
       [] ->
         {:not_found, get404, []}
       [resource_name] ->
-        {:file, resource_name, []}
+        {:file, resource_name, [{"content-type", get_mime_type(resource_name)}]}
     end
-  
   end
+
+  #
+  # Get mimetype
+  #
+  defp get_mime_type(resource) do
+    case :filename.extension(resource) do
+      '.css' -> "text/css"
+      '.gif' -> "image/gif"
+      '.html' -> "text/html"
+      '.htm' -> "text/html"
+      '.ico' -> "image/x-icon"
+      '.jpeg' -> "image/jpeg"
+      '.js' -> "application/javascript"
+      '.jpeg' -> "image/jpeg"
+      _ -> "application/octet-stream"
+    end
+  end
+
 
   #
   # Get accept language
