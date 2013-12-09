@@ -66,7 +66,7 @@ git push origin feature-1
 Go to the Github and send Pull Request.
 
 Testing
-==============================
+==========
 
 If  you made new non-trivial feature or bug fix, please write nit test for it. 
 
@@ -87,3 +87,76 @@ or
 ```
 make test
 ```
+
+Weber internal API
+====================
+
+Weber source code structure:
+
+  * weber/lib/weber.ex - weber application initialization. (Starts cowboy, session manager and etc... here)
+  * lib/mix/tasks/weber.ex - weber mix tasks declaration. 
+  * weber/lib/route.ex - routing source code
+  * weber/lib/cowboy.ex - cowboy initialization and launch code
+  * weber/lib/templates - macroses for compiling `EEx` templates and generating `Elixir` modules for getting this templates.
+  * weber/lib/session - weber's session manager.
+  * weber/lib/i18n - weber's localization utils.
+  * weber/lib/http - weber's http utils.
+  * weber/lib/helper - weber helper (`tag`, `include_view` and etc...)
+  * weber/lib/controller - weber controllers macroses.
+  * weber/lib/handler - weber http/websocket handlers.
+  * weber/lib/utils - weber utils.
+
+Routing
+-----------
+
+We can get current routing with calling:
+
+```elixir
+RouteModule.__route__
+```
+
+For example if we have routing settings:
+
+```elixir
+route on("GET", "/", :Gr.Main, :action)
+```
+
+and now call:
+
+```elixir
+Route.__route__
+```
+
+we get:
+
+```elixir
+[[method: "GET", path: "/", controller: Gr.Main, action: :action]]
+```
+
+Config
+---------
+
+We can access weber application anywhere config with:
+
+```elixir
+Config.config
+```
+
+Views/Static resources
+-----------------------
+
+Weber generates views modules in compile time and you can access it as ussual `Elixir` modules.
+
+If there is `lib/views/main.html` views, it will be `Elixir.Views.Main` module and there is:
+
+```
+Elixir.Views.Main.__view__/0
+```
+
+which will return `lib/views/main.html` content.
+
+Also there are some builtin API:
+
+  * Weber.Path.__root__   - returns root path of the current project
+  * Weber.Path.__views__  - returns list of `views` paths of the current project
+  * Weber.Path.__static__ - returns list of `static` resources paths of the current project
