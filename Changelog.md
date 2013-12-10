@@ -6,6 +6,7 @@
   * Running Weber in daemon mode.
   * `headers` not required field in response.
   * Initial `Grunt` integration.
+  * #115. Reverse Routing.
 
 #### Weber-0.0.4 [Released]
 

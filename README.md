@@ -91,6 +91,20 @@ Http method can be:
   * `"DELETE"`
   * `"ANY"`
 
+### Build url from code
+
+You can build url from your `elixir` code with:
+
+```elixir
+import Weber.Route
+
+route on("GET", "/", "Simpletodo.Main#action")
+   |> on("POST", "/add/:note", "Simpletodo.Main#add")
+
+# generates: /add/1 
+link(:Elixir.Simpletodo.Main, :add, [note: 1])
+```
+
 ## Controllers
 
 Every Weber's controller is just an elixir module, like:

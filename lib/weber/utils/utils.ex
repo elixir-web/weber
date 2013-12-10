@@ -64,4 +64,24 @@ defmodule Weber.Utils do
      Enum.map(drop_path, fn(p) -> String.capitalize(:filename.basename(p, '.html')) end) |> Module.concat
   end
 
+  def to_bin(val) when is_binary(val) do
+    val
+  end
+
+  def to_bin(val) when is_atom(val) do
+    atom_to_binary(val)
+  end
+
+  def to_bin(val) when is_list(val) do
+    :erlang.list_to_binary(val)  
+  end
+
+  def to_bin(val) when is_integer(val) do
+    integer_to_binary(val)
+  end
+
+  def to_bin(val) when is_float(val) do
+    float_to_binary(val)  
+  end
+
 end

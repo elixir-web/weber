@@ -31,4 +31,10 @@ defmodule WeberRouteTest do
 
   end
 
+  test "Route reverse test" do
+    assert link(:TestTestTest.Main, :add_username_action, [username: "user"]) == "/add/user"
+    assert link(:TestTestTest.Main, :action, []) == "/weber"
+    assert link(:TestTestTest.Main, :delete_username_action, [id: 5, username: "user"]) == "/delete/user/id/5"
+  end
+
 end

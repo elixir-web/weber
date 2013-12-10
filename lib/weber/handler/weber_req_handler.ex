@@ -117,7 +117,6 @@ defmodule Handler.WeberReqHandler do
       '.ico' -> "image/x-icon"
       '.jpeg' -> "image/jpeg"
       '.js' -> "application/javascript"
-      '.jpeg' -> "image/jpeg"
       _ -> "application/octet-stream"
     end
   end

@@ -13,6 +13,8 @@ defmodule Weber.Route do
   """
 
   import String
+
+  import Weber.Utils
   import Weber.Http.Url
 
   defmacro route(routeList) do
@@ -21,6 +23,25 @@ defmodule Weber.Route do
         unquote(routeList)
       end
     end
+  end
+
+  def link(controller, action, bindings // []) do
+    routes_with_same_controller = Enum.filter(Route.__route__, 
+      fn(route) ->
+        :lists.member({:controller, controller}, route) 
+      end)
+    routes_with_same_action = Enum.filter(routes_with_same_controller, 
+      fn(route) ->
+        :lists.member({:action, action}, route) 
+      end) |> Enum.at(0)
+    parsed_route = getBinding(Keyword.get(routes_with_same_action, :path))
+    List.foldl(parsed_route, "", 
+      fn({type, value}, acc) ->
+        case type do
+          :segment -> acc <> "/" <> value
+          :binding -> acc <> "/" <> to_bin(Keyword.get(bindings, binary_to_atom(value)))
+        end
+      end)
   end
 
   @doc """
