@@ -8,6 +8,17 @@
     <title>Weber framework</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/fontello.css" rel="stylesheet">
+    <style type="text/css">
+      section.hero ul li{
+        margin-left: -75px;
+      }
+      section.hero ul li.first{
+        margin-left: 0;
+      }
+      .code, h2, a {
+        color: #4c0066;
+      }
+    </style>
   </head>
 
   <body data-spy="scroll" data-offset="100">
@@ -20,7 +31,7 @@
               <div class="row text-center">
 		<img src="https://f.cloud.github.com/assets/197979/1323435/8403dbfe-347f-11e3-97b8-5f6bd1d902ca.png"></img>
                 <div class="col-md-6 col-md-offset-3">
-                  <p class="inline-code"><a style="color: #4c0066;" href="https://github.com/0xAX/weber">git clone https://github.com/0xAX/weber</a></p>
+                  <p class="inline-code"><a href="https://github.com/0xAX/weber">git clone https://github.com/0xAX/weber</a></p>
                 </div>
               </div>
             </div>
@@ -28,22 +39,20 @@
               <div class="row">
                 <ul class="list-unstyled">
                   <li class="first">Weber:</li>
-                  <li style="margin-left: -75px;"><i class="icon-rocket"></i>MVC Web framework for Elixir language</li>
-                  <li style="margin-left: -75px;"><i class="icon-rocket"></i>Flexible routing</li>
-                  <li style="margin-left: -75px;"><i class="icon-rocket"></i>Websocket support</li>
-		  <li style="margin-left: -75px;"><i class="icon-rocket"></i>Sessions</li>
-                  <li style="margin-left: -75px;"><i class="icon-rocket"></i>Grunt integration</li>
-                  <li style="margin-left: -75px;"><i class="icon-rocket"></i>Html Helpers</li>
-                  <li style="margin-left: -75px;"><i class="icon-rocket"></i>And many more...</li>
+                  <li><i class="icon-rocket"></i>MVC Web framework for Elixir language</li>
+                  <li><i class="icon-rocket"></i>Flexible routing</li>
+                  <li><i class="icon-rocket"></i>Websocket support</li>
+                  <li><i class="icon-rocket"></i>Sessions</li>
+                  <li><i class="icon-rocket"></i>Grunt integration</li>
+                  <li><i class="icon-rocket"></i>Html Helpers</li>
+                  <li><i class="icon-rocket"></i>And many more...</li>
                 </ul>
               </div>
             </div>
-            
           </div>
         </div>
       </section>
     </div>
-    
     <center><div class="col-md-12" style="background:rgb(235, 235, 235);" >
       <div class="row">
         <iframe src="http://ghbtns.com/github-btn.html?user=0xAX&repo=weber&type=watch&size=large&count=true" width = "185" frameborder="0"></iframe>
@@ -64,17 +73,15 @@
               <p>There are some simple steps for running weber based application:</p>
 	      <ul>
                   <li>Get and install Elixir from master.</li>
-                  <li>Clone weber repo with <span style="color: #4c0066;">git clone https://github.com/0xAX/weber</span></li>
-	          <li>Execute <span style="color: #4c0066;">make && make test in the weber directory</span></li>
-                  <li>Create new project with: <span style="color: #4c0066;">mix weber.new /home/user/testWebApp</span> or <span style="color: #4c0066;">mix weber.new /home/user/testWebApp --grunt</span> for Grunt integration.</li>
-                  <li>go to the <span style="color: #4c0066;">/home/user/testWebApp</span> and execute there: <span style="color: #4c0066;">mix deps.get && mix compile --all --force && ./start.sh</span></li>
-                  <li>Open browser at <span style="color: #4c0066;">http://localhost:8080/</span></li>
+                  <li>Clone weber repo with <span class='code'>git clone https://github.com/0xAX/weber</span></li>
+	          <li>Execute <span class='code'>make &amp;&amp; make test in the weber directory</span></li>
+                  <li>Create new project with: <span class='code'>mix weber.new /home/user/testWebApp</span> or <span class='code'>mix weber.new /home/user/testWebApp --grunt</span> for Grunt integration.</li>
+                  <li>go to the <span class='code'>/home/user/testWebApp</span> and execute there: <span class='code'>mix deps.get &amp;&amp; mix compile --all --force &amp;&amp; ./start.sh</span></li>
+                  <li>Open browser at <span class='code'>http://localhost:8080/</span></li>
               </ul>
             </div>
           </div>
-   </section>  
-   
-
+   </section>
    <section id="documentation" class="documentation">
         <div class="container">
           <div class="row">
@@ -82,40 +89,39 @@
             <hr>
           </div>
 
-          <h2 style="color: #4c0066;">Weber Configuration</h2>  
+          <h2>Weber Configuration</h2>  
           <div class="row">
             <div class="col-md-6">
-              <p>Weber's configuration is in <a style="color: #4c0066;" href="https://github.com/0xAX/weber/blob/master/templates/default/lib/config.ex">config.ex</a> configuration file</p>
-              <p>There are following configuration parameters:</p>
+              <p>Weber's configuration is in <a href="https://github.com/0xAX/weber/blob/master/templates/default/lib/config.ex">config.ex</a> configuration file</p>
+              <p>There are the following configuration parameters:</p>
               <ul>
                 <li>http_host - Web server host</li>
-		<li>http_port - Weber server port</li>
-		<li>acceptors - Accepotrs count</li>
-		<li>ssl - Use ssl or not </li>
-		<li>ws_port - Websocket port</li>
-		<li>ws_mod -  Websocket handler module</li>
-		<li>user_internatiolization - Use internatiolization or not</li>
-		<li>default_locale - Defualt locatization</li>
-		<li>use_locales - Which locales to use</li>
-		<li>use_sessions - Enable/Disable sessions</li>
+                <li>http_port - Weber server port</li>
+                <li>acceptors - Acceptors count</li>
+                <li>ssl - Use ssl or not </li>
+                <li>ws_port - Websocket port</li>
+                <li>ws_mod -  Websocket handler module</li>
+                <li>user_internationalization - Use internationalization or not</li>
+                <li>default_locale - Defualt locatization</li>
+                <li>use_locales - Which locales to use</li>
+                <li>use_sessions - Enable/Disable sessions</li>
                 <li>max_age - Session life time</li>
               </ul>
-            <p>If you need to access to the your configuration, you can get it with <i>Config.config</i></p>
+            <p>If you need to access to the configuration, you can get it with <i>Config.config</i></p>
             </div>
             <div class="col-md-6">
               <script src="https://gist.github.com/0xAX/477d43ab051033c7bc30.js"></script>
             </div>
         </div>
-          
-        <h2 style="color: #4c0066;">Routing</h2>
-	  <div class="row">
+        <h2>Routing</h2>
+        <div class="row">
             <div class="col-md-6">
-              <p>When you're created new Weber's web application, you will have 
-                 <a style="color: #4c0066;" href="https://github.com/0xAX/weber/blob/master/templates/default/lib/route.ex">route.ex</a> 
-                 file in the <i>/home/user/testWeberApplication/lib</i> directory. There is routing declaration.</p>
-                 <p>It consists from route macro which value is chain of on functions with 3 parametes:<p>
+              <p>When you've created a new Weber web application, you will have a 
+                 <a href="https://github.com/0xAX/weber/blob/master/templates/default/lib/route.ex">route.ex</a> 
+                 file in the <i>/home/user/testWeberApplication/lib</i> directory. This is the app's routing declaration.</p>
+                 <p>It consists of a route macro whose value is a chain of functions with 3 parameters:<p>
 		<ul>
-			<li>Http method
+			<li>Http method;
 			<li>Route path, can be binding (starts with ':' symbol);
 			<li>Module name of controller;
 			<li>Function name from this controller.
@@ -130,7 +136,7 @@
 	        </ul>
 	        <b><p>Weber.Route API:</p></b>
                 <ul>
-                  <li>Weber.Route.link(:controller, :action, [binding: "value"]) - Create's url from Elixir code</li>
+                  <li>Weber.Route.link(:controller, :action, [binding: "value"]) - Creates url from Elixir code</li>
                 </ul>
            </div>
             <div class="col-md-6">
@@ -140,13 +146,13 @@
             </div>
         </div>
 
-        <h2 style="color: #4c0066;">Web controllers</h2>
+        <h2>Web controllers</h2>
 	  <div class="row">
             <div class="col-md-6">
-              <p>All weber's controllers are in the <i>/project/lib/controllers</i> directory. It can be in any sub-directories.</p>
+              <p>All weber's controllers are in the <i>/project/lib/controllers</i> directory. They can be in any sub-directories.</p>
 	      <p>All weber's controllers must <i>use Weber.Controller</i></p>
-              <p>All weber's controllers have an action, which are ussual Elixir functions with the two parameters. 
-                 They are executes when new request comming.<p>
+              <p>All weber's controllers have an action, which are usually Elixir functions that take two parameters. 
+                 They are executed when new requests are routed to them.<p>
               <b><p>Action parameter:</p></b>
               <ul>
                 <li>[binding_keyword_list] - if there is request: <i>/username/0xAX</i> to the url <i>/username/:username</i>, you will get [username: username] binding value</li>
@@ -179,10 +185,10 @@
         </div>
 
 
-          <h2 style="color: #4c0066;">Views</h2>
+          <h2>Views</h2>
 	   <div class="row">
             <div class="col-md-6">
-              <p>Weber uses EEx templates for views. It's just html code with embedded Elixir code. There are following types of tags:</p>
+              <p>Weber uses EEx templates for views. It's just html code with embedded Elixir code. There are the following types of tags:</p>
               <ul>
                 <li><% Elixir expression - inline with output %></li>
                 <li><%= Elixir expression - replace with result %></li>
@@ -195,11 +201,11 @@
             </div>
         </div>
 
-        <h2 style="color: #4c0066;">Models</h2>
+        <h2>Models</h2>
           <div class="row">
             <div class="col-md-6">
-              <p>Weber uses <a href="https://github.com/elixir-lang/ecto" style="color: #4c0066;">Ecto</a> library for the building data models. 
-                 Weber's model is a just Elixir module which uses Ecto API and located in your_project_name/lib/models directory.</p>
+              <p>Weber uses the <a href="https://github.com/elixir-lang/ecto">Ecto</a> library for building data models. 
+                 Weber's model is a just Elixir an module which uses Ecto API and is located in your_project_name/lib/models directory.</p>
             </div>
             <div class="col-md-6">
                <script src="https://gist.github.com/0xAX/6598004.js"></script>
@@ -208,16 +214,16 @@
             </div>
         </div>
 
-        <h2 style="color: #4c0066;">Session</h2>
+        <h2>Session</h2>
           <div class="row">
             <div class="col-md-6">
-              <p>Weber's session manager automatically started with any web application. Weber has simple API for managing sessions:</p>
+              <p>Weber's session manager is automatically started with any web application. Weber has simple API for managing sessions:</p>
               <ul>
                 <li>get_session(conn) -> [] | [{atom, binary()}]</li>
                 <li>get_session(conn, key :: atom()) -> [] | binary()</li>
                 <li>set_session_val(conn, key :: atom(), val :: binary()) -> :ok.</li>
               </ul>
-              
+
 	      <b><p>Weber's sessions backend:</p></b>
               <ul>
                 <li>ETS</li>
@@ -230,7 +236,7 @@
         </div>
 
 
-        <h2 style="color: #4c0066;">Helpers</h2>
+        <h2>Helpers</h2>
          <div class="row">
             <div class="col-md-12">
               <p>There are many <i>helpers in Weber which can help you to develop your web application:</i></p>
@@ -239,14 +245,14 @@
               <b><p>Resource helpers</p></b>
                 <script src="https://gist.github.com/0xAX/db8c55640a5c6bfd8de7.js"></script>
               <b><p>include_view helpers</p></b>
-                <script src="https://gist.github.com/0xAX/639711626a098844d05f.js"></script>  
-            </div>              
+                <script src="https://gist.github.com/0xAX/639711626a098844d05f.js"></script>
+            </div>
          </div>
 
-        <h2 style="color: #4c0066;">WebSocket</h2>
+        <h2>WebSocket</h2>
          <div class="row">
             <div class="col-md-6">
-              <p>Weber has WebSockets support and you can handle websocket connection and incoming/outcoming websocket messages in your actions. 
+              <p>Weber has WebSockets support and you can handle websocket connection and incoming/outgoing websocket messages in your actions. 
                  First of all you need to designate websocket controller in your config.ex file in webserver: section, like:</i></p>
               <p>ws_mod: :Simplechat.Main.Chat</p>
               <p>After that you must implement three callbacks:</p>
@@ -254,16 +260,15 @@
                 <li>websocket_init(pid, conn) - initialization of new websocket connection</li>
                 <li>websocket_message(pid, message, conn) - incoming messages handler </li>
                 <li>websocket_terminate(pid, conn) - connection terminated</li>
-              </ul>  
-              <p>Note that all websocket connections are must start with prefix /_ws/.</p>
+              </ul>
+              <p>Note that all websocket connections must start with prefix /_ws/.</p>
             </div>
             <div class="col-md-6">
               <script src="https://gist.github.com/0xAX/6626585afeb40ec0c1a9.js"></script>
               <br/>
               <script src="https://gist.github.com/0xAX/6703859.js"></script>
-            </div>              
+            </div>
          </div>
-
        </div>
     </section>
 
