@@ -7,6 +7,7 @@
   * `headers` not required field in response.
   * Initial `Grunt` integration.
   * #115. Reverse Routing.
+  * #118. Redirect in routing
 
 #### Weber-0.0.4 [Released]
 

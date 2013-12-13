@@ -34,8 +34,9 @@ defmodule Handler.WeberReqHandler do
     # match routes
     case :lists.flatten(match_routes(path, Weber.Path.__route__, conn.method)) do
       [] ->
-        # Get static file or page not found
         try_to_find_static_resource(path) |> handle_result |> handle_request(req2, state)
+      [{:method, _method}, {:path, _matched_path}, {:redirect_path, redirect_path}] ->
+        {:redirect, redirect_path} |> handle_result |> handle_request(req2, state)
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
         req3 = case Keyword.get(state.config, :use_sessions) do
           true ->

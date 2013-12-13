@@ -69,6 +69,17 @@ defmodule Weber.Route do
   def on(routesList, method, path, controller, action) do
     :lists.append(routesList, [[method: method, path: path, controller: controller, action: action]])
   end
+
+  @doc """
+    Create redirect path
+  """
+  def redirect(method, path, redirect_path) do
+    [[method: method, path: path, redirect_path: redirect_path]]
+  end
+
+  def redirect(routesList, method, path, redirect_path) do
+    :lists.append(routesList, [[method: method, path: path, redirect_path: redirect_path]])
+  end
   
   @doc """
     Match current url path. Is it web application route or not
@@ -77,18 +88,25 @@ defmodule Weber.Route do
     parsed_path = getBinding(path)
 
     Enum.filter(routes, 
-      fn(route) -> 
-        [method: method, path: p, controller: _controller, action: _action] = route
-          case p do
-            "404" ->
-              false
-            _ ->
-              parsed_route_path = getBinding(p)
-              case method do
-                "ANY" -> match_routes_helper(parsed_path, parsed_route_path)
-                _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
-              end
+      fn(route) ->
+        
+          
+        case route do
+          [method: method, path: p, controller: _controller, action: _action] ->
+            parsed_route_path = getBinding(p)
+            case method do
+              "ANY" -> match_routes_helper(parsed_path, parsed_route_path)
+              _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
+            end
+          [method: method, path: p, redirect_path: redirect_path] ->
+            parsed_route_path = getBinding(p)
+            case method do
+              "ANY" -> match_routes_helper(parsed_path, parsed_route_path)
+              _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
+            end
           end
+
+
       end)
   end
   

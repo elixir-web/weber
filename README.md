@@ -67,6 +67,7 @@ Routing declaration is in `route.ex` files:
 ```elixir
     route on("GET", "/", :Simpletodo.Main, :action)
        |> on("POST", "/add/:note", :Simpletodo.Main, :add)
+       |> redirect("GET", "/redirect", "/weber")
 ```
 
 Also `on` supports following syntax:

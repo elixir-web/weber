@@ -15,4 +15,9 @@ defmodule WeberHttpResponseTest do
     assert(status == 200)
   end
 
+  test "`redirect` in route test" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/redirect', [], <<>>, [])
+    assert(status == 302)
+  end
+
 end

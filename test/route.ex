@@ -7,5 +7,6 @@ defmodule Route do
      |> on("GET", "/include", :TestTestTest.Include, :include_action)
      |> on("GET", "/add/:username", :TestTestTest.Main, :add_username_action)
      |> on("GET", "/delete/:username/id/:id", :TestTestTest.Main, :delete_username_action)
+     |> redirect("GET", "/redirect", "/weber")
 
 end
