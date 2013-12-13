@@ -9,6 +9,7 @@
   * #115. Reverse Routing.
   * #118. Redirect in routing.
   * Regular expression in the routing.
+  * New github pages
 
 #### Weber-0.0.4 [Released]
 
