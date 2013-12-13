@@ -21,6 +21,7 @@ defmodule WeberRouteTest do
       |> on("POST", "/user/0xAX/add", :Controller1, :action2)
       |> on("POST", "/user/:user/delete", :Controller1, :action2)
       |> redirect("ANY", "/weber", "/")
+      |> on("GET", %r{/hello/([\w]+)}, :Controller1, :action2)
       
     assert match_routes("/main.html", r, "GET") == []
     assert match_routes("/user/0xAX", r, "POST") == []
@@ -32,6 +33,7 @@ defmodule WeberRouteTest do
     assert match_routes("/user/0xAX/remove?role=admin", r, "ANY") == []
     assert match_routes("/weber", r, "ANY") == [[method: "ANY", path: "/weber", redirect_path: "/"]]
     assert match_routes("/home", r, "ANY") == []
+    assert match_routes("/hello/world", r, "GET") == [[method: "GET", path: %r"/hello/([\w]+)", controller: :Controller1, action: :action2]]
 
   end
 

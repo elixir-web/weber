@@ -107,6 +107,10 @@ defmodule Weber.Http.Url do
   @doc """
     Get binding's value list.
   """
+  def getAllBinding(url, matched_url) when is_regex(matched_url) do
+    []
+  end
+  
   def getAllBinding(url, matched_url) do
     zip = :lists.zip(getBinding(url), getBinding(matched_url))
     

@@ -89,14 +89,20 @@ defmodule Weber.Route do
 
     Enum.filter(routes, 
       fn(route) ->
-        
-          
         case route do
           [method: method, path: p, controller: _controller, action: _action] ->
-            parsed_route_path = getBinding(p)
-            case method do
-              "ANY" -> match_routes_helper(parsed_path, parsed_route_path)
-              _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
+            case is_regex(p) do
+              true ->
+                case method do
+                  "ANY" -> match_routes_regex_helper(p, path)
+                  _ -> (match_routes_regex_helper(p, path) and (req_method == method))
+                end
+              false ->
+                parsed_route_path = getBinding(p)
+                case method do
+                  "ANY" -> match_routes_helper(parsed_path, parsed_route_path)
+                  _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
+                end
             end
           [method: method, path: p, redirect_path: redirect_path] ->
             parsed_route_path = getBinding(p)
@@ -105,9 +111,11 @@ defmodule Weber.Route do
               _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
             end
           end
-
-
       end)
+  end
+
+  defp match_routes_regex_helper(path, regex) do
+    Regex.match?(path, regex)
   end
   
   defp match_routes_helper([], []) do

@@ -68,6 +68,7 @@ Routing declaration is in `route.ex` files:
     route on("GET", "/", :Simpletodo.Main, :action)
        |> on("POST", "/add/:note", :Simpletodo.Main, :add)
        |> redirect("GET", "/redirect", "/weber")
+       |> on("ANY", %r{/hello/([\w]+)}, :Simpletodo.Main, :action)
 ```
 
 Also `on` supports following syntax:
