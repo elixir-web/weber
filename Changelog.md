@@ -9,7 +9,11 @@
   * #115. Reverse Routing.
   * #118. Redirect in routing.
   * Regular expression in the routing.
+<<<<<<< HEAD
   * #122. `content_for_layout` fixed.
+=======
+  * New github pages
+>>>>>>> 678aedc93441b91de33b8f19adf06816b76882c7
 
 #### Weber-0.0.4 [Released]
 
