@@ -10,6 +10,7 @@
   * #118. Redirect in routing.
   * Regular expression in the routing.
   * #122. `content_for_layout` fixed.
+  * New github pages
 
 #### Weber-0.0.4 [Released]
 
