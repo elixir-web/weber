@@ -309,6 +309,9 @@ video(["/public/videos/video1", "/public/videos/video2"], [height: 48, width: 48
 ## Controller Helpers
 
 #### `content_for_layout` and `layout`
+
+**NOTE: Now all `views` and `layout` files must start with capital letter.**
+
 All controllers got `main.html` by default for views, but you'd might change it.
 
 You can create custom `layout` for you controller:
