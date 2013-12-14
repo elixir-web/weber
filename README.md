@@ -310,13 +310,29 @@ video(["/public/videos/video1", "/public/videos/video2"], [height: 48, width: 48
 
 #### `content_for_layout` and `layout`
 All controllers got `main.html` by default for views, but you'd might change it.
-Create `layouts` folder in `views/` in inside put:
+
+You can create custom `layout` for you controller:
+
+Create `Layout.html` in the `lib/views/layouts` directory and put there:
 
 ```HTML
-<%= content_for_layout %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      My Project
+    </title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  </head>
+  <body>
+    <div id="container">
+    <%= content_for_layout %>      
+    </div>
+  </body>
+</html> 
 ```
 
-Declare `layout` helper in your controller:
+Than declare `layout` helper in your controller:
 
 ```elixir
 defmodule TestController.Main do
@@ -325,26 +341,22 @@ defmodule TestController.Main do
 
   layout 'Layout.html'
   
-  ....        
+  #
+  # Here are some actions
+  #
+
 end
 
 ```
 
-or
-
-```elixir
-defmodule TestController.Main do
-
-  use Weber.Controller
-
-  layout false
-  
-  ....        
-end
+And you have `lib/views/Main.html` with:
 
 ```
+Hello World!
+```
 
-template from current view will render in `Layout.html` instead `<%= content_for_layout %>`
+Weber puts `lib/views/Main.html` content instead `<%= content_for_layout %> ` and you will
+get it in the response.
 
 ## Internationalization
 

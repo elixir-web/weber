@@ -8,9 +8,8 @@ defmodule Weber.Helper.ContentFor do
   defmacro content_for(:layout, path) do
     quote do
       if unquote(path) do
-        {:ok, root} = :file.get_cwd()
-        layout_path = String.from_char_list!(root ++ '/lib/views/' ++ 'layouts/' ++ unquote(path))
-        var!(file_content) = EEx.eval_file(layout_path, [content_for_layout: var!(file_content)])
+        layout_path = Weber.Path.__root__ <> "/lib/views/" <> "layouts/" <> unquote(path)
+        var!(content) = EEx.eval_file(layout_path, [content_for_layout: var!(content)])
       end
     end
   end

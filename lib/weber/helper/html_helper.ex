@@ -21,6 +21,10 @@ defmodule Weber.Helper.Html do
   @html5_tags [:area, :base, :br, :col, :command, :embed, :hr, :img, :input,
                :keygen, :link, :meta, :param, :source, :track, :wbr]
 
+  def content_for_layout do
+    ""
+  end
+  
   @doc """
   generates html.
   """

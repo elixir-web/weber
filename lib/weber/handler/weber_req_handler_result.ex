@@ -23,11 +23,14 @@ defmodule Handler.WeberReqHandler.Result do
   defp request({:render, data, headers}, app) do
     filename = List.last(Module.split app.controller) <> ".html"
     file_content = find_file_path(Weber.Path.__views__, filename) |> elem(1)
-    case :lists.keyfind('__layout__', 1, app.controller.__info__(:functions)) do
-      false -> :ok;
-      _ -> Weber.Helper.ContentFor.content_for(:layout, file_content, app.controller.__layout__)
+    case :lists.keyfind(:__layout__, 1, app.controller.__info__(:functions)) do
+      false ->
+        {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
+      _ ->
+        content = file_content.__view__
+        Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__)
+        {:render, 200, EEx.eval_string(content, []), headers}
     end
-    {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
   end
   
   defp request({:render_other, module, data}, app) do
