@@ -1,7 +1,7 @@
 defmodule #{projectNamespace} do
 
   require Weber.Templates.ViewsLoader
-  
+
   def start(_type, _args) do
     # Set resources
     Weber.Templates.ViewsLoader.set_up_resources(File.cwd!)
@@ -14,5 +14,5 @@ defmodule #{projectNamespace} do
   def stop(_state) do
     :ok
   end
-  
+
 end
