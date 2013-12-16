@@ -1,5 +1,5 @@
 defmodule Handler.WeberReqHandler do
-    
+
   @moduledoc """
     Weber http request cowboy handler.
   """
@@ -10,14 +10,14 @@ defmodule Handler.WeberReqHandler do
   import Weber.Http.Url
 
   import Plug.Connection
-  
+
   import Handler.Weber404Handler
   import Handler.WeberReqHandler.Result
   import Handler.WeberReqHandler.Response
 
   @connection Plug.Adapters.Cowboy.Connection
 
-  defrecord State, 
+  defrecord State,
     config: nil
 
   def init({:tcp, :http}, req, config) do
@@ -27,10 +27,10 @@ defmodule Handler.WeberReqHandler do
   def handle(req, state) do
     conn = @connection.conn(req, :tcp)
     conn = assign(conn, :req, req)
-        
+
     # get path
     {path, req2} = :cowboy_req.path(req)
-        
+
     # match routes
     case :lists.flatten(match_routes(path, Weber.Path.__route__, conn.method)) do
       [] ->
@@ -69,7 +69,7 @@ defmodule Handler.WeberReqHandler do
             # check 'lang' process
             locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
             case locale_process do
-              nil -> 
+              nil ->
                 case File.read(Weber.Path.__root__ <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
                   {:ok, locale_data} -> Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
                   _ -> :ok
@@ -78,10 +78,10 @@ defmodule Handler.WeberReqHandler do
             end
             # update accept language
             set_session_val(conn, :locale, lang)
-          _ -> 
+          _ ->
             :ok
         end
-        
+
         # get response from controller
         result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
         # handle controller's response, see in Handler.WeberReqHandler.Result
@@ -121,7 +121,6 @@ defmodule Handler.WeberReqHandler do
       _ -> "application/octet-stream"
     end
   end
-
 
   #
   # Get accept language
