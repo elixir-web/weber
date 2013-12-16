@@ -342,7 +342,7 @@ defmodule TestController.Main do
 
   use Weber.Controller
 
-  layout 'Layout.html'
+  layout "Layout.html"
   
   #
   # Here are some actions
