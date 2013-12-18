@@ -443,6 +443,8 @@ See [Contributing.md](https://github.com/0xAX/weber/blob/master/Contributing.md)
 
   * Weber example for Heroku - [heroku_weber_example](https://github.com/tsloughter/heroku_weber_example)
   * A template for using Vagrant for developing Elixir applications with Weber - [vagrant-weber](https://github.com/slogsdon/vagrant-weber)
+  * [ElixirSips. Episode 035: Weber](http://elixirsips.com/episodes/035_weber.html) 
+  * [ElixirSips. Weber, Part 2 - Performance](http://elixirsips.com/episodes/036_weber_part_2.html)
 
 ## Author
 
