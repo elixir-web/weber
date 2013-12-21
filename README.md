@@ -363,7 +363,7 @@ get it in the response.
 
 ## Logging
 
-Weber uses (exlager)[https://github.com/khia/exlager] for the logging. For using it just set up:
+Weber uses [exlager](https://github.com/khia/exlager) for the logging. For using it just set up:
 
 ```elixir
 log: true
