@@ -11,6 +11,7 @@
   * Regular expression in the routing.
   * #122. `content_for_layout` fixed.
   * New github pages
+  * `exlager` added to the deps
 
 #### Weber-0.0.4 [Released]
 

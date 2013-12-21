@@ -434,6 +434,7 @@ All websocket connections are must start with prefix `/_ws/`.
   * [postgrex](https://github.com/ericmj/postgrex)
   * [exjson](https://github.com/guedes/exjson)
   * [plug](https://github.com/elixir-lang/plug)
+  * [exlager](https://github.com/khia/exlager)
 
 ## Contributing
 

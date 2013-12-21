@@ -25,7 +25,8 @@ defmodule Weber.Mixfile do
       {:postgrex, github: "ericmj/postgrex"},
       {:ecto, github: "elixir-lang/ecto"},
       {:exjson, github: "guedes/exjson"},
-      {:plug, github: "elixir-lang/plug"}
+      {:plug, github: "elixir-lang/plug"},
+      {:exlager, github: "khia/exlager"}
     ]
   end
 
