@@ -21,6 +21,15 @@ defmodule Weber do
   Start weber application
   """
   def start(_type, _args) do
+    case :lists.keyfind(:log, 1, Config.config) do
+      false -> :ok
+      _ ->
+        :ok = :application.start(:compiler)
+        :ok = :application.start(:syntax_tools)
+        :ok = :application.start(:goldrush)
+        :ok = :application.start(:lager)
+        :ok = :application.start(:exlager)
+    end
     # start cowboy
     Cowboy.start(Config.config)
     # start session manager

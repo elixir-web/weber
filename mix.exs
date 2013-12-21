@@ -3,7 +3,7 @@ defmodule Weber.Mixfile do
 
   def project do
     [ app: :weber,
-      version: "0.0.3",
+      version: "0.0.4",
       name: "Weber",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
@@ -15,7 +15,14 @@ defmodule Weber.Mixfile do
     [
       description: 'weber - is Elixir MVC web framework.',
       registered: [:weber],
-      mod: { Weber, [] }
+      mod: { Weber, [] },
+      lager: [
+        {:handlers, [
+          {:lager_console_backend, :info},
+          {:lager_file_backend, [{:file, "error.log"}, {:level, :error}]},
+          {:lager_file_backend, [{:file, "console.log"}, {:level, :info}]},
+        ]}
+      ]
     ]
   end
 

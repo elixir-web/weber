@@ -361,6 +361,29 @@ Hello World!
 Weber puts `lib/views/Main.html` content instead `<%= content_for_layout %> ` and you will
 get it in the response.
 
+## Logging
+
+Weber uses (exlager)[https://github.com/khia/exlager] for the logging. For using it just set up:
+
+```elixir
+log: true
+``` 
+
+in your config and use it:
+
+```elixir
+defmodule LogTest.Main do
+  
+  require Lager
+ 
+  def action([], _conn) do
+    Lager.info "New request"
+    {:render, []}
+  end
+ 
+end
+```
+
 ## Internationalization
 
 **Important** Experemental now

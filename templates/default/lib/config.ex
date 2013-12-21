@@ -22,7 +22,8 @@ defmodule Config do
     use_sessions: false,
     session:
       [max_age: 1440
-      ]
+      ],
+    log: true
     ]
   end
 

@@ -1,8 +1,8 @@
-defmodule Config do 
+defmodule Config do
 
   def config do
-    [webserver: 
-      [http_host: "localhost", 
+    [webserver:
+      [http_host: "localhost",
        http_port: 8080,
        acceptors: 100,
        ssl: false,
@@ -10,7 +10,7 @@ defmodule Config do
        certfile_path: "",
        keyfile_path: ""
       ],
-    ws: 
+    ws:
       [ws_port: 8080,
        ws_mod: :Handler
       ],
@@ -22,7 +22,8 @@ defmodule Config do
     use_sessions: false,
     session:
       [max_age: 1440
-      ]
+      ],
+    log: true
     ]
   end
 

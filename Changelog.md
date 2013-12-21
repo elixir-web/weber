@@ -12,6 +12,7 @@
   * #122. `content_for_layout` fixed.
   * New github pages
   * `exlager` added to the deps
+  * #34 Logger added.
 
 #### Weber-0.0.4 [Released]
 

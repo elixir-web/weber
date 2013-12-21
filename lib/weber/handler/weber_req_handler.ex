@@ -9,6 +9,8 @@ defmodule Handler.WeberReqHandler do
   import Weber.Session
   import Weber.Http.Url
 
+  require Lager
+
   import Plug.Connection
 
   import Handler.Weber404Handler
@@ -30,6 +32,11 @@ defmodule Handler.WeberReqHandler do
 
     # get path
     {path, req2} = :cowboy_req.path(req)
+
+    case :lists.keyfind(:log, 1, Config.config) do
+      false -> :ok
+      _ -> Lager.info "[" <> conn.method <> "] " <> path
+    end
 
     # match routes
     case :lists.flatten(match_routes(path, Weber.Path.__route__, conn.method)) do
