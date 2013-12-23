@@ -358,8 +358,8 @@ And you have `lib/views/Main.html` with:
 Hello World!
 ```
 
-Weber puts `lib/views/Main.html` content instead `<%= content_for_layout %> ` and you will
-get it in the response.
+Weber puts `lib/views/Main.html` content inside `<%= content_for_layout %> ` and renders
+it in the response.
 
 ## Logging
 
