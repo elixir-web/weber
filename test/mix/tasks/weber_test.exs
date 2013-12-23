@@ -17,6 +17,7 @@ defmodule Mix.Tasks.WeberTest do
     Mix.Generator.create_directory tmp_path
 
     Mix.Tasks.Weber.New.run [app_path]
+    File.mkdir("#{app_path}/log")
     assert_directory app_path
 
     File.cd! app_path, fn ->
@@ -26,13 +27,13 @@ defmodule Mix.Tasks.WeberTest do
 
       assert_directory "lib"
       assert_directory "lib/helpers"
-      assert_directory "lib//models"
+      assert_directory "lib/models"
       assert_file "lib/app.ex"
       assert_file "lib/config.ex"
       assert_file "lib/route.ex"
       assert_file "lib/views/Main.html"
       assert_file "lib/controllers/main.ex"
-      assert_directory "logs"
+      assert_directory "log"
       assert_directory "public/css"
       assert_directory "public/js"
       assert_directory "public/img"
