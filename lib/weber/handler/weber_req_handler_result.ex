@@ -21,7 +21,7 @@ defmodule Handler.WeberReqHandler.Result do
   end
 
   defp request({:render, data, headers}, app) do
-    filename = List.last(Module.split app.controller) <> ".html"
+    filename = List.last(Module.split app.controller) <> atom_to_binary(app.action) <> ".html"
     file_content = find_file_path(Weber.Path.__views__, filename) |> elem(1)
     case :lists.keyfind(:__layout__, 1, app.controller.__info__(:functions)) do
       false ->
