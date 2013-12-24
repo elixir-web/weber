@@ -1,8 +1,0 @@
-2013-12-24 19:02:58.954 [info] <0.7.0> Application lager started on node nonode@nohost
-2013-12-24 19:02:58.955 [info] <0.7.0> Application exlager started on node nonode@nohost
-2013-12-24 19:02:58.973 [info] <0.7.0> Application ranch started on node nonode@nohost
-2013-12-24 19:02:58.975 [info] <0.7.0> Application cowlib started on node nonode@nohost
-2013-12-24 19:02:58.999 [info] <0.7.0> Application cowboy started on node nonode@nohost
-2013-12-24 19:02:59.581 [info] <0.677.0>@Elixir.Handler.WeberReqHandler:handle:38 [GET] /redirect
-2013-12-24 19:02:59.582 [info] <0.679.0>@Elixir.Handler.WeberReqHandler:handle:38 [GET] /include
-2013-12-24 19:02:59.586 [info] <0.681.0>@Elixir.Handler.WeberReqHandler:handle:38 [GET] /weber
