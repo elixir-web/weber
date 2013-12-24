@@ -22,13 +22,14 @@ defmodule Weber do
   """
   def start(_type, _args) do
     case :lists.keyfind(:log, 1, Config.config) do
-      false -> :ok
-      _ ->
+      {:ok, true} ->
         :ok = :application.start(:compiler)
         :ok = :application.start(:syntax_tools)
         :ok = :application.start(:goldrush)
         :ok = :application.start(:lager)
-        :ok = :application.start(:exlager)
+        :ok = :application.start(:exlager) 
+      _ ->
+        :ok
     end
     # start cowboy
     Cowboy.start(Config.config)
