@@ -61,7 +61,19 @@ defmodule Weber.Utils do
       false -> String.split(:erlang.list_to_binary(path), "/")
      end
      drop_path = :lists.dropwhile(fn(segment) -> segment !== <<"views">> end, spliten_path)
-     Enum.map(drop_path, fn(p) -> String.capitalize(:filename.basename(p, '.html')) end) |> Module.concat
+     Enum.map(drop_path, fn(p) -> Weber.Utils.capitalize(:filename.basename(p, '.html')) end) |> Module.concat
+  end
+
+  @doc """
+  Capitalize only first character in string
+  """
+  def capitalize("") do
+    ""
+  end
+
+  def capitalize(str) do
+    <<c, rest :: binary>> = str
+    String.capitalize(String.from_char_list([c]) |> elem(1)) <> rest
   end
 
   def to_bin(val) when is_binary(val) do
