@@ -4,7 +4,7 @@ defmodule Simplechat.Mixfile do
   def project do
     [ 
       app: :SimpleChat,
-      version: "0.0.3",
+      version: "0.0.4",
       deps: deps
     ]
   end

@@ -14,7 +14,7 @@ defmodule Config do
       [ws_port: 8080,
        ws_mod: :Simplechat.Main.Chat
       ],
-    use_internationalization: true,
+    use_internationalization: false,
     localization:
       [default_locale: :en_US,
        use_locales: [:en_US]
@@ -22,7 +22,8 @@ defmodule Config do
     use_sessions: true,
     session:
       [max_age: 1440
-      ]
+      ],
+    log: false
     ]
   end
 

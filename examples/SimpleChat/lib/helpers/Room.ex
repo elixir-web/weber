@@ -19,7 +19,7 @@ defmodule Room do
     {:noreply, :lists.delete(pid, state)}
   end
 
-  def handle_cast({:send, pid, message}, state) do  
+  def handle_cast({:send, pid, message, conn}, state) do  
     case message do
       <<"get_login">> ->
         username = get_session(:username)

@@ -1,11 +1,7 @@
 defmodule Simplechat.Main.Chat do
 
   import Weber.Session
-
-  use Weber.Controller
-
-  layout false
-
+  
   def render_chat([], conn) do
     case get_session(conn, :username) do
       [] -> {:redirect, "/"}

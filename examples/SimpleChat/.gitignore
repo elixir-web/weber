@@ -3,4 +3,4 @@ _build
 /deps
 erl_crash.dump
 mix.lock
-/logs
+/log
