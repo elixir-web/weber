@@ -13,6 +13,7 @@
   * New github pages
   * `exlager` added to the deps
   * #34 Logger added.
+  * #119. View for every action.
 
 #### Weber-0.0.4 [Released]
 

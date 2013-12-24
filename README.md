@@ -139,12 +139,12 @@ Every controller's action passes 2 parameters:
 
 Controller can return:
 
-  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Render views with the same name as controller and sends it to response. Or without headers. `{:render, [project: "simpleTodo"]}`
-  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Render inline template.
-  * `{:render_other, Elixir.Views.Index, [foo: "foo"], []}` - Render any view in controller. Or without headers.
-  * `{:file, path, headers}` - Send file in response. Or without headers `{:file, path}`
-  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber convert keyword to json and sends it to response. Or without headers: `{:json, [response: "ok"]}`
-  * `{:redirect, "/main"}` - Redirect to other resource.
+  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Renders views from `views/controller/action.html` and sends it to response. Or without headers. `{:render, [project: "simpleTodo"]}`
+  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Renders inline template.
+  * `{:render_other, Elixir.Views.Index, [foo: "foo"], []}` - Renders any view in controller. Or without headers.
+  * `{:file, path, headers}` - Sends file in response. Or without headers `{:file, path}`
+  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber converts keyword to json and sends it to response. Or without headers: `{:json, [response: "ok"]}`
+  * `{:redirect, "/main"}` - Redirects to other resource.
   * `{:text, data, headers}` - Sends plain text. Or without headers: `{:text, data}`
   * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers.
 

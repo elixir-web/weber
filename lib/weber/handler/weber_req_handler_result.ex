@@ -8,12 +8,12 @@ defmodule Handler.WeberReqHandler.Result do
   
   defrecord App,
     controller: nil,
-    views: nil,
+    action: nil,
     conn:  nil
   
   @doc "Handle response from controller"
-  def handle_result(res, conn // nil, controller // nil, views // nil) do
-    request(res, App.new conn: conn, controller: controller, views: views)
+  def handle_result(res, conn // nil, controller // nil, action // nil) do
+    request(res, App.new conn: conn, controller: controller, action: action)
   end
 
   defp request({:render, data}, app) do
@@ -21,8 +21,7 @@ defmodule Handler.WeberReqHandler.Result do
   end
 
   defp request({:render, data, headers}, app) do
-    filename = List.last(Module.split app.controller) <> atom_to_binary(app.action) <> ".html"
-    file_content = find_file_path(Weber.Path.__views__, filename) |> elem(1)
+    file_content = Module.concat([Elixir, Views, List.last(Module.split app.controller), app.action])
     case :lists.keyfind(:__layout__, 1, app.controller.__info__(:functions)) do
       false ->
         {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}

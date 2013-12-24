@@ -92,7 +92,7 @@ defmodule Handler.WeberReqHandler do
         # get response from controller
         result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
         # handle controller's response, see in Handler.WeberReqHandler.Result
-        handle_result(result, conn, controller) |> handle_request(req3, state)
+        handle_result(result, conn, controller, String.capitalize(atom_to_binary(action))) |> handle_request(req3, state)
     end
   end
 
