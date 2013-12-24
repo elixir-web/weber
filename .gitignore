@@ -9,3 +9,4 @@ deps
 erl_crash.dump
 /tmp
 mix.lock
+log
