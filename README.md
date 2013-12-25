@@ -91,6 +91,7 @@ Http method can be:
   * `"POST"`
   * `"PUT"`
   * `"DELETE"`
+  * `"PATCH"`
   * `"ANY"`
 
 ### Build url from code

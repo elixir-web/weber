@@ -14,6 +14,7 @@
   * `exlager` added to the deps
   * #34 Logger added.
   * #119. View for every action.
+  * `PATCH` method.
 
 #### Weber-0.0.4 [Released]
 
