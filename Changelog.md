@@ -15,6 +15,7 @@
   * #34 Logger added.
   * #119. View for every action.
   * `PATCH` method.
+  * #134. Resourceful routing.
 
 #### Weber-0.0.4 [Released]
 

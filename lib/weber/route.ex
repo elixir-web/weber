@@ -71,6 +71,29 @@ defmodule Weber.Route do
   end
 
   @doc """
+    Resourcefull routing
+  """
+  def resource(controller) do
+    url = List.foldl(String.split(atom_to_binary(controller),"."), "", fn (x, acc) -> acc <> "/" <> x end) |> String.downcase
+    [[method: "GET", path:  url <> "/:id", controller: controller, action: :show],
+     [method: "POST", path: url <> "/:id/create", controller: controller, action: :create],
+     [method: "GET", path:  url <> "/:id/edit", controller: controller, action: :edit],
+     [method: "PUT", path:  url <> "/:id/update", controller: controller, action: :update],
+     [method: "DELETE", path: url <> "/:id/delete", controller: controller, action: :delete]]
+  end
+
+  def resource(routesList, controller) do
+    url = List.foldl(String.split(atom_to_binary(controller),"."), "", fn (x, acc) -> acc <> "/" <> x end) |> String.downcase
+    
+    routes = [[method: "GET", path:  url <> "/:id", controller: controller, action: :show],
+     [method: "POST", path: url <> "/:id/create", controller: controller, action: :create],
+     [method: "GET", path:  url <> "/:id/edit", controller: controller, action: :edit],
+     [method: "PUT", path:  url <> "/:id/update", controller: controller, action: :update],
+     [method: "DELETE", path: url <> "/:id/delete", controller: controller, action: :delete]]
+    :lists.append(routesList, routes)
+  end
+
+  @doc """
     Create redirect path
   """
   def redirect(method, path, redirect_path) do

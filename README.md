@@ -94,6 +94,22 @@ Http method can be:
   * `"PATCH"`
   * `"ANY"`
 
+You can set up resource in routing:
+
+```elixir
+    route resource(:Controller.Work)  
+```
+
+It will be the same as
+
+```elxir
+route on("GET",    "/controller/work/:id",        :Controller.Work, :show)
+   |> on("POST",   "/controller/work/:id/create", :Controller.Work, :create)
+   |> on("GET",    "/controller/work/:id/edit,    :Controller.Work, :edit)
+   |> on("PUT",    "/controller/work/:id/update,  :Controller.Work, :update)
+   |> on("DELETE", "/controller/work/:id/delete,  :Controller.Work, :delete)
+```
+
 ### Build url from code
 
 You can build url from your `elixir` code with:
