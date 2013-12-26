@@ -21,7 +21,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * Web controller Helpers.
  * i18n support;
  * Sessions support;
- * Grunt integration;
+ * [weber-contrib](https://github.com/0xAX/weber-contrib)
 
 ## Quick start
 

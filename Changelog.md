@@ -16,6 +16,8 @@
   * #119. View for every action.
   * `PATCH` method.
   * #134. Resourceful routing.
+  * `Grunt` moved to weber-contrib.
+  * New dependency - weber-contrib.
 
 #### Weber-0.0.4 [Released]
 
