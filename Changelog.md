@@ -18,6 +18,7 @@
   * #134. Resourceful routing.
   * `Grunt` moved to weber-contrib.
   * New dependency - weber-contrib.
+  * gzip compression
 
 #### Weber-0.0.4 [Released]
 
