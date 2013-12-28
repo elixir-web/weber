@@ -21,7 +21,11 @@ defmodule Cowboy do
     {_, _host}     = :lists.keyfind(:http_host, 1, web_server_config)
     {_, port}      = :lists.keyfind(:http_port, 1, web_server_config)
     {_, acceptors} = :lists.keyfind(:acceptors, 1, web_server_config)
-    {_, ssl}     = :lists.keyfind(:ssl, 1, web_server_config)
+    {_, ssl}       = :lists.keyfind(:ssl, 1, web_server_config)
+    case :lists.keymember(:use_gzip, 1, web_server_config) do
+      true -> {_, compress} = :lists.keyfind(:use_gzip, 1, web_server_config)
+      _    -> compress = false
+    end
 
     {:ws, ws_config} = :lists.keyfind(:ws, 1, config)
     {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
@@ -38,7 +42,8 @@ defmodule Cowboy do
                                                            {:certfile,certfile}, {:keyfile, keyfile}], 
                                                            [env: [dispatch: dispatch]])
       _ -> 
-        {:ok, _} = :cowboy.start_http(:http, acceptors, [port: port], [env: [dispatch: dispatch]])
+        {:ok, _} = :cowboy.start_http(:http, acceptors, [port: port], [env: [dispatch: dispatch],
+                                                                       compress: compress])
     end
   end
 end
