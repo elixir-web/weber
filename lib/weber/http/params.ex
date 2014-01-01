@@ -50,7 +50,8 @@ defmodule Weber.Http.Params do
   """
   def get_header(name, conn) do
     headers = conn.req_headers
-    Keyword.get(name, headers)
+    
+    header_value(name, headers)
   end
 
   @doc """
@@ -96,4 +97,14 @@ defmodule Weber.Http.Params do
     decode(conn.query_string)[key]
   end
 
+  @doc """
+    Search headers for specified key, if found return the value otherwise return nil
+  """
+  defp header_value(header, []), do: nil
+  defp header_value(header, [first | rest]) do
+    case first do
+      {^header, value} -> value
+      _ -> header_value(header, rest)
+    end
+  end
 end
