@@ -346,7 +346,7 @@ Create `Layout.html` in the `lib/views/layouts` directory and put there:
   </head>
   <body>
     <div id="container">
-    <%= content_for_layout %>      
+    <%= @content_for_layout %>      
     </div>
   </body>
 </html> 

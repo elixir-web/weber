@@ -5,11 +5,12 @@ defmodule Weber.Helper.ContentFor do
   """
 
   @doc "Variable file_content changes to layout correct and view render"
-  defmacro content_for(:layout, path) do
+  defmacro content_for(:layout, path, data) do
     quote do
       if unquote(path) do
         layout_path = Weber.Path.__root__ <> "/lib/views/" <> "layouts/" <> unquote(path)
-        var!(content) = EEx.eval_file(layout_path, [content_for_layout: var!(content)])
+        layout_module = build_module_name(layout_path)
+        var!(content) = layout_module.render_template(:lists.append([content_for_layout: var!(content)], unquote(data)))
       end
     end
   end
