@@ -19,6 +19,7 @@
   * `Grunt` moved to weber-contrib.
   * New dependency - weber-contrib.
   * gzip compression
+  * [Params API] Headers lookup fix.
 
 #### Weber-0.0.4 [Released]
 
