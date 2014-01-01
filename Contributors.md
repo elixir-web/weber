@@ -12,3 +12,4 @@
   * [Michael Simpson](https://github.com/mjs2600)
   * [orteipid](https://github.com/orteipid)
   * [Shane Logsdon](https://github.com/slogsdon)
+  * [LeakyBucket](https://github.com/LeakyBucket)
