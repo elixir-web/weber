@@ -28,7 +28,7 @@ defmodule Handler.WeberReqHandler.Result do
       _ ->
         content = file_content.render_template(:lists.append(data, [conn: app.conn]))
         Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__, data)
-        {:render, 200, EEx.eval_string(content, []), headers}
+        {:render, 200, content, headers}
     end
   end
   
