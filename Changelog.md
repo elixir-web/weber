@@ -20,7 +20,8 @@
   * New dependency - weber-contrib.
   * gzip compression
   * [Params API] Headers lookup fix.
-  * content_for precompilation
+  * content_for precompilation.
+  * __before__/__after__ request hooks.
 
 #### Weber-0.0.4 [Released]
 

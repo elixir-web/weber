@@ -89,10 +89,15 @@ defmodule Handler.WeberReqHandler do
             :ok
         end
 
+        conn = case :lists.keyfind(:__before__, 2, controller.__info__(:functions)) do
+          false -> conn
+          _ -> controller.__before__(action, conn)
+        end 
+         
         # get response from controller
         result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
         # handle controller's response, see in Handler.WeberReqHandler.Result
-        handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action))) |> handle_request(req3, state)
+        handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action))) |> handle_request(req3, state, {controller, action, conn})
     end
   end
 
