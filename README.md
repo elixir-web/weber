@@ -214,9 +214,9 @@ You can find the full API at the [wiki](https://github.com/0xAX/weber/wiki/Weber
 
 ## Before/After request hooks
 
-You can define `__before__` or after `__after__` hooks in your controller. It will pass 2 paraemters:
+You can define `__before__` or after `__after__` hooks in your controller. It will pass two parameters:
 
-  * :action - action name
+  * `:action` - action name
   * `conn` - connection parameter
 
 ```elixir
@@ -227,14 +227,14 @@ defmodule Simplechat.Main.Login do
   end
 
   #
-  # Will executing before request
+  # Executes before request
   #
   def __before__(:render_login, conn) do
     conn
   end
   
   #
-  # Will executing after response
+  # Execute after response
   #
   def __after__(:render_login, conn) do
     conn
