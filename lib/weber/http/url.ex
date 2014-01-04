@@ -107,7 +107,7 @@ defmodule Weber.Http.Url do
   @doc """
     Get binding's value list.
   """
-  def getAllBinding(url, matched_url) when is_regex(matched_url) do
+  def getAllBinding(_url, matched_url) when is_regex(matched_url) do
     []
   end
   

@@ -61,7 +61,7 @@ defmodule Handler.WeberReqHandler.Result do
     {:nothing, 200, "", headers}
   end
 
-  defp request({:text, data}, app) do
+  defp request({:text, data}, _app) do
     {:text, 200, data, []}
   end
 

@@ -35,7 +35,7 @@ defmodule Weber.Session do
     {:stop, :normal, state}
   end
 
-  def handle_info({:create_new_session, session_id, pid, session_config, max_age, config}, state) do
+  def handle_info({:create_new_session, session_id, pid, _session_config, _max_age, config}, state) do
     case :ets.match_object(:cookie_storage, {:_, pid, :_}) do
       [] ->
         locale = case :lists.keyfind(:localization, 1, config) do
