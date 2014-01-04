@@ -13,3 +13,4 @@
   * [orteipid](https://github.com/orteipid)
   * [Shane Logsdon](https://github.com/slogsdon)
   * [LeakyBucket](https://github.com/LeakyBucket)
+  * [Dickson S. Guedes](https://github.com/guedes)
