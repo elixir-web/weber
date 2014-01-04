@@ -127,7 +127,7 @@ defmodule Weber.Route do
                   _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
                 end
             end
-          [method: method, path: p, redirect_path: redirect_path] ->
+          [method: method, path: p, redirect_path: _redirect_path] ->
             parsed_route_path = getBinding(p)
             case method do
               "ANY" -> match_routes_helper(parsed_path, parsed_route_path)

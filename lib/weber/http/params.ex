@@ -97,10 +97,10 @@ defmodule Weber.Http.Params do
     decode(conn.query_string)[key]
   end
 
-  @doc """
-    Search headers for specified key, if found return the value otherwise return nil
-  """
-  defp header_value(header, []), do: nil
+  #
+  # Search headers for specified key, if found return the value otherwise return nil
+  #
+  defp header_value(_header, []), do: nil
   defp header_value(header, [first | rest]) do
     case first do
       {^header, value} -> value
