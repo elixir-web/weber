@@ -14,3 +14,4 @@
   * [Shane Logsdon](https://github.com/slogsdon)
   * [LeakyBucket](https://github.com/LeakyBucket)
   * [Dickson S. Guedes](https://github.com/guedes)
+  * [Darko Fabijan](https://github.com/darkofabijan)
