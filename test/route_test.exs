@@ -7,17 +7,19 @@ defmodule WeberRouteTest do
     r = on("ANY", "/", :Controller1, :main_action)
       |> on("GET", "/user/0xAX/add", :Controller1, :action2)
       |> on("POST", "/user/:user/delete", :Controller1, :action2)
-      |> resource(:Controller)
+      |> resources(:Photos)
       |> redirect("GET", "/redirect", "/")
 
-    assert(r == [[method: "ANY", path: "/", controller: :Controller1, action: :main_action], 
-                 [method: "GET", path: "/user/0xAX/add", controller: :Controller1, action: :action2], 
-                 [method: "POST", path: "/user/:user/delete", controller: :Controller1, action: :action2], 
-                 [method: "GET", path: "/controller/:id", controller: :Controller, action: :show], 
-                 [method: "POST", path: "/controller/:id/create", controller: :Controller, action: :create], 
-                 [method: "GET", path: "/controller/:id/edit", controller: :Controller, action: :edit], 
-                 [method: "PUT", path: "/controller/:id/update", controller: :Controller, action: :update], 
-                 [method: "DELETE", path: "/controller/:id/delete", controller: :Controller, action: :delete], 
+    assert(r == [[method: "ANY", path: "/", controller: :Controller1, action: :main_action],
+                 [method: "GET", path: "/user/0xAX/add", controller: :Controller1, action: :action2],
+                 [method: "POST", path: "/user/:user/delete", controller: :Controller1, action: :action2],
+                 [method: "GET", path: "/photos", controller: :Photos, action: :index],
+                 [method: "GET", path: "/photos/new", controller: :Photos, action: :new],
+                 [method: "POST", path: "/photos", controller: :Photos, action: :create],
+                 [method: "GET", path: "/photos/:id", controller: :Photos, action: :show],
+                 [method: "GET", path: "/photos/:id/edit", controller: :Photos, action: :edit],
+                 [method: "PUT", path: "/photos/:id", controller: :Photos, action: :update],
+                 [method: "DELETE", path: "/photos/:id", controller: :Photos, action: :destroy],
                  [method: "GET", path: "/redirect", redirect_path: "/"]])
   end
 
@@ -27,7 +29,7 @@ defmodule WeberRouteTest do
       |> on("POST", "/user/:user/delete", :Controller1, :action2)
       |> redirect("ANY", "/weber", "/")
       |> on("GET", %r{/hello/([\w]+)}, :Controller1, :action2)
-      
+
    assert match_routes("/main.html", r, "GET") == []
    assert match_routes("/user/0xAX", r, "POST") == []
    assert match_routes("/", r, "ANY") == [[method: "ANY", path: "/", controller: :Controller1, action: :main_action]]

@@ -3,9 +3,9 @@ defmodule Weber.Route do
   @moduledoc """
     This module handles routing of weber web application.
     Use 'route' macros for declaring routing.
-    
+
       ## Example
-    
+
         route on("ANY", '/', Controller1, Action1)
            |> on ("GET", '/user/:name', Controller2, Action2)
            |> on ("POST", "/user/add/:username", "Controller2#Action2")
@@ -26,16 +26,16 @@ defmodule Weber.Route do
   end
 
   def link(controller, action, bindings // []) do
-    routes_with_same_controller = Enum.filter(Route.__route__, 
+    routes_with_same_controller = Enum.filter(Route.__route__,
       fn(route) ->
-        :lists.member({:controller, controller}, route) 
+        :lists.member({:controller, controller}, route)
       end)
-    routes_with_same_action = Enum.filter(routes_with_same_controller, 
+    routes_with_same_action = Enum.filter(routes_with_same_controller,
       fn(route) ->
-        :lists.member({:action, action}, route) 
+        :lists.member({:action, action}, route)
       end) |> Enum.at(0)
     parsed_route = getBinding(Keyword.get(routes_with_same_action, :path))
-    List.foldl(parsed_route, "", 
+    List.foldl(parsed_route, "",
       fn({type, value}, acc) ->
         case type do
           :segment -> acc <> "/" <> value
@@ -73,23 +73,12 @@ defmodule Weber.Route do
   @doc """
     Resourcefull routing
   """
-  def resource(controller) do
-    url = List.foldl(String.split(atom_to_binary(controller),"."), "", fn (x, acc) -> acc <> "/" <> x end) |> String.downcase
-    [[method: "GET", path:  url <> "/:id", controller: controller, action: :show],
-     [method: "POST", path: url <> "/:id/create", controller: controller, action: :create],
-     [method: "GET", path:  url <> "/:id/edit", controller: controller, action: :edit],
-     [method: "PUT", path:  url <> "/:id/update", controller: controller, action: :update],
-     [method: "DELETE", path: url <> "/:id/delete", controller: controller, action: :delete]]
+  def resources(controller) do
+    resources_routes(controller)
   end
 
-  def resource(routesList, controller) do
-    url = List.foldl(String.split(atom_to_binary(controller),"."), "", fn (x, acc) -> acc <> "/" <> x end) |> String.downcase
-    
-    routes = [[method: "GET", path:  url <> "/:id", controller: controller, action: :show],
-     [method: "POST", path: url <> "/:id/create", controller: controller, action: :create],
-     [method: "GET", path:  url <> "/:id/edit", controller: controller, action: :edit],
-     [method: "PUT", path:  url <> "/:id/update", controller: controller, action: :update],
-     [method: "DELETE", path: url <> "/:id/delete", controller: controller, action: :delete]]
+  def resources(routesList, controller) do
+    routes = resources_routes(controller)
     :lists.append(routesList, routes)
   end
 
@@ -103,14 +92,14 @@ defmodule Weber.Route do
   def redirect(routesList, method, path, redirect_path) do
     :lists.append(routesList, [[method: method, path: path, redirect_path: redirect_path]])
   end
-  
+
   @doc """
     Match current url path. Is it web application route or not
   """
   def match_routes(path, routes, req_method) do
     parsed_path = getBinding(path)
 
-    Enum.filter(routes, 
+    Enum.filter(routes,
       fn(route) ->
         case route do
           [method: method, path: p, controller: _controller, action: _action] ->
@@ -140,7 +129,7 @@ defmodule Weber.Route do
   defp match_routes_regex_helper(path, regex) do
     Regex.match?(path, regex)
   end
-  
+
   defp match_routes_helper([], []) do
     true
   end
@@ -156,17 +145,17 @@ defmodule Weber.Route do
   defp match_routes_helper([{:param, _, _key, _val} | _parsed_path], []) do
     true
   end
-    
+
   defp match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
     case type == route_type do
-      true -> 
+      true ->
         case path == route_path do
           true -> match_routes_helper(parsed_path, parsed_route_path)
           false -> false
         end
-      false -> 
+      false ->
         case route_type == :binding do
-          true -> 
+          true ->
             case path do
               <<>> -> false
               _ -> match_routes_helper(parsed_path, parsed_route_path)
@@ -178,6 +167,18 @@ defmodule Weber.Route do
 
   defp match_routes_helper([{:param, _, _key, _val} | _parsed_path], [{_route_type, _route_path} | _parsed_route_path]) do
     true
+  end
+
+  defp resources_routes(controller) do
+    url = List.foldl(String.split(atom_to_binary(controller),"."), "", fn (x, acc) -> acc <> "/" <> x end) |> String.downcase
+
+    [[method: "GET",    path: url,                controller: controller, action: :index],
+     [method: "GET",    path: url <> "/new",      controller: controller, action: :new],
+     [method: "POST",   path: url,                controller: controller, action: :create],
+     [method: "GET",    path: url <> "/:id",      controller: controller, action: :show],
+     [method: "GET",    path: url <> "/:id/edit", controller: controller, action: :edit],
+     [method: "PUT",    path: url <> "/:id",      controller: controller, action: :update],
+     [method: "DELETE", path: url <> "/:id",      controller: controller, action: :destroy]]
   end
 
 end

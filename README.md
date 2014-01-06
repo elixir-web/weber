@@ -79,7 +79,7 @@ Also `on` supports following syntax:
 ```
 
 It is `route` macro which value is chain of `on` functions with 3 parametes:
-  
+
   * Http method
   * Route path, can be binding (starts with ':' symbol);
   * Module name of controller;
@@ -97,17 +97,19 @@ Http method can be:
 You can set up resource in routing:
 
 ```elixir
-    route resource(:Controller.Work)  
+    route resources(:Controller.Photos)
 ```
 
 It will be the same as
 
 ```elxir
-route on("GET",    "/controller/work/:id",        :Controller.Work, :show)
-   |> on("POST",   "/controller/work/:id/create", :Controller.Work, :create)
-   |> on("GET",    "/controller/work/:id/edit,    :Controller.Work, :edit)
-   |> on("PUT",    "/controller/work/:id/update,  :Controller.Work, :update)
-   |> on("DELETE", "/controller/work/:id/delete,  :Controller.Work, :delete)
+route on("GET",    "/controller/photos",            :Controller.Photos, :index)
+   |> on("GET",    "/controller/photos/new",        :Controller.Photos, :new)
+   |> on("POST",   "/controller/photos",            :Controller.Photos, :create)
+   |> on("GET",    "/controller/photos/:id,         :Controller.Photos, :show)
+   |> on("GET",    "/controller/photos/:id/edit,    :Controller.Photos, :edit)
+   |> on("PUT",    "/controller/photos/:id,         :Controller.Photos, :update)
+   |> on("DELETE", "/controller/photos/:id,         :Controller.Photos, :destroy)
 ```
 
 ### Build url from code
@@ -120,7 +122,7 @@ import Weber.Route
 route on("GET", "/", "Simpletodo.Main#action")
    |> on("POST", "/add/:note", "Simpletodo.Main#add")
 
-# generates: /add/1 
+# generates: /add/1
 link(:Elixir.Simpletodo.Main, :add, [note: 1])
 ```
 
@@ -232,7 +234,7 @@ defmodule Simplechat.Main.Login do
   def __before__(:render_login, conn) do
     conn
   end
-  
+
   #
   # Execute after response
   #
@@ -333,7 +335,7 @@ image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100
 audio("/public/audio/sound")
 
 #
-# Generates: 
+# Generates:
 #  <audio autoplay="autoplay">
 #    <souce src="/public/audio/sound1"></souce>
 #    <souce src="/public/audio/sound2"></souce>
@@ -377,10 +379,10 @@ Create `Layout.html` in the `lib/views/layouts` directory and put there:
   </head>
   <body>
     <div id="container">
-    <%= @content_for_layout %>      
+    <%= @content_for_layout %>
     </div>
   </body>
-</html> 
+</html>
 ```
 
 Than declare `layout` helper in your controller:
@@ -391,7 +393,7 @@ defmodule TestController.Main do
   use Weber.Controller
 
   layout "Layout.html"
-  
+
   #
   # Here are some actions
   #
@@ -415,20 +417,20 @@ Weber uses [exlager](https://github.com/khia/exlager) for the logging. For using
 
 ```elixir
 log: true
-``` 
+```
 
 in your config and use it:
 
 ```elixir
 defmodule LogTest.Main do
-  
+
   require Lager
- 
+
   def action([], _conn) do
     Lager.info "New request"
     {:render, []}
   end
- 
+
 end
 ```
 
@@ -440,7 +442,7 @@ See - [Weber Internationalization](https://github.com/0xAX/weber/tree/master/lib
 
 ```
 {
-  "HELLO_STR" : "Hello, It is weber framework!", 
+  "HELLO_STR" : "Hello, It is weber framework!",
   "FRAMEWORK_DESCRIPTION" : "Weber - is a MVC Web framework for Elixir."
 }
 ```
@@ -512,11 +514,11 @@ All websocket connections are must start with prefix `/_ws/`.
 See [Contributing.md](https://github.com/0xAX/weber/blob/master/Contributing.md)
 
 ## Additional info
-  
+
   * Introduction to the Weber - [Weber](http://0xax.blogspot.com/2013/12/weber-high-performance-web-framework.html)
   * Weber example for Heroku - [heroku_weber_example](https://github.com/tsloughter/heroku_weber_example)
   * A template for using Vagrant for developing Elixir applications with Weber - [vagrant-weber](https://github.com/slogsdon/vagrant-weber)
-  * [ElixirSips. Episode 035: Weber](http://elixirsips.com/episodes/035_weber.html) 
+  * [ElixirSips. Episode 035: Weber](http://elixirsips.com/episodes/035_weber.html)
   * [ElixirSips. Weber, Part 2 - Performance](http://elixirsips.com/episodes/036_weber_part_2.html)
 
 ## Author
