@@ -39,7 +39,7 @@ defmodule Handler.WeberReqHandler do
     end
 
     # match routes
-    case :lists.flatten(match_routes(path, Weber.Path.__route__, conn.method)) do
+    case match_routes(path, Weber.Path.__route__, conn.method) do
       [] ->
         try_to_find_static_resource(path) |> handle_result |> handle_request(req2, state)
       [{:method, _method}, {:path, _matched_path}, {:redirect_path, redirect_path}] ->
