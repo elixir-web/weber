@@ -123,7 +123,7 @@ defmodule Weber.Route do
               _ -> (match_routes_helper(parsed_path, parsed_route_path) and (req_method == method))
             end
           end
-      end)
+      end) |> Enum.at(0) |> catch_nil
   end
 
   defp match_routes_regex_helper(path, regex) do
@@ -185,6 +185,14 @@ defmodule Weber.Route do
      [method: "GET",    path: url <> "/:id/edit", controller: controller, action: :edit],
      [method: "PUT",    path: url <> "/:id",      controller: controller, action: :update],
      [method: "DELETE", path: url <> "/:id",      controller: controller, action: :destroy]]
+  end
+
+  defp catch_nil(list) when list == nil do
+    []
+  end
+
+  defp catch_nil(list) do
+    list
   end
 
 end
