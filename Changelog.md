@@ -1,4 +1,6 @@
-#### Weber-0.0.5 [In progress]
+#### Weber-0.1.0 [In progress]
+
+#### Weber-0.0.5 [Released]
 
   * #112 fix. Compile now with `mix compile --all --force`
   * `render_other` in response added.
