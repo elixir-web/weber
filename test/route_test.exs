@@ -4,13 +4,13 @@ defmodule WeberRouteTest do
   import Weber.Route
 
   test "Test for Weber.Route.on and Weber.Route.otherwise" do
-    r = on("ANY", "/", :Controller1, :main_action)
-      |> on("GET", "/user/0xAX/add", :Controller1, :action2)
-      |> on("POST", "/user/:user/delete", :Controller1, :action2)
-      |> resources(:Photos)
-      |> redirect("GET", "/redirect", "/")
+    route1 = on("ANY", "/", :Controller1, :main_action)
+          |> on("GET", "/user/0xAX/add", :Controller1, :action2)
+          |> on("POST", "/user/:user/delete", :Controller1, :action2)
+          |> resources(:Photos)
+          |> redirect("GET", "/redirect", "/")
 
-    assert(r == [[method: "ANY", path: "/", controller: :Controller1, action: :main_action],
+    assert(route1 == [[method: "ANY", path: "/", controller: :Controller1, action: :main_action],
                  [method: "GET", path: "/user/0xAX/add", controller: :Controller1, action: :action2],
                  [method: "POST", path: "/user/:user/delete", controller: :Controller1, action: :action2],
                  [method: "GET", path: "/photos", controller: :Photos, action: :index],
@@ -21,6 +21,17 @@ defmodule WeberRouteTest do
                  [method: "PUT", path: "/photos/:id", controller: :Photos, action: :update],
                  [method: "DELETE", path: "/photos/:id", controller: :Photos, action: :destroy],
                  [method: "GET", path: "/redirect", redirect_path: "/"]])
+    
+    route2 = resources(:Test.Photos)
+
+    assert route2 == [[method: "GET", path: "/test/photos", controller: Test.Photos, action: :index], 
+                      [method: "GET", path: "/test/photos/new", controller: Test.Photos, action: :new], 
+                      [method: "POST", path: "/test/photos", controller: Test.Photos, action: :create], 
+                      [method: "GET", path: "/test/photos/:id", controller: Test.Photos, action: :show], 
+                      [method: "GET", path: "/test/photos/:id/edit", controller: Test.Photos, action: :edit], 
+                      [method: "PUT", path: "/test/photos/:id", controller: Test.Photos, action: :update], 
+                      [method: "DELETE", path: "/test/photos/:id", controller: Test.Photos, action: :destroy]]
+
   end
 
   test "Test for Weber.Route.match_routes_helper" do
