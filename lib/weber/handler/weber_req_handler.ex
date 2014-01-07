@@ -85,8 +85,7 @@ defmodule Handler.WeberReqHandler do
             end
             # update accept language
             set_session_val(conn, :locale, lang)
-          _ ->
-            :ok
+          _ -> :ok
         end
 
         conn = case :lists.keyfind(:__before__, 2, controller.__info__(:functions)) do
