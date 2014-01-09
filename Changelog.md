@@ -1,5 +1,7 @@
 #### Weber-0.1.0 [In progress]
 
+  * Date/Time in request log
+
 #### Weber-0.0.5 [Released]
 
   * #112 fix. Compile now with `mix compile --all --force`
