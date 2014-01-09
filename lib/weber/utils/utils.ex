@@ -7,6 +7,15 @@ defmodule Weber.Utils do
   import Enum
 
   @doc """
+    Convert :calendar.local_time to string
+  """
+  def get_time() do
+    {{year, month, day}, {hours, minutes, seconds}}  = :calendar.local_time()
+    integer_to_binary(year) <> "." <> integer_to_binary(month) <> "." <> integer_to_binary(day) <> " " <>
+    integer_to_binary(hours) <> ":" <> integer_to_binary(minutes) <> ":" <> integer_to_binary(seconds) <> " "
+  end
+
+  @doc """
     Recursively get all files from directory.
   """
   def get_all_files(dir) do
