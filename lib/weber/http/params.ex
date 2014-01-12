@@ -94,7 +94,9 @@ defmodule Weber.Http.Params do
     Get parameter value by key from query string.
   """
   def param(key, conn) do
-    decode(conn.query_string)[key]
+    req = Keyword.get(conn.assigns, :req)
+    {val, _} = :cowboy_req.qs_val(key, req)
+    val
   end
 
   #
