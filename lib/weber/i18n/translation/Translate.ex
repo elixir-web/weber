@@ -10,7 +10,7 @@ defmodule Weber.Translation.Translate do
   end
 
   def init([lang]) do
-    { :ok, Translate.new t: JSON.parse(lang)}
+    { :ok, Translate.new t: ExJSON.parse(lang)}
   end
 
   def handle_call({:translate, key}, _from, state) do

@@ -74,7 +74,7 @@ defmodule Handler.WeberReqHandler.Result do
   end  
 
   defp request({:json, data, headers}, _app) do
-    {:json, 200, JSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+    {:json, 200, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
   defp request({:not_found, data, _headers}, _app) do

@@ -9,7 +9,7 @@ defmodule Weber.Localization.Locale do
   end
 
   def init([locale]) do
-    { :ok, Locale.new locale: JSON.parse locale}
+    { :ok, Locale.new locale: ExJSON.parse locale}
   end
 
   def handle_call(:get_abbr_day_names, _from, state) do
