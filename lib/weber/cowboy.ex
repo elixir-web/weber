@@ -26,13 +26,16 @@ defmodule Cowboy do
       true -> {_, compress} = :lists.keyfind(:use_gzip, 1, web_server_config)
       _    -> compress = false
     end
-
-    {:ws, ws_config} = :lists.keyfind(:ws, 1, config)
-    {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
-          
-    dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod}, 
-                                             {'/[...]', Handler.WeberReqHandler, config}]}])
-
+    
+    dispatch = case :lists.keyfind(:ws, 1, config) do
+      {:ws, ws_config} ->
+        {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
+        :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod}, 
+                                      {'/[...]', Handler.WeberReqHandler, config}]}])
+      _ ->
+        :cowboy_router.compile([{:_, [{'/[...]', Handler.WeberReqHandler, config}]}])
+    end
+     
     case ssl do
       true -> 
         {_, cacertifile} = :lists.keyfind(:cacertfile_path, 1, web_server_config)
