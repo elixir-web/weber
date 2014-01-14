@@ -22,6 +22,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * HTML helpers;
  * Web controller Helpers.
  * i18n support;
+ * Live code/templates update
  * Sessions support;
  * [weber-contrib](https://github.com/0xAX/weber-contrib)
 
@@ -162,7 +163,6 @@ Controller can return:
 
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Renders views from `views/controller/action.html` and sends it to response. Or without headers. `{:render, [project: "simpleTodo"]}`
   * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Renders inline template.
-  * `{:render_other, Elixir.Views.Index, [foo: "foo"], []}` - Renders any view in controller. Or without headers.
   * `{:file, path, headers}` - Sends file in response. Or without headers `{:file, path}`
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber converts keyword to json and sends it to response. Or without headers: `{:json, [response: "ok"]}`
   * `{:redirect, "/main"}` - Redirects to other resource.

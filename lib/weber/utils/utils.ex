@@ -27,8 +27,13 @@ defmodule Weber.Utils do
     Find full path by file name
   """
   def find_file_path(abs_filenames, filename) do
-    filter(abs_filenames, fn({bname, _mod, _file}) ->
-      bname == filename
+    filter(abs_filenames, fn(f) ->
+      case f do
+        {bname, _mod, _file} ->
+          bname == filename
+        _ ->
+          Path.absname(f) == filename
+      end 
     end) |> head
   end
 

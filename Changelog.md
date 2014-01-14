@@ -1,6 +1,9 @@
 #### Weber-0.1.0 [In progress]
 
   * Date/Time in request log
+  * New option in the config - `reload :: boolean`
+  * #79 Hot code and templates reloading
+  * `render_other` removed
 
 #### Weber-0.0.5 [Released]
 

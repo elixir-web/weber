@@ -23,7 +23,8 @@ defmodule Config do
     session:
       [max_age: 1440
       ],
-    log: false
+    log: false,
+    reload: false
     ]
   end
 

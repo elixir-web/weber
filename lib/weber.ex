@@ -21,8 +21,9 @@ defmodule Weber do
   Start weber application
   """
   def start(_type, _args) do
+    # start lager
     case :lists.keyfind(:log, 1, Config.config) do
-      {:ok, true} ->
+      {:log, true} ->
         :ok = :application.start(:compiler)
         :ok = :application.start(:syntax_tools)
         :ok = :application.start(:goldrush)
@@ -31,8 +32,21 @@ defmodule Weber do
       _ ->
         :ok
     end
+    # check handler
+    handler = case :lists.keyfind(:reload, 1, Config.config) do
+      {:reload, true} ->
+        # start reloader
+        Weber.Reload.start
+        # enable reloader
+        Weber.Reload.enable
+
+        :Handler.WeberReqHandler.Development.Result
+      _ ->
+        :Handler.WeberReqHandler.Result
+    end
+    
     # start cowboy
-    Cowboy.start(Config.config)
+    Cowboy.start(Config.config, handler)
     # start session manager
     Weber.Session.SessionManager.start_link(Config.config)
     # start localization manager

@@ -8,7 +8,7 @@ defmodule Cowboy do
   Start new cowboy http/web socket handler with given name and config
   from config.ex
   """
-  def start(config) do
+  def start(config, handler) do
     :application.start(:crypto)
     :application.start(:public_key)
     :application.start(:ssl)
@@ -26,16 +26,13 @@ defmodule Cowboy do
       true -> {_, compress} = :lists.keyfind(:use_gzip, 1, web_server_config)
       _    -> compress = false
     end
-    
-    dispatch = case :lists.keyfind(:ws, 1, config) do
-      {:ws, ws_config} ->
-        {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
-        :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod}, 
-                                      {'/[...]', Handler.WeberReqHandler, config}]}])
-      _ ->
-        :cowboy_router.compile([{:_, [{'/[...]', Handler.WeberReqHandler, config}]}])
-    end
-     
+
+    {:ws, ws_config} = :lists.keyfind(:ws, 1, config)
+    {_, ws_mod}  = :lists.keyfind(:ws_mod, 1, ws_config)
+          
+    dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod}, 
+                                             {'/[...]', Handler.WeberReqHandler, {config, handler}}]}])
+
     case ssl do
       true -> 
         {_, cacertifile} = :lists.keyfind(:cacertfile_path, 1, web_server_config)

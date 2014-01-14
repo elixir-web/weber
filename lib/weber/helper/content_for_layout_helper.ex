@@ -1,7 +1,7 @@
 defmodule Weber.Helper.ContentFor do
   @moduledoc """
   This module create content_for.
-  Please note for your layouts just put <%= content_for_layout %>
+  Please note for your layouts just put <%= content_for_layout %> in production mode
   """
 
   @doc "Variable file_content changes to layout correct and view render"

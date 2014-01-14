@@ -1,11 +1,13 @@
-defmodule Handler.WeberReqHandler.Result do
+defmodule Handler.WeberReqHandler.Development.Result do
+
   @moduledoc """
-  This module provides the handle result in production mode
+  This module provides the handle result in development mode
   """
 
   import Weber.Utils
-  require Weber.Helper.ContentFor
-  
+
+  require Weber.Helper.ContentFor.Development
+
   defrecord App,
     controller: nil,
     action: nil,
@@ -21,19 +23,15 @@ defmodule Handler.WeberReqHandler.Result do
   end
 
   defp request({:render, data, headers}, app) do
-    file_content = Module.concat([Elixir, Views, List.last(Module.split app.controller), app.action])
-    case :lists.keyfind(:__layout__, 1, app.controller.__info__(:functions)) do
-      false ->
-        {:render, 200, file_content.render_template(:lists.append(data, [conn: app.conn])), headers}
-      _ ->
-        content = file_content.render_template(:lists.append(data, [conn: app.conn]))
-        Weber.Helper.ContentFor.content_for(:layout, app.controller.__layout__, data)
-        {:render, 200, content, headers}
-    end
+    {:ok, root} = File.cwd
+    controller = Module.split(app.controller) |> List.last |> String.downcase
+    {:ok, file_content} = File.read(root <> "/lib/views/" <> controller <> "/" <> String.downcase(app.action) <> ".html")    
+    Weber.Helper.ContentFor.Development.content_for(:layout, root <> "/lib/views/", app.controller.__layout__, data)
+    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), assigns: data), headers}
   end
     
   defp request({:render_inline, data, params}, _app) do
-    {:render, 200, (EEx.eval_string data, params), []}
+    {:render, 200, (EEx.eval_string data, assigns: params), []}
   end
 
   defp request({:file, path, headers}, _app) do
@@ -72,4 +70,5 @@ defmodule Handler.WeberReqHandler.Result do
   defp request({:not_found, data, _headers}, _app) do
     {:not_found, 404, data, [{"Content-Type", "text/html"}]}
   end
+
 end
