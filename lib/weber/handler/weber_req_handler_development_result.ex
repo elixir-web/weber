@@ -26,8 +26,14 @@ defmodule Handler.WeberReqHandler.Development.Result do
     {:ok, root} = File.cwd
     controller = Module.split(app.controller) |> List.last |> String.downcase
     {:ok, file_content} = File.read(root <> "/lib/views/" <> controller <> "/" <> String.downcase(app.action) <> ".html")    
-    Weber.Helper.ContentFor.Development.content_for(:layout, root <> "/lib/views/", app.controller.__layout__, data)
-    {:render, 200, (EEx.eval_string add_helpers_imports(file_content), assigns: data), headers}
+    
+    case :lists.keyfind(:__layout__, 1, app.controller.__info__(:functions)) do
+      false ->
+        {:render, 200, (EEx.eval_string add_helpers_imports(file_content), assigns: data), headers}
+      _ ->
+        Weber.Helper.ContentFor.Development.content_for(:layout, root <> "/lib/views/", app.controller.__layout__, data)
+        {:render, 200, file_content, headers}
+    end
   end
     
   defp request({:render_inline, data, params}, _app) do
