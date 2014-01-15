@@ -504,24 +504,9 @@ All websocket connections are must start with prefix `/_ws/`.
 
 ## Testing requests
 
-If you're coming from a more "established" language / frameworks like ruby / ruby on rails or python / django you might be used to sophisticated test frameworks which allow you to test your requests in an very expressive way like this:
+Currently, one way to test requests is using `exunit` and the `hackney` http client as we do in [our own tests.] (https://github.com/0xAX/weber/blob/master/templates/default/test/response_test.exs)
 
-```Ruby
-describe AccountsController do
-  describe "GET 'new'" do
-    it 'renders the "new" template' do
-      get 'new'
-
-      expect(response.status).to eq(200)
-      expect(response.body).to have_content('Hello my friend!')
-    end
-  end
-end
-```
-
-Unfortunately this is not possible at the moment simply because there exists no such library - however, something like this is planned for the future.
-
-The best way to test requests right now is probably how we do it: Using `exunit` and the `hackney` http client as you can see in [our own tests.] (https://github.com/0xAX/weber/blob/master/templates/default/test/response_test.exs)
+There are plans to implement a test framework to simplify testing requests in Weber.
 
 ## Dependencies
 
