@@ -506,7 +506,7 @@ All websocket connections are must start with prefix `/_ws/`.
 
 Currently, one way to test requests is using `exunit` and the `hackney` http client as we do in [our own tests.] (https://github.com/0xAX/weber/blob/master/templates/default/test/response_test.exs)
 
-There are plans to implement a test framework to simplify testing requests in Weber.
+This is not as convenient and expressive as more established frameworks like rspec for rails offer but we are planning to improve this in the future.
 
 ## Dependencies
 
