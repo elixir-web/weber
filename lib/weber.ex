@@ -20,7 +20,7 @@ defmodule Weber do
   @doc """
   Start weber application
   """
-  def start(_type, _args) do
+  def start(type, _args) do
     # start lager
     case :lists.keyfind(:log, 1, Config.config) do
       {:log, true} ->
@@ -46,10 +46,16 @@ defmodule Weber do
     Weber.Session.SessionManager.start_link(Config.config)
     # start localization manager
     Weber.Localization.LocalizationManager.start_link(Config.config)
-    # start reloader
-    Weber.Reload.start
-    # enable reloader
-    Weber.Reload.enable
+    
+    case type do
+      :test ->
+        :pass
+      _ ->
+        # start reloader
+        Weber.Reload.start
+        # enable reloader
+        Weber.Reload.enable
+    end
     # return
     {:ok, self}
   end

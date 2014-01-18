@@ -36,6 +36,6 @@ defmodule MixHelpers do
   # compile all views
   Weber.Templates.ViewsLoader.compile_views(File.cwd! <> "/test")
   # start weber application
-  Weber.run_weber
+  Weber.start(:test, [])
 
  end
