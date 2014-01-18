@@ -32,7 +32,7 @@ defmodule Weber.Session.SessionManager do
     {_, session_config} = :lists.keyfind(:session, 1, state.config)
     {_, max_age} = :lists.keyfind(:max_age, 1, session_config)
     {:ok, session_pid} = Weber.Session.start_link(max_age, session_id)
-    session_pid <- {:create_new_session, session_id, pid, session_config, max_age, state.config}
+    send(session_pid, {:create_new_session, session_id, pid, session_config, max_age, state.config})
     {:noreply, state}
   end
 
