@@ -35,11 +35,6 @@ defmodule Weber do
     # check handler
     handler = case :lists.keyfind(:reload, 1, Config.config) do
       {:reload, true} ->
-        # start reloader
-        Weber.Reload.start
-        # enable reloader
-        Weber.Reload.enable
-
         :Handler.WeberReqHandler.Development.Result
       _ ->
         :Handler.WeberReqHandler.Result
@@ -51,6 +46,12 @@ defmodule Weber do
     Weber.Session.SessionManager.start_link(Config.config)
     # start localization manager
     Weber.Localization.LocalizationManager.start_link(Config.config)
+    # start reloader
+    Weber.Reload.start
+    # enable reloader
+    Weber.Reload.enable
+    # return
+    {:ok, self}
   end
 
   @doc """

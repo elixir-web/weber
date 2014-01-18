@@ -26,7 +26,7 @@ defmodule Room do
         pid <- username
       _ ->
         Enum.each(state, fn(user) -> 
-          user <- message 
+          send(user, message) 
         end)
     end  
     {:noreply, state}
