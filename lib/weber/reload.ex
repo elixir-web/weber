@@ -35,10 +35,9 @@ defmodule Weber.Reload do
   end
 
   def purge do
-    {:ok, root} = File.cwd
     case :erlang.whereis(__MODULE__) do
-      :undefined -> 
-        __MODULE__.start_link(root)
+      :undefined ->
+        File.cwd! |> __MODULE__.start_link()
       _->
         :pass
     end
@@ -46,7 +45,7 @@ defmodule Weber.Reload do
   end
 
   defp load_module() do
-    Path.wildcard(Weber.Path.__root__ <> "/lib/" <> "/**/*.ex") |> try_to_compile  
+    Path.wildcard(Weber.Path.__root__ <> "/lib/" <> "/**/*.ex") |> try_to_compile
   end
 
   defp last_file_reload_time(file, load_time) do
@@ -69,7 +68,7 @@ defmodule Weber.Reload do
 
   defp try_to_compile([path | t]) do
     try do
-      Kernel.ParallelCompiler.files([path], [])         
+      Kernel.ParallelCompiler.files([path], [])
       try_to_compile(t)
     catch
       kind, reason ->

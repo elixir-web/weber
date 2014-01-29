@@ -24,29 +24,28 @@ defmodule Weber do
     # start lager
     case :lists.keyfind(:log, 1, Config.config) do
       {:log, true} ->
-        :ok = :application.start(:compiler)
-        :ok = :application.start(:syntax_tools)
-        :ok = :application.start(:goldrush)
-        :ok = :application.start(:lager)
-        :ok = :application.start(:exlager) 
+
+        [:compiler, :syntax_tools, :goldrush, :lager, :exlager]
+          |> Enum.map(&(:ok = :application.start(&1) ) )
+
       _ ->
         :ok
     end
     # check handler
-    handler = case :lists.keyfind(:reload, 1, Config.config) do
-      {:reload, true} ->
+    handler = case Keyword.get(Config.config, :reload) do
+      true ->
         :Handler.WeberReqHandler.Development.Result
       _ ->
         :Handler.WeberReqHandler.Result
     end
-    
+
     # start cowboy
     Cowboy.start(Config.config, handler)
     # start session manager
     Weber.Session.SessionManager.start_link(Config.config)
     # start localization manager
     Weber.Localization.LocalizationManager.start_link(Config.config)
-    
+
     case type do
       :test ->
         :pass
