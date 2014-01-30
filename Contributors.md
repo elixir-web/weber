@@ -16,3 +16,4 @@
   * [Dickson S. Guedes](https://github.com/guedes)
   * [Darko Fabijan](https://github.com/darkofabijan)
   * [Timo Rößner](https://github.com/troessner)
+  * [Dmitry Aleksandrov](https://github.com/liveforeverx)
