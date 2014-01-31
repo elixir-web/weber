@@ -4,7 +4,8 @@
   * New option in the config - `reload :: boolean`
   * #79 Hot code and templates reloading
   * `render_other` removed
-  * #153. Weber.Http.Params.params/0 added
+  * #153. Weber.Http.Params.params/0 added.
+  * #165 HTTP status field to the nothing response.
 
 #### Weber-0.0.5 [Released]
 

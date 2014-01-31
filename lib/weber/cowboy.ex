@@ -19,10 +19,9 @@ defmodule Cowboy do
     [_host, port, acceptors, ssl] =
       [:http_host, :http_port, :acceptors, :ssl]
         |> Enum.map( &Keyword.fetch!(web_server_config, &1) )
+
     ws_mod = config |> Keyword.fetch!(:ws) |> Keyword.fetch!(:ws_mod)
-
     compress = Keyword.get(web_server_config, :use_gzip, false)
-
     dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod},
                                              {'/[...]', Handler.WeberReqHandler, {config, handler}}]}])
 

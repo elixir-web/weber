@@ -161,13 +161,18 @@ Every controller's action passes 2 parameters:
 
 Controller can return:
 
-  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Renders views from `views/controller/action.html` and sends it to response. Or without headers. `{:render, [project: "simpleTodo"]}`
-  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Renders inline template.
-  * `{:file, path, headers}` - Sends file in response. Or without headers `{:file, path}`
-  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber converts keyword to json and sends it to response. Or without headers: `{:json, [response: "ok"]}`
-  * `{:redirect, "/main"}` - Redirects to other resource.
-  * `{:text, data, headers}` - Sends plain text. Or without headers: `{:text, data}`
-  * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers.
+  * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Renders views from `views/controller/action.html` and sends it to response;
+  * `{:render, [project: "simpleTodo"]}` - the same without headers;
+  * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Renders inline template;
+  * `{:file, path, headers}` - Sends file in response; 
+  * `{:file, path}` - the same without headers;
+  * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber converts keyword to json and sends it to response;
+  * `{:json, [response: "ok"]}` - the same without headers;
+  * `{:redirect, "/main"}` - Redirects to other resource;
+  * `{:text, data, headers}` - Sends plain text; 
+  * `{:text, data}` - the same without headers;
+  * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers;
+  * `{:nothing, ["Cache-Control", "no-cache"], http_status :: integer}` - Sends empty response with custom status.
 
 ## Request params
 
