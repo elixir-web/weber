@@ -17,3 +17,4 @@
   * [Darko Fabijan](https://github.com/darkofabijan)
   * [Timo Rößner](https://github.com/troessner)
   * [Dmitry Aleksandrov](https://github.com/liveforeverx)
+  * [David Rueck](https://github.com/drueck)
