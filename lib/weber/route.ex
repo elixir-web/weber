@@ -25,7 +25,7 @@ defmodule Weber.Route do
     end
   end
 
-  def link(controller, action, bindings // []) do
+  def link(controller, action, bindings \\ []) do
     routes_with_same_controller = Enum.filter(Route.__route__,
       fn(route) ->
         :lists.member({:controller, controller}, route)
@@ -149,9 +149,19 @@ defmodule Weber.Route do
   defp match_routes_helper([{type, path} | parsed_path], [{route_type, route_path} | parsed_route_path]) do
     case type == route_type do
       true ->
-        (path == route_path) && match_routes_helper(parsed_path, parsed_route_path)
+        case path == route_path do
+          true -> match_routes_helper(parsed_path, parsed_route_path)
+          false -> false
+        end
       false ->
-        (route_type == :binding) && (path != <<>>) && match_routes_helper(parsed_path, parsed_route_path)
+        case route_type == :binding do
+          true ->
+            case path do
+              <<>> -> false
+              _ -> match_routes_helper(parsed_path, parsed_route_path)
+            end
+          false -> false
+        end
     end
   end
 
@@ -160,12 +170,12 @@ defmodule Weber.Route do
   end
 
   defp resources_routes(controller) do
-    url = List.foldl(String.split(atom_to_binary(controller),"."), "",
+    url = List.foldl(String.split(atom_to_binary(controller),"."), "", 
       fn (x, acc) ->
         case x do
          "Elixir" -> acc <> ""
          _ -> acc <> "/" <> x
-        end
+        end 
       end) |> String.downcase
 
     [[method: "GET",    path: url,                controller: controller, action: :index],

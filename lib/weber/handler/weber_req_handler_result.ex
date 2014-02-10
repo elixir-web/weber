@@ -12,7 +12,7 @@ defmodule Handler.WeberReqHandler.Result do
     conn:  nil
   
   @doc "Handle response from controller"
-  def handle_result(res, conn // nil, controller // nil, action // nil) do
+  def handle_result(res, conn \\ nil, controller \\ nil, action \\ nil) do
     request(res, App.new conn: conn, controller: controller, action: action)
   end
 
