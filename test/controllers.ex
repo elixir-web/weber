@@ -30,3 +30,12 @@ defmodule TestTestTest.ContentFor do
   end
 
 end
+
+defmodule TestTestTest.Partials do
+  use Weber.Controller
+
+  layout false
+  def partials([], _conn) do
+    {:render, [], [{"content-type", "text/html"}]}
+  end
+end
