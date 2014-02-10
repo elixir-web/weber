@@ -8,6 +8,7 @@ defmodule Route do
      |> on("GET", "/add/:username", :TestTestTest.Main, :add_username_action)
      |> on("GET", "/delete/:username/id/:id", :TestTestTest.Main, :delete_username_action)
      |> on("GET", "/content_for", :TestTestTest.ContentFor, :content_for_action)
+     |> on("GET", "/partials", :TestTestTest.Partials, :partials)
      |> redirect("GET", "/redirect", "/weber")
 
 end

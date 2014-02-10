@@ -52,7 +52,9 @@ defmodule Weber.Utils do
   """
   def add_helpers_imports(view_content) do
     "<% import Weber.Helper.Html %>" <> "<% import Weber.Helper.IncludeView %>" <>
-    "<% import Weber.Helper.ResourceHelper %>" <> "<% import Weber.I18n %>" <> view_content
+    "<% import Weber.Helper.Partial %>" <> "<% import Weber.Helper.ResourceHelper %>" <>
+    "<% import Weber.I18n %>" <> view_content
+
   end
 
   def views(path) do
