@@ -99,15 +99,6 @@ defmodule Weber.Http.Params do
     val
   end
 
-  @doc """
-    Get parameters list from query string
-  """
-  def params(conn) do
-    req = Keyword.get(conn.assigns, :req)
-    {val, _} = :cowboy_req.qs(req)
-    :cow_qs.parse_qs(val)
-  end
-
   #
   # Search headers for specified key, if found return the value otherwise return nil
   #

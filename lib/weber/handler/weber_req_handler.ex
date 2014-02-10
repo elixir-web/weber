@@ -14,21 +14,19 @@ defmodule Handler.WeberReqHandler do
   import Plug.Connection
 
   import Handler.Weber404Handler
+  import Handler.WeberReqHandler.Result
   import Handler.WeberReqHandler.Response
 
   @connection Plug.Adapters.Cowboy.Connection
 
   defrecord State,
-    config: nil,
-    handler: nil
+    config: nil
 
-  def init({:tcp, :http}, req, {config, handler}) do
-    {:ok, req, State.new config: config, handler: handler }
+  def init({:tcp, :http}, req, config) do
+    {:ok, req, State.new config: config }
   end
 
   def handle(req, state) do
-    Weber.Reload.purge()
-
     conn = @connection.conn(req, :tcp)
     conn = assign(conn, :req, req)
 
@@ -44,9 +42,9 @@ defmodule Handler.WeberReqHandler do
     # match routes
     case match_routes(path, Weber.Path.__route__, conn.method) do
       [] ->
-        try_to_find_static_resource(path) |> state.handler.handle_result |> handle_request(req2, state)
+        try_to_find_static_resource(path) |> handle_result |> handle_request(req2, state)
       [{:method, _method}, {:path, _matched_path}, {:redirect_path, redirect_path}] ->
-        {:redirect, redirect_path} |> state.handler.handle_result |> handle_request(req2, state)
+        {:redirect, redirect_path} |> handle_result |> handle_request(req2, state)
       [{:method, _method}, {:path, matched_path}, {:controller, controller}, {:action, action}] ->
         req3 = case Keyword.get(state.config, :use_sessions) do
           true ->
@@ -99,7 +97,7 @@ defmodule Handler.WeberReqHandler do
         # get response from controller
         result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
         # handle controller's response, see in Handler.WeberReqHandler.Result
-        state.handler.handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action))) |> handle_request(req3, state, {controller, action, conn})
+        handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action))) |> handle_request(req3, state, {controller, action, conn})
     end
   end
 
