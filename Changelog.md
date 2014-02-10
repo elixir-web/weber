@@ -7,6 +7,7 @@
   * #153. Weber.Http.Params.params/0 added.
   * #165 HTTP status field to the nothing response.
   * Initial partials
+  * `mix weber.routes` task
 
 #### Weber-0.0.5 [Released]
 

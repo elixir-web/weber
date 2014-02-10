@@ -513,6 +513,32 @@ Currently, one way to test requests is using `exunit` and the `hackney` http cli
 
 This is not as convenient and expressive as more established frameworks like rspec for rails offer but we are planning to improve this in the future.
 
+## Mix tasks
+
+### Create new project
+
+```
+mix weber.new /home/user/projectName
+```
+
+### Version
+
+```
+mix weber --version
+```
+
+### Help
+
+```
+mix weber --help
+```
+
+### Print all current routes
+
+```
+mix weber.routes
+```
+
 ## Dependencies
 
   * [cowboy](https://github.com/extend/cowboy)
