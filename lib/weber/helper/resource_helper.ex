@@ -155,7 +155,7 @@ defmodule Weber.Helper.ResourceHelper do
     # rss("my.rss", "My feed")
   """
   def rss(src, title \\ "") do
-    tag(:link, [href: src, type: "application/rss+xml", title: title)
+    tag(:link, [href: src, type: "application/rss+xml", title: title])
   end
 
 end
