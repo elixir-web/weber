@@ -21,10 +21,6 @@ defmodule Handler.WeberReqHandler.Default do
     {:nothing, 200, "", headers}
   end
 
-  def request({:nothing, headers, status}, _app) do
-    {:nothing, status, "", headers}
-  end
-
   def request({:text, data}, _app) do
     {:text, 200, data, []}
   end

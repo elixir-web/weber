@@ -1,4 +1,6 @@
-#### Weber-0.1.0 [In progress]
+#### Weber-0.1.1 [In progress]
+
+#### Weber-0.1.0 [Released]
 
   * Date/Time in request log
   * New option in the config - `reload :: boolean`

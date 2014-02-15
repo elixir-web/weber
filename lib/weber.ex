@@ -27,10 +27,10 @@ defmodule Weber do
 
         [:compiler, :syntax_tools, :goldrush, :lager, :exlager]
           |> Enum.map(&(:ok = :application.start(&1) ) )
-
       _ ->
         :ok
     end
+    
     # check handler
     handler = case Keyword.get(Config.config, :reload) do
       true ->
