@@ -340,6 +340,14 @@ image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100
 audio("/public/audio/sound")
 
 #
+# Generates <link href="my.rss" type="application/atom+xml" title="My feed">
+atom("my.atom", "My feed")
+
+#
+# Generates <link href="my.rss" type="application/rss+xml" title="My feed">
+rss("my.rss", "My feed")
+
+#
 # Generates:
 #  <audio autoplay="autoplay">
 #    <souce src="/public/audio/sound1"></souce>

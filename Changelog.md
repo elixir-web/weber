@@ -11,6 +11,7 @@
   * include_view helper deprecated and removed
   * partials added.
   * partials directory added to the views directory.
+  * RSS/Atom feed html helpers.
 
 #### Weber-0.0.5 [Released]
 

@@ -131,5 +131,31 @@ defmodule Weber.Helper.ResourceHelper do
   def audio(src, html_options) do
     tag(:audio, :lists.append([src: src], html_options))
   end
-  
+
+  @doc """
+    Generates atom feed link
+
+    ## Example
+
+    #
+    # Generates <link href="atom.xml" type="application/atom+xml" rel="alternate" title="My feed">
+    # atom("atom.xml", "My feed")
+  """
+  def atom(src, title \\ "") do
+    tag(:link, [href: src, type: "application/atom+xml", title: title])
+  end
+
+  @doc """
+    Generates rss feed link
+
+    ## Example
+
+    #
+    # Generates <link href="my.rss" type="application/rss+xml" title="My feed">
+    # rss("my.rss", "My feed")
+  """
+  def rss(src, title \\ "") do
+    tag(:link, [href: src, type: "application/rss+xml", title: title)
+  end
+
 end
