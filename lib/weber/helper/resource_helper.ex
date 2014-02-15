@@ -19,7 +19,7 @@ defmodule Weber.Helper.ResourceHelper do
       script()
 
   """
-  def script(src // "/public/js/application.js") do
+  def script(src \\ "/public/js/application.js") do
     tag(:script, "", [type: "text/javascript", src: src])
   end
 
@@ -34,7 +34,7 @@ defmodule Weber.Helper.ResourceHelper do
       style("/public/test.css")
       style()
   """
-  def style(href // "/public/css/application.css", media // "screen") do
+  def style(href \\ "/public/css/application.css", media \\ "screen") do
     tag(:link, [href: href, rel: "stylesheet", media: media])
   end
 
@@ -50,7 +50,7 @@ defmodule Weber.Helper.ResourceHelper do
       favicon("/public/img/favicon.ico")
       favicon()
   """
-  def favicon(href // "/public/img/favicon.ico", rel // "shortcut icon", type // "image/x-icon") do
+  def favicon(href \\ "/public/img/favicon.ico", rel \\ "shortcut icon", type \\ "image/x-icon") do
     tag(:link, [href: href, rel: rel, type: type])
   end
 
@@ -63,7 +63,7 @@ defmodule Weber.Helper.ResourceHelper do
       # Generates: <img src="/public/img/example.jpg" alt="Image" class="some-class" height="100" width="100">"
       image("/public/img/example.jpg", [alt: "Image", class: "some-class", height: 100, width: 100])
   """
-  def image(src, html_options // []) do
+  def image(src, html_options \\ []) do
     dict = html_options |> ListDict.new
     options = ListDict.put(dict, :src, src) |> ListDict.to_list
     tag(:img, options)
