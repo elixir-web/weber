@@ -8,6 +8,9 @@
   * #165 HTTP status field to the nothing response.
   * Initial partials
   * `mix weber.routes` task
+  * include_view helper deprecated and removed
+  * partials added.
+  * partials directory added to the views directory.
 
 #### Weber-0.0.5 [Released]
 

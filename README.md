@@ -293,20 +293,18 @@ defmodule Simpletodo.Helper.MyHelper
 end
 ```
 
-### Include view in your html
-Include view helper helps to include other views inside another.
+### Partials
 
-Import in your controller.
-
-```elixir
-import Weber.Helper
-```
-
-Your view.
+Include html partials to the your template with:
 
 ```html
-<p>Test</p>
-<%= include_view "test.html", [value: "value"]%>
+<%= render "Partial", [test: "Hello"] %>
+```
+
+You must have `"your_project_name/lib/views/partials/Partial.html"` with:
+
+```html
+<%= @test %>
 ```
 
 ### Resource Helpers
