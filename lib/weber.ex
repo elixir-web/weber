@@ -20,23 +20,43 @@ defmodule Weber do
   @doc """
   Start weber application
   """
-  def start(_type, _args) do
+  def start(type, _args) do
+    # start lager
     case :lists.keyfind(:log, 1, Config.config) do
-      {:ok, true} ->
-        :ok = :application.start(:compiler)
-        :ok = :application.start(:syntax_tools)
-        :ok = :application.start(:goldrush)
-        :ok = :application.start(:lager)
-        :ok = :application.start(:exlager) 
+      {:log, true} ->
+
+        [:compiler, :syntax_tools, :goldrush, :lager, :exlager]
+          |> Enum.map(&(:ok = :application.start(&1) ) )
+
       _ ->
         :ok
     end
+    # check handler
+    handler = case Keyword.get(Config.config, :reload) do
+      true ->
+        :Handler.WeberReqHandler.Development.Result
+      _ ->
+        :Handler.WeberReqHandler.Result
+    end
+
     # start cowboy
-    Cowboy.start(Config.config)
+    Cowboy.start(Config.config, handler)
     # start session manager
     Weber.Session.SessionManager.start_link(Config.config)
     # start localization manager
     Weber.Localization.LocalizationManager.start_link(Config.config)
+
+    case type do
+      :test ->
+        :pass
+      _ ->
+        # start reloader
+        Weber.Reload.start
+        # enable reloader
+        Weber.Reload.enable
+    end
+    # return
+    {:ok, self}
   end
 
   @doc """
