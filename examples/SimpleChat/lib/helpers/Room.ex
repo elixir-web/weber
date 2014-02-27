@@ -19,16 +19,16 @@ defmodule Room do
     {:noreply, :lists.delete(pid, state)}
   end
 
-  def handle_cast({:send, pid, message, conn}, state) do  
+  def handle_cast({:send, pid, message, conn}, state) do
     case message do
       <<"get_login">> ->
         username = get_session(:username)
-        pid <- username
+        send(pid, username)
       _ ->
-        Enum.each(state, fn(user) -> 
-          send(user, message) 
+        Enum.each(state, fn(user) ->
+          send(user, message)
         end)
-    end  
+    end
     {:noreply, state}
   end
 
