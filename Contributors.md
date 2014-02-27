@@ -18,3 +18,4 @@
   * [Timo Rößner](https://github.com/troessner)
   * [Dmitry Aleksandrov](https://github.com/liveforeverx)
   * [David Rueck](https://github.com/drueck)
+  * [tmaeda](https://github.com/tmaeda)
