@@ -27,13 +27,13 @@ defmodule Weber.Localization.LocalizationManager do
                       |> Enum.map(fn(l) -> atom_to_binary(l) <> ".json" end)
 
         on_files_in_path(
-                         project_path <> "/deps/weber/lib/weber/i18n/localization/locale",
+                         Path.join([project_path, "/deps/weber/lib/weber/i18n/localization/locale"]),
                          &( :lists.member(&1, use_locales) ),
                          &( Weber.Localization.Locale.start_link(binary_to_atom(&1), &2) )
                         )
 
         on_files_in_path(
-                         project_path <> "/lang",
+                         Path.join([project_path, "/lang"]),
                          fn (_) -> true end,
                          &( Weber.Translation.Translate.start_link(binary_to_atom(&1), &2) )
                         )
@@ -51,7 +51,7 @@ defmodule Weber.Localization.LocalizationManager do
   end
 
   def apply_on_file(path, file, apply_fun) do
-    file_data = File.read!(path <> file)
+    file_data = File.read!(Path.join([path, file]))
     (file_data != <<>>) && apply_fun.(file, file_data)
   end
 
