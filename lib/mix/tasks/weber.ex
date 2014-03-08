@@ -80,7 +80,7 @@ defmodule Mix.Tasks.Weber do
     end
 
     defp replace(text, vars) do
-      case Enum.uniq(Regex.scan(%r/\#\{([^\}]+)\}/, text)) do
+      case Enum.uniq(Regex.scan(~r/\#\{([^\}]+)\}/, text)) do
         []   -> text
         data -> replace_act(text, vars, data)
       end
