@@ -40,9 +40,9 @@ defmodule Mix.Tasks.WeberTest do
       assert_file "test/test_helper.exs"
       assert_directory "tmp"
 
-      File.read!("lib/controllers/main.ex") =~ %r(defmodule #{app_module}.Main do)
-      File.read!("lib/controllers/main.ex") =~ %r(project: "#{app_name}")
-      File.read!("test/#{app_name}_test.exs") =~ %r(defmodule #{app_module}Test do)
+      File.read!("lib/controllers/main.ex") =~ ~r(defmodule #{app_module}.Main do)
+      File.read!("lib/controllers/main.ex") =~ ~r(project: "#{app_name}")
+      File.read!("test/#{app_name}_test.exs") =~ ~r(defmodule #{app_module}Test do)
     end
 
     File.rm_rf! app_path

@@ -1,5 +1,8 @@
 #### Weber-0.1.1 [In progress]
 
+  * Weber adapted to the last Elixir-0.12.5
+  * Gzip compressing for the ssl connections.
+
 #### Weber-0.1.0 [Released]
 
   * Date/Time in request log

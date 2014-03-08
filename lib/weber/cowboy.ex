@@ -11,7 +11,6 @@ defmodule Cowboy do
   @dependencies [:crypto, :public_key, :ssl, :mimetypes, :ranch, :cowlib, :cowboy]
 
   def start(config, handler) do
-
     Enum.map(@dependencies, &( :application.start(&1) ) )
 
     web_server_config = Keyword.fetch!(config, :webserver)
@@ -22,20 +21,21 @@ defmodule Cowboy do
     ws_mod = config |> Keyword.fetch!(:ws) |> Keyword.fetch!(:ws_mod)
 
     compress = Keyword.get(web_server_config, :use_gzip, false)
-
+    
     dispatch = :cowboy_router.compile([{:_, [{'/_ws', Handler.WeberWebSocketHandler, ws_mod},
                                              {'/[...]', Handler.WeberReqHandler, {config, handler}}]}])
-
+    
     if ssl do
         [cacertifile, certfile, keyfile] =
           [:cacertfile_path, :certfile_path, :keyfile_path]
             |> Enum.map( &Keyword.fetch!(web_server_config, &1) )
         {:ok, _} = :cowboy.start_https(:https, acceptors, [port: port, cacertfile: cacertifile,
                                                            certfile: certfile, keyfile: keyfile,
-                                                           env: [dispatch: dispatch]])
+                                                           env: [dispatch: dispatch],
+                                                           compress: compress])
     else
       :cowboy.start_http(:http, acceptors, [port: port], [env: [dispatch: dispatch],
-                                                          compress: compress])
+                                                                compress: compress])
     end
   end
 end

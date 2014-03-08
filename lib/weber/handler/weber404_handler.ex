@@ -6,7 +6,7 @@ defmodule Handler.Weber404Handler do
         <html>
           <head>
             <meta charset="UTF-8" />
-            <title>Filesadmin</title>
+            <title>Page not found</title>
           </head>
  
          <body>

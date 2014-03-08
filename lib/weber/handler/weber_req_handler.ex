@@ -27,7 +27,6 @@ defmodule Handler.WeberReqHandler do
   end
 
   def handle(req, state) do
-    
     Weber.Reload.purge()
 
     conn = @connection.conn(req, :tcp)
