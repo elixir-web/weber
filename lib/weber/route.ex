@@ -103,7 +103,7 @@ defmodule Weber.Route do
       fn(route) ->
         case route do
           [method: method, path: p, controller: _controller, action: _action] ->
-            case is_regex(p) do
+            case Regex.regex?(p) do
               true ->
                 case method do
                   "ANY" -> match_routes_regex_helper(p, path)
