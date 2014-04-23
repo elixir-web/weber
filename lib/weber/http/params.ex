@@ -22,7 +22,7 @@ defmodule Weber.Http.Params do
     end
   """
   
-  import Plug.Connection.Query
+  import Plug.Conn.Query
 
   @doc """
     Return the host binary string.

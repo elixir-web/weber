@@ -1,6 +1,6 @@
 defmodule Handler.WeberWebSocketHandler do
   
-  import Plug.Connection
+  import Plug.Conn
   
   defrecord State, 
     ws_mod:   nil,
