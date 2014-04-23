@@ -11,7 +11,7 @@ defmodule Handler.WeberReqHandler do
 
   require Lager
 
-  import Plug.Connection
+  import Plug.Conn
 
   import Handler.Weber404Handler
   import Handler.WeberReqHandler.Response
