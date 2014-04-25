@@ -167,6 +167,7 @@ Controller can return:
   * `{:file, path, headers}` - Sends file in response; 
   * `{:file, path}` - the same without headers;
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber converts keyword to json and sends it to response;
+  * `{:json, 200, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Allows a custom status;
   * `{:json, [response: "ok"]}` - the same without headers;
   * `{:redirect, "/main"}` - Redirects to other resource;
   * `{:text, data, headers}` - Sends plain text; 
