@@ -7,6 +7,13 @@ defmodule WeberHttpResponseTest do
     assert(body == {:ok, "Main\n"})
     assert(status == 200)
   end
+
+  test "json response with custom status" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/json/action', [], <<>>, [])
+    body = :hackney.body(client)
+    assert(body == {:ok, "{}"})
+    assert(status == 201)
+  end
   
   test "`redirect` in route test" do
     {:ok, status, _, _client} = :hackney.request(:get, 'http://localhost:8080/redirect', [], <<>>, [])

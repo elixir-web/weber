@@ -39,3 +39,12 @@ defmodule TestTestTest.Partials do
     {:render, [], [{"content-type", "text/html"}]}
   end
 end
+
+defmodule TestTestTest.JSON do
+  use Weber.Controller
+
+  layout false
+  def json_action([], _conn) do
+    {:json, 201, [], []}
+  end
+end

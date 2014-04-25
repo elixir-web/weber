@@ -37,6 +37,10 @@ defmodule Handler.WeberReqHandler.Default do
     {:json, 200, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
+  def request({:json, status, data, headers}, _app) do
+    {:json, status, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+  end
+
   def request({:not_found, data, _headers}, _app) do
     {:not_found, 404, data, [{"Content-Type", "text/html"}]}
   end
