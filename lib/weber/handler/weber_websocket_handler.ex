@@ -6,7 +6,7 @@ defmodule Handler.WeberWebSocketHandler do
     ws_mod:   nil,
     conn:     nil
 
-  @connection Plug.Adapters.Cowboy.Connection
+  @connection Plug.Adapters.Cowboy.Conn
 
   def init(_, _req, _opts) do
     {:upgrade, :protocol, :cowboy_websocket}
