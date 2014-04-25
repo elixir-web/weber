@@ -16,7 +16,7 @@ defmodule Handler.WeberReqHandler do
   import Handler.Weber404Handler
   import Handler.WeberReqHandler.Response
 
-  @connection Plug.Adapters.Cowboy.Connection
+  @connection Plug.Adapters.Cowboy.Conn
 
   defrecord State,
     config: nil,
