@@ -19,3 +19,5 @@
   * [Dmitry Aleksandrov](https://github.com/liveforeverx)
   * [David Rueck](https://github.com/drueck)
   * [tmaeda](https://github.com/tmaeda)
+  * [Adam Kittelson](https://github.com/adamkittelson)
+  * [rcdilorenzo](https://github.com/rcdilorenzo)
