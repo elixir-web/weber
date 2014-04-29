@@ -65,7 +65,7 @@ defmodule Weber.Http.Params do
     Get cookie
   """
   def get_cookie(name, conn) do
-    :cowboy_req.cookie(name, Keyword.get(conn.assigns, :req)) |> elem(0)
+    :cowboy_req.cookie(name, conn.assigns[:req]) |> elem(0)
   end
 
   def get_cookie_p(name, req) do
@@ -76,14 +76,14 @@ defmodule Weber.Http.Params do
     Return the full list of cookie values.
   """
   def cookies(conn) do
-    :cowboy_req.cookies(Keyword.get(conn.assigns, :req)) |> elem(0)
+    :cowboy_req.cookies(conn.assigns[:req]) |> elem(0)
   end
 
   @doc """
     Get body
   """
   def get_body(conn) do
-    req = Keyword.get(conn.assigns, :req)
+    req = conn.assigns[:req]
     case :cowboy_req.has_body(req) do
       false -> []
       true -> :cowboy_req.body(req) |> elem(1)
@@ -94,7 +94,7 @@ defmodule Weber.Http.Params do
     Get parameter value by key from query string.
   """
   def param(key, conn) do
-    req = Keyword.get(conn.assigns, :req)
+    req = conn.assigns[:req]
     {val, _} = :cowboy_req.qs_val(key, req)
     val
   end
