@@ -57,11 +57,11 @@ defmodule Mix.Tasks.Weber do
       path = Path.expand directoryName
       baseName = Path.basename directoryName
 
-      vars = HashDict.new [
+      vars = [
         {"path", path},
         {"projectNamespace", Mix.Utils.camelize(baseName)},
         {"projectName", baseName}
-      ]
+      ] |> Enum.into HashDict.new
 
       template = "default"
       skelRoot = File.cwd! <> "/templates/" <> template
