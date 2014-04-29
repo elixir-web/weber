@@ -11,7 +11,7 @@ defmodule Weber.Templates.ViewsLoader do
     end)
     
     views_list = Enum.map(views_list_tmp, fn(view) -> 
-      Macro.escape({:erlang.list_to_binary(basename(view)), Weber.Utils.build_module_name(view), view}) 
+      Macro.escape({basename(view), Weber.Utils.build_module_name(view), view}) 
     end)
     
     static_list = get_all_files(:erlang.binary_to_list(path) ++ '/public/')
