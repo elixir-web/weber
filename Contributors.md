@@ -21,3 +21,5 @@
   * [tmaeda](https://github.com/tmaeda)
   * [Adam Kittelson](https://github.com/adamkittelson)
   * [rcdilorenzo](https://github.com/rcdilorenzo)
+  * [sriedel](https://github.com/sriedel)
+  * [tobyhede](https://github.com/tobyhede)
