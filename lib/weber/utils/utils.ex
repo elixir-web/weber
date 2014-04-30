@@ -38,7 +38,7 @@ defmodule Weber.Utils do
   end
 
   def find_static_file_path(abs_filenames, filename) do
-    filter(abs_filenames, &( Path.basename(&1) == filename ) )
+    filter(abs_filenames, &( Path.basename(&1) == String.from_char_data!(filename) ) )
   end
 
   @doc """
