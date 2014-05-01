@@ -18,7 +18,7 @@ defmodule #{projectNamespace}.Mixfile do
 
   defp deps(:prod) do
     [
-      { :weber, github: "0xAX/weber" }
+      { :weber, github: "elixir-web/weber" }
     ]
   end
 
