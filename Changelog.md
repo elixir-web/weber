@@ -1,7 +1,15 @@
 #### Weber-0.1.1 [In progress]
 
-  * Weber adapted to the last Elixir-0.12.5
+  * Weber adapted to the last Elixir-0.12.5.
   * Gzip compressing for the ssl connections.
+  * Weber works with Elixir-0.13.2.
+  * Allow custom status in json response.
+  * Bug with local static files fixed
+  * Ignore log folder in weber project
+  * Some deprecated parts removed.
+  * Adapted to last Plug.
+  * Weber moved to elixir-web/weber repository.
+  * Many little bug fixes.
 
 #### Weber-0.1.0 [Released]
 

@@ -3,7 +3,7 @@ Weber
 
 Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
 
-![weber-256](https://f.cloud.github.com/assets/197979/1323435/8403dbfe-347f-11e3-97b8-5f6bd1d902ca.png)
+[![Build Status](https://travis-ci.org/elixir-web/weber.svg?branch=master)](https://travis-ci.org/elixir-web/weber)
 
 ## Join the Community
 
