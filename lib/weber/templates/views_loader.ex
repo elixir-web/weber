@@ -29,7 +29,7 @@ defmodule Weber.Templates.ViewsLoader do
   defmacro compile_views(root) do
     root = Code.eval_quoted(root, [], file: __ENV__.file, line: __ENV__.line) |> elem(0)
     views = Enum.filter(get_all_files(:erlang.binary_to_list(root) ++ '/lib/views/'), fn(f) -> :filename.extension(f) == '.html' end)
-    lc view inlist views do
+    for view <- views do
       content = add_helpers_imports(File.read!(view))
       quote do
         defmodule unquote(Weber.Utils.build_module_name(view)) do

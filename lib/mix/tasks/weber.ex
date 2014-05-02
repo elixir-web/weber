@@ -67,7 +67,7 @@ defmodule Mix.Tasks.Weber do
       skelRoot = File.cwd! <> "/templates/" <> template
       File.cd skelRoot
       skelFiles = Weber.Utils.get_all_files(".")
-      lc file inlist skelFiles do
+      for file <- skelFiles do
         baseFile = String.slice(file, 1, 1024)
         destination = path <> replace(baseFile, vars)
         dir = :filename.dirname(destination)
