@@ -11,7 +11,8 @@ defmodule Weber.Mixfile do
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
       homepage_url: "http://0xax.github.io/weber/index.html",
-      description: "weber - is Elixir MVC web framework."
+      description: "weber - is Elixir MVC web framework.",
+      package: package
     ]
   end
  
