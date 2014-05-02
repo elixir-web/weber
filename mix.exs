@@ -1,16 +1,19 @@
+Code.ensure_loaded?(Hex) and Hex.start
+ 
 defmodule Weber.Mixfile do
   use Mix.Project
-
+ 
   def project do
     [ app: :weber,
       version: "0.1.0",
       name: "Weber",
+      elixir: "0.13.2-dev",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
       homepage_url: "http://0xax.github.io/weber/index.html"
     ]
   end
-
+ 
   def application do
     [
       description: 'weber - is Elixir MVC web framework.',
@@ -25,7 +28,7 @@ defmodule Weber.Mixfile do
       ]
     ]
   end
-
+ 
   defp deps(:prod) do
     [
       {:cowboy, github: "extend/cowboy" },
@@ -35,7 +38,7 @@ defmodule Weber.Mixfile do
       {:weberContrib, github: "0xAX/weber-contrib"}
     ]
   end
-
+ 
   defp deps(:test) do
     deps(:prod) ++ [{ :hackney, github: "benoitc/hackney" }]
   end
@@ -43,4 +46,16 @@ defmodule Weber.Mixfile do
   defp deps(_) do
     deps(:prod)
   end
+ 
+  defp package do
+    [
+      files: ["lib", "test", "tmp", "templates", "examples", "README.md", "LICENSE", "ChangeLog.md", "mix.exs", "Makefile"],
+      contributors: ["0xAX"],
+      licenses: ["MIT"],
+      links: [ 
+              { "GitHub", "https://github.com/elixir-web/weber" },
+              { "Docs", "http://0xax.github.io/weber/index.html" } ] 
+      ]
+  end
+ 
 end

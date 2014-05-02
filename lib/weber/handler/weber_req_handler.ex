@@ -30,9 +30,9 @@ defmodule Handler.WeberReqHandler do
     conn = @connection.conn(req, :tcp)
     conn = assign(conn, :req, req)
 
-    if Keyword.get(Config.config, :reload) == true do
-      Weber.Reload.purge()
-    end
+    #if Keyword.get(Config.config, :reload) == true do
+    #  Weber.Reload.purge()
+    #end
     
     # get path
     {path, req2} = :cowboy_req.path(req)
