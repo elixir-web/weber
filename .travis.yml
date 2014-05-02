@@ -1,4 +1,6 @@
 language: erlang
+otp_release:
+  - 17.0
 notifications:
   recipients:
     - anotherworldofworld@gmail.com
