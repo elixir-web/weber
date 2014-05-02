@@ -3,7 +3,7 @@ defmodule Weber.Mixfile do
 
   def project do
     [ app: :weber,
-      version: "0.0.5",
+      version: "0.1.0",
       name: "Weber",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
