@@ -10,7 +10,8 @@ defmodule Weber.Mixfile do
       elixir: "0.13.2-dev",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
-      homepage_url: "http://0xax.github.io/weber/index.html"
+      homepage_url: "http://0xax.github.io/weber/index.html",
+      description: "weber - is Elixir MVC web framework."
     ]
   end
  
