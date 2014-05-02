@@ -80,7 +80,7 @@ defmodule Weber.Utils do
 
   def capitalize(str) do
     <<c, rest :: binary>> = str
-    String.capitalize(String.from_char_list([c]) |> elem(1)) <> rest
+    String.capitalize(String.from_char_data([c]) |> elem(1)) <> rest
   end
 
   def to_bin(val) do

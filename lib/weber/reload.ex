@@ -50,7 +50,7 @@ defmodule Weber.Reload do
 
   defp last_file_reload_time(file, load_time) do
     case File.stat(file) do
-      { :ok, File.Stat[mtime: mtime] } -> max(mtime, load_time)
+      { :ok, %File.Stat{mtime: mtime} } -> max(mtime, load_time)
       { :error, _ } -> load_time
     end
   end
