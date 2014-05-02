@@ -10,6 +10,7 @@
   * Adapted to last Plug.
   * Weber moved to elixir-web/weber repository.
   * Many little bug fixes.
+  * Weber added to hex.
 
 #### Weber-0.1.0 [Released]
 
