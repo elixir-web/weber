@@ -5,7 +5,7 @@ defmodule Weber.Mixfile do
  
   def project do
     [ app: :weber,
-      version: "0.1.0",
+      version: "0.1.1",
       name: "Weber",
       elixir: "0.13.2-dev",
       deps: deps(Mix.env), 
