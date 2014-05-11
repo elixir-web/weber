@@ -8,6 +8,7 @@ defmodule Handler.WeberReqHandler do
   import Weber.Route
   import Weber.Session
   import Weber.Http.Url
+  import Weber.Controller
 
   require Lager
 
@@ -96,10 +97,20 @@ defmodule Handler.WeberReqHandler do
         conn = case :lists.keyfind(:__before__, 2, controller.__info__(:functions)) do
           false -> conn
           _ -> controller.__before__(action, conn)
-        end 
-         
+        end
+
         # get response from controller
-        result = Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
+        result = try do
+          Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
+        rescue
+          e ->
+            if e.message in controller.raise_keys do
+              controller.render_value_for_key(e.message)
+            else
+              IO.ANSI.escape("%{red}    #{e.message}\n" <> Exception.format_stacktrace(System.stacktrace)) |> IO.puts
+              raise e, [], System.stacktrace
+            end
+        end
         # handle controller's response, see in Handler.WeberReqHandler.Result
         state.handler.handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action))) |> handle_request(req3, state, {controller, action, conn})
     end
