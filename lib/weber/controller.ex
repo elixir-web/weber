@@ -39,4 +39,8 @@ defmodule Weber.Controller do
     end
   end
 
+  def raise_and_render(value) do
+    raise WeberControllerException, value: value
+  end
+
 end

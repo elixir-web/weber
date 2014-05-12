@@ -59,13 +59,13 @@ defmodule TestTestTest.Exceptions do
 
   def unauthorized_action([], _conn) do
     if true do
-      raise WeberControllerException, value: :unauthorized
+      raise_and_render :unauthorized
     end
     {:json, 200, [], []}
   end
 
   def error_500_action([], _conn) do
-    raise WeberControllerException, value: :unknown
+    raise_and_render :unknown
     {:json, 200, [], []}
   end
 
