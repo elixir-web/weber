@@ -10,6 +10,8 @@ defmodule Route do
      |> on("GET", "/delete/:username/id/:id", :TestTestTest.Main, :delete_username_action)
      |> on("GET", "/content_for", :TestTestTest.ContentFor, :content_for_action)
      |> on("GET", "/partials", :TestTestTest.Partials, :partials)
+     |> on("GET", "/unauthorized", :TestTestTest.Exceptions, :unauthorized_action)
+     |> on("GET", "/unknown", :TestTestTest.Exceptions, :error_500_action)
      |> redirect("GET", "/redirect", "/weber")
 
 end

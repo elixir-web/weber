@@ -29,6 +29,10 @@ defmodule Handler.WeberReqHandler.Default do
     {:text, 200, data, headers}
   end
 
+  def request({:text, status, data, headers}, _app) do
+    {:text, status, data, headers}
+  end
+
   def request({:json, data}, app) do
     request({:json, data, []}, app)
   end

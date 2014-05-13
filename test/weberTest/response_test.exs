@@ -26,4 +26,17 @@ defmodule WeberHttpResponseTest do
     assert(body == {:ok, "<!DOCTYPE html>\n<html>\n  <head>\n    <title>\n      My Project\n    </title>\n    <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" />\n  </head>\n  <body>\n    <div id=\"container\">\n    Hello Weber!      \n    </div>\n  </body>\n</html> "})
   end
 
+  test "raise unauthorized exception" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/unauthorized', [], <<>>, [])
+    body = :hackney.body(client)
+    assert(status == 401)
+    assert(body == {:ok, "Unauthorized"})
+  end
+
+  test "raise 500 exception" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/unknown', [], <<>>, [])
+    body = :hackney.body(client)
+    assert(status == 500)
+    assert(body == {:ok, "An unknown error occurred"})
+  end
 end
