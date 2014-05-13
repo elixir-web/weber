@@ -164,16 +164,38 @@ Controller can return:
   * `{:render, [project: "simpleTodo"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Renders views from `views/controller/action.html` and sends it to response;
   * `{:render, [project: "simpleTodo"]}` - the same without headers;
   * `{:render_inline, "foo <%= bar %>", [bar: "baz"]}}` - Renders inline template;
-  * `{:file, path, headers}` - Sends file in response; 
+  * `{:file, path, headers}` - Sends file in response;
   * `{:file, path}` - the same without headers;
   * `{:json, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Weber converts keyword to json and sends it to response;
   * `{:json, 200, [response: "ok"], [{"HttpHeaderName", "HttpHeaderValheaderVal"}]}` - Allows a custom status;
   * `{:json, [response: "ok"]}` - the same without headers;
   * `{:redirect, "/main"}` - Redirects to other resource;
-  * `{:text, data, headers}` - Sends plain text; 
+  * `{:text, status, data, headers}` - Sends plain text;
+  * `{:text, data, headers}` - the same without status;
   * `{:text, data}` - the same without headers;
   * `{:nothing, ["Cache-Control", "no-cache"]}` - Sends empty response with status `200` and headers;
   * `{:nothing, ["Cache-Control", "no-cache"], http_status :: integer}` - Sends empty response with custom status.
+
+Controllers can also raise at any point in the action and immediately render a response:
+```elixir
+defmodule Simpletodo.Main do
+  import Simplemodel
+
+  # Add :unauthorized to list of known responses
+  render_when_raise :unauthorized, {:text, 401, "Action prohibited.", []}
+
+  def action([user_id: user_id], conn) do
+    if unauthorized_user_id?(user_id) do
+      # Immediately render the known response
+      raise_and_render :unauthorized
+    end
+    {:render, [project: "simpleTodo"], []}
+  end
+end
+```
+
+* `render_when_raise(value, response)` - macro that adds to the known responses to render if specific value is raised
+* `raise_and_render(value)` - raises a WeberControllerException and renders a response based on the known responses
 
 ## Request params
 
