@@ -48,3 +48,25 @@ defmodule TestTestTest.JSON do
     {:json, 201, [], []}
   end
 end
+
+defmodule TestTestTest.Exceptions do
+  use Weber.Controller
+
+  layout false
+
+  render_when_raise :unknown, {:text, 500, "An unknown error occurred", []}
+  render_when_raise :unauthorized, {:text, 401, "Unauthorized", []}
+
+  def unauthorized_action([], _conn) do
+    if true do
+      raise_and_render :unauthorized
+    end
+    {:json, 200, [], []}
+  end
+
+  def error_500_action([], _conn) do
+    raise_and_render :unknown
+    {:json, 200, [], []}
+  end
+
+end
