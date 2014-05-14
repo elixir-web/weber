@@ -7,7 +7,7 @@ defmodule Weber.Mixfile do
     [ app: :weber,
       version: "0.1.1",
       name: "Weber",
-      elixir: "0.13.2",
+      elixir: ">= 0.13.2",
       deps: deps(Mix.env), 
       source_url: "https://github.com/0xAX/weber",
       homepage_url: "http://0xax.github.io/weber/index.html",
