@@ -12,6 +12,8 @@ defmodule Route do
      |> on("GET", "/partials", :TestTestTest.Partials, :partials)
      |> on("GET", "/unauthorized", :TestTestTest.Exceptions, :unauthorized_action)
      |> on("GET", "/unknown", :TestTestTest.Exceptions, :error_500_action)
+     |> on("GET", "/render_other_action", :TestTestTest.Redirect, :render_other_action)
+     |> on("GET", "/render_other_controller", :TestTestTest.Redirect, :render_other_controller)
      |> redirect("GET", "/redirect", "/weber")
 
 end

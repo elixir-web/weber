@@ -99,20 +99,32 @@ defmodule Handler.WeberReqHandler do
           _ -> controller.__before__(action, conn)
         end
 
-        # get response from controller
-        result = try do
-          Module.function(controller, action, 2).(getAllBinding(path, matched_path), conn)
-        rescue
-          e ->
-            if e.message in controller.raise_keys do
-              controller.render_value_for_key(e.message)
-            else
-              IO.ANSI.escape("%{red}    #{e.message}\n" <> Exception.format_stacktrace(System.stacktrace)) |> IO.puts
-              raise e, [], System.stacktrace
-            end
+        get_response(controller, action, getAllBinding(path, matched_path), conn, req3, state)
+    end
+  end
+
+  def get_response(controller, action, data, conn, req, state) do
+    result = try do
+      Module.function(controller, action, 2).(data, conn)
+    rescue
+      e ->
+        if e.message in controller.raise_keys do
+          controller.render_value_for_key(e.message)
+        else
+          IO.ANSI.escape("%{red}    #{e.message}\n" <> Exception.format_stacktrace(System.stacktrace)) |> IO.puts
+          raise e, [], System.stacktrace
         end
-        # handle controller's response, see in Handler.WeberReqHandler.Result
-        state.handler.handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action))) |> handle_request(req3, state, {controller, action, conn})
+    end
+
+    result = state.handler.handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action)))
+    # check for action/controller redirect
+    case result do
+      {:render_other_controller, _, _} ->
+        [controller, action] = result |> elem(1) |> String.split("#")
+        {controller, _} = Code.eval_string(controller)
+        get_response(controller, binary_to_atom(action), result |> elem(2), conn, req, state)
+      _ ->
+        handle_request(result, req, state, {controller, action, conn})
     end
   end
 
