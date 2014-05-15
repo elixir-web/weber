@@ -7,6 +7,10 @@ defmodule TestTestTest.Main do
     {:render, [], [{"content-type", "text/html"}]}
   end
 
+  def action1([binding: value], _conn) do
+    {:text, "Main Controller: " <> value, []}
+  end
+
 end
 
 defmodule TestTestTest.Include do
@@ -67,6 +71,26 @@ defmodule TestTestTest.Exceptions do
   def error_500_action([], _conn) do
     raise_and_render :unknown
     {:json, 200, [], []}
+  end
+
+end
+
+
+defmodule TestTestTest.Redirect do
+  use Weber.Controller
+
+  layout false
+
+  def render_other_action([], _conn) do
+    {:render_other_action, :action1, [binding: "original value"]}
+  end
+
+  def render_other_controller([], _conn) do
+    {:render_other_controller, :TestTestTest.Main, :action1, [binding: "original value"]}
+  end
+
+  def action1([binding: value], _conn) do
+    {:text, value, []}
   end
 
 end

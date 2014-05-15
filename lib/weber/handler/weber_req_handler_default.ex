@@ -49,4 +49,17 @@ defmodule Handler.WeberReqHandler.Default do
     {:not_found, 404, data, [{"Content-Type", "text/html"}]}
   end
 
+  def request({:render_other_action, action, data}, app) do
+    complete_action = (atom_to_binary(app.controller) <> "#" <> atom_to_binary(action)) |> String.slice(7..-1)
+    request({:render_other_controller, complete_action, data}, app)
+  end
+
+  def request({:render_other_controller, complete_action, data}, app) do
+    {:render_other_controller, complete_action, data}
+  end
+
+  def request({:render_other_controller, controller, action, data}, app) when is_atom(controller) and is_atom(action) do
+    {:render_other_controller, atom_to_binary(controller) <> "#" <> atom_to_binary(action), data}
+  end
+
 end

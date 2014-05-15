@@ -39,4 +39,18 @@ defmodule WeberHttpResponseTest do
     assert(status == 500)
     assert(body == {:ok, "An unknown error occurred"})
   end
+
+  test "rendering other action" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/render_other_action', [], <<>>, [])
+    body = :hackney.body(client)
+    assert(status == 200)
+    assert(body == {:ok, "original value"})
+  end
+
+  test "rendering other controller and action" do
+    {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/render_other_controller', [], <<>>, [])
+    body = :hackney.body(client)
+    assert(status == 200)
+    assert(body == {:ok, "Main Controller: original value"})
+  end
 end
