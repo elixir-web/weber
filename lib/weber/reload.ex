@@ -1,21 +1,23 @@
 defmodule Weber.Reload do
   use GenServer.Behaviour
 
-  defrecord Config, root_path: nil, load_modules: [], load_time: { { 1970, 1, 1 }, { 0, 0, 0 } }
+  defmodule Config do
+    defstruct root_path: nil, load_modules: [], load_time: { { 1970, 1, 1 }, { 0, 0, 0 } }
+  end
 
   def start() do
     __MODULE__.start_link(Weber.Path.__root__)
   end
 
   def start_link(root_path) do
-    :gen_server.start({ :local, __MODULE__ }, __MODULE__, Config.new(root_path: root_path), [])
+    :gen_server.start({ :local, __MODULE__ }, __MODULE__, %Config{root_path: root_path}, [])
   end
 
   def init(config) do
     { :ok, config }
   end
 
-  def handle_call(:purge_modules, _from, Config[root_path: _root_path, load_modules: load_modules, load_time: load_time] = config) do
+  def handle_call(:purge_modules, _from, %Config{root_path: _root_path, load_modules: load_modules, load_time: load_time} = config) do
     paths = Path.wildcard(Weber.Path.__root__ <> "/lib/" <> "/**/*.ex") ++ Path.wildcard(Weber.Path.__root__ <> "/lib/" <> "/**/*.html")
     last_file_update = Enum.reduce(paths, load_time, &(last_file_reload_time(&1, &2)))
     if load_time == last_file_update do

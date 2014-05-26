@@ -2,15 +2,16 @@ defmodule Weber.Translation.Translate do
 
   use GenServer.Behaviour
 
-  defrecord Translate,
-    t: nil
+  defmodule Translate do
+    defstruct t: nil
+  end
 
   def start_link(name, lang) do
     :gen_server.start_link({:local, name}, __MODULE__, [lang], [])
   end
 
   def init([lang]) do
-    { :ok, Translate.new t: ExJSON.parse(lang)}
+    { :ok, %Translate{t: ExJSON.parse(lang)}}
   end
 
   def handle_call({:translate, key}, _from, state) do

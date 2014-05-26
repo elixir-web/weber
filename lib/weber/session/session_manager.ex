@@ -1,5 +1,5 @@
 defmodule Weber.Session.SessionManager do
-  
+
   @moduledoc """
   Session manager process. Create new session's process,
   manages all sessions.
@@ -7,8 +7,10 @@ defmodule Weber.Session.SessionManager do
 
   use GenServer.Behaviour
 
-  defrecord SessionManager,
-    config:  nil
+  defmodule SessionManager do
+    defstruct config: nil
+  end
+
 
   @doc """
   Start session manager.
@@ -22,7 +24,7 @@ defmodule Weber.Session.SessionManager do
   """
   def init([config]) do
     :ets.new(:cookie_storage, [:named_table, :public, :bag])
-    { :ok, SessionManager.new config: config }
+    { :ok, %SessionManager{config: config} }
   end
 
   @doc """
@@ -43,7 +45,7 @@ defmodule Weber.Session.SessionManager do
     case :ets.match_object(:cookie_storage, {cookie, :_, :_}) do
       [] ->
         locale = case :lists.keyfind(:localization, 1, state.config) do
-          false -> 
+          false ->
             "en_US"
           {:localization, localization_config} ->
             {_, default_locale}  = :lists.keyfind(:default_locale, 1, localization_config)
