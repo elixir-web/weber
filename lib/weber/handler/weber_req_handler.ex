@@ -19,12 +19,12 @@ defmodule Handler.WeberReqHandler do
 
   @connection Plug.Adapters.Cowboy.Conn
 
-  defrecord State,
-    config: nil,
-    handler: nil
+  defmodule State do
+    defstruct config: nil, handler: nil
+  end
 
   def init({:tcp, :http}, req, {config, handler}) do
-    {:ok, req, State.new config: config, handler: handler }
+    {:ok, req, %State{config: config, handler: handler} }
   end
 
   def handle(req, state) do

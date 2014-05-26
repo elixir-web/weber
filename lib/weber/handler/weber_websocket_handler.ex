@@ -1,10 +1,10 @@
 defmodule Handler.WeberWebSocketHandler do
-  
+
   import Plug.Conn
-  
-  defrecord State, 
-    ws_mod:   nil,
-    conn:     nil
+
+  defmodule State do
+    defstruct ws_mod: nil, conn: nil
+  end
 
   @connection Plug.Adapters.Cowboy.Conn
 
@@ -16,7 +16,7 @@ defmodule Handler.WeberWebSocketHandler do
     conn = @connection.conn(req, :tcp)
     conn = assign(conn, :req, req)
     Module.function(ws_mod, :websocket_init, 2).(self(), conn)
-    {:ok, req, State.new ws_mod: ws_mod, conn: conn}
+    {:ok, req, %State{ ws_mod: ws_mod, conn: conn}}
   end
 
   def websocket_handle({_, data}, req, state) do
