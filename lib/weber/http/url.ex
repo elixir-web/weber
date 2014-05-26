@@ -107,7 +107,10 @@ defmodule Weber.Http.Url do
   @doc """
     Get binding's value list.
   """
-  def getAllBinding(_url, matched_url) when Kernel.is_record(matched_url, Regex) do
+  def getAllBinding(_url, matched_url) when is_map(matched_url) do
+    # There isn't currently a way to check for a regex in a guard clause,
+    # could do it in the method by pattern matching `%Regex{} = matched_url`
+    # but might be able to get away with is_map/1 here for now
     []
   end
   
