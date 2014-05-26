@@ -112,7 +112,7 @@ defmodule Handler.WeberReqHandler do
           controller.render_value_for_key(e.message)
         else
           IO.ANSI.escape("%{red}    #{e.message}\n" <> Exception.format_stacktrace(System.stacktrace)) |> IO.puts
-          raise e, [], System.stacktrace
+          reraise e, System.stacktrace
         end
     end
 

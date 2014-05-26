@@ -1,8 +1,6 @@
 
-defexception WeberControllerException, [:message] do
-  def exception([value: value]) do
-    WeberControllerException[message: value]
-  end
+defmodule WeberControllerException do
+  defexception [:message]
 end
 
 defmodule Weber.Controller do
