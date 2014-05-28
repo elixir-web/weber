@@ -19,12 +19,12 @@ defmodule Handler.WeberReqHandler do
 
   @connection Plug.Adapters.Cowboy.Conn
 
-  defrecord State,
-    config: nil,
-    handler: nil
+  defmodule State do
+    defstruct config: nil, handler: nil
+  end
 
   def init({:tcp, :http}, req, {config, handler}) do
-    {:ok, req, State.new config: config, handler: handler }
+    {:ok, req, %State{config: config, handler: handler} }
   end
 
   def handle(req, state) do
@@ -112,7 +112,7 @@ defmodule Handler.WeberReqHandler do
           controller.render_value_for_key(e.message)
         else
           IO.ANSI.escape("%{red}    #{e.message}\n" <> Exception.format_stacktrace(System.stacktrace)) |> IO.puts
-          raise e, [], System.stacktrace
+          reraise e, System.stacktrace
         end
     end
 

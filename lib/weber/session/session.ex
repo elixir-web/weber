@@ -8,9 +8,10 @@ defmodule Weber.Session do
 
   import Weber.Http.Params
 
-  defrecord Session,
-    session_life_time: nil,
-    session_id:  nil
+  defmodule Session do
+    defstruct session_life_time: nil,
+              session_id:  nil
+  end
 
   @doc """
   Start new session.
@@ -24,7 +25,7 @@ defmodule Weber.Session do
   """
   def init([session_life_time, session_id]) do
     :timer.send_after(session_life_time * 1000, :erlang.self, {:time_to_die, session_id})
-    { :ok, Session.new session_life_time: session_life_time, session_id: session_id }
+    { :ok, %Session{session_life_time: session_life_time, session_id: session_id} }
   end
 
   @doc """

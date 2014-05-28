@@ -7,14 +7,15 @@ defmodule Handler.WeberReqHandler.Result do
   alias Handler.WeberReqHandler.Default
   require Weber.Helper.ContentFor
 
-  defrecord App,
-    controller: nil,
-    action: nil,
-    conn:  nil
+  defmodule App do
+    defstruct controller: nil,
+              action: nil,
+              conn:  nil
+  end
 
   @doc "Handle response from controller"
   def handle_result(res, conn \\ nil, controller \\ nil, action \\ nil) do
-    request(res, App.new conn: conn, controller: controller, action: action)
+    request(res, %App{conn: conn, controller: controller, action: action})
   end
 
   defp request({:render, data}, app) do

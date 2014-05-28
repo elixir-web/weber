@@ -2,9 +2,10 @@ defmodule Weber.Localization.LocalizationManager do
 
   use GenServer.Behaviour
 
-  defrecord LocalizationConfig,
-    config: nil,
-    default_locale: nil
+  defmodule LocalizationConfig do
+    defstruct config: nil,
+              default_locale: nil
+  end
 
   def start_link(config) do
     :gen_server.start_link({:local, :localization_manager}, __MODULE__, [config], [])
@@ -12,7 +13,7 @@ defmodule Weber.Localization.LocalizationManager do
 
   def init([config]) do
     :gen_server.cast(:erlang.self(), :load_localization_files)
-    { :ok, LocalizationConfig.new config: config}
+    { :ok, %LocalizationConfig{config: config}}
   end
 
   def handle_cast(:load_localization_files, state) do
@@ -38,7 +39,7 @@ defmodule Weber.Localization.LocalizationManager do
                          &( Weber.Translation.Translate.start_link(binary_to_atom(&1), &2) )
                         )
 
-        {:noreply, LocalizationConfig.new config: state.config, default_locale: default_locale}
+        {:noreply, %LocalizationConfig{config: state.config, default_locale: default_locale}}
     end
   end
 
