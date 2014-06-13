@@ -107,7 +107,7 @@ defmodule Handler.WeberReqHandler do
     result = try do
       Module.function(controller, action, 2).(data, conn)
     rescue
-      e ->
+      e in WeberControllerException ->
         if e.message in controller.raise_keys do
           controller.render_value_for_key(e.message)
         else
