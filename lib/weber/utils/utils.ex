@@ -38,7 +38,7 @@ defmodule Weber.Utils do
   end
 
   def find_static_file_path(abs_filenames, filename) do
-    filter(abs_filenames, &( Path.basename(&1) == String.from_char_data!(filename) ) )
+    filter(abs_filenames, &( Path.basename(&1) == List.to_string(filename) ) )
   end
 
   @doc """
@@ -79,8 +79,7 @@ defmodule Weber.Utils do
   end
 
   def capitalize(str) do
-    <<c, rest :: binary>> = str
-    String.capitalize(String.from_char_data([c]) |> elem(1)) <> rest
+    (str |> String.at(0) |> String.capitalize) <> String.slice(str, 1..-1)
   end
 
   def to_bin(val) do
