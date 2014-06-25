@@ -25,7 +25,7 @@ defmodule Weber.Localization.LocalizationManager do
 
         default_locale = Keyword.fetch!(localization_config, :default_locale)
         use_locales = Keyword.fetch!(localization_config, :use_locales)
-                      |> Enum.map(fn(l) -> atom_to_binary(l) <> ".json" end)
+                      |> Enum.map(fn(l) -> Atom.to_string(l) <> ".json" end)
 
         on_files_in_path(
                          Path.join([project_path, "/deps/weber/lib/weber/i18n/localization/locale"]),
