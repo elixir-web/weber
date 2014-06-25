@@ -30,13 +30,13 @@ defmodule Weber.Localization.LocalizationManager do
         on_files_in_path(
                          Path.join([project_path, "/deps/weber/lib/weber/i18n/localization/locale"]),
                          &( :lists.member(&1, use_locales) ),
-                         &( Weber.Localization.Locale.start_link(binary_to_atom(&1), &2) )
+                         &( Weber.Localization.Locale.start_link(String.to_atom(&1), &2) )
                         )
 
         on_files_in_path(
                          Path.join([project_path, "/lang"]),
                          fn (_) -> true end,
-                         &( Weber.Translation.Translate.start_link(binary_to_atom(&1), &2) )
+                         &( Weber.Translation.Translate.start_link(String.to_atom(&1), &2) )
                         )
 
         {:noreply, %LocalizationConfig{config: state.config, default_locale: default_locale}}

@@ -80,11 +80,11 @@ defmodule Handler.WeberReqHandler do
                      l -> String.replace(l, "-", "_") 
                    end
             # check 'lang' process
-            locale_process = Process.whereis(binary_to_atom(lang <> ".json"))
+            locale_process = Process.whereis(String.to_atom(lang <> ".json"))
             case locale_process do
               nil ->
                 case File.read(Weber.Path.__root__ <> "/deps/weber/lib/weber/i18n/localization/locale/" <> lang <> ".json") do
-                  {:ok, locale_data} -> Weber.Localization.Locale.start_link(binary_to_atom(lang <> ".json"), locale_data)
+                  {:ok, locale_data} -> Weber.Localization.Locale.start_link(String.to_atom(lang <> ".json"), locale_data)
                   _ -> :ok
                 end
               _ -> :ok
@@ -116,13 +116,13 @@ defmodule Handler.WeberReqHandler do
         end
     end
 
-    result = state.handler.handle_result(result, conn, controller, Weber.Utils.capitalize(atom_to_binary(action)))
+    result = state.handler.handle_result(result, conn, controller, Weber.Utils.capitalize(Atom.to_string(action)))
     # check for action/controller redirect
     case result do
       {:render_other_controller, _, _} ->
         [controller, action] = result |> elem(1) |> String.split("#")
         {controller, _} = Code.eval_string(controller)
-        get_response(controller, binary_to_atom(action), result |> elem(2), conn, req, state)
+        get_response(controller, String.to_atom(action), result |> elem(2), conn, req, state)
       _ ->
         handle_request(result, req, state, {controller, action, conn})
     end
