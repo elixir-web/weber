@@ -11,8 +11,8 @@ defmodule Weber.Utils do
   """
   def get_time() do
     {{year, month, day}, {hours, minutes, seconds}}  = :calendar.local_time()
-    integer_to_binary(year) <> "." <> integer_to_binary(month) <> "." <> integer_to_binary(day) <> " " <>
-    integer_to_binary(hours) <> ":" <> integer_to_binary(minutes) <> ":" <> integer_to_binary(seconds) <> " "
+    Integer.to_string(year) <> "." <> Integer.to_string(month) <> "." <> Integer.to_string(day) <> " " <>
+    Integer.to_string(hours) <> ":" <> Integer.to_string(minutes) <> ":" <> Integer.to_string(seconds) <> " "
   end
 
   @doc """
