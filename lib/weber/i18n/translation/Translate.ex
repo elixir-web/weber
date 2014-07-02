@@ -1,6 +1,6 @@
 defmodule Weber.Translation.Translate do
 
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule Translate do
     defstruct t: nil

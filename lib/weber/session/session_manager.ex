@@ -5,7 +5,7 @@ defmodule Weber.Session.SessionManager do
   manages all sessions.
   """
 
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule SessionManager do
     defstruct config: nil

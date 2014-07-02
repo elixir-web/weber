@@ -1,5 +1,5 @@
 defmodule Weber.Localization.Locale do
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule Locale do
     defstruct locale: nil

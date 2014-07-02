@@ -1,5 +1,5 @@
 defmodule Room do
-  use GenServer.Behaviour
+  use GenServer
 
   import Weber.Session
 
