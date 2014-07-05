@@ -38,11 +38,13 @@ defmodule Handler.WeberReqHandler.Default do
   end
 
   def request({:json, data, headers}, _app) do
-    {:json, 200, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+    {:ok, json} = JSEX.encode(data)
+    {:json, 200, json, :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
   def request({:json, status, data, headers}, _app) do
-    {:json, status, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+    {:ok, json} = JSEX.encode(data)
+    {:json, status, json, :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
   def request({:not_found, data, _headers}, _app) do

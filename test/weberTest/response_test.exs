@@ -1,6 +1,6 @@
 defmodule WeberHttpResponseTest do
   use ExUnit.Case
-   
+
   test "SimpleResponse test" do
     {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/weber', [], <<>>, [])
     body = :hackney.body(client)
@@ -11,10 +11,10 @@ defmodule WeberHttpResponseTest do
   test "json response with custom status" do
     {:ok, status, _, client} = :hackney.request(:get, 'http://localhost:8080/json/action', [], <<>>, [])
     body = :hackney.body(client)
-    assert(body == {:ok, "{}"})
+    assert(body == {:ok, "[]"})
     assert(status == 201)
   end
-  
+
   test "`redirect` in route test" do
     {:ok, status, _, _client} = :hackney.request(:get, 'http://localhost:8080/redirect', [], <<>>, [])
     assert(status == 302)

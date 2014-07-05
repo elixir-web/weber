@@ -1,6 +1,6 @@
 defmodule Weber.Localization.LocalizationManager do
 
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule LocalizationConfig do
     defstruct config: nil,

@@ -1,5 +1,5 @@
 defmodule TestTestTest.Main do
-  
+
   use Weber.Controller
 
   layout false
@@ -14,7 +14,7 @@ defmodule TestTestTest.Main do
 end
 
 defmodule TestTestTest.Include do
-    
+
   use Weber.Controller
 
   layout false
