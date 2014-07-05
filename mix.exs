@@ -35,7 +35,7 @@ defmodule Weber.Mixfile do
     [
       {:cowboy, github: "extend/cowboy" },
       {:jsex, github: "talentdeficit/jsex"},
-      {:plug, github: "elixir-lang/plug"},
+      {:plug, "~> 0.5.0"},
       {:exlager, github: "khia/exlager"},
       {:weberContrib, github: "0xAX/weber-contrib"}
     ]
