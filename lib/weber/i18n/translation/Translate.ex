@@ -1,6 +1,6 @@
 defmodule Weber.Translation.Translate do
 
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule Translate do
     defstruct t: nil
@@ -11,7 +11,8 @@ defmodule Weber.Translation.Translate do
   end
 
   def init([lang]) do
-    { :ok, %Translate{t: ExJSON.parse(lang)}}
+    {:ok, parsed_lang} = JSEX.decode(lang)
+    { :ok, %Translate{t: parsed_lang}}
   end
 
   def handle_call({:translate, key}, _from, state) do

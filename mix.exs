@@ -34,8 +34,8 @@ defmodule Weber.Mixfile do
   defp deps(:prod) do
     [
       {:cowboy, github: "extend/cowboy" },
-      {:exjson, github: "guedes/exjson"},
-      {:plug, github: "elixir-lang/plug"},
+      {:jsex, github: "talentdeficit/jsex"},
+      {:plug, "~> 0.5.0"},
       {:exlager, github: "khia/exlager"},
       {:weberContrib, github: "0xAX/weber-contrib"}
     ]

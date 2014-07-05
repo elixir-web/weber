@@ -11,8 +11,8 @@ defmodule Weber.Utils do
   """
   def get_time() do
     {{year, month, day}, {hours, minutes, seconds}}  = :calendar.local_time()
-    integer_to_binary(year) <> "." <> integer_to_binary(month) <> "." <> integer_to_binary(day) <> " " <>
-    integer_to_binary(hours) <> ":" <> integer_to_binary(minutes) <> ":" <> integer_to_binary(seconds) <> " "
+    Integer.to_string(year) <> "." <> Integer.to_string(month) <> "." <> Integer.to_string(day) <> " " <>
+    Integer.to_string(hours) <> ":" <> Integer.to_string(minutes) <> ":" <> Integer.to_string(seconds) <> " "
   end
 
   @doc """
@@ -38,7 +38,7 @@ defmodule Weber.Utils do
   end
 
   def find_static_file_path(abs_filenames, filename) do
-    filter(abs_filenames, &( Path.basename(&1) == String.from_char_data!(filename) ) )
+    filter(abs_filenames, &( Path.basename(&1) == List.to_string(filename) ) )
   end
 
   @doc """
@@ -79,8 +79,7 @@ defmodule Weber.Utils do
   end
 
   def capitalize(str) do
-    <<c, rest :: binary>> = str
-    String.capitalize(String.from_char_data([c]) |> elem(1)) <> rest
+    (str |> String.at(0) |> String.capitalize) <> String.slice(str, 1..-1)
   end
 
   def to_bin(val) do

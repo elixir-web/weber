@@ -39,7 +39,7 @@ defmodule Weber.Route do
       fn({type, value}, acc) ->
         case type do
           :segment -> acc <> "/" <> value
-          :binding -> acc <> "/" <> to_bin(Keyword.get(bindings, binary_to_atom(value)))
+          :binding -> acc <> "/" <> to_bin(Keyword.get(bindings, String.to_atom(value)))
         end
       end)
   end
@@ -51,12 +51,12 @@ defmodule Weber.Route do
   """
   def on(method, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
-    [[method: method, path: path, controller: binary_to_atom(controller), action: binary_to_atom(action)]]
+    [[method: method, path: path, controller: String.to_atom(controller), action: String.to_atom(action)]]
   end
 
   def on(routesList, method, path, controllerAndAction) when is_binary(controllerAndAction) do
     [controller, action] = split(controllerAndAction, "#")
-    :lists.append(routesList, [[method: method, path: path, controller: binary_to_atom(controller), action: binary_to_atom(action)]])
+    :lists.append(routesList, [[method: method, path: path, controller: String.to_atom(controller), action: String.to_atom(action)]])
   end
 
   @doc """
@@ -160,7 +160,7 @@ defmodule Weber.Route do
   end
 
   defp resources_routes(controller) do
-    url = List.foldl(String.split(atom_to_binary(controller),"."), "",
+    url = List.foldl(String.split(Atom.to_string(controller),"."), "",
       fn (x, acc) ->
         case x do
          "Elixir" -> acc <> ""

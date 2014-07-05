@@ -21,8 +21,8 @@ defmodule Weber.I18n do
       [] -> "en_US.json"
       l -> l <> ".json"
     end
-    date_time_format = :gen_server.call(binary_to_atom(pid), :get_date_time_format)
-    {date_time_format, binary_to_atom(pid)}
+    date_time_format = :gen_server.call(String.to_atom(pid), :get_date_time_format)
+    {date_time_format, String.to_atom(pid)}
   end
 
   @doc """

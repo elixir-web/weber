@@ -1,6 +1,6 @@
 defmodule Weber.Localization.LocalizationManager do
 
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule LocalizationConfig do
     defstruct config: nil,
@@ -25,18 +25,18 @@ defmodule Weber.Localization.LocalizationManager do
 
         default_locale = Keyword.fetch!(localization_config, :default_locale)
         use_locales = Keyword.fetch!(localization_config, :use_locales)
-                      |> Enum.map(fn(l) -> atom_to_binary(l) <> ".json" end)
+                      |> Enum.map(fn(l) -> Atom.to_string(l) <> ".json" end)
 
         on_files_in_path(
                          Path.join([project_path, "/deps/weber/lib/weber/i18n/localization/locale"]),
                          &( :lists.member(&1, use_locales) ),
-                         &( Weber.Localization.Locale.start_link(binary_to_atom(&1), &2) )
+                         &( Weber.Localization.Locale.start_link(String.to_atom(&1), &2) )
                         )
 
         on_files_in_path(
                          Path.join([project_path, "/lang"]),
                          fn (_) -> true end,
-                         &( Weber.Translation.Translate.start_link(binary_to_atom(&1), &2) )
+                         &( Weber.Translation.Translate.start_link(String.to_atom(&1), &2) )
                         )
 
         {:noreply, %LocalizationConfig{config: state.config, default_locale: default_locale}}

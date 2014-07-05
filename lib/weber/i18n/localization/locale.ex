@@ -1,5 +1,5 @@
 defmodule Weber.Localization.Locale do
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule Locale do
     defstruct locale: nil
@@ -10,7 +10,8 @@ defmodule Weber.Localization.Locale do
   end
 
   def init([locale]) do
-    { :ok, %Locale{locale: ExJSON.parse locale}}
+    {:ok, parsed_locale} = JSEX.decode locale
+    { :ok, %Locale{locale: parsed_locale}}
   end
 
   def handle_call(:get_abbr_day_names, _from, state) do

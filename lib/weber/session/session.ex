@@ -4,7 +4,7 @@ defmodule Weber.Session do
   Weber session handler. Every process handle one use session.
   """
 
-  use GenServer.Behaviour
+  use GenServer
 
   import Weber.Http.Params
 

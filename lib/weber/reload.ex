@@ -1,5 +1,5 @@
 defmodule Weber.Reload do
-  use GenServer.Behaviour
+  use GenServer
 
   defmodule Config do
     defstruct root_path: nil, load_modules: [], load_time: { { 1970, 1, 1 }, { 0, 0, 0 } }

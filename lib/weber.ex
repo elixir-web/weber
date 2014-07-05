@@ -1,6 +1,6 @@
 defmodule Weber do
 
-  use Application.Behaviour
+  use Application
 
   require Weber.Templates.ViewsLoader
 

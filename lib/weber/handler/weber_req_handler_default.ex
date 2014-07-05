@@ -38,11 +38,13 @@ defmodule Handler.WeberReqHandler.Default do
   end
 
   def request({:json, data, headers}, _app) do
-    {:json, 200, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+    {:ok, json} = JSEX.encode(data)
+    {:json, 200, json, :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
   def request({:json, status, data, headers}, _app) do
-    {:json, status, ExJSON.generate(data), :lists.append([{"Content-Type", "application/json"}], headers)}
+    {:ok, json} = JSEX.encode(data)
+    {:json, status, json, :lists.append([{"Content-Type", "application/json"}], headers)}
   end
 
   def request({:not_found, data, _headers}, _app) do
@@ -50,7 +52,7 @@ defmodule Handler.WeberReqHandler.Default do
   end
 
   def request({:render_other_action, action, data}, app) do
-    complete_action = (atom_to_binary(app.controller) <> "#" <> atom_to_binary(action)) |> String.slice(7..-1)
+    complete_action = (Atom.to_string(app.controller) <> "#" <> Atom.to_string(action)) |> String.slice(7..-1)
     request({:render_other_controller, complete_action, data}, app)
   end
 
@@ -59,7 +61,7 @@ defmodule Handler.WeberReqHandler.Default do
   end
 
   def request({:render_other_controller, controller, action, data}, app) when is_atom(controller) and is_atom(action) do
-    {:render_other_controller, atom_to_binary(controller) <> "#" <> atom_to_binary(action), data}
+    {:render_other_controller, Atom.to_string(controller) <> "#" <> Atom.to_string(action), data}
   end
 
 end
