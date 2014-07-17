@@ -39,7 +39,9 @@ defmodule Weber.Helper.Html do
   @doc """
   Generates html.
   """
-  def tag(html_tag, input_html, clauses \\ []) when is_list(input_html) do
+  def tag(html_tag, input_html, clauses \\ [])
+  
+  def tag(html_tag, input_html, clauses ) when is_list(input_html) do
     do_clause = Keyword.get(clauses, :do, "")
     tag(html_tag, do_clause, input_html)
   end
