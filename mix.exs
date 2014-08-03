@@ -33,7 +33,7 @@ defmodule Weber.Mixfile do
  
   defp deps(:prod) do
     [
-      {:cowboy, github: "extend/cowboy" },
+      {:cowboy, "~> 1.0.0" },
       {:jsex, github: "talentdeficit/jsex"},
       {:plug, "~> 0.5.0"},
       {:exlager, github: "khia/exlager"},
