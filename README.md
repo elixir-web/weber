@@ -24,7 +24,7 @@ Weber - is a MVC Web framework for [Elixir](http://elixir-lang.org/).
  * i18n support;
  * Live code/templates update
  * Sessions support;
- * [weber-contrib](https://github.com/0xAX/weber-contrib)
+ * [weber-contrib](https://github.com/elixir-web/weber-contrib)
 
 ## Quick start
 
@@ -199,7 +199,7 @@ end
 
 ## Request params
 
-Sometimes it is necessary for the request parameters in the controller. For this point can be used `Weber.Http.Params` [API](https://github.com/0xAX/weber/wiki/Weber.Http.Params-API).
+Sometimes it is necessary for the request parameters in the controller. For this point can be used `Weber.Http.Params` [API](https://github.com/elixir-web/weber/wiki/Weber.Http.Params-API).
 
 ```elixir
 defmodule Simplechat.Main.Login do
@@ -534,7 +534,7 @@ All websocket connections are must start with prefix `/_ws/`.
 
 ## Session
 
-[Session API](https://github.com/0xAX/weber/wiki/Weber.Session-API)
+[Session API](https://github.com/elixir-web/weber/wiki/Weber.Session-API)
 
 ## Testing requests
 
@@ -570,7 +570,7 @@ mix weber.routes
 
 ## Dependencies
 
-  * [cowboy](https://github.com/extend/cowboy)
+  * [cowboy](https://github.com/ninenines/cowboy)
   * [ecto](https://github.com/elixir-lang/ecto)
   * [postgrex](https://github.com/ericmj/postgrex)
   * [exjson](https://github.com/guedes/exjson)
